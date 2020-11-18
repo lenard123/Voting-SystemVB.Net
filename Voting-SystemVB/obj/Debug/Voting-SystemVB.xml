@@ -15,6 +15,22 @@ Voting-SystemVB
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.hide">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.padlock">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.show">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.user">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="T:Voting_SystemVB.My.Resources.Resources">
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
