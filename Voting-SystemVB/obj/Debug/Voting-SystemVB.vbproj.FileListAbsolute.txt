@@ -1,0 +1,10 @@
+c:\users\lenard\documents\visual studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\bin\Debug\Voting-SystemVB.exe.config
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\bin\Debug\Voting-SystemVB.exe
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\bin\Debug\Voting-SystemVB.pdb
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\bin\Debug\Voting-SystemVB.xml
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting_SystemVB.Main.resources
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting_SystemVB.Resources.resources
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting-SystemVB.vbproj.GenerateResource.Cache
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting-SystemVB.exe
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting-SystemVB.xml
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting-SystemVB.pdb
