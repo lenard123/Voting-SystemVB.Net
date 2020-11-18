@@ -9,3 +9,5 @@ C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-Sys
 C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting-SystemVB.xml
 C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting-SystemVB.pdb
 C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting_SystemVB.VoterLogin.resources
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting_SystemVB.AdminLogin.resources
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting_SystemVB.LoadingScreen.resources

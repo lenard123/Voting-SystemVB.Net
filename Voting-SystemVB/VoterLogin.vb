@@ -1,5 +1,14 @@
 ﻿Public Class VoterLogin
 
+    Private Shared Instance As VoterLogin
+
+    Public Shared Function GetInstance() As VoterLogin
+        If IsNothing(Instance) Then
+            Instance = New VoterLogin()
+        End If
+        Return Instance
+    End Function
+
     Private Sub btn_close_Click(sender As Object, e As EventArgs) Handles btn_close.Click
         Application.Exit()
     End Sub
@@ -13,4 +22,9 @@
             TextPin.UseSystemPasswordChar = True
         End If
     End Sub
+
+    Private Sub ButtonAdmin_Click(sender As Object, e As EventArgs) Handles ButtonAdmin.Click
+        Main.LoadControl(AdminLogin.GetInstance())
+    End Sub
+
 End Class
