@@ -28,7 +28,7 @@
     End Sub
 
     Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
-        If Validate() Then
+        If ValidateForm() Then
             Dim Result = Student.Find(TextStudentId.Text)
             If IsNothing(Result) Then
                 MessageBox.Show("Student ID doesn't exists in the database")
@@ -39,10 +39,10 @@
                     MessageBox.Show("Login Successfully")
                 End If
             End If
-                End If
+        End If
     End Sub
 
-    Private Function Validate() As Boolean
+    Private Function ValidateForm() As Boolean
         Dim ValidationError As String = ""
         Dim StudentID = TextStudentId.Text
         Dim Password = TextPin.Text
