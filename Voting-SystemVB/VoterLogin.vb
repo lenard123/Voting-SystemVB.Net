@@ -27,4 +27,39 @@
         Main.LoadControl(AdminLogin.GetInstance())
     End Sub
 
+    Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
+        If Validate() Then
+            Dim Result = Student.Find(TextStudentId.Text)
+            If IsNothing(Result) Then
+                MessageBox.Show("Student ID doesn't exists in the database")
+            Else
+                If Not (Result.ComparePassword(TextPin.Text)) Then
+                    MessageBox.Show("Wrong Password")
+                Else
+                    MessageBox.Show("Login Successfully")
+                End If
+            End If
+                End If
+    End Sub
+
+    Private Function Validate() As Boolean
+        Dim ValidationError As String = ""
+        Dim StudentID = TextStudentId.Text
+        Dim Password = TextPin.Text
+
+        If (StudentID.Length.Equals(0) Or Password.Length.Equals(0)) Then
+            ValidationError += "Student ID and Password Field is Required " & Environment.NewLine
+        Else
+            If Not (StudentID.Length.Equals(10)) Then
+                ValidationError += "Student ID must have 10 characters" & Environment.NewLine
+            End If
+            If Password.Length < 6 Then
+                ValidationError += "Password field must have atleast 6 characters" & Environment.NewLine
+            End If
+        End If
+        If ValidationError.Length > 0 Then
+            MessageBox.Show(ValidationError)
+        End If
+        Return ValidationError.Length.Equals(0)
+    End Function
 End Class

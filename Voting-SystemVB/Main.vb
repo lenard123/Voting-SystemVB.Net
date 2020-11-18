@@ -1,16 +1,19 @@
-﻿Public Class Main
+﻿
+Imports System.Windows.Forms
+
+Public Class Main
+    Inherits Form
 
     Public Shared Instance As Main
 
-
     Public Sub New()
-        ' This call is required by the designer.
-        InitializeComponent()
+
+        FormBorderStyle = Windows.Forms.FormBorderStyle.None
 
         ' Add any initialization after the InitializeComponent() call.
         Instance = Me
 
-        LoadControl(New LoadingScreen)
+        LoadControl(VoterLogin.GetInstance())
     End Sub
 
     Public Shared Sub LoadControl(Child As UserControl)

@@ -74,11 +74,8 @@
     <Compile Include="Main.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.vb">
-      <DependentUpon>Main.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Model\DBHelper.vb" />
+    <Compile Include="Model\Student.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -100,10 +97,10 @@
     <Compile Include="AdminLogin.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Resources\LoadingScreen.Designer.vb">
+    <Compile Include="LoadingScreen.Designer.vb">
       <DependentUpon>LoadingScreen.vb</DependentUpon>
     </Compile>
-    <Compile Include="Resources\LoadingScreen.vb">
+    <Compile Include="LoadingScreen.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Util.vb" />
@@ -127,7 +124,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\LoadingScreen.resx">
+    <EmbeddedResource Include="LoadingScreen.resx">
       <DependentUpon>LoadingScreen.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VoterLogin.resx">

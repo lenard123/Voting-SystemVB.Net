@@ -5,14 +5,19 @@
     Dim DBConnection As Integer = 0
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        'At 10% Get the Admin Login
         If (Percent.Equals(10)) Then
             Timer1.Stop()
             AdminLogin.GetInstance()
             Timer1.Start()
+
+            'At 20% Get the Voter Login
         ElseIf (Percent.Equals(20)) Then
             Timer1.Stop()
             VoterLogin.GetInstance()
             Timer1.Start()
+
+            'At 50% Connect to the database
         ElseIf (Percent.Equals(50)) Then
             Timer1.Stop()
             Try
@@ -23,6 +28,8 @@
                 Percent = 100
             End Try
             Timer1.Start()
+
+            'At 100% Halt the timer
         ElseIf (Percent >= 100) Then
             Timer1.Stop()
             Finish()
