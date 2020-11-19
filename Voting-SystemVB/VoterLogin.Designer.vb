@@ -28,26 +28,29 @@ Partial Class VoterLogin
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btn_close = New System.Windows.Forms.Button()
         Me.PanelStudentID = New System.Windows.Forms.Panel()
         Me.TextStudentId = New System.Windows.Forms.TextBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.ButtonVisibility = New System.Windows.Forms.PictureBox()
         Me.TextPin = New System.Windows.Forms.TextBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.ButtonLogin = New System.Windows.Forms.Button()
         Me.ButtonAdmin = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.ButtonVisibility = New System.Windows.Forms.PictureBox()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.ToolTipUser = New System.Windows.Forms.ToolTip(Me.components)
+        Me.PanelStudentIdStatus = New System.Windows.Forms.Panel()
+        Me.PanelPasswordStatus = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelStudentID.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         CType(Me.ButtonVisibility, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -99,6 +102,16 @@ Partial Class VoterLogin
         Me.Label2.Text = "Supreme Student Council"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(106, 64)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(150, 152)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 1
+        Me.PictureBox1.TabStop = False
+        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -130,6 +143,7 @@ Partial Class VoterLogin
         'PanelStudentID
         '
         Me.PanelStudentID.BackColor = System.Drawing.Color.White
+        Me.PanelStudentID.Controls.Add(Me.PanelStudentIdStatus)
         Me.PanelStudentID.Controls.Add(Me.TextStudentId)
         Me.PanelStudentID.Controls.Add(Me.PictureBox2)
         Me.PanelStudentID.Location = New System.Drawing.Point(381, 229)
@@ -150,9 +164,20 @@ Partial Class VoterLogin
         Me.TextStudentId.TabIndex = 1
         Me.ToolTip1.SetToolTip(Me.TextStudentId, "Enter your StudentID")
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.Voting_SystemVB.My.Resources.Resources.user
+        Me.PictureBox2.Location = New System.Drawing.Point(15, 11)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(25, 25)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 0
+        Me.PictureBox2.TabStop = False
+        '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.White
+        Me.Panel3.Controls.Add(Me.PanelPasswordStatus)
         Me.Panel3.Controls.Add(Me.ButtonVisibility)
         Me.Panel3.Controls.Add(Me.TextPin)
         Me.Panel3.Controls.Add(Me.PictureBox3)
@@ -161,6 +186,17 @@ Partial Class VoterLogin
         Me.Panel3.Size = New System.Drawing.Size(441, 45)
         Me.Panel3.TabIndex = 6
         Me.ToolTip1.SetToolTip(Me.Panel3, "Enter your Password")
+        '
+        'ButtonVisibility
+        '
+        Me.ButtonVisibility.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonVisibility.Image = Global.Voting_SystemVB.My.Resources.Resources.show
+        Me.ButtonVisibility.Location = New System.Drawing.Point(399, 11)
+        Me.ButtonVisibility.Name = "ButtonVisibility"
+        Me.ButtonVisibility.Size = New System.Drawing.Size(25, 25)
+        Me.ButtonVisibility.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.ButtonVisibility.TabIndex = 3
+        Me.ButtonVisibility.TabStop = False
         '
         'TextPin
         '
@@ -174,6 +210,16 @@ Partial Class VoterLogin
         Me.TextPin.TabIndex = 2
         Me.ToolTip1.SetToolTip(Me.TextPin, "Enter your Password")
         Me.TextPin.UseSystemPasswordChar = True
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.Image = Global.Voting_SystemVB.My.Resources.Resources.padlock
+        Me.PictureBox3.Location = New System.Drawing.Point(15, 11)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(25, 25)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox3.TabIndex = 0
+        Me.PictureBox3.TabStop = False
         '
         'ButtonLogin
         '
@@ -201,46 +247,28 @@ Partial Class VoterLogin
         Me.ButtonAdmin.Text = "ADMIN LOGIN ?"
         Me.ButtonAdmin.UseVisualStyleBackColor = False
         '
-        'ButtonVisibility
+        'ToolTipUser
         '
-        Me.ButtonVisibility.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonVisibility.Image = Global.Voting_SystemVB.My.Resources.Resources.show
-        Me.ButtonVisibility.Location = New System.Drawing.Point(399, 11)
-        Me.ButtonVisibility.Name = "ButtonVisibility"
-        Me.ButtonVisibility.Size = New System.Drawing.Size(25, 25)
-        Me.ButtonVisibility.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.ButtonVisibility.TabIndex = 3
-        Me.ButtonVisibility.TabStop = False
+        Me.ToolTipUser.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(125, Byte), Integer))
+        Me.ToolTipUser.ForeColor = System.Drawing.Color.White
+        Me.ToolTipUser.IsBalloon = True
+        Me.ToolTipUser.ShowAlways = True
         '
-        'PictureBox3
+        'PanelStudentIdStatus
         '
-        Me.PictureBox3.Image = Global.Voting_SystemVB.My.Resources.Resources.padlock
-        Me.PictureBox3.Location = New System.Drawing.Point(15, 11)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(25, 25)
-        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox3.TabIndex = 0
-        Me.PictureBox3.TabStop = False
+        Me.PanelStudentIdStatus.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PanelStudentIdStatus.Location = New System.Drawing.Point(0, 0)
+        Me.PanelStudentIdStatus.Name = "PanelStudentIdStatus"
+        Me.PanelStudentIdStatus.Size = New System.Drawing.Size(5, 45)
+        Me.PanelStudentIdStatus.TabIndex = 2
         '
-        'PictureBox2
+        'PanelPasswordStatus
         '
-        Me.PictureBox2.Image = Global.Voting_SystemVB.My.Resources.Resources.user
-        Me.PictureBox2.Location = New System.Drawing.Point(15, 11)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(25, 25)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox2.TabIndex = 0
-        Me.PictureBox2.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(106, 64)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(150, 152)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 1
-        Me.PictureBox1.TabStop = False
+        Me.PanelPasswordStatus.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PanelPasswordStatus.Location = New System.Drawing.Point(0, 0)
+        Me.PanelPasswordStatus.Name = "PanelPasswordStatus"
+        Me.PanelPasswordStatus.Size = New System.Drawing.Size(5, 45)
+        Me.PanelPasswordStatus.TabIndex = 4
         '
         'VoterLogin
         '
@@ -257,14 +285,14 @@ Partial Class VoterLogin
         Me.Size = New System.Drawing.Size(841, 531)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelStudentID.ResumeLayout(False)
         Me.PanelStudentID.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.ButtonVisibility, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -286,5 +314,8 @@ Partial Class VoterLogin
     Friend WithEvents ButtonAdmin As System.Windows.Forms.Button
     Friend WithEvents ButtonVisibility As System.Windows.Forms.PictureBox
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
+    Friend WithEvents ToolTipUser As System.Windows.Forms.ToolTip
+    Friend WithEvents PanelStudentIdStatus As System.Windows.Forms.Panel
+    Friend WithEvents PanelPasswordStatus As System.Windows.Forms.Panel
 
 End Class

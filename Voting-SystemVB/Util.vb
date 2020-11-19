@@ -16,4 +16,10 @@ Module Util
         End Try
     End Function
 
+    Public Function GetControlImage(ByRef ctl As Control)
+        Dim bm As New Bitmap(ctl.Width, ctl.Height)
+        ctl.DrawToBitmap(bm, New Rectangle(0, 0, ctl.Width, ctl.Height))
+        Return bm
+    End Function
+
 End Module

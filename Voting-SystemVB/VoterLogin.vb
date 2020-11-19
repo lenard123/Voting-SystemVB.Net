@@ -62,4 +62,40 @@
         End If
         Return ValidationError.Length.Equals(0)
     End Function
+
+    Private Sub VoterLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim t As New ToolTip
+        t.ShowAlways = True
+        t.Active = True
+        t.InitialDelay = 1000
+        t.AutoPopDelay = 5000
+        t.ReshowDelay = 500
+        t.SetToolTip(ButtonLogin, "HELLO")
+    End Sub
+
+    Private Sub UpdateStatus(pnl As Panel, state As Integer)
+        If (state.Equals(1)) Then 'default State
+            pnl.BackColor = Color.FromArgb(255, 164, 91)
+        ElseIf (state.Equals(2)) Then
+            pnl.BackColor = Color.FromArgb(224, 117, 125)
+        ElseIf (state.Equals(3)) Then
+            pnl.BackColor = Color.FromArgb(22, 165, 150)
+        End If
+    End Sub
+
+    Private Sub TextStudentId_Enter(sender As Object, e As EventArgs) Handles TextStudentId.Enter
+        PanelStudentIdStatus.BackColor = Color.FromArgb(255, 164, 91)
+    End Sub
+
+    Private Sub TextStudentId_Leave(sender As Object, e As EventArgs) Handles TextStudentId.Leave
+        PanelStudentIdStatus.BackColor = Color.Transparent
+    End Sub
+
+    Private Sub TextPin_Enter(sender As Object, e As EventArgs) Handles TextPin.Enter
+        PanelPasswordStatus.BackColor = Color.FromArgb(255, 164, 91)
+    End Sub
+
+    Private Sub TextPin_Leave(sender As Object, e As EventArgs) Handles TextPin.Leave
+        PanelPasswordStatus.BackColor = Color.Transparent
+    End Sub
 End Class

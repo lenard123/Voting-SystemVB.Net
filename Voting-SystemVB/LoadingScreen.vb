@@ -40,12 +40,12 @@
 
     Private Sub Finish()
         If (DBConnection.Equals(0)) Then
-            MessageBox.Show("An error occured while connecting to database")
-            Application.Exit()
+            Dim popup As New SystemCrashError("Oops!!", "An error occured while connecting to database")
+            popup.ShowPopup()
         Else
             Main.LoadControl(VoterLogin.GetInstance())
+            Dispose()
         End If
-        Dispose()
     End Sub
 
     Private Sub Expand()

@@ -100,8 +100,20 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\TransparentPanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Main.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modal\ModalPopup.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modal\ValidationError.Designer.vb">
+      <DependentUpon>ValidationError.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modal\ValidationError.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Model\DBHelper.vb" />
     <Compile Include="Model\Student.vb" />
@@ -132,6 +144,12 @@
     <Compile Include="LoadingScreen.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Modal\SystemCrashError.Designer.vb">
+      <DependentUpon>SystemCrashError.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modal\SystemCrashError.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Util.vb" />
     <Compile Include="VoterLogin.Designer.vb">
       <DependentUpon>VoterLogin.vb</DependentUpon>
@@ -144,8 +162,8 @@
     <EmbeddedResource Include="AdminLogin.resx">
       <DependentUpon>AdminLogin.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.vb</DependentUpon>
+    <EmbeddedResource Include="Modal\ValidationError.resx">
+      <DependentUpon>ValidationError.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -155,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoadingScreen.resx">
       <DependentUpon>LoadingScreen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\SystemCrashError.resx">
+      <DependentUpon>SystemCrashError.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VoterLogin.resx">
       <DependentUpon>VoterLogin.vb</DependentUpon>
@@ -201,6 +222,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error-white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

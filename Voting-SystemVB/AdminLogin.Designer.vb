@@ -39,7 +39,7 @@ Partial Class AdminLogin
         Me.TextUsername = New System.Windows.Forms.TextBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.ButtonVoter = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ButtonLogin = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -229,18 +229,18 @@ Partial Class AdminLogin
         Me.ButtonVoter.Text = "Back to Voters Login?"
         Me.ButtonVoter.UseVisualStyleBackColor = False
         '
-        'Button1
+        'ButtonLogin
         '
-        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(81, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 10.0!)
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(381, 340)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(164, 43)
-        Me.Button1.TabIndex = 8
-        Me.Button1.Text = "LOGIN"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.ButtonLogin.BackColor = System.Drawing.Color.FromArgb(CType(CType(81, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
+        Me.ButtonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonLogin.Font = New System.Drawing.Font("Century Gothic", 10.0!)
+        Me.ButtonLogin.ForeColor = System.Drawing.Color.White
+        Me.ButtonLogin.Location = New System.Drawing.Point(381, 340)
+        Me.ButtonLogin.Name = "ButtonLogin"
+        Me.ButtonLogin.Size = New System.Drawing.Size(164, 43)
+        Me.ButtonLogin.TabIndex = 8
+        Me.ButtonLogin.Text = "LOGIN"
+        Me.ButtonLogin.UseVisualStyleBackColor = False
         '
         'AdminLogin
         '
@@ -252,7 +252,7 @@ Partial Class AdminLogin
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.ButtonVoter)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.ButtonLogin)
         Me.Name = "AdminLogin"
         Me.Size = New System.Drawing.Size(841, 531)
         Me.Panel1.ResumeLayout(False)
@@ -284,7 +284,7 @@ Partial Class AdminLogin
     Friend WithEvents TextUsername As System.Windows.Forms.TextBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents ButtonVoter As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents ButtonLogin As System.Windows.Forms.Button
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
 
 End Class
