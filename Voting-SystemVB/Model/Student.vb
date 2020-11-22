@@ -2,27 +2,40 @@
 
 Public Class Student
 
-    Private Shared STUDENT_ID_LENGTH As Integer = 10
-    Private Shared STUDENT_STUDENTID_LENGTH As Integer = 10
-    Private Shared STUDENT_ID_INDEX As Integer = 0
-    Private Shared STUDENT_STUDENTID_INDEX As Integer = 1
-    Private Shared STUDENT_FIRSTNAME_INDEX As Integer = 2
-    Private Shared STUDENT_LASTNAME_INDEX As Integer = 3
-    Private Shared STUDENT_YEAR_INDEX As Integer = 4
-    Private Shared STUDENT_COURSE_INDEX As Integer = 5
-    Private Shared STUDENT_SECTION_INDEX As Integer = 6
-    Private Shared STUDENT_PASSWORD_INDEX As Integer = 7
+    Public Shared ReadOnly YEAR_1 = "1st"
+    Public Shared ReadOnly YEAR_2 = "2nd"
+    Public Shared ReadOnly YEAR_3 = "3rd"
+    Public Shared ReadOnly YEAR_4 = "4th"
+
+    Private Shared ReadOnly LENGTH_ID As Integer = 10
+    Private Shared ReadOnly LENGTH_STUDENT_ID As Integer = 10
+    Private Shared ReadOnly LENGTH_FIRSTNAME As Integer = 20
+    Private Shared ReadOnly LENGTH_LASTNAME As Integer = 20
+    Private Shared ReadOnly LENGTH_YEAR As Integer = 3
+    Private Shared ReadOnly LENGTH_COURSE As Integer = 5
+    Private Shared ReadOnly LENGTH_SECTION As Integer = 1
+    Private Shared ReadOnly LENGTH_PASSWORD As Integer = 32
+
+    Private Shared ReadOnly INDEX_ID As Integer = 0
+    Private Shared ReadOnly INDEX_STUDENT_ID As Integer = 1
+    Private Shared ReadOnly INDEX_FIRSTNAME As Integer = 2
+    Private Shared ReadOnly INDEX_LASTNAME As Integer = 3
+    Private Shared ReadOnly INDEX_YEAR As Integer = 4
+    Private Shared ReadOnly INDEX_COURSE As Integer = 5
+    Private Shared ReadOnly INDEX_SECTION As Integer = 6
+    Private Shared ReadOnly INDEX_PASSWORD As Integer = 7
 
     Private _Id As Integer
     Private _StudentId, _Fullname, _Firstname, _Lastname, _Course, _Section, _YearLevel, Password As String
 
-    Public Property Id As Integer
+    Private Shared CachedAllStudent As List(Of Student) = Nothing
+    Private Shared NeedRefresh As Boolean = True
+
+
+    Public ReadOnly Property Id As Integer
         Get
             Return _Id
         End Get
-        Set(value As Integer)
-            _Id = value
-        End Set
     End Property
 
     Public Property StudentId As String
@@ -85,7 +98,12 @@ Public Class Student
         End Set
     End Property
 
-    Public Sub New(Password As String)
+    Public Sub New()
+
+    End Sub
+
+    Public Sub New(Id As Integer, Password As String)
+        Me._Id = Id
         Me.Password = Password
     End Sub
 
@@ -99,7 +117,7 @@ Public Class Student
         Dim Reader As OleDbDataReader = ExecuteReader(
             GetConnection(),
             "SELECT * FROM [Student] WHERE [ID]=?",
-            ConvertToParam(OleDbType.Integer, Id, STUDENT_ID_LENGTH)
+            ConvertToParam(OleDbType.Integer, Id, LENGTH_ID)
         )
         If Reader.Read() Then
             Result = GetStudent(Reader)
@@ -107,6 +125,72 @@ Public Class Student
         Reader.Close()
         GetConnection().Close()
         Return Result
+    End Function
+
+    Public Shared Function GetAllAsync() As Task(Of List(Of Student))
+        NeedRefresh = True
+        Return Task.Run(Function()
+                            Return GetAll()
+                        End Function)
+    End Function
+
+    Public Shared Function GetAll() As List(Of Student)
+        'Return Cached if not empty
+        If IsNothing(CachedAllStudent) Or NeedRefresh Then
+            Dim query = "SELECT * FROM Student"
+            Dim Result As New List(Of Student)
+            GetConnection().Open()
+            Using Cmd As New OleDbCommand(query, GetConnection())
+                Using Reader = Cmd.ExecuteReader()
+                    While (Reader.Read())
+                        Result.Add(GetStudent(Reader))
+                    End While
+                End Using
+            End Using
+            GetConnection.Close()
+            CachedAllStudent = Result
+            Return Result
+        Else
+            Return CachedAllStudent
+        End If
+    End Function
+
+    Public Function SaveAsync() As Task(Of Boolean)
+        Return Task.Run(Function()
+                            Return Save()
+                        End Function)
+    End Function
+
+    Public Function Save() As Boolean
+        If Election.GetCurrentElectionF().Status.Equals(Election.STATUS_NOT_STARTED) Then
+            Dim Query = "INSERT INTO [Student]([student_id], [firstname], [lastname], [course], [year_level], [section], [password]) VALUES (?,?,?,?,?,?,?)"
+            Dim res As Boolean
+            GetConnection().Open()
+            Using Cmd As New OleDbCommand(Query, GetConnection())
+                Dim r As New Random
+                Dim password = StudentId & "-" & r.Next(1000, 10000)
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, StudentId, LENGTH_STUDENT_ID))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Firstname, LENGTH_FIRSTNAME))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Lastname, LENGTH_LASTNAME))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Course, LENGTH_COURSE))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _YearLevel, LENGTH_YEAR))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Section, LENGTH_SECTION))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, password, LENGTH_PASSWORD))
+                Cmd.Prepare()
+                NeedRefresh = True
+                res = Cmd.ExecuteNonQuery() <> -1
+            End Using
+            GetConnection().Close()
+            Return res
+        Else
+            Console.WriteLine("Election has started")
+            Return False
+        End If
+    End Function
+
+    Public Shared Function GetAllF() As List(Of Student)
+        NeedRefresh = True
+        Return GetAll()
     End Function
 
     Public Shared Function Find(Id As String) As Student
@@ -115,7 +199,7 @@ Public Class Student
         Dim Reader As OleDbDataReader = ExecuteReader(
             GetConnection(),
             "SELECT * FROM [Student] WHERE [student_id]=?",
-            ConvertToParam(OleDbType.VarChar, Id, STUDENT_STUDENTID_LENGTH)
+            ConvertToParam(OleDbType.VarChar, Id, LENGTH_STUDENT_ID)
         )
         If Reader.Read() Then
             Result = GetStudent(Reader)
@@ -125,19 +209,30 @@ Public Class Student
         Return Result
     End Function
 
+    Public Shared Function CountAll() As Integer
+        Dim Result As Integer = 0
+        GetConnection().Open()
+        Dim cmd = New OleDbCommand("SELECT Count(*) From Student", GetConnection())
+        Result = Integer.Parse(cmd.ExecuteScalar())
+        GetConnection().Close()
+        Return Result
+    End Function
+
     Private Shared Function GetStudent(Reader As OleDbDataReader) As Student
-        Dim Result As Student = New Student(Reader.GetString(STUDENT_PASSWORD_INDEX))
+        Dim Result As Student = New Student(Reader.GetInt32(INDEX_ID), Reader.GetString(INDEX_PASSWORD))
         Try
-            Result.Id = Reader.GetInt32(STUDENT_ID_INDEX)
-            Result.StudentId = Reader.GetString(STUDENT_STUDENTID_INDEX)
-            Result.Firstname = Reader.GetString(STUDENT_FIRSTNAME_INDEX)
-            Result.Lastname = Reader.GetString(STUDENT_LASTNAME_INDEX)
-            Result.Course = Reader.GetString(STUDENT_COURSE_INDEX)
-            Result.YearLevel = Reader.GetString(STUDENT_YEAR_INDEX)
-            Result.Section = Reader.GetString(STUDENT_SECTION_INDEX)
+            Result.StudentId = Reader.GetString(INDEX_STUDENT_ID)
+            Result.Firstname = Reader.GetString(INDEX_FIRSTNAME)
+            Result.Lastname = Reader.GetString(INDEX_LASTNAME)
+            Result.Course = Reader.GetString(INDEX_COURSE)
+            Result.YearLevel = Reader.GetString(INDEX_YEAR)
+            Result.Section = Reader.GetString(INDEX_SECTION)
         Catch e As Exception
             Console.WriteLine(e.Message)
         End Try
         Return Result
     End Function
+
+
+
 End Class

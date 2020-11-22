@@ -21,15 +21,18 @@
         ElseIf (Percent.Equals(50)) Then
             Timer1.Stop()
             Try
-                DBHelper.GetConnection().Open()
-                DBHelper.GetConnection().Close()
+                GetConnection.Open()
+                GetConnection.Close()
                 DBConnection = 1
             Catch ex As OleDb.OleDbException
                 Percent = 100
             End Try
             Timer1.Start()
-
+        ElseIf Percent.Equals(60) Then
+            Election.GetCurrentElection()
             'At 100% Halt the timer
+        ElseIf Percent.Equals(70) Then
+            LoadFont()
         ElseIf (Percent >= 100) Then
             Timer1.Stop()
             Finish()

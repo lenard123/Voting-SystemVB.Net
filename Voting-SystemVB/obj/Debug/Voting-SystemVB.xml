@@ -15,15 +15,55 @@ Voting-SystemVB
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.candidate">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.check">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:Voting_SystemVB.My.Resources.Resources.error_white">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.FontAwesomeSolid">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
 </summary>
 </member><member name="P:Voting_SystemVB.My.Resources.Resources.hide">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.home">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.id">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.info">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.logout">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:Voting_SystemVB.My.Resources.Resources.padlock">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.party">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.plus_white">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.settings">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -32,6 +72,10 @@ Voting-SystemVB
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:Voting_SystemVB.My.Resources.Resources.user">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.voter">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

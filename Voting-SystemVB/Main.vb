@@ -13,12 +13,13 @@ Public Class Main
         ' Add any initialization after the InitializeComponent() call.
         Instance = Me
 
-        LoadControl(VoterLogin.GetInstance())
+        LoadControl(New LoadingScreen())
     End Sub
 
     Public Shared Sub LoadControl(Child As UserControl)
         Instance.Controls.Clear()
         Instance.Size = Child.Size
+        Child.Dock = DockStyle.Fill
         Child.Location = New Point(0, 0)
         Instance.Controls.Add(Child)
         Instance.CenterToScreen()

@@ -85,7 +85,7 @@ Partial Class LoadingScreen
         '
         'Timer1
         '
-        Me.Timer1.Interval = 50
+        Me.Timer1.Interval = 1
         '
         'LoadingScreen
         '

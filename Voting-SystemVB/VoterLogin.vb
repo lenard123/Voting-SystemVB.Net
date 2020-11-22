@@ -31,9 +31,11 @@
         If ValidateForm() Then
             Dim Result = Student.Find(TextStudentId.Text)
             If IsNothing(Result) Then
-                MessageBox.Show("Student ID doesn't exists in the database")
+                ValidationError.Alert("Student ID doesn't exists in the database", "Login Failed")
+                'MessageBox.Show("Student ID doesn't exists in the database")
             Else
                 If Not (Result.ComparePassword(TextPin.Text)) Then
+                    ValidationError.Alert("Wrong Password", "Login Failed")
                     MessageBox.Show("Wrong Password")
                 Else
                     MessageBox.Show("Login Successfully")
@@ -43,45 +45,36 @@
     End Sub
 
     Private Function ValidateForm() As Boolean
-        Dim ValidationError As String = ""
+        Dim _ValidationError As String = ""
         Dim StudentID = TextStudentId.Text
         Dim Password = TextPin.Text
 
         If (StudentID.Length.Equals(0) Or Password.Length.Equals(0)) Then
-            ValidationError += "Student ID and Password Field is Required " & Environment.NewLine
+            _ValidationError += "- Student ID and Password Field is Required " & Environment.NewLine
+            If StudentID.Length.Equals(0) Then
+                PanelStudentIdStatus.BackColor = Color.Red
+            End If
+            If Password.Length.Equals(0) Then
+                PanelPasswordStatus.BackColor = Color.Red
+            End If
         Else
             If Not (StudentID.Length.Equals(10)) Then
-                ValidationError += "Student ID must have 10 characters" & Environment.NewLine
+                _ValidationError += "- Student ID must have 10 characters" & Environment.NewLine
+                PanelStudentIdStatus.BackColor = Color.Red
             End If
             If Password.Length < 6 Then
-                ValidationError += "Password field must have atleast 6 characters" & Environment.NewLine
+                _ValidationError += "- Password field must have atleast 6 characters" & Environment.NewLine
+                PanelPasswordStatus.BackColor = Color.Red
             End If
         End If
-        If ValidationError.Length > 0 Then
-            MessageBox.Show(ValidationError)
+        If _ValidationError.Length > 0 Then
+            Dim validator As New ValidationError(_ValidationError)
+            validator.ShowPopup()
         End If
-        Return ValidationError.Length.Equals(0)
+        Return _ValidationError.Length.Equals(0)
     End Function
 
-    Private Sub VoterLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim t As New ToolTip
-        t.ShowAlways = True
-        t.Active = True
-        t.InitialDelay = 1000
-        t.AutoPopDelay = 5000
-        t.ReshowDelay = 500
-        t.SetToolTip(ButtonLogin, "HELLO")
-    End Sub
 
-    Private Sub UpdateStatus(pnl As Panel, state As Integer)
-        If (state.Equals(1)) Then 'default State
-            pnl.BackColor = Color.FromArgb(255, 164, 91)
-        ElseIf (state.Equals(2)) Then
-            pnl.BackColor = Color.FromArgb(224, 117, 125)
-        ElseIf (state.Equals(3)) Then
-            pnl.BackColor = Color.FromArgb(22, 165, 150)
-        End If
-    End Sub
 
     Private Sub TextStudentId_Enter(sender As Object, e As EventArgs) Handles TextStudentId.Enter
         PanelStudentIdStatus.BackColor = Color.FromArgb(255, 164, 91)

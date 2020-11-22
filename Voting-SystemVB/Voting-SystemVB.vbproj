@@ -75,11 +75,16 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guna.UI2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=ad275b4be6718d4b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\Guna_UI_Framework_Ultimate_2.0.0.1_Downloadly.ir\Guna UI Framework Ultimate 2.0.0.1\Guna UI Framework Ultimate v2.0.0.1 Lib-Master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -100,11 +105,71 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\TransparentPanel.vb">
+    <Compile Include="AdminController\AddVoter.Designer.vb">
+      <DependentUpon>AddVoter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\AddVoter.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminController\AdminHomeNotStarted.Designer.vb">
+      <DependentUpon>AdminHomeNotStarted.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\AdminHomeNotStarted.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminController\ManageVoters.Designer.vb">
+      <DependentUpon>ManageVoters.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\ManageVoters.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminController\UpdateVoter.Designer.vb">
+      <DependentUpon>UpdateVoter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\UpdateVoter.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminPanel.Designer.vb">
+      <DependentUpon>AdminPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Alert.Designer.vb">
+      <DependentUpon>Alert.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Alert.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\Card.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CustomDatagridview.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\FontAwesome.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\MaterialTextbox.Designer.vb">
+      <DependentUpon>MaterialTextbox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\MaterialTextbox.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modal\Test.Designer.vb">
+      <DependentUpon>Test.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modal\Test.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Main.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modal\ErrorResult.Designer.vb">
+      <DependentUpon>ErrorResult.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modal\ErrorResult.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Modal\ModalPopup.vb">
       <SubType>UserControl</SubType>
@@ -115,7 +180,11 @@
     <Compile Include="Modal\ValidationError.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Model\Admin.vb" />
+    <Compile Include="Model\Candidate.vb" />
     <Compile Include="Model\DBHelper.vb" />
+    <Compile Include="Model\Election.vb" />
+    <Compile Include="Model\Position.vb" />
     <Compile Include="Model\Student.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -159,8 +228,44 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdminController\AddVoter.resx">
+      <DependentUpon>AddVoter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\AdminHomeNotStarted.resx">
+      <DependentUpon>AdminHomeNotStarted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\ManageVoters.resx">
+      <DependentUpon>ManageVoters.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\UpdateVoter.resx">
+      <DependentUpon>UpdateVoter.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminLogin.resx">
       <DependentUpon>AdminLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminPanel.resx">
+      <DependentUpon>AdminPanel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Alert.resx">
+      <DependentUpon>Alert.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\CustomDatagridview.resx">
+      <DependentUpon>CustomDatagridview.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\FontAwesome.resx">
+      <DependentUpon>FontAwesome.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\MaterialTextbox.resx">
+      <DependentUpon>MaterialTextbox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\ModalPopup.resx">
+      <DependentUpon>ModalPopup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\Test.resx">
+      <DependentUpon>Test.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\ErrorResult.resx">
+      <DependentUpon>ErrorResult.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\ValidationError.resx">
       <DependentUpon>ValidationError.vb</DependentUpon>
@@ -182,16 +287,20 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\FontAwesomeSolid.otf" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\Election.datasource" />
+    <None Include="My Project\DataSources\Student.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="Resources\Font Awesome 5 Free-Solid-900.otf" />
     <None Include="Voting-SystemVB_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -234,6 +343,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\error-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home-5-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home-5-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\voter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\candidate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\party.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
