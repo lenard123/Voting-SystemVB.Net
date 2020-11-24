@@ -48,11 +48,11 @@
     End Sub
 
     Private Sub TextFirstname_Leave(sender As Object, e As EventArgs) Handles TextFirstname.Leave, ButtonSubmit.Click
-        Valid.SetValue(Validator("Firstname", TextFirstname, ErrorFirstname, "required", "min:2"), 1)
+        Valid.SetValue(Validator("Firstname", TextFirstname, ErrorFirstname, "required", "min:2", "alpha"), 1)
     End Sub
 
     Private Sub TextLastname_Leave(sender As Object, e As EventArgs) Handles TextLastname.Leave, ButtonSubmit.Click
-        Valid.SetValue(Validator("Lastname", TextLastname, ErrorLastname, "required", "min:2"), 2)
+        Valid.SetValue(Validator("Lastname", TextLastname, ErrorLastname, "required", "min:2", "alpha"), 2)
     End Sub
 
     Private Sub CBYear_Leave(sender As Object, e As EventArgs) Handles CBYear.Leave, ButtonSubmit.Click

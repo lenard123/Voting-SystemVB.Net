@@ -27,9 +27,9 @@ Partial Class ManageVoters
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ManageVoters))
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ManageVoters))
+        Me.ButtonSearch = New Guna.UI2.WinForms.Guna2Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ButtonFilterAll = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonFilter1st = New Guna.UI2.WinForms.Guna2Button()
@@ -37,40 +37,40 @@ Partial Class ManageVoters
         Me.ButtonFilter3rd = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonFilter4th = New Guna.UI2.WinForms.Guna2Button()
         Me.StudentDataGridView = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.Guna2ShadowPanel1 = New Guna.UI2.WinForms.Guna2ShadowPanel()
-        Me.Guna2Elipse1 = New Guna.UI2.WinForms.Guna2Elipse(Me.components)
-        Me.Guna2HtmlToolTip1 = New Guna.UI2.WinForms.Guna2HtmlToolTip()
-        Me.ButtonRefresh = New Guna.UI2.WinForms.Guna2Button()
-        Me.DataStatus = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.ButtonAddVoter = New Guna.UI2.WinForms.Guna2CircleButton()
-        Me.Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
         Me.StudentIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FullnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CourseDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.YearLevelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SectionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StudentBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Guna2ShadowPanel1 = New Guna.UI2.WinForms.Guna2ShadowPanel()
+        Me.ButtonAddVoter = New Guna.UI2.WinForms.Guna2CircleButton()
+        Me.Guna2Elipse1 = New Guna.UI2.WinForms.Guna2Elipse(Me.components)
+        Me.Guna2HtmlToolTip1 = New Guna.UI2.WinForms.Guna2HtmlToolTip()
+        Me.ButtonRefresh = New Guna.UI2.WinForms.Guna2Button()
+        Me.TextSearch = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.LabelResult = New System.Windows.Forms.Label()
         CType(Me.StudentDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Guna2ShadowPanel1.SuspendLayout()
         CType(Me.StudentBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2ShadowPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Guna2Button1
+        'ButtonSearch
         '
-        Me.Guna2Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Button1.CheckedState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.CustomBorderColor = System.Drawing.Color.Blue
-        Me.Guna2Button1.CustomImages.Parent = Me.Guna2Button1
-        Me.Guna2Button1.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button1.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button1.HoverState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Location = New System.Drawing.Point(651, 66)
-        Me.Guna2Button1.Name = "Guna2Button1"
-        Me.Guna2Button1.ShadowDecoration.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Size = New System.Drawing.Size(137, 36)
-        Me.Guna2Button1.TabIndex = 1
-        Me.Guna2Button1.Text = "Search"
+        Me.ButtonSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonSearch.CheckedState.Parent = Me.ButtonSearch
+        Me.ButtonSearch.CustomBorderColor = System.Drawing.Color.Blue
+        Me.ButtonSearch.CustomImages.Parent = Me.ButtonSearch
+        Me.ButtonSearch.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.ButtonSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonSearch.ForeColor = System.Drawing.Color.White
+        Me.ButtonSearch.HoverState.Parent = Me.ButtonSearch
+        Me.ButtonSearch.Location = New System.Drawing.Point(651, 66)
+        Me.ButtonSearch.Name = "ButtonSearch"
+        Me.ButtonSearch.ShadowDecoration.Parent = Me.ButtonSearch
+        Me.ButtonSearch.Size = New System.Drawing.Size(137, 36)
+        Me.ButtonSearch.TabIndex = 1
+        Me.ButtonSearch.Text = "Search"
         '
         'Label1
         '
@@ -237,106 +237,6 @@ Partial Class ManageVoters
         Me.StudentDataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(239, Byte), Integer), CType(CType(241, Byte), Integer), CType(CType(243, Byte), Integer))
         Me.StudentDataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
-        'Guna2ShadowPanel1
-        '
-        Me.Guna2ShadowPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ShadowPanel1.Controls.Add(Me.ButtonAddVoter)
-        Me.Guna2ShadowPanel1.Controls.Add(Me.StudentDataGridView)
-        Me.Guna2ShadowPanel1.FillColor = System.Drawing.Color.White
-        Me.Guna2ShadowPanel1.Location = New System.Drawing.Point(31, 123)
-        Me.Guna2ShadowPanel1.Name = "Guna2ShadowPanel1"
-        Me.Guna2ShadowPanel1.Radius = 10
-        Me.Guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black
-        Me.Guna2ShadowPanel1.Size = New System.Drawing.Size(757, 314)
-        Me.Guna2ShadowPanel1.TabIndex = 5
-        '
-        'Guna2Elipse1
-        '
-        Me.Guna2Elipse1.TargetControl = Me.StudentDataGridView
-        '
-        'Guna2HtmlToolTip1
-        '
-        Me.Guna2HtmlToolTip1.AllowLinksHandling = True
-        Me.Guna2HtmlToolTip1.IsBalloon = True
-        Me.Guna2HtmlToolTip1.MaximumSize = New System.Drawing.Size(0, 0)
-        '
-        'ButtonRefresh
-        '
-        Me.ButtonRefresh.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonRefresh.BorderRadius = 5
-        Me.ButtonRefresh.BorderThickness = 1
-        Me.ButtonRefresh.CheckedState.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.CustomImages.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.FillColor = System.Drawing.Color.White
-        Me.ButtonRefresh.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonRefresh.ForeColor = System.Drawing.Color.Black
-        Me.ButtonRefresh.HoverState.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.Location = New System.Drawing.Point(508, 66)
-        Me.ButtonRefresh.Name = "ButtonRefresh"
-        Me.ButtonRefresh.ShadowDecoration.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.Size = New System.Drawing.Size(137, 36)
-        Me.ButtonRefresh.TabIndex = 1
-        Me.ButtonRefresh.Text = "Refresh"
-        '
-        'DataStatus
-        '
-        Me.DataStatus.BackColor = System.Drawing.Color.Transparent
-        Me.DataStatus.Location = New System.Drawing.Point(63, 113)
-        Me.DataStatus.Name = "DataStatus"
-        Me.DataStatus.Size = New System.Drawing.Size(65, 15)
-        Me.DataStatus.TabIndex = 6
-        Me.DataStatus.Text = "Loading data"
-        '
-        'ButtonAddVoter
-        '
-        Me.ButtonAddVoter.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonAddVoter.CheckedState.Parent = Me.ButtonAddVoter
-        Me.ButtonAddVoter.CustomImages.Parent = Me.ButtonAddVoter
-        Me.ButtonAddVoter.FillColor = System.Drawing.Color.FromArgb(CType(CType(81, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
-        Me.ButtonAddVoter.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonAddVoter.ForeColor = System.Drawing.Color.White
-        Me.ButtonAddVoter.HoverState.Parent = Me.ButtonAddVoter
-        Me.ButtonAddVoter.Image = Global.Voting_SystemVB.My.Resources.Resources.plus_white
-        Me.ButtonAddVoter.ImageOffset = New System.Drawing.Point(1, 1)
-        Me.ButtonAddVoter.ImageSize = New System.Drawing.Size(25, 25)
-        Me.ButtonAddVoter.Location = New System.Drawing.Point(673, 252)
-        Me.ButtonAddVoter.Name = "ButtonAddVoter"
-        Me.ButtonAddVoter.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.ButtonAddVoter.ShadowDecoration.Parent = Me.ButtonAddVoter
-        Me.ButtonAddVoter.Size = New System.Drawing.Size(50, 50)
-        Me.ButtonAddVoter.TabIndex = 6
-        Me.Guna2HtmlToolTip1.SetToolTip(Me.ButtonAddVoter, "Add Student")
-        '
-        'Guna2TextBox1
-        '
-        Me.Guna2TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2TextBox1.BorderRadius = 8
-        Me.Guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.Guna2TextBox1.DefaultText = ""
-        Me.Guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.Guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.Guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox1.DisabledState.Parent = Me.Guna2TextBox1
-        Me.Guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox1.FocusedState.Parent = Me.Guna2TextBox1
-        Me.Guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox1.HoverState.Parent = Me.Guna2TextBox1
-        Me.Guna2TextBox1.IconLeft = CType(resources.GetObject("Guna2TextBox1.IconLeft"), System.Drawing.Image)
-        Me.Guna2TextBox1.Location = New System.Drawing.Point(31, 22)
-        Me.Guna2TextBox1.Name = "Guna2TextBox1"
-        Me.Guna2TextBox1.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.Guna2TextBox1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.Guna2TextBox1.PlaceholderText = "    Search Voters Here"
-        Me.Guna2TextBox1.SelectedText = ""
-        Me.Guna2TextBox1.ShadowDecoration.Parent = Me.Guna2TextBox1
-        Me.Guna2TextBox1.Size = New System.Drawing.Size(757, 36)
-        Me.Guna2TextBox1.TabIndex = 0
-        '
         'StudentIdDataGridViewTextBoxColumn
         '
         Me.StudentIdDataGridViewTextBoxColumn.DataPropertyName = "StudentId"
@@ -378,11 +278,112 @@ Partial Class ManageVoters
         '
         Me.StudentBindingSource.DataSource = GetType(Voting_SystemVB.Student)
         '
+        'Guna2ShadowPanel1
+        '
+        Me.Guna2ShadowPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ShadowPanel1.Controls.Add(Me.ButtonAddVoter)
+        Me.Guna2ShadowPanel1.Controls.Add(Me.StudentDataGridView)
+        Me.Guna2ShadowPanel1.FillColor = System.Drawing.Color.White
+        Me.Guna2ShadowPanel1.Location = New System.Drawing.Point(31, 123)
+        Me.Guna2ShadowPanel1.Name = "Guna2ShadowPanel1"
+        Me.Guna2ShadowPanel1.Radius = 10
+        Me.Guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black
+        Me.Guna2ShadowPanel1.Size = New System.Drawing.Size(757, 314)
+        Me.Guna2ShadowPanel1.TabIndex = 5
+        '
+        'ButtonAddVoter
+        '
+        Me.ButtonAddVoter.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonAddVoter.CheckedState.Parent = Me.ButtonAddVoter
+        Me.ButtonAddVoter.CustomImages.Parent = Me.ButtonAddVoter
+        Me.ButtonAddVoter.FillColor = System.Drawing.Color.FromArgb(CType(CType(81, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
+        Me.ButtonAddVoter.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonAddVoter.ForeColor = System.Drawing.Color.White
+        Me.ButtonAddVoter.HoverState.Parent = Me.ButtonAddVoter
+        Me.ButtonAddVoter.Image = Global.Voting_SystemVB.My.Resources.Resources.plus_white
+        Me.ButtonAddVoter.ImageOffset = New System.Drawing.Point(1, 1)
+        Me.ButtonAddVoter.ImageSize = New System.Drawing.Size(25, 25)
+        Me.ButtonAddVoter.Location = New System.Drawing.Point(673, 252)
+        Me.ButtonAddVoter.Name = "ButtonAddVoter"
+        Me.ButtonAddVoter.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.ButtonAddVoter.ShadowDecoration.Parent = Me.ButtonAddVoter
+        Me.ButtonAddVoter.Size = New System.Drawing.Size(50, 50)
+        Me.ButtonAddVoter.TabIndex = 6
+        Me.Guna2HtmlToolTip1.SetToolTip(Me.ButtonAddVoter, "Add Student")
+        '
+        'Guna2Elipse1
+        '
+        Me.Guna2Elipse1.TargetControl = Me.StudentDataGridView
+        '
+        'Guna2HtmlToolTip1
+        '
+        Me.Guna2HtmlToolTip1.AllowLinksHandling = True
+        Me.Guna2HtmlToolTip1.IsBalloon = True
+        Me.Guna2HtmlToolTip1.MaximumSize = New System.Drawing.Size(0, 0)
+        '
+        'ButtonRefresh
+        '
+        Me.ButtonRefresh.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonRefresh.BorderRadius = 5
+        Me.ButtonRefresh.BorderThickness = 1
+        Me.ButtonRefresh.CheckedState.Parent = Me.ButtonRefresh
+        Me.ButtonRefresh.CustomImages.Parent = Me.ButtonRefresh
+        Me.ButtonRefresh.FillColor = System.Drawing.Color.White
+        Me.ButtonRefresh.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonRefresh.ForeColor = System.Drawing.Color.Black
+        Me.ButtonRefresh.HoverState.Parent = Me.ButtonRefresh
+        Me.ButtonRefresh.Location = New System.Drawing.Point(508, 66)
+        Me.ButtonRefresh.Name = "ButtonRefresh"
+        Me.ButtonRefresh.ShadowDecoration.Parent = Me.ButtonRefresh
+        Me.ButtonRefresh.Size = New System.Drawing.Size(137, 36)
+        Me.ButtonRefresh.TabIndex = 1
+        Me.ButtonRefresh.Text = "Refresh"
+        '
+        'TextSearch
+        '
+        Me.TextSearch.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextSearch.BorderRadius = 8
+        Me.TextSearch.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TextSearch.DefaultText = ""
+        Me.TextSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TextSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TextSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TextSearch.DisabledState.Parent = Me.TextSearch
+        Me.TextSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TextSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TextSearch.FocusedState.Parent = Me.TextSearch
+        Me.TextSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TextSearch.HoverState.Parent = Me.TextSearch
+        Me.TextSearch.IconLeft = CType(resources.GetObject("TextSearch.IconLeft"), System.Drawing.Image)
+        Me.TextSearch.Location = New System.Drawing.Point(31, 22)
+        Me.TextSearch.Name = "TextSearch"
+        Me.TextSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.TextSearch.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TextSearch.PlaceholderText = "    Search Voters Here"
+        Me.TextSearch.SelectedText = ""
+        Me.TextSearch.ShadowDecoration.Parent = Me.TextSearch
+        Me.TextSearch.Size = New System.Drawing.Size(757, 36)
+        Me.TextSearch.TabIndex = 0
+        '
+        'LabelResult
+        '
+        Me.LabelResult.AutoSize = True
+        Me.LabelResult.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelResult.Location = New System.Drawing.Point(29, 99)
+        Me.LabelResult.Name = "LabelResult"
+        Me.LabelResult.Size = New System.Drawing.Size(213, 19)
+        Me.LabelResult.TabIndex = 6
+        Me.LabelResult.Text = "Search Results for: ""Lenard"""
+        '
         'ManageVoters
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.DataStatus)
+        Me.Controls.Add(Me.LabelResult)
         Me.Controls.Add(Me.Guna2ShadowPanel1)
         Me.Controls.Add(Me.ButtonFilter4th)
         Me.Controls.Add(Me.ButtonFilter3rd)
@@ -391,19 +392,19 @@ Partial Class ManageVoters
         Me.Controls.Add(Me.ButtonFilterAll)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ButtonRefresh)
-        Me.Controls.Add(Me.Guna2Button1)
-        Me.Controls.Add(Me.Guna2TextBox1)
+        Me.Controls.Add(Me.ButtonSearch)
+        Me.Controls.Add(Me.TextSearch)
         Me.Name = "ManageVoters"
         Me.Size = New System.Drawing.Size(807, 455)
         CType(Me.StudentDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Guna2ShadowPanel1.ResumeLayout(False)
         CType(Me.StudentBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2ShadowPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents TextSearch As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents ButtonSearch As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents ButtonFilterAll As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents ButtonFilter1st As Guna.UI2.WinForms.Guna2Button
@@ -422,6 +423,6 @@ Partial Class ManageVoters
     Friend WithEvents ButtonAddVoter As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents Guna2HtmlToolTip1 As Guna.UI2.WinForms.Guna2HtmlToolTip
     Friend WithEvents ButtonRefresh As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents DataStatus As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents LabelResult As System.Windows.Forms.Label
 
 End Class

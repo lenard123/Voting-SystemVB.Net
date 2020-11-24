@@ -4,11 +4,16 @@ Imports System.IO
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 Imports Guna.UI2.WinForms
+Imports System.Text
 
 Module Util
 
     Private FontAwesome As PrivateFontCollection
 
+
+    Public Function UploadImage(Folder As String, Filename As String, Source As String)
+
+    End Function
 
     Public Function GetFontAwesomeSolid(size As Integer) As Font
         LoadFont()
@@ -47,14 +52,14 @@ Module Util
     End Function
 
     Public Function Validator(ByVal Name As String, ByRef Control As Guna2ComboBox, ByRef ErrorMessage As Label, ParamArray Rules() As String) As Boolean
-        Return Validator(Name, Control.BorderColor, Control.Text.Length, ErrorMessage, Rules)
+        Return Validator(Name, Control.BorderColor, Control.Text, Control.Text.Length, ErrorMessage, Rules)
     End Function
 
     Public Function Validator(ByVal Name As String, ByRef Control As Guna2TextBox, ByRef ErrorMessage As Label, ParamArray Rules() As String) As Boolean
-        Return Validator(Name, Control.BorderColor, Control.TextLength, ErrorMessage, Rules)
+        Return Validator(Name, Control.BorderColor, Control.Text, Control.TextLength, ErrorMessage, Rules)
     End Function
 
-    Public Function Validator(ByVal Name As String, ByRef BorderColor As Color, ByVal len As Integer, ByVal ErrorMessage As Label, ParamArray Rules() As String) As Boolean
+    Public Function Validator(ByVal Name As String, ByRef BorderColor As Color, ByVal txt As String, ByVal len As Integer, ByVal ErrorMessage As Label, ParamArray Rules() As String) As Boolean
         'SET default
         BorderColor = Color.FromArgb(217, 221, 226)
         ErrorMessage.Text = ""
@@ -77,6 +82,12 @@ Module Util
                     BorderColor = Color.Red
                     ErrorMessage.Text = Name & " Field must have exactly " & exact & " characters."
                     Return False
+                End If
+            ElseIf _Rule.Equals("alpa") Then
+                Dim res = RegularExpressions.Regex.IsMatch(txt, "^[A-Za-z]+$")
+                If Not res Then
+                    BorderColor = Color.Red
+                    ErrorMessage.Text = Name & " Field must only contain letters."
                 End If
             End If
         Next

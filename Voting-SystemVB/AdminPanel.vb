@@ -34,9 +34,9 @@
     End Sub
 
     Private Sub DisposeChild()
-        For Each child As Control In MainContent.Controls
-            child.Dispose()
-        Next
+        While MainContent.Controls.Count > 0
+            MainContent.Controls(0).Dispose()
+        End While
     End Sub
 
     Private Sub Home()
@@ -103,20 +103,23 @@
         Application.Exit()
     End Sub
 
-    Private Sub ChangeView_Click(sender As Object, e As EventArgs) Handles ButtonVoter.Click, ButtonHome.Click
+    Private Sub ChangeView_Click(sender As Object, e As EventArgs) Handles ButtonVoter.Click, ButtonHome.Click, ButtonCandidate.Click, ButtonParty.Click
         If sender.Equals(ActivePage) Then Return
         If sender.Equals(ButtonHome) Then
             Home()
-            ActivePage = sender
-            indicator.Location = New Point(0, ButtonHome.Location.Y)
         ElseIf sender.Equals(ButtonVoter) Then
             Voter()
-            ActivePage = sender
-            indicator.Location = New Point(0, ButtonVoter.Location.Y)
+        ElseIf sender.Equals(ButtonCandidate) Then
+            LoadControl(New ManageCandidate())
+        ElseIf sender.Equals(ButtonParty) Then
+            LoadControl(New ManageParty())
         End If
+        indicator.Location = New Point(0, DirectCast(sender, Control).Location.Y)
+        ActivePage = sender
     End Sub
 
     Private Sub ButtonMaximize_Click(sender As Object, e As EventArgs) Handles ButtonMaximize.Click
         Main.Instance.WindowState = FormWindowState.Maximized
     End Sub
+
 End Class

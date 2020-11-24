@@ -21,14 +21,18 @@ Public Class ManageVoters
     End Property
 
     Private Sub ManageVoters_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoadStudent()
+        LabelResult.Text = ""
+        RefreshStudent()
         PreviousFilter = ButtonFilterAll
     End Sub
 
-    Private Async Sub LoadStudent()
-        ResultSet = Await Student.GetAllAsync()
+    Private Sub RefreshStudent()
+        ResultSet = Student.GetAll()
+        LoadStudent()
+    End Sub
+
+    Private Sub LoadStudent()
         StudentDataGridView.DataSource = FilteredResultSet
-        DataStatus.Text = ""
     End Sub
 
     Private Sub ButtonFilter_Click(sender As Object, e As EventArgs) Handles ButtonFilterAll.Click, ButtonFilter1st.Click, ButtonFilter4th.Click, ButtonFilter3rd.Click, ButtonFilter2nd.Click
@@ -60,7 +64,6 @@ Public Class ManageVoters
             ButtonFilter4th.ForeColor = Color.White
             PreviousFilter = ButtonFilter4th
             Filter = "4th year"
-            LoadStudent()
         End If
         LoadStudent()
     End Sub
@@ -68,16 +71,24 @@ Public Class ManageVoters
     Private Sub ButtonAddVoter_Click(sender As Object, e As EventArgs) Handles ButtonAddVoter.Click
         Dim add As New AddVoter()
         add.ShowPopup()
-        LoadStudent()
+        Student.GetAllF()
+        RefreshStudent()
     End Sub
 
     Private Sub ButtonRefresh_Click(sender As Object, e As EventArgs) Handles ButtonRefresh.Click
-        DataStatus.Text = "Loading data..."
-        LoadStudent()
+        LabelResult.Text = ""
+        RefreshStudent()
     End Sub
 
     Private Sub StudentDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles StudentDataGridView.CellDoubleClick
-        Alert.setAlert(FilteredResultSet(e.RowIndex).Fullname, Alert.AlertType.Info)
-        '        Dim update As New UpdateVoter()
+        Dim update As New UpdateVoter(FilteredResultSet(e.RowIndex))
+        update.ShowPopup()
+        RefreshStudent()
+    End Sub
+
+    Private Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click
+        LabelResult.Text = "Search Results for: """ & TextSearch.Text & """"
+        ResultSet = Student.Search(TextSearch.Text)
+        LoadStudent()
     End Sub
 End Class

@@ -134,6 +134,28 @@ Public Class Student
                         End Function)
     End Function
 
+
+    Public Shared Function Search(ByVal Query As String) As List(Of Student)
+        Query = "%" & Query & "%"
+        Dim sql_query = "SELECT * FROM [Student] WHERE [student_id] like ? or firstname like ? or lastname like ?"
+        Dim Result As New List(Of Student)
+        Console.WriteLine(sql_query)
+        GetConnection().Open()
+        Using Cmd As New OleDbCommand(sql_query, GetConnection())
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
+            Cmd.Prepare()
+            Using Reader = Cmd.ExecuteReader()
+                While Reader.Read()
+                    Result.Add(GetStudent(Reader))
+                End While
+            End Using
+        End Using
+        GetConnection.Close()
+        Return Result
+    End Function
+
     Public Shared Function GetAll() As List(Of Student)
         'Return Cached if not empty
         If IsNothing(CachedAllStudent) Or NeedRefresh Then
@@ -159,6 +181,33 @@ Public Class Student
         Return Task.Run(Function()
                             Return Save()
                         End Function)
+    End Function
+
+
+    Public Function Update() As Boolean
+        If Election.GetCurrentElectionF().Status.Equals(Election.STATUS_NOT_STARTED) Then
+            Dim Query = "UPDATE [Student] SET [firstname]=?, [lastname]=?, [course]=?, [year_level]=?, [section]=?, [password]=? WHERE [ID]=?"
+            Dim res As Boolean
+            GetConnection().Open()
+            Using Cmd As New OleDbCommand(Query, GetConnection())
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Firstname, LENGTH_FIRSTNAME))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Lastname, LENGTH_LASTNAME))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Course, LENGTH_COURSE))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _YearLevel, LENGTH_YEAR))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Section, LENGTH_SECTION))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Password, LENGTH_PASSWORD))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, Id, LENGTH_ID))
+                Cmd.Prepare()
+                NeedRefresh = True
+                res = Cmd.ExecuteNonQuery() <> -1
+            End Using
+            GetConnection.Close()
+            Return res
+        Else
+            Console.WriteLine("Election has started")
+            Return False
+        End If
+        Return False
     End Function
 
     Public Function Save() As Boolean
@@ -232,7 +281,5 @@ Public Class Student
         End Try
         Return Result
     End Function
-
-
 
 End Class

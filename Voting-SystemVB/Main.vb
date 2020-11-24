@@ -13,7 +13,7 @@ Public Class Main
         ' Add any initialization after the InitializeComponent() call.
         Instance = Me
 
-        LoadControl(New Test())
+        LoadControl(New AdminLogin())
     End Sub
 
     Public Shared Sub LoadControl(Child As UserControl)

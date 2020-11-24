@@ -105,6 +105,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminController\AddParty.Designer.vb">
+      <DependentUpon>AddParty.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\AddParty.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="AdminController\AddVoter.Designer.vb">
       <DependentUpon>AddVoter.vb</DependentUpon>
     </Compile>
@@ -115,6 +121,18 @@
       <DependentUpon>AdminHomeNotStarted.vb</DependentUpon>
     </Compile>
     <Compile Include="AdminController\AdminHomeNotStarted.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminController\ManageCandidate.Designer.vb">
+      <DependentUpon>ManageCandidate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\ManageCandidate.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminController\ManageParty.Designer.vb">
+      <DependentUpon>ManageParty.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\ManageParty.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="AdminController\ManageVoters.Designer.vb">
@@ -140,6 +158,12 @@
     </Compile>
     <Compile Include="Components\Alert.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\CandidateCard.Designer.vb">
+      <DependentUpon>CandidateCard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CandidateCard.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Card.vb">
       <SubType>Component</SubType>
@@ -184,6 +208,7 @@
     <Compile Include="Model\Candidate.vb" />
     <Compile Include="Model\DBHelper.vb" />
     <Compile Include="Model\Election.vb" />
+    <Compile Include="Model\Party.vb" />
     <Compile Include="Model\Position.vb" />
     <Compile Include="Model\Student.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -228,11 +253,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdminController\AddParty.resx">
+      <DependentUpon>AddParty.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminController\AddVoter.resx">
       <DependentUpon>AddVoter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\AdminHomeNotStarted.resx">
       <DependentUpon>AdminHomeNotStarted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\ManageCandidate.resx">
+      <DependentUpon>ManageCandidate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\ManageParty.resx">
+      <DependentUpon>ManageParty.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\ManageVoters.resx">
       <DependentUpon>ManageVoters.vb</DependentUpon>
@@ -248,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Alert.resx">
       <DependentUpon>Alert.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\CandidateCard.resx">
+      <DependentUpon>CandidateCard.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CustomDatagridview.resx">
       <DependentUpon>CustomDatagridview.vb</DependentUpon>
@@ -293,6 +330,7 @@
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
     <None Include="My Project\DataSources\Election.datasource" />
+    <None Include="My Project\DataSources\Party.datasource" />
     <None Include="My Project\DataSources\Student.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
