@@ -10,11 +10,6 @@ Module Util
 
     Private FontAwesome As PrivateFontCollection
 
-
-    Public Function UploadImage(Folder As String, Filename As String, Source As String)
-
-    End Function
-
     Public Function GetFontAwesomeSolid(size As Integer) As Font
         LoadFont()
         Return New Font(FontAwesome.Families(0), size)
