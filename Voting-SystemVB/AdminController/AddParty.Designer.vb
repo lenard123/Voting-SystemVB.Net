@@ -23,13 +23,12 @@ Partial Class AddParty
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ButtonSelectPicture = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
+        Me.ButtonClear = New Guna.UI2.WinForms.Guna2Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextName = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Guna2TextBox2 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TextDesccription = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ButtonDiscard = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonSave = New Guna.UI2.WinForms.Guna2Button()
@@ -47,8 +46,9 @@ Partial Class AddParty
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ErrorName = New System.Windows.Forms.Label()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -60,16 +60,6 @@ Partial Class AddParty
         Me.Label1.Size = New System.Drawing.Size(118, 30)
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Add Party"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.Gray
-        Me.PictureBox1.Location = New System.Drawing.Point(8, 47)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(187, 130)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 9
-        Me.PictureBox1.TabStop = False
         '
         'ButtonSelectPicture
         '
@@ -85,20 +75,20 @@ Partial Class AddParty
         Me.ButtonSelectPicture.TabIndex = 10
         Me.ButtonSelectPicture.Text = "Select Picture"
         '
-        'Guna2Button2
+        'ButtonClear
         '
-        Me.Guna2Button2.CheckedState.Parent = Me.Guna2Button2
-        Me.Guna2Button2.CustomImages.Parent = Me.Guna2Button2
-        Me.Guna2Button2.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.Guna2Button2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button2.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button2.HoverState.Parent = Me.Guna2Button2
-        Me.Guna2Button2.Location = New System.Drawing.Point(105, 183)
-        Me.Guna2Button2.Name = "Guna2Button2"
-        Me.Guna2Button2.ShadowDecoration.Parent = Me.Guna2Button2
-        Me.Guna2Button2.Size = New System.Drawing.Size(90, 27)
-        Me.Guna2Button2.TabIndex = 10
-        Me.Guna2Button2.Text = "Clear Picture"
+        Me.ButtonClear.CheckedState.Parent = Me.ButtonClear
+        Me.ButtonClear.CustomImages.Parent = Me.ButtonClear
+        Me.ButtonClear.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.ButtonClear.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonClear.ForeColor = System.Drawing.Color.White
+        Me.ButtonClear.HoverState.Parent = Me.ButtonClear
+        Me.ButtonClear.Location = New System.Drawing.Point(105, 183)
+        Me.ButtonClear.Name = "ButtonClear"
+        Me.ButtonClear.ShadowDecoration.Parent = Me.ButtonClear
+        Me.ButtonClear.Size = New System.Drawing.Size(90, 27)
+        Me.ButtonClear.TabIndex = 10
+        Me.ButtonClear.Text = "Clear Picture"
         '
         'Label2
         '
@@ -143,28 +133,28 @@ Partial Class AddParty
         Me.Label3.TabIndex = 11
         Me.Label3.Text = "Description"
         '
-        'Guna2TextBox2
+        'TextDesccription
         '
-        Me.Guna2TextBox2.BorderRadius = 5
-        Me.Guna2TextBox2.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.Guna2TextBox2.DefaultText = ""
-        Me.Guna2TextBox2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.Guna2TextBox2.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.Guna2TextBox2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox2.DisabledState.Parent = Me.Guna2TextBox2
-        Me.Guna2TextBox2.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.Guna2TextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox2.FocusedState.Parent = Me.Guna2TextBox2
-        Me.Guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox2.HoverState.Parent = Me.Guna2TextBox2
-        Me.Guna2TextBox2.Location = New System.Drawing.Point(222, 148)
-        Me.Guna2TextBox2.Name = "Guna2TextBox2"
-        Me.Guna2TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.Guna2TextBox2.PlaceholderText = ""
-        Me.Guna2TextBox2.SelectedText = ""
-        Me.Guna2TextBox2.ShadowDecoration.Parent = Me.Guna2TextBox2
-        Me.Guna2TextBox2.Size = New System.Drawing.Size(572, 36)
-        Me.Guna2TextBox2.TabIndex = 12
+        Me.TextDesccription.BorderRadius = 5
+        Me.TextDesccription.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TextDesccription.DefaultText = ""
+        Me.TextDesccription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TextDesccription.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TextDesccription.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TextDesccription.DisabledState.Parent = Me.TextDesccription
+        Me.TextDesccription.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TextDesccription.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TextDesccription.FocusedState.Parent = Me.TextDesccription
+        Me.TextDesccription.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TextDesccription.HoverState.Parent = Me.TextDesccription
+        Me.TextDesccription.Location = New System.Drawing.Point(222, 148)
+        Me.TextDesccription.Name = "TextDesccription"
+        Me.TextDesccription.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TextDesccription.PlaceholderText = ""
+        Me.TextDesccription.SelectedText = ""
+        Me.TextDesccription.ShadowDecoration.Parent = Me.TextDesccription
+        Me.TextDesccription.Size = New System.Drawing.Size(572, 36)
+        Me.TextDesccription.TabIndex = 12
         '
         'Panel1
         '
@@ -174,7 +164,7 @@ Partial Class AddParty
         Me.Panel1.AutoScroll = True
         Me.Panel1.Controls.Add(Me.ButtonDiscard)
         Me.Panel1.Controls.Add(Me.ButtonSave)
-        Me.Panel1.Controls.Add(Me.Guna2TextBox2)
+        Me.Panel1.Controls.Add(Me.TextDesccription)
         Me.Panel1.Controls.Add(Me.CBPRO)
         Me.Panel1.Controls.Add(Me.CBAuditor)
         Me.Panel1.Controls.Add(Me.CBTreasurer)
@@ -191,7 +181,7 @@ Partial Class AddParty
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.TextName)
         Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Controls.Add(Me.Guna2Button2)
+        Me.Panel1.Controls.Add(Me.ButtonClear)
         Me.Panel1.Controls.Add(Me.ErrorName)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.ButtonSelectPicture)
@@ -423,29 +413,40 @@ Partial Class AddParty
         '
         'OpenFileDialog1
         '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        Me.OpenFileDialog1.Filter = "JPG(*.JPG)|*.jpg"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Gray
+        Me.PictureBox1.Location = New System.Drawing.Point(8, 47)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(187, 130)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 9
+        Me.PictureBox1.TabStop = False
         '
         'AddParty
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.Control
         Me.Controls.Add(Me.Panel1)
         Me.Name = "AddParty"
         Me.Size = New System.Drawing.Size(913, 481)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents ButtonSelectPicture As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonClear As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents TextName As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Guna2TextBox2 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents TextDesccription As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents CBVicePresident As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents CBPresident As Guna.UI2.WinForms.Guna2ComboBox

@@ -33,3 +33,6 @@ C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-Sys
 C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting_SystemVB.CandidateCard.resources
 C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting_SystemVB.ManageParty.resources
 C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting_SystemVB.AddParty.resources
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting_SystemVB.AddCandidate.resources
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting_SystemVB.UpdateCandidate.resources
+C:\Users\lenard\Documents\Visual Studio 2012\Projects\Voting-SystemVB\Voting-SystemVB\obj\Debug\Voting_SystemVB.UpdateParty.resources

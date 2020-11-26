@@ -156,6 +156,10 @@ Public Class Student
         Return Result
     End Function
 
+    Public Function IsCandidate() As Boolean
+        Return Not IsNothing(Candidate.FindByStudentID(Id))
+    End Function
+
     Public Shared Function GetAll() As List(Of Student)
         'Return Cached if not empty
         If IsNothing(CachedAllStudent) Or NeedRefresh Then
@@ -185,7 +189,7 @@ Public Class Student
 
 
     Public Function Update() As Boolean
-        If Election.GetCurrentElectionF().Status.Equals(Election.STATUS_NOT_STARTED) Then
+        If Election.HasNotStarted Then
             Dim Query = "UPDATE [Student] SET [firstname]=?, [lastname]=?, [course]=?, [year_level]=?, [section]=?, [password]=? WHERE [ID]=?"
             Dim res As Boolean
             GetConnection().Open()
@@ -211,7 +215,7 @@ Public Class Student
     End Function
 
     Public Function Save() As Boolean
-        If Election.GetCurrentElectionF().Status.Equals(Election.STATUS_NOT_STARTED) Then
+        If Election.HasNotStarted Then
             Dim Query = "INSERT INTO [Student]([student_id], [firstname], [lastname], [course], [year_level], [section], [password]) VALUES (?,?,?,?,?,?,?)"
             Dim res As Boolean
             GetConnection().Open()

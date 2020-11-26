@@ -76,12 +76,17 @@
                     Close()
                 End If
         End Select
-
     End Sub
 
-    Public Shared Sub ShowAlert(msg As String, type As AlertType)
+    Public Sub CloseAlert()
+        Timer1.Interval = 1
+        action = actionEnum.close
+    End Sub
+
+    Public Shared Function ShowAlert(msg As String, type As AlertType) As Alert
         Dim _alert As New Alert
         _alert.setAlert(msg, type)
-    End Sub
+        Return _alert
+    End Function
 
 End Class

@@ -3,44 +3,46 @@
 Public Class ManageCandidate
 
     Dim PreviousButton As Guna2Button
-    Dim ResultSet As List(Of Candidate)
     Dim SelectedPosition As Integer
+    Private Shared Instance As ManageCandidate
 
-    Private ReadOnly Property FilteredResultSet
-        Get
-            Dim FilteredRS As New List(Of Candidate)
-            For Each item In ResultSet
-                If item.PositionID = SelectedPosition Then
-                    FilteredRS.Add(item)
-                End If
-            Next
-            Return FilteredRS
-        End Get
-    End Property
+    Public Shared Function GetInstance() As ManageCandidate
+        If IsNothing(Instance) Then
+            Instance = New ManageCandidate
+        End If
+        Return Instance
+    End Function
 
     Private Sub ManageCandidate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        RefreshCandidate()
         PreviousButton = ButtonPresident
+    End Sub
+
+    Public Sub Init()
         LoadPosition(Position.PRESIDENT_ID)
     End Sub
-
-    Private Sub RefreshCandidate()
-        ResultSet = Candidate.GetAll()
-    End Sub
-
-    Private Sub LoadPosition(Position As Integer)
-        SelectedPosition = Position
+    Public Async Function LoadPosition(Position As Integer) As Task
+        Dim Rs = Await Task.Run(Function()
+                                    Return Candidate.GetAllF()
+                                End Function)
         FlowLayoutPanel1.Controls.Remove(ButtonRegister)
         DisposeChild()
-        For Each item As Candidate In FilteredResultSet
-            FlowLayoutPanel1.Controls.Add(New CandidateCard(item))
+        For Each item As Candidate In Rs
+            If item.PositionID = Position Then
+                Dim ctl = New CandidateCard(item)
+                ctl.Editable()
+                FlowLayoutPanel1.Controls.Add(ctl)
+                ctl.BringToFront()
+            End If
         Next
         FlowLayoutPanel1.Controls.Add(ButtonRegister)
-    End Sub
+        SelectedPosition = Position
+    End Function
 
     Private Sub DisposeChild()
-        While FlowLayoutPanel1.Controls.Count > 1
-            FlowLayoutPanel1.Controls(1).Dispose()
+        While FlowLayoutPanel1.Controls.Count > 0
+            Dim ctl = FlowLayoutPanel1.Controls(0)
+            FlowLayoutPanel1.Controls.Remove(ctl)
+            ctl.Dispose()
         End While
     End Sub
 
@@ -66,4 +68,8 @@ Public Class ManageCandidate
         PreviousButton = sender
     End Sub
 
+    Private Sub ButtonRegister_Click(sender As Object, e As EventArgs) Handles ButtonRegister.Click
+        Dim ac As New AddCandidate(SelectedPosition)
+        ac.ShowPopup()
+    End Sub
 End Class

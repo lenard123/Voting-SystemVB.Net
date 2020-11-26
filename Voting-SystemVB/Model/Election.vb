@@ -25,6 +25,22 @@ Public Class Election
         Me._Ended = Ended
     End Sub
 
+    Public Shared ReadOnly Property HasNotStarted As Boolean
+        Get
+            Return CurrentElection.Status = STATUS_NOT_STARTED
+        End Get
+    End Property
+    Public ReadOnly Property IsOngoing As Boolean
+        Get
+            Return CurrentElection.Status = STATUS_ONGOING
+        End Get
+    End Property
+    Public ReadOnly Property HasEnded As Boolean
+        Get
+            Return CurrentElection.Status = STATUS_ENDED
+        End Get
+    End Property
+
     Public ReadOnly Property Id As Integer
         Get
             Return _Id

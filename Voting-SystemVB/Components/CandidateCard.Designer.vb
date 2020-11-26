@@ -35,8 +35,11 @@ Partial Class CandidateCard
         Me.LabelYear = New System.Windows.Forms.Label()
         Me.LabelPosition = New System.Windows.Forms.Label()
         Me.Guna2ShadowPanel1 = New Guna.UI2.WinForms.Guna2ShadowPanel()
+        Me.ButtonEdit = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.Guna2CirclePictureBox1 = New Guna.UI2.WinForms.Guna2CirclePictureBox()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.LabelStudentID = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2Elipse1 = New Guna.UI2.WinForms.Guna2Elipse(Me.components)
         Me.Guna2ShadowPanel1.SuspendLayout()
         CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -59,9 +62,9 @@ Partial Class CandidateCard
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LabelTagline.Font = New System.Drawing.Font("Century Gothic", 10.0!, System.Drawing.FontStyle.Italic)
         Me.LabelTagline.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.LabelTagline.Location = New System.Drawing.Point(17, 332)
+        Me.LabelTagline.Location = New System.Drawing.Point(17, 337)
         Me.LabelTagline.Name = "LabelTagline"
-        Me.LabelTagline.Size = New System.Drawing.Size(254, 34)
+        Me.LabelTagline.Size = New System.Drawing.Size(254, 33)
         Me.LabelTagline.TabIndex = 1
         Me.LabelTagline.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -152,9 +155,12 @@ Partial Class CandidateCard
         'Guna2ShadowPanel1
         '
         Me.Guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ShadowPanel1.Controls.Add(Me.ButtonEdit)
         Me.Guna2ShadowPanel1.Controls.Add(Me.Guna2CirclePictureBox1)
         Me.Guna2ShadowPanel1.Controls.Add(Me.Guna2PictureBox1)
         Me.Guna2ShadowPanel1.Controls.Add(Me.LabelTagline)
+        Me.Guna2ShadowPanel1.Controls.Add(Me.LabelStudentID)
+        Me.Guna2ShadowPanel1.Controls.Add(Me.Label1)
         Me.Guna2ShadowPanel1.Controls.Add(Me.LabelYear)
         Me.Guna2ShadowPanel1.Controls.Add(Me.Label4)
         Me.Guna2ShadowPanel1.Controls.Add(Me.Guna2Separator1)
@@ -172,9 +178,28 @@ Partial Class CandidateCard
         Me.Guna2ShadowPanel1.Size = New System.Drawing.Size(286, 384)
         Me.Guna2ShadowPanel1.TabIndex = 3
         '
+        'ButtonEdit
+        '
+        Me.ButtonEdit.CheckedState.Parent = Me.ButtonEdit
+        Me.ButtonEdit.CustomImages.Parent = Me.ButtonEdit
+        Me.ButtonEdit.FillColor = System.Drawing.Color.Transparent
+        Me.ButtonEdit.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonEdit.ForeColor = System.Drawing.Color.White
+        Me.ButtonEdit.HoverState.Parent = Me.ButtonEdit
+        Me.ButtonEdit.Image = CType(resources.GetObject("ButtonEdit.Image"), System.Drawing.Image)
+        Me.ButtonEdit.ImageSize = New System.Drawing.Size(24, 24)
+        Me.ButtonEdit.Location = New System.Drawing.Point(72, 163)
+        Me.ButtonEdit.Name = "ButtonEdit"
+        Me.ButtonEdit.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.ButtonEdit.ShadowDecoration.Parent = Me.ButtonEdit
+        Me.ButtonEdit.Size = New System.Drawing.Size(24, 24)
+        Me.ButtonEdit.TabIndex = 5
+        Me.ButtonEdit.Visible = False
+        '
         'Guna2CirclePictureBox1
         '
-        Me.Guna2CirclePictureBox1.Image = CType(resources.GetObject("Guna2CirclePictureBox1.Image"), System.Drawing.Image)
+        Me.Guna2CirclePictureBox1.FillColor = System.Drawing.Color.Silver
+        Me.Guna2CirclePictureBox1.ImageLocation = ""
         Me.Guna2CirclePictureBox1.Location = New System.Drawing.Point(20, 116)
         Me.Guna2CirclePictureBox1.Name = "Guna2CirclePictureBox1"
         Me.Guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
@@ -186,13 +211,37 @@ Partial Class CandidateCard
         '
         'Guna2PictureBox1
         '
+        Me.Guna2PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Guna2PictureBox1.FillColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Guna2PictureBox1.Location = New System.Drawing.Point(6, 6)
         Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
         Me.Guna2PictureBox1.ShadowDecoration.Parent = Me.Guna2PictureBox1
         Me.Guna2PictureBox1.Size = New System.Drawing.Size(274, 148)
+        Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Guna2PictureBox1.TabIndex = 3
         Me.Guna2PictureBox1.TabStop = False
+        '
+        'LabelStudentID
+        '
+        Me.LabelStudentID.AutoSize = True
+        Me.LabelStudentID.Font = New System.Drawing.Font("Century Gothic", 10.0!)
+        Me.LabelStudentID.ForeColor = System.Drawing.Color.Black
+        Me.LabelStudentID.Location = New System.Drawing.Point(102, 314)
+        Me.LabelStudentID.Name = "LabelStudentID"
+        Me.LabelStudentID.Size = New System.Drawing.Size(89, 19)
+        Me.LabelStudentID.TabIndex = 1
+        Me.LabelStudentID.Text = "20191012-C"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 10.0!)
+        Me.Label1.ForeColor = System.Drawing.Color.Black
+        Me.Label1.Location = New System.Drawing.Point(16, 314)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(80, 19)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "StudentID:"
         '
         'Guna2Elipse1
         '
@@ -206,6 +255,7 @@ Partial Class CandidateCard
         Me.BackColor = System.Drawing.Color.Transparent
         Me.Controls.Add(Me.Guna2ShadowPanel1)
         Me.Margin = New System.Windows.Forms.Padding(10)
+        Me.MaximumSize = New System.Drawing.Size(286, 384)
         Me.Name = "CandidateCard"
         Me.Size = New System.Drawing.Size(286, 384)
         Me.Guna2ShadowPanel1.ResumeLayout(False)
@@ -229,5 +279,8 @@ Partial Class CandidateCard
     Friend WithEvents Guna2CirclePictureBox1 As Guna.UI2.WinForms.Guna2CirclePictureBox
     Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents Guna2Elipse1 As Guna.UI2.WinForms.Guna2Elipse
+    Friend WithEvents LabelStudentID As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents ButtonEdit As Guna.UI2.WinForms.Guna2CircleButton
 
 End Class

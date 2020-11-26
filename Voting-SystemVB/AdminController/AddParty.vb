@@ -50,7 +50,6 @@ Public Class AddParty
     End Sub
 
     Private Sub ButtonSelectPicture_Click(sender As Object, e As EventArgs) Handles ButtonSelectPicture.Click
-        OpenFileDialog1.Filter = "JPG(*.JPG)|*.jpg"
         If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
             PictureBox1.ImageLocation = OpenFileDialog1.FileName
         End If
@@ -58,12 +57,61 @@ Public Class AddParty
 
     Private Sub ValidateForm(sender As Object, e As EventArgs) Handles TextName.Leave
         IsValid = Validator("Party Name", TextName, ErrorName, "required", "min:3")
+        If IsValid Then
+            Dim temp = Party.Find(TextName.Text)
+            If Not IsNothing(temp) Then
+                IsValid = False
+                TextName.BorderColor = Color.Red
+                ErrorName.Text = "Party name already taken"
+            End If
+        End If
     End Sub
 
     Private Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
         ValidateForm(sender, e)
         If IsValid Then
-
+            ButtonSave.Enabled = False
+            ButtonDiscard.Enabled = False
+            ButtonSave.Text = "Saving"
+            Dim members As New List(Of Integer)
+            AddMembers(members, CBPresident)
+            AddMembers(members, CBVicePresident)
+            AddMembers(members, CBSecretary)
+            AddMembers(members, CBAuditor)
+            AddMembers(members, CBTreasurer)
+            AddMembers(members, CBPRO)
+            Save(members)
         End If
+    End Sub
+
+    Private Async Function Save(members As List(Of Integer)) As Task
+        Dim nParty = New Party()
+        Dim Result As Boolean
+        nParty.Title = TextName.Text
+        nParty.Description = TextDesccription.Text
+        nParty.Image = PictureBox1.ImageLocation
+        Result = Await nParty.SaveAsync(members)
+
+        ButtonSave.Enabled = True
+        ButtonDiscard.Enabled = True
+        ButtonSave.Text = "Save"
+        Me.Dispose()
+        mp.Show()
+        mp.RefreshParty()
+        If Result Then
+            Alert.setAlert("Party Added Successfully", Alert.AlertType.Success)
+        Else
+            Alert.setAlert("An error occured", Alert.AlertType.Error)
+        End If
+    End Function
+
+    Private Sub AddMembers(ByRef members As List(Of Integer), cb As Guna2ComboBox)
+        If cb.SelectedIndex <> 0 Then
+            members.Add(cb.SelectedValue)
+        End If
+    End Sub
+
+    Private Sub ButtonClear_Click(sender As Object, e As EventArgs) Handles ButtonClear.Click
+        PictureBox1.ImageLocation = ""
     End Sub
 End Class

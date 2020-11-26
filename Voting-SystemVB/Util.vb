@@ -10,6 +10,56 @@ Module Util
 
     Private FontAwesome As PrivateFontCollection
 
+    Public Function ConvertToImage(Filename As String) As Bitmap
+        Dim ImagePath = ""
+        Dim Result As Bitmap
+        If File.Exists(Filename) Then
+            ImagePath = Filename
+        ElseIf File.Exists(GetFullPath(Filename)) Then
+            ImagePath = GetFullPath(Filename)
+        Else
+            ImagePath = GetFullPath("images\default\error.jpg")
+        End If
+
+        Using tempBitm = New Bitmap(ImagePath)
+            Using tempPicturebox = New PictureBox()
+                tempPicturebox.Image = tempBitm
+                tempPicturebox.SizeMode = PictureBoxSizeMode.AutoSize
+                Result = GetControlImage(tempPicturebox)
+            End Using
+        End Using
+        Return Result
+    End Function
+
+    Public Function GetFullPath(file As String) As String
+        Return Path.Combine(Application.StartupPath, file)
+    End Function
+
+    Public Function Upload(directoryname As String, filename As String, source As String)
+        Dim dir = Path.Combine(Application.StartupPath, "images", directoryname)
+        Dim fil = Path.Combine(dir, filename)
+        If Not Directory.Exists(dir) Then
+            Directory.CreateDirectory(dir)
+        End If
+
+        If File.Exists(fil) Then
+            File.Replace(source, fil, Nothing)
+        Else
+            File.Copy(source, fil)
+        End If
+
+        Return Path.Combine("images", directoryname, filename)
+
+    End Function
+
+    Public Sub DeleteFile(fname As String)
+        If File.Exists(fname) Then
+            File.Delete(fname)
+        ElseIf File.Exists(GetFullPath(fname)) Then
+            File.Delete(GetFullPath(fname))
+        End If
+    End Sub
+
     Public Function GetFontAwesomeSolid(size As Integer) As Font
         LoadFont()
         Return New Font(FontAwesome.Families(0), size)

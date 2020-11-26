@@ -105,6 +105,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminController\AddCandidate.Designer.vb">
+      <DependentUpon>AddCandidate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\AddCandidate.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="AdminController\AddParty.Designer.vb">
       <DependentUpon>AddParty.vb</DependentUpon>
     </Compile>
@@ -139,6 +145,18 @@
       <DependentUpon>ManageVoters.vb</DependentUpon>
     </Compile>
     <Compile Include="AdminController\ManageVoters.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminController\UpdateCandidate.Designer.vb">
+      <DependentUpon>UpdateCandidate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\UpdateCandidate.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminController\UpdateParty.Designer.vb">
+      <DependentUpon>UpdateParty.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\UpdateParty.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="AdminController\UpdateVoter.Designer.vb">
@@ -253,6 +271,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdminController\AddCandidate.resx">
+      <DependentUpon>AddCandidate.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminController\AddParty.resx">
       <DependentUpon>AddParty.vb</DependentUpon>
     </EmbeddedResource>
@@ -270,6 +291,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\ManageVoters.resx">
       <DependentUpon>ManageVoters.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\UpdateCandidate.resx">
+      <DependentUpon>UpdateCandidate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\UpdateParty.resx">
+      <DependentUpon>UpdateParty.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\UpdateVoter.resx">
       <DependentUpon>UpdateVoter.vb</DependentUpon>

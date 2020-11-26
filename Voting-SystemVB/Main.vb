@@ -12,7 +12,7 @@ Public Class Main
 
         ' Add any initialization after the InitializeComponent() call.
         Instance = Me
-
+        'Console.WriteLine(Date.Now().Millisecond)
         LoadControl(New LoadingScreen())
     End Sub
 

@@ -28,7 +28,6 @@ Partial Class ManageCandidate
         Me.ButtonTreasurer = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonAuditor = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonPRO = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Me.Card1 = New Voting_SystemVB.Card()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
@@ -46,7 +45,7 @@ Partial Class ManageCandidate
         Me.ButtonPresident.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonPresident.ForeColor = System.Drawing.Color.White
         Me.ButtonPresident.HoverState.Parent = Me.ButtonPresident
-        Me.ButtonPresident.Location = New System.Drawing.Point(165, 21)
+        Me.ButtonPresident.Location = New System.Drawing.Point(63, 21)
         Me.ButtonPresident.Name = "ButtonPresident"
         Me.ButtonPresident.ShadowDecoration.Parent = Me.ButtonPresident
         Me.ButtonPresident.Size = New System.Drawing.Size(102, 28)
@@ -61,7 +60,7 @@ Partial Class ManageCandidate
         Me.ButtonVPresident.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonVPresident.ForeColor = System.Drawing.Color.Black
         Me.ButtonVPresident.HoverState.Parent = Me.ButtonVPresident
-        Me.ButtonVPresident.Location = New System.Drawing.Point(267, 21)
+        Me.ButtonVPresident.Location = New System.Drawing.Point(165, 21)
         Me.ButtonVPresident.Name = "ButtonVPresident"
         Me.ButtonVPresident.ShadowDecoration.Parent = Me.ButtonVPresident
         Me.ButtonVPresident.Size = New System.Drawing.Size(102, 28)
@@ -76,7 +75,7 @@ Partial Class ManageCandidate
         Me.ButtonSecretary.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonSecretary.ForeColor = System.Drawing.Color.Black
         Me.ButtonSecretary.HoverState.Parent = Me.ButtonSecretary
-        Me.ButtonSecretary.Location = New System.Drawing.Point(369, 21)
+        Me.ButtonSecretary.Location = New System.Drawing.Point(267, 21)
         Me.ButtonSecretary.Name = "ButtonSecretary"
         Me.ButtonSecretary.ShadowDecoration.Parent = Me.ButtonSecretary
         Me.ButtonSecretary.Size = New System.Drawing.Size(102, 28)
@@ -91,7 +90,7 @@ Partial Class ManageCandidate
         Me.ButtonTreasurer.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonTreasurer.ForeColor = System.Drawing.Color.Black
         Me.ButtonTreasurer.HoverState.Parent = Me.ButtonTreasurer
-        Me.ButtonTreasurer.Location = New System.Drawing.Point(471, 21)
+        Me.ButtonTreasurer.Location = New System.Drawing.Point(369, 21)
         Me.ButtonTreasurer.Name = "ButtonTreasurer"
         Me.ButtonTreasurer.ShadowDecoration.Parent = Me.ButtonTreasurer
         Me.ButtonTreasurer.Size = New System.Drawing.Size(102, 28)
@@ -106,7 +105,7 @@ Partial Class ManageCandidate
         Me.ButtonAuditor.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonAuditor.ForeColor = System.Drawing.Color.Black
         Me.ButtonAuditor.HoverState.Parent = Me.ButtonAuditor
-        Me.ButtonAuditor.Location = New System.Drawing.Point(573, 21)
+        Me.ButtonAuditor.Location = New System.Drawing.Point(471, 21)
         Me.ButtonAuditor.Name = "ButtonAuditor"
         Me.ButtonAuditor.ShadowDecoration.Parent = Me.ButtonAuditor
         Me.ButtonAuditor.Size = New System.Drawing.Size(102, 28)
@@ -121,28 +120,12 @@ Partial Class ManageCandidate
         Me.ButtonPRO.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonPRO.ForeColor = System.Drawing.Color.Black
         Me.ButtonPRO.HoverState.Parent = Me.ButtonPRO
-        Me.ButtonPRO.Location = New System.Drawing.Point(675, 21)
+        Me.ButtonPRO.Location = New System.Drawing.Point(573, 21)
         Me.ButtonPRO.Name = "ButtonPRO"
         Me.ButtonPRO.ShadowDecoration.Parent = Me.ButtonPRO
         Me.ButtonPRO.Size = New System.Drawing.Size(102, 28)
         Me.ButtonPRO.TabIndex = 0
         Me.ButtonPRO.Text = "P.R.O."
-        '
-        'Guna2Button1
-        '
-        Me.Guna2Button1.BorderThickness = 1
-        Me.Guna2Button1.CheckedState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.CustomImages.Parent = Me.Guna2Button1
-        Me.Guna2Button1.FillColor = System.Drawing.Color.White
-        Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button1.ForeColor = System.Drawing.Color.Black
-        Me.Guna2Button1.HoverState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Location = New System.Drawing.Point(63, 21)
-        Me.Guna2Button1.Name = "Guna2Button1"
-        Me.Guna2Button1.ShadowDecoration.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Size = New System.Drawing.Size(102, 28)
-        Me.Guna2Button1.TabIndex = 0
-        Me.Guna2Button1.Text = "Refresh"
         '
         'Card1
         '
@@ -176,8 +159,9 @@ Partial Class ManageCandidate
         Me.FlowLayoutPanel1.AutoSize = True
         Me.FlowLayoutPanel1.Controls.Add(Me.ButtonRegister)
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.FlowLayoutPanel1.MinimumSize = New System.Drawing.Size(715, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(684, 410)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(715, 410)
         Me.FlowLayoutPanel1.TabIndex = 0
         '
         'ButtonRegister
@@ -187,11 +171,11 @@ Partial Class ManageCandidate
         Me.ButtonRegister.Font = New System.Drawing.Font("Segoe UI", 14.0!)
         Me.ButtonRegister.ForeColor = System.Drawing.Color.White
         Me.ButtonRegister.HoverState.Parent = Me.ButtonRegister
-        Me.ButtonRegister.Location = New System.Drawing.Point(20, 20)
-        Me.ButtonRegister.Margin = New System.Windows.Forms.Padding(20)
+        Me.ButtonRegister.Location = New System.Drawing.Point(15, 15)
+        Me.ButtonRegister.Margin = New System.Windows.Forms.Padding(15, 15, 10, 10)
         Me.ButtonRegister.Name = "ButtonRegister"
         Me.ButtonRegister.ShadowDecoration.Parent = Me.ButtonRegister
-        Me.ButtonRegister.Size = New System.Drawing.Size(286, 370)
+        Me.ButtonRegister.Size = New System.Drawing.Size(280, 370)
         Me.ButtonRegister.TabIndex = 0
         Me.ButtonRegister.Text = "Register Candidate"
         '
@@ -200,7 +184,6 @@ Partial Class ManageCandidate
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Card1)
-        Me.Controls.Add(Me.Guna2Button1)
         Me.Controls.Add(Me.ButtonPRO)
         Me.Controls.Add(Me.ButtonAuditor)
         Me.Controls.Add(Me.ButtonTreasurer)
@@ -225,7 +208,6 @@ Partial Class ManageCandidate
     Friend WithEvents Card1 As Voting_SystemVB.Card
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
-    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents ButtonRegister As Guna.UI2.WinForms.Guna2TileButton
 
 End Class

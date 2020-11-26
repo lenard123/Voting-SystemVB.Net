@@ -25,9 +25,16 @@ Partial Class AdminPanel
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdminPanel))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.indicator = New System.Windows.Forms.Panel()
+        Me.ButtonLogout = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.ButtonParty = New System.Windows.Forms.Button()
+        Me.ButtonCandidate = New System.Windows.Forms.Button()
+        Me.ButtonVoter = New System.Windows.Forms.Button()
+        Me.ButtonHome = New System.Windows.Forms.Button()
         Me.PanelHeader = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.MainContent = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -37,18 +44,11 @@ Partial Class AdminPanel
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.ButtonClose = New Voting_SystemVB.FontAwesome()
         Me.ButtonMaximize = New Voting_SystemVB.FontAwesome()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.ButtonLogout = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.ButtonParty = New System.Windows.Forms.Button()
-        Me.ButtonCandidate = New System.Windows.Forms.Button()
-        Me.ButtonVoter = New System.Windows.Forms.Button()
-        Me.ButtonHome = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.PanelHeader.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -74,6 +74,102 @@ Partial Class AdminPanel
         Me.indicator.Name = "indicator"
         Me.indicator.Size = New System.Drawing.Size(10, 47)
         Me.indicator.TabIndex = 4
+        '
+        'ButtonLogout
+        '
+        Me.ButtonLogout.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonLogout.FlatAppearance.BorderSize = 0
+        Me.ButtonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonLogout.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonLogout.ForeColor = System.Drawing.Color.White
+        Me.ButtonLogout.Image = Global.Voting_SystemVB.My.Resources.Resources.logout
+        Me.ButtonLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.ButtonLogout.Location = New System.Drawing.Point(11, 332)
+        Me.ButtonLogout.Name = "ButtonLogout"
+        Me.ButtonLogout.Size = New System.Drawing.Size(205, 47)
+        Me.ButtonLogout.TabIndex = 3
+        Me.ButtonLogout.Text = "Logout"
+        Me.ButtonLogout.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button6.FlatAppearance.BorderSize = 0
+        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.ForeColor = System.Drawing.Color.White
+        Me.Button6.Image = Global.Voting_SystemVB.My.Resources.Resources.settings
+        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button6.Location = New System.Drawing.Point(11, 279)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(205, 47)
+        Me.Button6.TabIndex = 3
+        Me.Button6.Text = "Update Account"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'ButtonParty
+        '
+        Me.ButtonParty.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonParty.FlatAppearance.BorderSize = 0
+        Me.ButtonParty.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonParty.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonParty.ForeColor = System.Drawing.Color.White
+        Me.ButtonParty.Image = Global.Voting_SystemVB.My.Resources.Resources.party
+        Me.ButtonParty.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.ButtonParty.Location = New System.Drawing.Point(11, 226)
+        Me.ButtonParty.Name = "ButtonParty"
+        Me.ButtonParty.Size = New System.Drawing.Size(205, 47)
+        Me.ButtonParty.TabIndex = 3
+        Me.ButtonParty.Text = "Party"
+        Me.ButtonParty.UseVisualStyleBackColor = True
+        '
+        'ButtonCandidate
+        '
+        Me.ButtonCandidate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonCandidate.FlatAppearance.BorderSize = 0
+        Me.ButtonCandidate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonCandidate.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonCandidate.ForeColor = System.Drawing.Color.White
+        Me.ButtonCandidate.Image = Global.Voting_SystemVB.My.Resources.Resources.candidate
+        Me.ButtonCandidate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.ButtonCandidate.Location = New System.Drawing.Point(11, 173)
+        Me.ButtonCandidate.Name = "ButtonCandidate"
+        Me.ButtonCandidate.Size = New System.Drawing.Size(205, 47)
+        Me.ButtonCandidate.TabIndex = 3
+        Me.ButtonCandidate.Text = "Candidates"
+        Me.ButtonCandidate.UseVisualStyleBackColor = True
+        '
+        'ButtonVoter
+        '
+        Me.ButtonVoter.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonVoter.FlatAppearance.BorderSize = 0
+        Me.ButtonVoter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonVoter.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonVoter.ForeColor = System.Drawing.Color.White
+        Me.ButtonVoter.Image = Global.Voting_SystemVB.My.Resources.Resources.voter
+        Me.ButtonVoter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.ButtonVoter.Location = New System.Drawing.Point(11, 120)
+        Me.ButtonVoter.Name = "ButtonVoter"
+        Me.ButtonVoter.Size = New System.Drawing.Size(205, 47)
+        Me.ButtonVoter.TabIndex = 3
+        Me.ButtonVoter.Text = "Voters"
+        Me.ButtonVoter.UseVisualStyleBackColor = True
+        '
+        'ButtonHome
+        '
+        Me.ButtonHome.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonHome.FlatAppearance.BorderSize = 0
+        Me.ButtonHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonHome.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonHome.ForeColor = System.Drawing.Color.White
+        Me.ButtonHome.Image = CType(resources.GetObject("ButtonHome.Image"), System.Drawing.Image)
+        Me.ButtonHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.ButtonHome.Location = New System.Drawing.Point(11, 67)
+        Me.ButtonHome.Name = "ButtonHome"
+        Me.ButtonHome.Size = New System.Drawing.Size(205, 47)
+        Me.ButtonHome.TabIndex = 3
+        Me.ButtonHome.Text = "Home"
+        Me.ButtonHome.UseVisualStyleBackColor = True
         '
         'PanelHeader
         '
@@ -107,6 +203,16 @@ Partial Class AdminPanel
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Admin" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Panel"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(16, 6)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(86, 78)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
         '
         'Label2
         '
@@ -220,112 +326,6 @@ Partial Class AdminPanel
         Me.ButtonMaximize.TabIndex = 5
         Me.ButtonMaximize.Text = "window-maximize"
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(16, 6)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(86, 78)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
-        'ButtonLogout
-        '
-        Me.ButtonLogout.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonLogout.FlatAppearance.BorderSize = 0
-        Me.ButtonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonLogout.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonLogout.ForeColor = System.Drawing.Color.White
-        Me.ButtonLogout.Image = Global.Voting_SystemVB.My.Resources.Resources.logout
-        Me.ButtonLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ButtonLogout.Location = New System.Drawing.Point(11, 332)
-        Me.ButtonLogout.Name = "ButtonLogout"
-        Me.ButtonLogout.Size = New System.Drawing.Size(205, 47)
-        Me.ButtonLogout.TabIndex = 3
-        Me.ButtonLogout.Text = "Logout"
-        Me.ButtonLogout.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button6.FlatAppearance.BorderSize = 0
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.ForeColor = System.Drawing.Color.White
-        Me.Button6.Image = Global.Voting_SystemVB.My.Resources.Resources.settings
-        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(11, 279)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(205, 47)
-        Me.Button6.TabIndex = 3
-        Me.Button6.Text = "Update Account"
-        Me.Button6.UseVisualStyleBackColor = True
-        '
-        'ButtonParty
-        '
-        Me.ButtonParty.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonParty.FlatAppearance.BorderSize = 0
-        Me.ButtonParty.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonParty.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonParty.ForeColor = System.Drawing.Color.White
-        Me.ButtonParty.Image = Global.Voting_SystemVB.My.Resources.Resources.party
-        Me.ButtonParty.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ButtonParty.Location = New System.Drawing.Point(11, 226)
-        Me.ButtonParty.Name = "ButtonParty"
-        Me.ButtonParty.Size = New System.Drawing.Size(205, 47)
-        Me.ButtonParty.TabIndex = 3
-        Me.ButtonParty.Text = "Party"
-        Me.ButtonParty.UseVisualStyleBackColor = True
-        '
-        'ButtonCandidate
-        '
-        Me.ButtonCandidate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonCandidate.FlatAppearance.BorderSize = 0
-        Me.ButtonCandidate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonCandidate.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonCandidate.ForeColor = System.Drawing.Color.White
-        Me.ButtonCandidate.Image = Global.Voting_SystemVB.My.Resources.Resources.candidate
-        Me.ButtonCandidate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ButtonCandidate.Location = New System.Drawing.Point(11, 173)
-        Me.ButtonCandidate.Name = "ButtonCandidate"
-        Me.ButtonCandidate.Size = New System.Drawing.Size(205, 47)
-        Me.ButtonCandidate.TabIndex = 3
-        Me.ButtonCandidate.Text = "Candidates"
-        Me.ButtonCandidate.UseVisualStyleBackColor = True
-        '
-        'ButtonVoter
-        '
-        Me.ButtonVoter.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonVoter.FlatAppearance.BorderSize = 0
-        Me.ButtonVoter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonVoter.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonVoter.ForeColor = System.Drawing.Color.White
-        Me.ButtonVoter.Image = Global.Voting_SystemVB.My.Resources.Resources.voter
-        Me.ButtonVoter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ButtonVoter.Location = New System.Drawing.Point(11, 120)
-        Me.ButtonVoter.Name = "ButtonVoter"
-        Me.ButtonVoter.Size = New System.Drawing.Size(205, 47)
-        Me.ButtonVoter.TabIndex = 3
-        Me.ButtonVoter.Text = "Voters"
-        Me.ButtonVoter.UseVisualStyleBackColor = True
-        '
-        'ButtonHome
-        '
-        Me.ButtonHome.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonHome.FlatAppearance.BorderSize = 0
-        Me.ButtonHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonHome.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonHome.ForeColor = System.Drawing.Color.White
-        Me.ButtonHome.Image = CType(resources.GetObject("ButtonHome.Image"), System.Drawing.Image)
-        Me.ButtonHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ButtonHome.Location = New System.Drawing.Point(11, 67)
-        Me.ButtonHome.Name = "ButtonHome"
-        Me.ButtonHome.Size = New System.Drawing.Size(205, 47)
-        Me.ButtonHome.TabIndex = 3
-        Me.ButtonHome.Text = "Home"
-        Me.ButtonHome.UseVisualStyleBackColor = True
-        '
         'AdminPanel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -341,9 +341,9 @@ Partial Class AdminPanel
         Me.PanelHeader.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

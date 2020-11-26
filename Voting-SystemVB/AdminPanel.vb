@@ -13,6 +13,10 @@
     Private ElectionStatus As Integer
     Private ActivePage As Button
 
+    Private _AdminPanelHomeNotStarted As AdminHomeNotStarted = Nothing
+    Private _ManageVoter As ManageVoters = Nothing
+    Private _ManageParty As Panel = Nothing
+
     Public Sub New(ByVal Account As Admin)
         ' This call is required by the designer.
         InitializeComponent()
@@ -23,7 +27,7 @@
 
         LabelFullname.Text = Account.Fullname
         ShowElectionStatus()
-        Home()
+        HomeControl()
         ActivePage = ButtonHome
     End Sub
 
@@ -34,19 +38,39 @@
     End Sub
 
     Private Sub DisposeChild()
-        While MainContent.Controls.Count > 0
-            MainContent.Controls(0).Dispose()
-        End While
+        MainContent.Controls.Clear()
     End Sub
 
-    Private Sub Home()
+    Private Sub HomeControl()
         If ElectionStatus.Equals(Election.STATUS_NOT_STARTED) Then
-            LoadControl(New AdminHomeNotStarted)
+            If IsNothing(_AdminPanelHomeNotStarted) Then
+                _AdminPanelHomeNotStarted = New AdminHomeNotStarted
+            End If
+            LoadControl(_AdminPanelHomeNotStarted)
         End If
     End Sub
 
-    Private Sub Voter()
-        LoadControl(New ManageVoters)
+    Private Sub ManageVoterControl()
+        If IsNothing(_ManageVoter) Then
+            _ManageVoter = New ManageVoters
+        Else
+            _ManageVoter.Init()
+        End If
+        LoadControl(_ManageVoter)
+    End Sub
+
+    Public Sub ManageCandidatesControl()
+        ManageCandidate.GetInstance().Init()
+        LoadControl(ManageCandidate.GetInstance())
+    End Sub
+
+    Public Sub ManagePartyControl()
+        If IsNothing(_ManageParty) Then
+            _ManageParty = New Panel
+            _ManageParty.Dock = DockStyle.Fill
+            _ManageParty.Controls.Add(New ManageParty())
+        End If
+        LoadControl(_ManageParty)
     End Sub
 
     Private Sub ShowElectionStatus()
@@ -106,13 +130,13 @@
     Private Sub ChangeView_Click(sender As Object, e As EventArgs) Handles ButtonVoter.Click, ButtonHome.Click, ButtonCandidate.Click, ButtonParty.Click
         If sender.Equals(ActivePage) Then Return
         If sender.Equals(ButtonHome) Then
-            Home()
+            HomeControl()
         ElseIf sender.Equals(ButtonVoter) Then
-            Voter()
+            ManageVoterControl()
         ElseIf sender.Equals(ButtonCandidate) Then
-            LoadControl(New ManageCandidate())
+            ManageCandidatesControl()
         ElseIf sender.Equals(ButtonParty) Then
-            LoadControl(New ManageParty())
+            ManagePartyControl()
         End If
         indicator.Location = New Point(0, DirectCast(sender, Control).Location.Y)
         ActivePage = sender

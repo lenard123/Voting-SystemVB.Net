@@ -22,14 +22,20 @@ Public Class ManageVoters
 
     Private Sub ManageVoters_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LabelResult.Text = ""
-        RefreshStudent()
+        Init()
         PreviousFilter = ButtonFilterAll
     End Sub
 
-    Private Sub RefreshStudent()
-        ResultSet = Student.GetAll()
-        LoadStudent()
+    Public Sub Init()
+        RefreshStudent()
     End Sub
+
+    Private Async Function RefreshStudent() As Task
+        ResultSet = Await Task.Run(Function()
+                                       Return Student.GetAllF()
+                                   End Function)
+        LoadStudent()
+    End Function
 
     Private Sub LoadStudent()
         StudentDataGridView.DataSource = FilteredResultSet
