@@ -1,4 +1,4 @@
 images/*
 !images/default
-Election_System.accdb
-Election_System.laccdb
+./Election_System.accdb
+./Election_System.laccdb
