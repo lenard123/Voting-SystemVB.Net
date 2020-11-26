@@ -55,6 +55,9 @@ Public Class Election
 
     Public Property Title As String
         Get
+            If IsNothing(_Title) Then
+                Return "Untitled"
+            End If
             Return _Title
         End Get
         Set(value As String)
@@ -109,5 +112,12 @@ Public Class Election
         Return Result
     End Function
 
+    Private Shared Function GetPreviousElections() As List(Of Election)
+        Dim res = New List(Of Election)
+        res.Add(New Election(2, Election.STATUS_ENDED, Date.Now(), Date.Now()))
+        res.Add(New Election(3, Election.STATUS_ENDED, Date.Now(), Date.Now()))
+        res.Add(New Election(4, Election.STATUS_ENDED, Date.Now(), Date.Now()))
+        Return res
+    End Function
 
 End Class
