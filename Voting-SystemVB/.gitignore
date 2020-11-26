@@ -1,3 +1,4 @@
+obj/
 *.pfx
 publish/
 Resources/Thumbs.db
