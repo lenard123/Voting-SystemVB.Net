@@ -1,4 +1,4 @@
-obj/
+obj/debug/
 *.pfx
 publish/
 Resources/Thumbs.db
