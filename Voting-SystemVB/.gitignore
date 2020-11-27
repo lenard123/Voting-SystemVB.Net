@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-obj
-=======
-obj/debug/
->>>>>>> fimerge
-*.pfx
-publish/
-Resources/Thumbs.db
