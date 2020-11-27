@@ -33,14 +33,16 @@
     End Sub
 
     'Login
-    Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
+    Private Async Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
         If ValidateForm() Then
-            Dim Result = Admin.Find(TextUsername.Text)
+            Dim loadingAlert = Alert.ShowAlert("Logging in, please wait", Alert.AlertType.Info)
+            Dim Result = Await Admin.FindAsync(TextUsername.Text)
+            loadingAlert.CloseAlert()
             If IsNothing(Result) Then
-                ValidationError.Alert("Invalid Username", "Login Failed")
+                Alert.ShowAlert("Invalid username", Alert.AlertType.Error)
             Else
                 If Not Result.ComparePassword(TextPassword.Text) Then
-                    ValidationError.Alert("Wrong Password", "Login Failed")
+                    Alert.ShowAlert("Wrong username or password", Alert.AlertType.Error)
                 Else
                     TextPassword.Clear()
                     Alert.ShowAlert("Login Successfully", Alert.AlertType.Success)

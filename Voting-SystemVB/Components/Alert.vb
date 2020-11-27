@@ -12,8 +12,8 @@
         Dim fname As String
         Me.Opacity = 0
         Me.StartPosition = FormStartPosition.Manual
-        Me.TopMost = True
-        For i As Integer = 1 To 10
+        'Me.TopMost = True
+        For i As Integer = 0 To 10
             fname = "alert" & i.ToString()
             Dim f As Alert = Application.OpenForms.Item(fname)
             If f Is Nothing Then
@@ -79,8 +79,8 @@
     End Sub
 
     Public Sub CloseAlert()
-        Timer1.Interval = 1
         action = actionEnum.close
+        Timer1.Interval = 1
     End Sub
 
     Public Shared Function ShowAlert(msg As String, type As AlertType) As Alert

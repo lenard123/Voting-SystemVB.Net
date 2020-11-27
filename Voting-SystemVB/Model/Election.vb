@@ -46,13 +46,11 @@ Public Class Election
             Return _Id
         End Get
     End Property
-
     Public ReadOnly Property Status As Integer
         Get
             Return _Status
         End Get
     End Property
-
     Public Property Title As String
         Get
             Return _Title
@@ -61,16 +59,20 @@ Public Class Election
             _Title = value
         End Set
     End Property
-
     Public ReadOnly Property Started As DateTime
         Get
             Return _Started
         End Get
     End Property
-
     Public ReadOnly Property Ended As DateTime
         Get
             Return _Ended
+        End Get
+    End Property
+
+    Public Shared ReadOnly Property ImageDirectory As String
+        Get
+            Return "election-" & CurrentElection.Id
         End Get
     End Property
 
@@ -78,7 +80,6 @@ Public Class Election
         CurrentElection = Nothing
         Return GetCurrentElection()
     End Function
-
     Public Shared Function GetCurrentElection() As Election
         If IsNothing(CurrentElection) Then
             GetConnection.Open()

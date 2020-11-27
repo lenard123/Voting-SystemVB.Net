@@ -7,6 +7,9 @@ Public Class Student
     Public Shared ReadOnly YEAR_3 = "3rd"
     Public Shared ReadOnly YEAR_4 = "4th"
 
+    Private Shared ReadOnly QUERY_SELECT_BY_ID = "SELECT * FROM [Student] WHERE [ID]=?"
+    Private Shared ReadOnly QUERY_SELECT_BY_STUDENT_ID = "SELECT * FROM [Student] WHERE [student_id]=?"
+
     Private Shared ReadOnly LENGTH_ID As Integer = 10
     Private Shared ReadOnly LENGTH_STUDENT_ID As Integer = 10
     Private Shared ReadOnly LENGTH_FIRSTNAME As Integer = 20
@@ -37,7 +40,6 @@ Public Class Student
             Return _Id
         End Get
     End Property
-
     Public Property StudentId As String
         Get
             Return _StudentId
@@ -46,13 +48,11 @@ Public Class Student
             _StudentId = value
         End Set
     End Property
-
     Public ReadOnly Property Fullname As String
         Get
             Return _Firstname & " " & _Lastname
         End Get
     End Property
-
     Public Property Firstname As String
         Get
             Return _Firstname
@@ -61,7 +61,6 @@ Public Class Student
             _Firstname = value
         End Set
     End Property
-
     Public Property Lastname As String
         Get
             Return _Lastname
@@ -70,7 +69,6 @@ Public Class Student
             _Lastname = value
         End Set
     End Property
-
     Public Property Course As String
         Get
             Return _Course
@@ -79,7 +77,6 @@ Public Class Student
             _Course = value
         End Set
     End Property
-
     Public Property YearLevel As String
         Get
             Return _YearLevel & " year"
@@ -88,7 +85,6 @@ Public Class Student
             _YearLevel = value
         End Set
     End Property
-
     Public Property Section As String
         Get
             Return _Section
@@ -101,7 +97,6 @@ Public Class Student
     Public Sub New()
 
     End Sub
-
     Public Sub New(Id As Integer, Password As String)
         Me._Id = Id
         Me.Password = Password
@@ -114,32 +109,42 @@ Public Class Student
     Public Shared Function Find(Id As Integer) As Student
         Dim Result As Student = Nothing
         GetConnection().Open()
-        Dim Reader As OleDbDataReader = ExecuteReader(
-            GetConnection(),
-            "SELECT * FROM [Student] WHERE [ID]=?",
-            ConvertToParam(OleDbType.Integer, Id, LENGTH_ID)
-        )
-        If Reader.Read() Then
-            Result = GetStudent(Reader)
-        End If
-        Reader.Close()
+        Using Cmd = New OleDbCommand(QUERY_SELECT_BY_ID, GetConnection())
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, Id, LENGTH_ID))
+            Cmd.Prepare()
+            Using Reader = Cmd.ExecuteReader()
+                If Reader.Read() Then
+                    Result = GetStudent(Reader)
+                End If
+            End Using
+        End Using
         GetConnection().Close()
         Return Result
     End Function
 
-    Public Shared Function GetAllAsync() As Task(Of List(Of Student))
-        NeedRefresh = True
-        Return Task.Run(Function()
-                            Return GetAll()
-                        End Function)
+    Public Shared Async Function SearchAsync(Query As String) As Task(Of List(Of Student))
+        Query = "%" & Query & "%"
+        Dim Result As New List(Of Student)
+        Await GetConnection().OpenAsync()
+        Using Cmd = New OleDbCommand("SELECT * FROM [Student] WHERE [student_id] LIKE ? OR [firstname] LIKE ? OR [lastname] LIKE ?", GetConnection())
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
+            Cmd.Prepare()
+            Using Reader = Await Cmd.ExecuteReaderAsync()
+                While Reader.Read()
+                    Result.Add(GetStudent(Reader))
+                End While
+            End Using
+        End Using
+        GetConnection.Close()
+        Return Result
     End Function
 
-
-    Public Shared Function Search(ByVal Query As String) As List(Of Student)
+    Public Shared Function Search(Query As String) As List(Of Student)
         Query = "%" & Query & "%"
         Dim sql_query = "SELECT * FROM [Student] WHERE [student_id] like ? or firstname like ? or lastname like ?"
         Dim Result As New List(Of Student)
-        Console.WriteLine(sql_query)
         GetConnection().Open()
         Using Cmd As New OleDbCommand(sql_query, GetConnection())
             Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
@@ -158,6 +163,20 @@ Public Class Student
 
     Public Function IsCandidate() As Boolean
         Return Not IsNothing(Candidate.FindByStudentID(Id))
+    End Function
+
+    Public Shared Async Function GetAllAsync() As Task(Of List(Of Student))
+        Dim Result = New List(Of Student)
+        Await GetConnection().OpenAsync()
+        Using Cmd As New OleDbCommand("SELECT * FROM [Student]", GetConnection())
+            Using Reader = Await Cmd.ExecuteReaderAsync()
+                While Reader.Read()
+                    Result.Add(GetStudent(Reader))
+                End While
+            End Using
+        End Using
+        GetConnection().Close()
+        Return Result
     End Function
 
     Public Shared Function GetAll() As List(Of Student)
@@ -249,15 +268,15 @@ Public Class Student
     Public Shared Function Find(Id As String) As Student
         Dim Result As Student = Nothing
         GetConnection().Open()
-        Dim Reader As OleDbDataReader = ExecuteReader(
-            GetConnection(),
-            "SELECT * FROM [Student] WHERE [student_id]=?",
-            ConvertToParam(OleDbType.VarChar, Id, LENGTH_STUDENT_ID)
-        )
-        If Reader.Read() Then
-            Result = GetStudent(Reader)
-        End If
-        Reader.Close()
+        Using Cmd = New OleDbCommand(QUERY_SELECT_BY_STUDENT_ID, GetConnection())
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Id, LENGTH_STUDENT_ID))
+            Cmd.Prepare()
+            Using Reader = Cmd.ExecuteReader()
+                If Reader.Read() Then
+                    Result = GetStudent(Reader)
+                End If
+            End Using
+        End Using
         GetConnection().Close()
         Return Result
     End Function

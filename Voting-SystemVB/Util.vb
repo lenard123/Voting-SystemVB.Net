@@ -10,6 +10,7 @@ Module Util
 
     Private FontAwesome As PrivateFontCollection
 
+    'Returns a copy of image using the filename
     Public Function ConvertToImage(Filename As String) As Bitmap
         Dim ImagePath = ""
         Dim Result As Bitmap
@@ -31,27 +32,34 @@ Module Util
         Return Result
     End Function
 
+    'Returns the Full Absolute Path
     Public Function GetFullPath(file As String) As String
         Return Path.Combine(Application.StartupPath, file)
     End Function
 
+    'Upload image and returns it filename as result
     Public Function Upload(directoryname As String, filename As String, source As String)
         Dim dir = Path.Combine(Application.StartupPath, "images", directoryname)
         Dim fil = Path.Combine(dir, filename)
+
+        'Create Directory if not Exists
         If Not Directory.Exists(dir) Then
             Directory.CreateDirectory(dir)
         End If
 
         If File.Exists(fil) Then
+            'Replace the file if it already exist
             File.Replace(source, fil, Nothing)
         Else
+            'Copy the File to Desired Directory
             File.Copy(source, fil)
         End If
 
+        'Return Result
         Return Path.Combine("images", directoryname, filename)
-
     End Function
 
+    'Delete the file
     Public Sub DeleteFile(fname As String)
         If File.Exists(fname) Then
             File.Delete(fname)

@@ -50,11 +50,11 @@
         End If
     End Sub
 
-    Private Sub ManageVoterControl()
+    Private Async Sub ManageVoterControl()
         If IsNothing(_ManageVoter) Then
             _ManageVoter = New ManageVoters
         Else
-            _ManageVoter.Init()
+            Await _ManageVoter.RefreshStudent()
         End If
         LoadControl(_ManageVoter)
     End Sub

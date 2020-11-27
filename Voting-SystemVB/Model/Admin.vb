@@ -2,6 +2,8 @@
 
 Public Class Admin
 
+    Private Shared ReadOnly QUERY_SELECT_BY_USERNAME = "SELECT * FROM [Admin] WHERE [username]=?"
+
     Public Shared ReadOnly ADMIN_USERNAME_LENGTH = 40
 
     Public Shared ReadOnly ADMIN_ID_INDEX = 0
@@ -20,7 +22,6 @@ Public Class Admin
             _Fullname = value
         End Set
     End Property
-
     Public Property Username As String
         Get
             Return _Username
@@ -35,38 +36,44 @@ Public Class Admin
         Me.Password = Password
     End Sub
 
+    'Verify Password
     Public Function ComparePassword(ByVal Password As String)
         Return Me.Password.Equals(Password)
     End Function
 
+    'Get Specific admin using their username
     Public Shared Async Function FindAsync(Username As String) As Task(Of Admin)
         Dim Result As Admin = Nothing
         Await GetConnection().OpenAsync()
-        Using Cmd = New OleDbCommand("SELECT * FROM [Admin] WHERE [username]=?", GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Username, ADMIN_USERNAME_INDEX))
+        Using Cmd = New OleDbCommand(QUERY_SELECT_BY_USERNAME, GetConnection())
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Username, ADMIN_USERNAME_LENGTH))
             Cmd.Prepare()
             Using Reader = Await Cmd.ExecuteReaderAsync()
-                If Reader.Read() Then
+                If Reader.Read Then
                     Result = GetAdmin(Reader)
                 End If
             End Using
         End Using
+        GetConnection().Close()
         Return Result
     End Function
-
     Public Shared Function Find(ByVal Username As String) As Admin
         Dim Result As Admin = Nothing
         GetConnection().Open()
-        Using Reader = ExecuteReader(GetConnection(), "SELECT * FROM [Admin] WHERE [username]=?", ConvertToParam(OleDbType.VarChar, Username, ADMIN_USERNAME_LENGTH))
-            If Reader.Read() Then
-                Result = GetAdmin(Reader)
-            End If
+        Using Cmd = New OleDbCommand(QUERY_SELECT_BY_USERNAME, GetConnection())
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Username, ADMIN_USERNAME_LENGTH))
+            Cmd.Prepare()
+            Using Reader = Cmd.ExecuteReader()
+                If Reader.Read Then
+                    Result = GetAdmin(Reader)
+                End If
+            End Using
         End Using
         GetConnection().Close()
         Return Result
     End Function
 
-
+    'Convert Reader to Admin Model
     Private Shared Function GetAdmin(Reader As OleDbDataReader) As Admin
         Dim Result As Admin = New Admin(Reader.GetInt32(ADMIN_ID_INDEX), Reader.GetString(ADMIN_PASSWORD_INDEX))
         Result.Fullname = Reader.GetString(ADMIN_FULLNAME_INDEX)

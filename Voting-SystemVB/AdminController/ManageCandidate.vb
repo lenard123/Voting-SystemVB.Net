@@ -21,18 +21,14 @@ Public Class ManageCandidate
         Await LoadPosition(Position.PRESIDENT_ID)
     End Sub
     Public Async Function LoadPosition(Position As Integer) As Task
-        Dim Rs = Await Task.Run(Function()
-                                    Return Candidate.GetAllF()
-                                End Function)
+        Dim Rs = Await Candidate.GetAllByPositionAsync(Position)
         FlowLayoutPanel1.Controls.Remove(ButtonRegister)
         DisposeChild()
         For Each item As Candidate In Rs
-            If item.PositionID = Position Then
-                Dim ctl = New CandidateCard(item)
-                ctl.Editable()
-                FlowLayoutPanel1.Controls.Add(ctl)
-                ctl.BringToFront()
-            End If
+            Dim ctl = New CandidateCard(item)
+            ctl.Editable()
+            FlowLayoutPanel1.Controls.Add(ctl)
+            ctl.BringToFront()
         Next
         FlowLayoutPanel1.Controls.Add(ButtonRegister)
         SelectedPosition = Position

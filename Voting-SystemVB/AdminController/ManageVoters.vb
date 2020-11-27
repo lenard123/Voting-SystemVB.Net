@@ -20,20 +20,14 @@ Public Class ManageVoters
         End Get
     End Property
 
-    Private Sub ManageVoters_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Async Sub ManageVoters_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LabelResult.Text = ""
-        Init()
         PreviousFilter = ButtonFilterAll
-    End Sub
-
-    Public Async Sub Init()
         Await RefreshStudent()
     End Sub
 
     Public Async Function RefreshStudent() As Task
-        ResultSet = Await Task.Run(Function()
-                                       Return Student.GetAllF()
-                                   End Function)
+        ResultSet = Await Student.GetAllAsync()
         LoadStudent()
     End Function
 
@@ -89,9 +83,10 @@ Public Class ManageVoters
         update.ShowPopup()
     End Sub
 
-    Private Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click
+    Private Async Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click
+        LabelResult.Text = "Searching..."
+        ResultSet = Await Student.SearchAsync(TextSearch.Text)
         LabelResult.Text = "Search Results for: """ & TextSearch.Text & """"
-        ResultSet = Student.Search(TextSearch.Text)
         LoadStudent()
     End Sub
 End Class
