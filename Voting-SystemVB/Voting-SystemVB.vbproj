@@ -148,6 +148,12 @@
     <Compile Include="AdminController\ManageVoters.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="AdminController\UpdateAdmin.Designer.vb">
+      <DependentUpon>UpdateAdmin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\UpdateAdmin.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="AdminController\UpdateCandidate.Designer.vb">
       <DependentUpon>UpdateCandidate.vb</DependentUpon>
     </Compile>
@@ -292,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\ManageVoters.resx">
       <DependentUpon>ManageVoters.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\UpdateAdmin.resx">
+      <DependentUpon>UpdateAdmin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\UpdateCandidate.resx">
       <DependentUpon>UpdateCandidate.vb</DependentUpon>

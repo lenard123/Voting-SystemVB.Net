@@ -16,6 +16,7 @@
     Private _AdminPanelHomeNotStarted As AdminHomeNotStarted = Nothing
     Private _ManageVoter As ManageVoters = Nothing
     Private _ManageParty As Panel = Nothing
+    Private _ManageAdmin As Panel = Nothing
 
     Public Sub New(ByVal Account As Admin)
         ' This call is required by the designer.
@@ -62,6 +63,15 @@
     Public Sub ManageCandidatesControl()
         ManageCandidate.GetInstance().Init()
         LoadControl(ManageCandidate.GetInstance())
+    End Sub
+
+    Public Sub ManageAdmin()
+        If IsNothing(_ManageAdmin) Then
+            _ManageAdmin = New Panel
+            _ManageAdmin.Dock = DockStyle.Fill
+            _ManageAdmin.Controls.Add(New UpdateAdmin)
+        End If
+        LoadControl(_ManageAdmin)
     End Sub
 
     Public Sub ManagePartyControl()
@@ -127,7 +137,7 @@
         Application.Exit()
     End Sub
 
-    Private Sub ChangeView_Click(sender As Object, e As EventArgs) Handles ButtonVoter.Click, ButtonHome.Click, ButtonCandidate.Click, ButtonParty.Click
+    Private Sub ChangeView_Click(sender As Object, e As EventArgs) Handles ButtonVoter.Click, ButtonHome.Click, ButtonCandidate.Click, ButtonParty.Click, ButtonAdmin.Click
         If sender.Equals(ActivePage) Then Return
         If sender.Equals(ButtonHome) Then
             HomeControl()
@@ -137,6 +147,8 @@
             ManageCandidatesControl()
         ElseIf sender.Equals(ButtonParty) Then
             ManagePartyControl()
+        ElseIf sender.Equals(ButtonAdmin) Then
+            ManageAdmin()
         End If
         indicator.Location = New Point(0, DirectCast(sender, Control).Location.Y)
         ActivePage = sender

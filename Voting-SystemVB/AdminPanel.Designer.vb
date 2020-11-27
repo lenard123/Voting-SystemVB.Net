@@ -26,12 +26,14 @@ Partial Class AdminPanel
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.indicator = New System.Windows.Forms.Panel()
         Me.ButtonLogout = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.ButtonAdmin = New System.Windows.Forms.Button()
         Me.ButtonParty = New System.Windows.Forms.Button()
         Me.ButtonCandidate = New System.Windows.Forms.Button()
         Me.ButtonVoter = New System.Windows.Forms.Button()
         Me.ButtonHome = New System.Windows.Forms.Button()
         Me.PanelHeader = New System.Windows.Forms.Panel()
+        Me.ButtonClose = New Voting_SystemVB.FontAwesome()
+        Me.ButtonMaximize = New Voting_SystemVB.FontAwesome()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -42,8 +44,6 @@ Partial Class AdminPanel
         Me.LabelFullname = New System.Windows.Forms.Label()
         Me.ChipElectionStatus = New Guna.UI2.WinForms.Guna2Chip()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.ButtonClose = New Voting_SystemVB.FontAwesome()
-        Me.ButtonMaximize = New Voting_SystemVB.FontAwesome()
         Me.Panel1.SuspendLayout()
         Me.PanelHeader.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -56,7 +56,7 @@ Partial Class AdminPanel
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.Panel1.Controls.Add(Me.indicator)
         Me.Panel1.Controls.Add(Me.ButtonLogout)
-        Me.Panel1.Controls.Add(Me.Button6)
+        Me.Panel1.Controls.Add(Me.ButtonAdmin)
         Me.Panel1.Controls.Add(Me.ButtonParty)
         Me.Panel1.Controls.Add(Me.ButtonCandidate)
         Me.Panel1.Controls.Add(Me.ButtonVoter)
@@ -91,21 +91,21 @@ Partial Class AdminPanel
         Me.ButtonLogout.Text = "Logout"
         Me.ButtonLogout.UseVisualStyleBackColor = True
         '
-        'Button6
+        'ButtonAdmin
         '
-        Me.Button6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button6.FlatAppearance.BorderSize = 0
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.ForeColor = System.Drawing.Color.White
-        Me.Button6.Image = Global.Voting_SystemVB.My.Resources.Resources.settings
-        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(11, 279)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(205, 47)
-        Me.Button6.TabIndex = 3
-        Me.Button6.Text = "Update Account"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.ButtonAdmin.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonAdmin.FlatAppearance.BorderSize = 0
+        Me.ButtonAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonAdmin.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonAdmin.ForeColor = System.Drawing.Color.White
+        Me.ButtonAdmin.Image = Global.Voting_SystemVB.My.Resources.Resources.settings
+        Me.ButtonAdmin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.ButtonAdmin.Location = New System.Drawing.Point(11, 279)
+        Me.ButtonAdmin.Name = "ButtonAdmin"
+        Me.ButtonAdmin.Size = New System.Drawing.Size(205, 47)
+        Me.ButtonAdmin.TabIndex = 3
+        Me.ButtonAdmin.Text = "Update Account"
+        Me.ButtonAdmin.UseVisualStyleBackColor = True
         '
         'ButtonParty
         '
@@ -181,6 +181,34 @@ Partial Class AdminPanel
         Me.PanelHeader.Name = "PanelHeader"
         Me.PanelHeader.Size = New System.Drawing.Size(913, 20)
         Me.PanelHeader.TabIndex = 1
+        '
+        'ButtonClose
+        '
+        Me.ButtonClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonClose.AutoSize = True
+        Me.ButtonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonClose.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
+        Me.ButtonClose.HoverColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.ButtonClose.Location = New System.Drawing.Point(889, 2)
+        Me.ButtonClose.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonClose.Name = "ButtonClose"
+        Me.ButtonClose.Size = New System.Drawing.Size(21, 15)
+        Me.ButtonClose.TabIndex = 5
+        Me.ButtonClose.Text = "window-close"
+        '
+        'ButtonMaximize
+        '
+        Me.ButtonMaximize.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonMaximize.AutoSize = True
+        Me.ButtonMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonMaximize.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
+        Me.ButtonMaximize.HoverColor = System.Drawing.Color.Empty
+        Me.ButtonMaximize.Location = New System.Drawing.Point(868, 2)
+        Me.ButtonMaximize.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonMaximize.Name = "ButtonMaximize"
+        Me.ButtonMaximize.Size = New System.Drawing.Size(21, 15)
+        Me.ButtonMaximize.TabIndex = 5
+        Me.ButtonMaximize.Text = "window-maximize"
         '
         'Panel3
         '
@@ -298,34 +326,6 @@ Partial Class AdminPanel
         Me.Panel2.Size = New System.Drawing.Size(913, 136)
         Me.Panel2.TabIndex = 5
         '
-        'ButtonClose
-        '
-        Me.ButtonClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonClose.AutoSize = True
-        Me.ButtonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonClose.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
-        Me.ButtonClose.HoverColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.ButtonClose.Location = New System.Drawing.Point(889, 2)
-        Me.ButtonClose.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonClose.Name = "ButtonClose"
-        Me.ButtonClose.Size = New System.Drawing.Size(21, 15)
-        Me.ButtonClose.TabIndex = 5
-        Me.ButtonClose.Text = "window-close"
-        '
-        'ButtonMaximize
-        '
-        Me.ButtonMaximize.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonMaximize.AutoSize = True
-        Me.ButtonMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonMaximize.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
-        Me.ButtonMaximize.HoverColor = System.Drawing.Color.Empty
-        Me.ButtonMaximize.Location = New System.Drawing.Point(868, 2)
-        Me.ButtonMaximize.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonMaximize.Name = "ButtonMaximize"
-        Me.ButtonMaximize.Size = New System.Drawing.Size(21, 15)
-        Me.ButtonMaximize.TabIndex = 5
-        Me.ButtonMaximize.Text = "window-maximize"
-        '
         'AdminPanel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -357,7 +357,7 @@ Partial Class AdminPanel
     Friend WithEvents ButtonParty As System.Windows.Forms.Button
     Friend WithEvents ButtonCandidate As System.Windows.Forms.Button
     Friend WithEvents ButtonVoter As System.Windows.Forms.Button
-    Friend WithEvents Button6 As System.Windows.Forms.Button
+    Friend WithEvents ButtonAdmin As System.Windows.Forms.Button
     Friend WithEvents ButtonLogout As System.Windows.Forms.Button
     Friend WithEvents indicator As System.Windows.Forms.Panel
     Friend WithEvents MainContent As System.Windows.Forms.Panel
