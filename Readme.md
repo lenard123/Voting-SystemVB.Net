@@ -33,3 +33,6 @@
 ## Contributors
 - Russel Tajada
 - Lenard Mangay-ayam
+- Raybhen Barbachano
+- Edward Espere
+- Geoffrey Aleman
