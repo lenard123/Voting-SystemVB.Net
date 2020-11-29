@@ -29,12 +29,12 @@ Partial Class ManageParty
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2ShadowPanel1 = New Guna.UI2.WinForms.Guna2ShadowPanel()
         Me.PartyDataGridView = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.ButtonAdd = New Guna.UI2.WinForms.Guna2Button()
-        Me.ButtonRefresh = New Guna.UI2.WinForms.Guna2Button()
         Me.TitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PartyBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ButtonAdd = New Guna.UI2.WinForms.Guna2Button()
+        Me.ButtonRefresh = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2ShadowPanel1.SuspendLayout()
         CType(Me.PartyDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -130,6 +130,24 @@ Partial Class ManageParty
         Me.PartyDataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(239, Byte), Integer), CType(CType(241, Byte), Integer), CType(CType(243, Byte), Integer))
         Me.PartyDataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
+        'TitleDataGridViewTextBoxColumn
+        '
+        Me.TitleDataGridViewTextBoxColumn.DataPropertyName = "Title"
+        Me.TitleDataGridViewTextBoxColumn.HeaderText = "Title"
+        Me.TitleDataGridViewTextBoxColumn.Name = "TitleDataGridViewTextBoxColumn"
+        Me.TitleDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DescriptionDataGridViewTextBoxColumn
+        '
+        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
+        Me.DescriptionDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PartyBindingSource
+        '
+        Me.PartyBindingSource.DataSource = GetType(Voting_SystemVB.Party)
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -146,6 +164,7 @@ Partial Class ManageParty
         Me.ButtonAdd.BorderRadius = 10
         Me.ButtonAdd.CheckedState.Parent = Me.ButtonAdd
         Me.ButtonAdd.CustomImages.Parent = Me.ButtonAdd
+        Me.ButtonAdd.Enabled = False
         Me.ButtonAdd.FillColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
         Me.ButtonAdd.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.ButtonAdd.ForeColor = System.Drawing.Color.White
@@ -174,24 +193,6 @@ Partial Class ManageParty
         Me.ButtonRefresh.Size = New System.Drawing.Size(180, 45)
         Me.ButtonRefresh.TabIndex = 8
         Me.ButtonRefresh.Text = "Refresh"
-        '
-        'TitleDataGridViewTextBoxColumn
-        '
-        Me.TitleDataGridViewTextBoxColumn.DataPropertyName = "Title"
-        Me.TitleDataGridViewTextBoxColumn.HeaderText = "Title"
-        Me.TitleDataGridViewTextBoxColumn.Name = "TitleDataGridViewTextBoxColumn"
-        Me.TitleDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DescriptionDataGridViewTextBoxColumn
-        '
-        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "Description"
-        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
-        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
-        Me.DescriptionDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PartyBindingSource
-        '
-        Me.PartyBindingSource.DataSource = GetType(Voting_SystemVB.Party)
         '
         'ManageParty
         '

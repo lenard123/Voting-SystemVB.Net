@@ -41,14 +41,15 @@ Partial Class Alert
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(61, 20)
+        Me.Label1.Location = New System.Drawing.Point(61, 9)
+        Me.Label1.MaximumSize = New System.Drawing.Size(300, 50)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(64, 21)
+        Me.Label1.Size = New System.Drawing.Size(300, 50)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Success"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'PictureBox1
         '
@@ -82,7 +83,6 @@ Partial Class Alert
         Me.TopMost = True
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Panel1 As System.Windows.Forms.Panel

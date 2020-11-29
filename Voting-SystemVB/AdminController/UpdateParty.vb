@@ -4,17 +4,14 @@ Public Class UpdateParty
 
     Dim sParty As Party
     Dim IsValid = False
-    Dim mp As ManageParty
     Dim alertLoading As Alert
 
-    Public Sub New(sParty As Party, mp As ManageParty)
+    Public Sub New(sParty As Party)
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
         Me.sParty = sParty
-        Me.mp = mp
-        Me.Enabled = False
     End Sub
 
     Private Async Function LoadInformation() As Task
@@ -78,7 +75,7 @@ Public Class UpdateParty
 
     Private Sub ButtonDiscard_Click(sender As Object, e As EventArgs) Handles ButtonDiscard.Click
         Me.Dispose()
-        mp.Show()
+        AdminPanel.GetInstance().LoadControl(ManageParty.GetInstance())
     End Sub
 
     Private Async Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
@@ -110,8 +107,6 @@ Public Class UpdateParty
             Alert.setAlert("An error occured", Alert.AlertType.Error)
         End If
         Me.Dispose()
-        Await mp.RefreshParty()
-        mp.Show()
     End Function
 
     Private Sub AddMembers(ByRef members As List(Of Integer), cb As Guna2ComboBox)

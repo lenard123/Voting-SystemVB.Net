@@ -3,26 +3,15 @@
 Public Class AddParty
 
     Dim AllCandidates As List(Of Candidate)
-    Dim mp As ManageParty
     Dim IsValid As Boolean = False
+    Private Shared Instance As AddParty
 
-
-    Public Sub New(mp As ManageParty)
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        Me.mp = mp
-
-        ' Add any initialization after the InitializeComponent() call.
-        AllCandidates = Candidate.GetAll()
-
-        PopulateCombobox(CBPresident, Position.PRESIDENT_ID)
-        PopulateCombobox(CBVicePresident, Position.VICE_PRESIDENT_ID)
-        PopulateCombobox(CBSecretary, Position.SECRETARY_ID)
-        PopulateCombobox(CBTreasurer, Position.TREASURER_ID)
-        PopulateCombobox(CBAuditor, Position.AUDITOR_ID)
-        PopulateCombobox(CBPRO, Position.PRO_ID)
-    End Sub
+    Public Shared Function GetInstance() As AddParty
+        If IsNothing(Instance) Then
+            Instance = New AddParty()
+        End If
+        Return Instance
+    End Function
 
     Private Sub PopulateCombobox(cb As Guna2ComboBox, PositionID As Integer)
         cb.DataSource = Filter(PositionID)
@@ -45,8 +34,7 @@ Public Class AddParty
     End Function
 
     Private Sub ButtonDiscard_Click(sender As Object, e As EventArgs) Handles ButtonDiscard.Click
-        Me.Dispose()
-        mp.Show()
+        AdminPanel.GetInstance().LoadControl(ManageParty.GetInstance())
     End Sub
 
     Private Sub ButtonSelectPicture_Click(sender As Object, e As EventArgs) Handles ButtonSelectPicture.Click
@@ -95,14 +83,15 @@ Public Class AddParty
         ButtonSave.Enabled = True
         ButtonDiscard.Enabled = True
         ButtonSave.Text = "Save"
-        Me.Dispose()
-        mp.Show()
-        Await mp.RefreshParty()
+
         If Result Then
             Alert.setAlert("Party Added Successfully", Alert.AlertType.Success)
         Else
             Alert.setAlert("An error occured", Alert.AlertType.Error)
         End If
+
+        AdminPanel.GetInstance().LoadControl(ManageParty.GetInstance())
+
     End Function
 
     Private Sub AddMembers(ByRef members As List(Of Integer), cb As Guna2ComboBox)
@@ -113,5 +102,15 @@ Public Class AddParty
 
     Private Sub ButtonClear_Click(sender As Object, e As EventArgs) Handles ButtonClear.Click
         PictureBox1.ImageLocation = ""
+    End Sub
+
+    Private Sub AddParty_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
+        AllCandidates = Candidate.GetAll()
+        PopulateCombobox(CBPresident, Position.PRESIDENT_ID)
+        PopulateCombobox(CBVicePresident, Position.VICE_PRESIDENT_ID)
+        PopulateCombobox(CBSecretary, Position.SECRETARY_ID)
+        PopulateCombobox(CBTreasurer, Position.TREASURER_ID)
+        PopulateCombobox(CBAuditor, Position.AUDITOR_ID)
+        PopulateCombobox(CBPRO, Position.PRO_ID)
     End Sub
 End Class
