@@ -15,29 +15,19 @@
     Private isCountDownStart As Boolean = False
     Private RemainingTime As Long
 
+
     Public Shared Function GetInstance() As AdminPanel
+        If IsNothing(Instance) Then
+            Instance = New AdminPanel
+        End If
         Return Instance
     End Function
 
-    Public Sub New(Account As Admin)
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        Admin.SetCurrentUser(Account)
+    Public Function SetUser(Account As Admin) As AdminPanel
         Me.Account = Account
-
-        RefreshState()
-
-        LoadControl(AdminHomeControl())
-        ActivePage = ButtonHome
-
-        If Not IsNothing(Instance) Then
-            Instance.Dispose()
-        End If
-        Instance = Me
-
-    End Sub
+        Admin.SetCurrentUser(Account)
+        Return Me
+    End Function
 
     Public Sub LoadControl(content As Control)
         MainContent.Controls.Clear()
@@ -76,9 +66,8 @@
     End Sub
 
     Private Sub ButtonLogout_Click(sender As Object, e As EventArgs) Handles ButtonLogout.Click
+        SetUser(Nothing)
         Main.LoadControl(AdminLogin.GetInstance())
-        Me.Dispose()
-        Instance = Nothing
     End Sub
 
     Private Sub AdminPanel_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseDown
@@ -149,5 +138,10 @@
         RemainingTime -= 1
     End Sub
 
-
+    Private Sub AdminPanel_ParentChanged(sender As Object, e As EventArgs) Handles MyBase.ParentChanged
+        If Not IsNothing(Account) Then
+            RefreshState()
+            ChangeView_Click(ButtonHome, Nothing)
+        End If
+    End Sub
 End Class

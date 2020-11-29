@@ -46,7 +46,7 @@
                 Else
                     TextPassword.Clear()
                     Alert.ShowAlert("Login Successfully", Alert.AlertType.Success)
-                    Main.LoadControl(New AdminPanel(Result))
+                    Main.LoadControl(AdminPanel.GetInstance().SetUser(Result))
                 End If
             End If
 
