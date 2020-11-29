@@ -27,7 +27,7 @@
 - View Candidate(Voter Panel)
 - Vote
 - View Vote Count (Voter Panel)
-- View Result
+- View Final Result
 - Display Winner
 
 ## Contributors
