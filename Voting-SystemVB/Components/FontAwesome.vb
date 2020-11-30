@@ -5,6 +5,8 @@
     Private _HoverColor As Color
     Private _DefaultColor As Color
 
+    Public Property IsHoverable As Boolean = True
+
     Public Property HoverColor As Color
         Get
             If IsNothing(_HoverColor) Then Return ForeColor
@@ -20,12 +22,14 @@
     End Sub
 
     Private Sub FontAwesome_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
-        Me._DefaultColor = ForeColor
-        Me.ForeColor = HoverColor
+        If IsHoverable Then
+            Me._DefaultColor = ForeColor
+            Me.ForeColor = HoverColor
+        End If
     End Sub
 
 
     Private Sub FontAwesome_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
-        Me.ForeColor = _DefaultColor
+        If IsHoverable Then Me.ForeColor = _DefaultColor
     End Sub
 End Class
