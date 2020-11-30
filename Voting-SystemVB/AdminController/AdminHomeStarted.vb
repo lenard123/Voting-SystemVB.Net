@@ -8,5 +8,4 @@
         End If
         Return Instance
     End Function
-
 End Class
