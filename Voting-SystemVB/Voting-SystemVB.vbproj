@@ -134,6 +134,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminController\AddAdmin.Designer.vb">
+      <DependentUpon>AddAdmin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\AddAdmin.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="AdminController\AddCandidate.Designer.vb">
       <DependentUpon>AddCandidate.vb</DependentUpon>
     </Compile>
@@ -325,6 +331,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdminController\AddAdmin.resx">
+      <DependentUpon>AddAdmin.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminController\AddCandidate.resx">
       <DependentUpon>AddCandidate.vb</DependentUpon>
     </EmbeddedResource>

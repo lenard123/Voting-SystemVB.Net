@@ -23,4 +23,7 @@
         Util.Validator("Confirm Password", TextPassword, ErrorPass, "required")
     End Sub
 
+    Private Sub ButtonAddAdmin_Click(sender As Object, e As EventArgs) Handles ButtonAddAdmin.Click
+        AdminPanel.GetInstance().LoadControl(AddAdmin.GetInstance())
+    End Sub
 End Class

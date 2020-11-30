@@ -35,6 +35,7 @@ Partial Class UpdateAdmin
         Me.ErrorUser = New System.Windows.Forms.Label()
         Me.ErrorName = New System.Windows.Forms.Label()
         Me.ErrorPass = New System.Windows.Forms.Label()
+        Me.ButtonAddAdmin = New Guna.UI2.WinForms.Guna2Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -222,6 +223,22 @@ Partial Class UpdateAdmin
         Me.ErrorPass.TabIndex = 12
         Me.ErrorPass.Text = "ErrorPass"
         '
+        'ButtonAddAdmin
+        '
+        Me.ButtonAddAdmin.BorderThickness = 1
+        Me.ButtonAddAdmin.CheckedState.Parent = Me.ButtonAddAdmin
+        Me.ButtonAddAdmin.CustomImages.Parent = Me.ButtonAddAdmin
+        Me.ButtonAddAdmin.FillColor = System.Drawing.Color.White
+        Me.ButtonAddAdmin.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonAddAdmin.ForeColor = System.Drawing.Color.Black
+        Me.ButtonAddAdmin.HoverState.Parent = Me.ButtonAddAdmin
+        Me.ButtonAddAdmin.Location = New System.Drawing.Point(644, 325)
+        Me.ButtonAddAdmin.Name = "ButtonAddAdmin"
+        Me.ButtonAddAdmin.ShadowDecoration.Parent = Me.ButtonAddAdmin
+        Me.ButtonAddAdmin.Size = New System.Drawing.Size(206, 45)
+        Me.ButtonAddAdmin.TabIndex = 8
+        Me.ButtonAddAdmin.Text = "ADD ADMIN"
+        '
         'UpdateAdmin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -230,6 +247,7 @@ Partial Class UpdateAdmin
         Me.Controls.Add(Me.ErrorName)
         Me.Controls.Add(Me.ErrorUser)
         Me.Controls.Add(Me.ButtonChangePass)
+        Me.Controls.Add(Me.ButtonAddAdmin)
         Me.Controls.Add(Me.ButtonReset)
         Me.Controls.Add(Me.ButtonSave)
         Me.Controls.Add(Me.TextPassword)
@@ -258,5 +276,6 @@ Partial Class UpdateAdmin
     Friend WithEvents ErrorUser As System.Windows.Forms.Label
     Friend WithEvents ErrorName As System.Windows.Forms.Label
     Friend WithEvents ErrorPass As System.Windows.Forms.Label
+    Friend WithEvents ButtonAddAdmin As Guna.UI2.WinForms.Guna2Button
 
 End Class
