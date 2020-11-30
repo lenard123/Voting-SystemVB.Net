@@ -282,6 +282,7 @@
     <Compile Include="Model\Party.vb" />
     <Compile Include="Model\Position.vb" />
     <Compile Include="Model\Student.vb" />
+    <Compile Include="Model\Votes.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
