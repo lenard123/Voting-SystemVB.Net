@@ -80,7 +80,7 @@ Partial Class LoadingScreen
         Me.PanelProgress.Dock = System.Windows.Forms.DockStyle.Left
         Me.PanelProgress.Location = New System.Drawing.Point(0, 0)
         Me.PanelProgress.Name = "PanelProgress"
-        Me.PanelProgress.Size = New System.Drawing.Size(10, 3)
+        Me.PanelProgress.Size = New System.Drawing.Size(0, 3)
         Me.PanelProgress.TabIndex = 0
         '
         'Timer1
