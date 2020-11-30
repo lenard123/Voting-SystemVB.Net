@@ -3,8 +3,11 @@
 Public Class Admin
 
     Private Shared ReadOnly QUERY_SELECT_BY_USERNAME = "SELECT * FROM [Admin] WHERE [username]=?"
+    Private Shared ReadOnly QUERY_UPDATE = "UPDATE [Admin] SET [username]=?, [fullname]=? WHERE [ID]=?"
 
+    Public Shared ReadOnly ADMIN_ID_LENGTH = 10
     Public Shared ReadOnly ADMIN_USERNAME_LENGTH = 40
+    Public Shared ReadOnly ADMIN_FULLNAME_LENGTH = 40
 
     Public Shared ReadOnly ADMIN_ID_INDEX = 0
     Public Shared ReadOnly ADMIN_FULLNAME_INDEX = 1
@@ -41,6 +44,20 @@ Public Class Admin
     'Verify Password
     Public Function ComparePassword(ByVal Password As String)
         Return Me.Password.Equals(Password)
+    End Function
+
+    Public Function Update() As Boolean
+        Dim Res As Boolean = False
+        GetConnection().Open()
+        Using Cmd As New OleDbCommand(QUERY_UPDATE, GetConnection())
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me.Username, ADMIN_USERNAME_LENGTH))
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me.Fullname, ADMIN_FULLNAME_LENGTH))
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me.Id, ADMIN_ID_LENGTH))
+            Cmd.Prepare()
+            Res = Cmd.ExecuteNonQuery() <> -1
+        End Using
+        GetConnection().Close()
+        Return Res
     End Function
 
     'Get Specific admin using their username
