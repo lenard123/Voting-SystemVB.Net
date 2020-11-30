@@ -50,9 +50,7 @@ Public Class AdminHomeStarted
         LabelDoneVoters.Text = DoneVoting
         LabelRemainingVoters.Text = RemainingVotes
 
-        If DisplayPieChart.Checked Then
-            Await ReloadChart(PositionID)
-        End If
+        Await ReloadChart(PositionID)
 
         StopLoading()
 
@@ -64,19 +62,53 @@ Public Class AdminHomeStarted
 
         ChartVoteCount.Series(0).Points.Clear()
         ChartVoteCount.Series(1).Points.Clear()
+        ResultText.Controls.Clear()
 
         Dim VoteCounts = Await Votes.CountVotesAsync(PositionID)
+        Dim CandidateCounter = 1
+
         ResultPanel.Controls.Add(ChartVoteCount)
+        For Each iControl In ResultText.Controls
+            iControl.Dispose()
+        Next
+
         For Each item In Candidates(PositionID)
             Dim vote = 0
             If VoteCounts.ContainsKey(item.ID) Then vote = VoteCounts(item.ID)
-
             Dim nPoint As New DataPoint()
             nPoint.Label = item.Fullname
             nPoint.SetValueY(vote)
             ChartVoteCount.Series(0).Points.Add(nPoint)
             ChartVoteCount.Series(1).Points.Add(nPoint)
+
+            AddLabel(CandidateCounter, item.Fullname, item.Party, vote)
+            CandidateCounter += 1
         Next
+    End Function
+
+    Private Function AddLabel(Counter As Integer, Fullname As String, Party As String, VoteCount As Integer) As Guna2HtmlLabel
+
+        If IsNothing(Party) Or "".Equals(Party) Then
+            Party = "Independent"
+        End If
+
+        Dim nLabel As New Guna2HtmlLabel
+        Dim chipVotes As New Guna2Chip
+
+        nLabel.Text = "<font size='15px'>"
+        nLabel.Text &= Counter & ". " & "<b>" & Fullname & "</b> "
+        nLabel.Text &= "(<i>" & Party & "</i>)"
+        nLabel.Text &= "</font>"
+        nLabel.Margin = New Padding(3, 3, 3, 3)
+
+        chipVotes.Text = VoteCount & " VOTES"
+        chipVotes.Margin = New Padding(3, 0, 3, 12)
+        chipVotes.Size = New Size(75, 23)
+
+        ResultText.Controls.Add(nLabel)
+        ResultText.Controls.Add(chipVotes)
+
+        Return nLabel
     End Function
 
 
@@ -113,5 +145,13 @@ Public Class AdminHomeStarted
         SelectedPosition = SelectedButton.Tag
         Await RefreshPosition(SelectedPosition)
 
+    End Sub
+
+    Private Sub DisplayPieChart_CheckedChanged(sender As Object, e As EventArgs) Handles DisplayPieChart.CheckedChanged
+        If DisplayPieChart.Checked Then
+            ResultPanel.BringToFront()
+        Else
+            ResultPanel.SendToBack()
+        End If
     End Sub
 End Class

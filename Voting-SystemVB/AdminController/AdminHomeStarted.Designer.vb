@@ -33,10 +33,8 @@ Partial Class AdminHomeStarted
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2ShadowPanel1 = New Guna.UI2.WinForms.Guna2ShadowPanel()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.FontAwesome1 = New Voting_SystemVB.FontAwesome()
         Me.LabelVotersCount = New System.Windows.Forms.Label()
         Me.Guna2ShadowPanel2 = New Guna.UI2.WinForms.Guna2ShadowPanel()
-        Me.FontAwesome2 = New Voting_SystemVB.FontAwesome()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.LabelDoneVoters = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -50,7 +48,6 @@ Partial Class AdminHomeStarted
         Me.ButtonPresident = New Guna.UI2.WinForms.Guna2Button()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Guna2ShadowPanel3 = New Guna.UI2.WinForms.Guna2ShadowPanel()
-        Me.FontAwesome3 = New Voting_SystemVB.FontAwesome()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.LabelRemainingVoters = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -65,6 +62,11 @@ Partial Class AdminHomeStarted
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.DisplayPieChart = New Guna.UI2.WinForms.Guna2ToggleSwitch()
         Me.LabelLastUpdate = New Guna.UI2.WinForms.Guna2Chip()
+        Me.ResultText = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.FontAwesome3 = New Voting_SystemVB.FontAwesome()
+        Me.FontAwesome2 = New Voting_SystemVB.FontAwesome()
+        Me.FontAwesome1 = New Voting_SystemVB.FontAwesome()
         Me.Panel1.SuspendLayout()
         Me.Guna2ShadowPanel1.SuspendLayout()
         Me.Guna2ShadowPanel2.SuspendLayout()
@@ -76,6 +78,7 @@ Partial Class AdminHomeStarted
         Me.ResultPanel.SuspendLayout()
         CType(Me.ChartVoteCount, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel5.SuspendLayout()
+        Me.Panel6.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -140,18 +143,6 @@ Partial Class AdminHomeStarted
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Total No. of Voters"
         '
-        'FontAwesome1
-        '
-        Me.FontAwesome1.AutoSize = True
-        Me.FontAwesome1.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
-        Me.FontAwesome1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(57, Byte), Integer))
-        Me.FontAwesome1.HoverColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(57, Byte), Integer))
-        Me.FontAwesome1.Location = New System.Drawing.Point(169, 22)
-        Me.FontAwesome1.Name = "FontAwesome1"
-        Me.FontAwesome1.Size = New System.Drawing.Size(82, 51)
-        Me.FontAwesome1.TabIndex = 4
-        Me.FontAwesome1.Text = "users"
-        '
         'LabelVotersCount
         '
         Me.LabelVotersCount.AutoSize = True
@@ -176,18 +167,6 @@ Partial Class AdminHomeStarted
         Me.Guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black
         Me.Guna2ShadowPanel2.Size = New System.Drawing.Size(279, 127)
         Me.Guna2ShadowPanel2.TabIndex = 5
-        '
-        'FontAwesome2
-        '
-        Me.FontAwesome2.AutoSize = True
-        Me.FontAwesome2.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
-        Me.FontAwesome2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.FontAwesome2.HoverColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.FontAwesome2.Location = New System.Drawing.Point(181, 22)
-        Me.FontAwesome2.Name = "FontAwesome2"
-        Me.FontAwesome2.Size = New System.Drawing.Size(70, 51)
-        Me.FontAwesome2.TabIndex = 4
-        Me.FontAwesome2.Text = "check-double"
         '
         'Label4
         '
@@ -379,18 +358,6 @@ Partial Class AdminHomeStarted
         Me.Guna2ShadowPanel3.Size = New System.Drawing.Size(279, 127)
         Me.Guna2ShadowPanel3.TabIndex = 6
         '
-        'FontAwesome3
-        '
-        Me.FontAwesome3.AutoSize = True
-        Me.FontAwesome3.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
-        Me.FontAwesome3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(104, Byte), Integer))
-        Me.FontAwesome3.HoverColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(104, Byte), Integer))
-        Me.FontAwesome3.Location = New System.Drawing.Point(169, 22)
-        Me.FontAwesome3.Name = "FontAwesome3"
-        Me.FontAwesome3.Size = New System.Drawing.Size(82, 51)
-        Me.FontAwesome3.TabIndex = 4
-        Me.FontAwesome3.Text = "vote-yea"
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -456,7 +423,7 @@ Partial Class AdminHomeStarted
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel4.BackColor = System.Drawing.Color.White
-        Me.Panel4.Controls.Add(Me.ResultPanel)
+        Me.Panel4.Controls.Add(Me.Panel6)
         Me.Panel4.Controls.Add(Me.Guna2Separator1)
         Me.Panel4.Controls.Add(Me.Panel5)
         Me.Panel4.Controls.Add(Me.LabelLastUpdate)
@@ -470,7 +437,7 @@ Partial Class AdminHomeStarted
         Me.ResultPanel.AutoScroll = True
         Me.ResultPanel.Controls.Add(Me.ChartVoteCount)
         Me.ResultPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ResultPanel.Location = New System.Drawing.Point(0, 64)
+        Me.ResultPanel.Location = New System.Drawing.Point(0, 0)
         Me.ResultPanel.Name = "ResultPanel"
         Me.ResultPanel.Size = New System.Drawing.Size(558, 335)
         Me.ResultPanel.TabIndex = 7
@@ -579,6 +546,65 @@ Partial Class AdminHomeStarted
         Me.LabelLastUpdate.Text = "Result As of: November 11, 2020 7:16 am"
         Me.LabelLastUpdate.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         '
+        'ResultText
+        '
+        Me.ResultText.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ResultText.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
+        Me.ResultText.Location = New System.Drawing.Point(0, 0)
+        Me.ResultText.Name = "ResultText"
+        Me.ResultText.Padding = New System.Windows.Forms.Padding(20)
+        Me.ResultText.Size = New System.Drawing.Size(558, 335)
+        Me.ResultText.TabIndex = 1
+        '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.ResultPanel)
+        Me.Panel6.Controls.Add(Me.ResultText)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel6.Location = New System.Drawing.Point(0, 64)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(558, 335)
+        Me.Panel6.TabIndex = 0
+        '
+        'FontAwesome3
+        '
+        Me.FontAwesome3.AutoSize = True
+        Me.FontAwesome3.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
+        Me.FontAwesome3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(104, Byte), Integer))
+        Me.FontAwesome3.HoverColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(104, Byte), Integer))
+        Me.FontAwesome3.IsHoverable = False
+        Me.FontAwesome3.Location = New System.Drawing.Point(169, 22)
+        Me.FontAwesome3.Name = "FontAwesome3"
+        Me.FontAwesome3.Size = New System.Drawing.Size(82, 51)
+        Me.FontAwesome3.TabIndex = 4
+        Me.FontAwesome3.Text = "vote-yea"
+        '
+        'FontAwesome2
+        '
+        Me.FontAwesome2.AutoSize = True
+        Me.FontAwesome2.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
+        Me.FontAwesome2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.FontAwesome2.HoverColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.FontAwesome2.IsHoverable = False
+        Me.FontAwesome2.Location = New System.Drawing.Point(181, 22)
+        Me.FontAwesome2.Name = "FontAwesome2"
+        Me.FontAwesome2.Size = New System.Drawing.Size(70, 51)
+        Me.FontAwesome2.TabIndex = 4
+        Me.FontAwesome2.Text = "check-double"
+        '
+        'FontAwesome1
+        '
+        Me.FontAwesome1.AutoSize = True
+        Me.FontAwesome1.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
+        Me.FontAwesome1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(57, Byte), Integer))
+        Me.FontAwesome1.HoverColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(57, Byte), Integer))
+        Me.FontAwesome1.IsHoverable = False
+        Me.FontAwesome1.Location = New System.Drawing.Point(169, 22)
+        Me.FontAwesome1.Name = "FontAwesome1"
+        Me.FontAwesome1.Size = New System.Drawing.Size(82, 51)
+        Me.FontAwesome1.TabIndex = 4
+        Me.FontAwesome1.Text = "users"
+        '
         'AdminHomeStarted
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -608,6 +634,7 @@ Partial Class AdminHomeStarted
         CType(Me.ChartVoteCount, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
+        Me.Panel6.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -649,5 +676,7 @@ Partial Class AdminHomeStarted
     Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents DisplayPieChart As Guna.UI2.WinForms.Guna2ToggleSwitch
     Friend WithEvents ChartVoteCount As System.Windows.Forms.DataVisualization.Charting.Chart
+    Friend WithEvents ResultText As System.Windows.Forms.FlowLayoutPanel
+    Friend WithEvents Panel6 As System.Windows.Forms.Panel
 
 End Class
