@@ -22,13 +22,8 @@ Partial Class AdminHomeNotStarted
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdminHomeNotStarted))
-        Me.ElectionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PanelHeader = New System.Windows.Forms.Panel()
-        Me.ButtonClose = New Voting_SystemVB.FontAwesome()
-        Me.ButtonMaximize = New Voting_SystemVB.FontAwesome()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.pictureparty = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.Auditor = New System.Windows.Forms.Label()
         Me.Treasurer = New System.Windows.Forms.Label()
         Me.Secretary = New System.Windows.Forms.Label()
@@ -38,56 +33,9 @@ Partial Class AdminHomeNotStarted
         Me.Remaining = New System.Windows.Forms.TextBox()
         Me.TotalCandidates = New Guna.UI2.WinForms.Guna2Button()
         Me.TotalParties = New Guna.UI2.WinForms.Guna2Button()
-        Me.pictureparty = New Guna.UI2.WinForms.Guna2PictureBox()
-        CType(Me.ElectionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-
-        Me.PanelHeader.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.pictureparty, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'ElectionBindingSource
-        '
-        Me.ElectionBindingSource.DataSource = GetType(Voting_SystemVB.Election)
-        '
-        'PanelHeader
-        '
-        Me.PanelHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(81, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
-        Me.PanelHeader.Controls.Add(Me.ButtonClose)
-        Me.PanelHeader.Controls.Add(Me.ButtonMaximize)
-        Me.PanelHeader.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelHeader.Location = New System.Drawing.Point(0, 0)
-        Me.PanelHeader.Name = "PanelHeader"
-        Me.PanelHeader.Size = New System.Drawing.Size(1066, 20)
-        Me.PanelHeader.TabIndex = 2
-        '
-        'ButtonClose
-        '
-        Me.ButtonClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonClose.AutoSize = True
-        Me.ButtonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.ButtonClose.HoverColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.ButtonClose.Location = New System.Drawing.Point(1042, 2)
-        Me.ButtonClose.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonClose.Name = "ButtonClose"
-        Me.ButtonClose.Size = New System.Drawing.Size(91, 17)
-        Me.ButtonClose.TabIndex = 5
-        Me.ButtonClose.Text = "window-close"
-        '
-        'ButtonMaximize
-        '
-        Me.ButtonMaximize.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonMaximize.AutoSize = True
-        Me.ButtonMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonMaximize.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.ButtonMaximize.HoverColor = System.Drawing.Color.Empty
-        Me.ButtonMaximize.Location = New System.Drawing.Point(1021, 2)
-        Me.ButtonMaximize.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonMaximize.Name = "ButtonMaximize"
-        Me.ButtonMaximize.Size = New System.Drawing.Size(115, 17)
-        Me.ButtonMaximize.TabIndex = 5
-        Me.ButtonMaximize.Text = "window-maximize"
         '
         'GroupBox1
         '
@@ -104,6 +52,16 @@ Partial Class AdminHomeNotStarted
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Total Candidates"
+        '
+        'pictureparty
+        '
+        Me.pictureparty.FillColor = System.Drawing.Color.CornflowerBlue
+        Me.pictureparty.Location = New System.Drawing.Point(339, 105)
+        Me.pictureparty.Name = "pictureparty"
+        Me.pictureparty.ShadowDecoration.Parent = Me.pictureparty
+        Me.pictureparty.Size = New System.Drawing.Size(235, 149)
+        Me.pictureparty.TabIndex = 5
+        Me.pictureparty.TabStop = False
         '
         'Auditor
         '
@@ -198,17 +156,6 @@ Partial Class AdminHomeNotStarted
         Me.TotalParties.TabIndex = 13
         Me.TotalParties.Text = "View Total Parties"
         '
-        'pictureparty
-        '
-        Me.pictureparty.FillColor = System.Drawing.Color.CornflowerBlue
-        Me.pictureparty.Location = New System.Drawing.Point(339, 105)
-        Me.pictureparty.Name = "pictureparty"
-        Me.pictureparty.ShadowDecoration.Parent = Me.pictureparty
-        Me.pictureparty.Size = New System.Drawing.Size(235, 149)
-        Me.pictureparty.TabIndex = 5
-        Me.pictureparty.TabStop = False
-
-        '
         'AdminHomeNotStarted
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -218,13 +165,8 @@ Partial Class AdminHomeNotStarted
         Me.Controls.Add(Me.Remaining)
         Me.Controls.Add(Me.TotalVoters)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.PanelHeader)
-
         Me.Name = "AdminHomeNotStarted"
         Me.Size = New System.Drawing.Size(1066, 601)
-        CType(Me.ElectionBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelHeader.ResumeLayout(False)
-        Me.PanelHeader.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.pictureparty, System.ComponentModel.ISupportInitialize).EndInit()
@@ -232,10 +174,6 @@ Partial Class AdminHomeNotStarted
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents ElectionBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents PanelHeader As System.Windows.Forms.Panel
-    Friend WithEvents ButtonClose As Voting_SystemVB.FontAwesome
-    Friend WithEvents ButtonMaximize As Voting_SystemVB.FontAwesome
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Auditor As System.Windows.Forms.Label
     Friend WithEvents Treasurer As System.Windows.Forms.Label
