@@ -74,11 +74,35 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DocumentationFile>Voting-SystemVB.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DocumentationFile>Voting-SystemVB.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Guna.UI2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=ad275b4be6718d4b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Desktop\Guna_UI_Framework_Ultimate_2.0.0.1_Downloadly.ir\Guna UI Framework Ultimate 2.0.0.1\Guna UI Framework Ultimate v2.0.0.1 Lib-Master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\Assets\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -87,10 +111,14 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -130,6 +158,12 @@
     <Compile Include="AdminController\AdminHomeNotStarted.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="AdminController\AdminHomeStarted.Designer.vb">
+      <DependentUpon>AdminHomeStarted.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\AdminHomeStarted.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="AdminController\ManageCandidate.Designer.vb">
       <DependentUpon>ManageCandidate.vb</DependentUpon>
     </Compile>
@@ -146,6 +180,12 @@
       <DependentUpon>ManageVoters.vb</DependentUpon>
     </Compile>
     <Compile Include="AdminController\ManageVoters.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminController\StartElection.Designer.vb">
+      <DependentUpon>StartElection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\StartElection.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="AdminController\UpdateAdmin.Designer.vb">
@@ -188,6 +228,12 @@
       <DependentUpon>CandidateCard.vb</DependentUpon>
     </Compile>
     <Compile Include="Components\CandidateCard.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\CandidatesList.Designer.vb">
+      <DependentUpon>CandidatesList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CandidatesList.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Card.vb">
@@ -236,6 +282,7 @@
     <Compile Include="Model\Party.vb" />
     <Compile Include="Model\Position.vb" />
     <Compile Include="Model\Student.vb" />
+    <Compile Include="Model\Votes.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -290,6 +337,9 @@
     <EmbeddedResource Include="AdminController\AdminHomeNotStarted.resx">
       <DependentUpon>AdminHomeNotStarted.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\AdminHomeStarted.resx">
+      <DependentUpon>AdminHomeStarted.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminController\ManageCandidate.resx">
       <DependentUpon>ManageCandidate.vb</DependentUpon>
     </EmbeddedResource>
@@ -298,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\ManageVoters.resx">
       <DependentUpon>ManageVoters.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\StartElection.resx">
+      <DependentUpon>StartElection.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\UpdateAdmin.resx">
       <DependentUpon>UpdateAdmin.vb</DependentUpon>
@@ -322,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CandidateCard.resx">
       <DependentUpon>CandidateCard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\CandidatesList.resx">
+      <DependentUpon>CandidatesList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CustomDatagridview.resx">
       <DependentUpon>CustomDatagridview.vb</DependentUpon>
@@ -459,6 +515,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_circle_right_white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

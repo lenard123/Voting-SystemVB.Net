@@ -20,8 +20,7 @@
     Public Sub ShowPopup()
         DrawPopupBackground()
         frm = New Form
-        frm.TopMost = True
-        frm.ShowInTaskbar = True
+        frm.ShowInTaskbar = False
         frm.FormBorderStyle = FormBorderStyle.None
         frm.Size = Content.Size()
         frm.Controls.Add(Content)

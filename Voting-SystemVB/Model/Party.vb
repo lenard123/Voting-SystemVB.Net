@@ -3,6 +3,8 @@ Imports System.Data.OleDb
 
 Public Class Party
 
+    Private Shared ReadOnly QUERY_SELECT_ALL = "SELECT * FROM [Party]"
+
     Public Shared ReadOnly LENGTH_ID = 10
     Public Shared ReadOnly LENGTH_TITLE = 64
     Public Shared ReadOnly LENGTH_DESC = 255
@@ -62,11 +64,14 @@ Public Class Party
     End Property
 
     Public Sub New()
-
     End Sub
 
     Public Sub New(ID As Integer)
         Me._ID = ID
+    End Sub
+
+    Public Sub SetOriginalImage(Image As String)
+        _OriginalImage = Image
     End Sub
 
     Public Shared Function Find(Title As String) As Party
@@ -75,11 +80,6 @@ Public Class Party
         GetConnection().Close()
         Return res
     End Function
-
-    Public Sub SetOriginalImage(Image As String)
-        _OriginalImage = Image
-    End Sub
-
     Public Shared Function Find(Title As String, conn As OleDbConnection) As Party
         Dim res As Party = Nothing
         Using Cmd As New OleDbCommand("SELECT * FROM [Party] WHERE [Title]=?", conn)
@@ -189,10 +189,23 @@ Public Class Party
         Return result
     End Function
 
+    Public Shared Async Function GetAllAsync() As Task(Of List(Of Party))
+        Dim Result As New List(Of Party)
+        Await GetConnection().OpenAsync()
+        Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
+            Using Reader = Await Cmd.ExecuteReaderAsync()
+                While Reader.Read()
+                    Result.Add(GetParty(Reader))
+                End While
+            End Using
+        End Using
+        GetConnection().Close()
+        Return Result
+    End Function
     Public Shared Function GetAll() As List(Of Party)
         Dim Result As New List(Of Party)
         GetConnection().Open()
-        Using Cmd As New OleDbCommand("SELECT * FROM [Party]", GetConnection())
+        Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
                     Result.Add(GetParty(Reader))

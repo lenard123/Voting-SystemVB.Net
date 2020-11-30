@@ -2,47 +2,54 @@
 
     Dim Percent As Integer = 0
 
-    Dim DBConnection As Integer = 0
+    Dim ValidConnection As Boolean = False
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        'At 10% Get the Admin Login
-        If (Percent.Equals(10)) Then
-            Timer1.Stop()
-            AdminLogin.GetInstance()
-            Timer1.Start()
 
-            'At 20% Get the Voter Login
-        ElseIf (Percent.Equals(20)) Then
-            Timer1.Stop()
-            VoterLogin.GetInstance()
-            Timer1.Start()
+        Timer1.Stop()
+        Select Case Percent
+            Case 0
+                If DBHelper.TestConnection() Then
+                    ValidConnection = True
+                Else
+                    Percent = 100
+                End If
+            Case 1
+                AdminLogin.GetInstance()
+            Case 2
+                VoterLogin.GetInstance()
+            Case 3
+                AdminPanel.GetInstance()
+            Case 5
+                AdminHomeNotStarted.GetInstance()
+                AdminHomeStarted.GetInstance()
+            Case 6
+                AddParty.GetInstance()
+            Case 7
+                ManageCandidate.GetInstance()
+            Case 8
+                ManageParty.GetInstance()
+            Case 9
+                ManageVoters.GetInstance()
+            Case 10
+                StartElection.GetInstance()
+            Case 11
+                UpdateAdmin.GetInstance()
+        End Select
 
-            'At 50% Connect to the database
-        ElseIf (Percent.Equals(50)) Then
-            Timer1.Stop()
-            Try
-                GetConnection.Open()
-                GetConnection.Close()
-                DBConnection = 1
-            Catch ex As OleDb.OleDbException
-                Percent = 100
-            End Try
-            Timer1.Start()
-        ElseIf Percent.Equals(60) Then
-            Election.GetCurrentElection()
-            'At 100% Halt the timer
-        ElseIf Percent.Equals(70) Then
-            LoadFont()
-        ElseIf (Percent >= 100) Then
-            Timer1.Stop()
+        If Percent >= 100 Then
             Finish()
+        Else
+            Timer1.Start()
+            Expand()
+            Percent = Percent + 1
         End If
-        Expand()
-        Percent = Percent + 1
+
+
     End Sub
 
     Private Sub Finish()
-        If (DBConnection.Equals(0)) Then
+        If (ValidConnection.Equals(0)) Then
             Dim popup As New SystemCrashError("Oops!!", "An error occured while connecting to database")
             popup.ShowPopup()
         Else

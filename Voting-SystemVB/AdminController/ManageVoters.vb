@@ -6,6 +6,14 @@ Public Class ManageVoters
     Private ResultSet As List(Of Student)
     Private Filter = "All"
     Private PreviousFilter As Guna2Button
+    Private Shared Instance As ManageVoters
+
+    Public Shared Function GetInstance() As ManageVoters
+        If IsNothing(Instance) Then
+            Instance = New ManageVoters()
+        End If
+        Return Instance
+    End Function
 
     Private ReadOnly Property FilteredResultSet As List(Of Student)
         Get
@@ -20,7 +28,10 @@ Public Class ManageVoters
         End Get
     End Property
 
-    Private Async Sub ManageVoters_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Async Sub ManageVoters_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
+        If Not Election.HasNotStarted Then
+            ButtonAddVoter.Visible = False
+        End If
         LabelResult.Text = ""
         PreviousFilter = ButtonFilterAll
         Await RefreshStudent()
@@ -79,8 +90,10 @@ Public Class ManageVoters
     End Sub
 
     Private Sub StudentDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles StudentDataGridView.CellDoubleClick
-        Dim update As New UpdateVoter(FilteredResultSet(e.RowIndex), Me)
-        update.ShowPopup()
+        If Election.HasNotStarted Then
+            Dim update As New UpdateVoter(FilteredResultSet(e.RowIndex), Me)
+            update.ShowPopup()
+        End If
     End Sub
 
     Private Async Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click
@@ -89,4 +102,5 @@ Public Class ManageVoters
         LabelResult.Text = "Search Results for: """ & TextSearch.Text & """"
         LoadStudent()
     End Sub
+
 End Class

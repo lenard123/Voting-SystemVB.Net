@@ -13,20 +13,13 @@ Public Class ManageCandidate
         Return Instance
     End Function
 
-    Private Sub ManageCandidate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        PreviousButton = ButtonPresident
-    End Sub
-
-    Public Async Sub Init()
-        Await LoadPosition(Position.PRESIDENT_ID)
-    End Sub
     Public Async Function LoadPosition(Position As Integer) As Task
         Dim Rs = Await Candidate.GetAllByPositionAsync(Position)
         FlowLayoutPanel1.Controls.Remove(ButtonRegister)
         DisposeChild()
         For Each item As Candidate In Rs
             Dim ctl = New CandidateCard(item)
-            ctl.Editable()
+            If Election.HasNotStarted Then ctl.Editable()
             FlowLayoutPanel1.Controls.Add(ctl)
             ctl.BringToFront()
         Next
@@ -68,5 +61,11 @@ Public Class ManageCandidate
     Private Sub ButtonRegister_Click(sender As Object, e As EventArgs) Handles ButtonRegister.Click
         Dim ac As New AddCandidate(SelectedPosition)
         ac.ShowPopup()
+    End Sub
+
+    Private Async Sub ManageCandidate_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
+        PreviousButton = ButtonPresident
+        If Not Election.HasNotStarted Then ButtonRegister.Visible = False
+        Await LoadPosition(Position.PRESIDENT_ID)
     End Sub
 End Class

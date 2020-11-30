@@ -23,6 +23,7 @@ Partial Class AdminHomeNotStarted
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdminHomeNotStarted))
         Me.ElectionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PanelHeader = New System.Windows.Forms.Panel()
         Me.ButtonClose = New Voting_SystemVB.FontAwesome()
@@ -39,6 +40,7 @@ Partial Class AdminHomeNotStarted
         Me.TotalParties = New Guna.UI2.WinForms.Guna2Button()
         Me.pictureparty = New Guna.UI2.WinForms.Guna2PictureBox()
         CType(Me.ElectionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+
         Me.PanelHeader.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.pictureparty, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -205,6 +207,7 @@ Partial Class AdminHomeNotStarted
         Me.pictureparty.Size = New System.Drawing.Size(235, 149)
         Me.pictureparty.TabIndex = 5
         Me.pictureparty.TabStop = False
+
         '
         'AdminHomeNotStarted
         '
@@ -216,6 +219,7 @@ Partial Class AdminHomeNotStarted
         Me.Controls.Add(Me.TotalVoters)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.PanelHeader)
+
         Me.Name = "AdminHomeNotStarted"
         Me.Size = New System.Drawing.Size(1066, 601)
         CType(Me.ElectionBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -243,5 +247,4 @@ Partial Class AdminHomeNotStarted
     Friend WithEvents TotalCandidates As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TotalParties As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents pictureparty As Guna.UI2.WinForms.Guna2PictureBox
-
 End Class

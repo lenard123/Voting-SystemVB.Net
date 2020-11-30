@@ -2,9 +2,18 @@
 
 Public Class Election
 
+    Private Shared ReadOnly QUERY_START_ELECTION = "UPDATE [Election] SET [Title]=?, [Status]=?, [Started]=?, [Ended]=? WHERE [ID]=?"
+
     Public Shared ReadOnly STATUS_NOT_STARTED = 0
     Public Shared ReadOnly STATUS_ONGOING = 1
     Public Shared ReadOnly STATUS_ENDED = 2
+
+    Private Shared ReadOnly LENGTH_ID = 10
+    Private Shared ReadOnly LENGTH_TITLE = 60
+    Private Shared ReadOnly LENGTH_STATUS = 1
+    Private Shared ReadOnly LENGTH_STARTED = 255
+    Private Shared ReadOnly LENGTH_ENDED = 255
+
 
     Private Shared ReadOnly INDEX_ID = 0
     Private Shared ReadOnly INDEX_TITLE = 1
@@ -30,12 +39,12 @@ Public Class Election
             Return CurrentElection.Status = STATUS_NOT_STARTED
         End Get
     End Property
-    Public ReadOnly Property IsOngoing As Boolean
+    Public Shared ReadOnly Property IsOngoing As Boolean
         Get
             Return CurrentElection.Status = STATUS_ONGOING
         End Get
     End Property
-    Public ReadOnly Property HasEnded As Boolean
+    Public Shared ReadOnly Property HasEnded As Boolean
         Get
             Return CurrentElection.Status = STATUS_ENDED
         End Get
@@ -95,6 +104,27 @@ Public Class Election
         Return CurrentElection
     End Function
 
+    Public Shared Function StartElection(Title As String, EndDate As Date) As Boolean
+        If HasNotStarted Then
+            Console.WriteLine(EndDate)
+            Dim Result = False
+            GetConnection().Open()
+            Using Cmd = New OleDbCommand(QUERY_START_ELECTION, GetConnection())
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Title, LENGTH_TITLE))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, STATUS_ONGOING, LENGTH_STATUS))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.Date, Date.Now(), LENGTH_STARTED))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.Date, EndDate, LENGTH_ENDED))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, CurrentElection.Id, LENGTH_ID))
+                Cmd.Prepare()
+                If Cmd.ExecuteNonQuery() <> -1 Then
+                    Result = True
+                End If
+            End Using
+            GetConnection().Close()
+            Return Result
+        End If
+        Return False
+    End Function
 
     Private Shared Function GetElection(ByRef Reader As OleDbDataReader) As Election
         Dim Id = Reader.GetInt32(INDEX_ID)

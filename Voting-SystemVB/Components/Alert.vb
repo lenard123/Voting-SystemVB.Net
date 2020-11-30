@@ -13,7 +13,7 @@
         Me.Opacity = 0
         Me.StartPosition = FormStartPosition.Manual
         'Me.TopMost = True
-        For i As Integer = 0 To 10
+        For i As Integer = 1 To 10
             fname = "alert" & i.ToString()
             Dim f As Alert = Application.OpenForms.Item(fname)
             If f Is Nothing Then
