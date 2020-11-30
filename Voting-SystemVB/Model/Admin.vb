@@ -14,6 +14,8 @@ Public Class Admin
     Private Id As Integer
     Private _Fullname, _Username, Password As String
 
+    Private Shared _CurrentUser As Admin = Nothing
+
     Public Property Fullname As String
         Get
             Return _Fullname
@@ -81,5 +83,13 @@ Public Class Admin
         Return Result
     End Function
 
+    'Get Current User
+    Public Shared Function GetCurrentUser() As Admin
+        Return _CurrentUser
+    End Function
 
+    'Set Current User
+    Public Shared Sub SetCurrentUser(CUser As Admin)
+        _CurrentUser = CUser
+    End Sub
 End Class

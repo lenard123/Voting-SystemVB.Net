@@ -64,7 +64,7 @@ Partial Class AddVoter
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Guna2Separator1.Location = New System.Drawing.Point(3, 72)
         Me.Guna2Separator1.Name = "Guna2Separator1"
-        Me.Guna2Separator1.Size = New System.Drawing.Size(440, 10)
+        Me.Guna2Separator1.Size = New System.Drawing.Size(423, 10)
         Me.Guna2Separator1.TabIndex = 1
         '
         'TextStudentID
@@ -89,7 +89,7 @@ Partial Class AddVoter
         Me.TextStudentID.PlaceholderText = "(e.g. 20200000-C)"
         Me.TextStudentID.SelectedText = ""
         Me.TextStudentID.ShadowDecoration.Parent = Me.TextStudentID
-        Me.TextStudentID.Size = New System.Drawing.Size(440, 36)
+        Me.TextStudentID.Size = New System.Drawing.Size(423, 36)
         Me.TextStudentID.TabIndex = 0
         '
         'ErrorStudentID
@@ -134,7 +134,7 @@ Partial Class AddVoter
         Me.TextFirstname.PlaceholderText = "(e.g. John)"
         Me.TextFirstname.SelectedText = ""
         Me.TextFirstname.ShadowDecoration.Parent = Me.TextFirstname
-        Me.TextFirstname.Size = New System.Drawing.Size(440, 36)
+        Me.TextFirstname.Size = New System.Drawing.Size(423, 36)
         Me.TextFirstname.TabIndex = 1
         '
         'ErrorFirstname
@@ -179,7 +179,7 @@ Partial Class AddVoter
         Me.TextLastname.PlaceholderText = "(e.g. John)"
         Me.TextLastname.SelectedText = ""
         Me.TextLastname.ShadowDecoration.Parent = Me.TextLastname
-        Me.TextLastname.Size = New System.Drawing.Size(440, 36)
+        Me.TextLastname.Size = New System.Drawing.Size(423, 36)
         Me.TextLastname.TabIndex = 2
         '
         'ErrorLastname
@@ -232,7 +232,7 @@ Partial Class AddVoter
         Me.CBYear.Location = New System.Drawing.Point(3, 432)
         Me.CBYear.Name = "CBYear"
         Me.CBYear.ShadowDecoration.Parent = Me.CBYear
-        Me.CBYear.Size = New System.Drawing.Size(440, 36)
+        Me.CBYear.Size = New System.Drawing.Size(423, 36)
         Me.CBYear.TabIndex = 3
         '
         'ErrorYear
@@ -285,7 +285,7 @@ Partial Class AddVoter
         Me.CBCourse.Location = New System.Drawing.Point(3, 531)
         Me.CBCourse.Name = "CBCourse"
         Me.CBCourse.ShadowDecoration.Parent = Me.CBCourse
-        Me.CBCourse.Size = New System.Drawing.Size(440, 36)
+        Me.CBCourse.Size = New System.Drawing.Size(423, 36)
         Me.CBCourse.TabIndex = 4
         '
         'ErrorSection
@@ -328,7 +328,7 @@ Partial Class AddVoter
         Me.CBSection.Location = New System.Drawing.Point(3, 630)
         Me.CBSection.Name = "CBSection"
         Me.CBSection.ShadowDecoration.Parent = Me.CBSection
-        Me.CBSection.Size = New System.Drawing.Size(440, 36)
+        Me.CBSection.Size = New System.Drawing.Size(423, 36)
         Me.CBSection.TabIndex = 5
         '
         'Guna2Separator2
@@ -337,7 +337,7 @@ Partial Class AddVoter
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Guna2Separator2.Location = New System.Drawing.Point(3, 694)
         Me.Guna2Separator2.Name = "Guna2Separator2"
-        Me.Guna2Separator2.Size = New System.Drawing.Size(440, 10)
+        Me.Guna2Separator2.Size = New System.Drawing.Size(423, 10)
         Me.Guna2Separator2.TabIndex = 7
         '
         'ButtonDiscard
@@ -355,7 +355,7 @@ Partial Class AddVoter
         Me.ButtonDiscard.Location = New System.Drawing.Point(248, 719)
         Me.ButtonDiscard.Name = "ButtonDiscard"
         Me.ButtonDiscard.ShadowDecoration.Parent = Me.ButtonDiscard
-        Me.ButtonDiscard.Size = New System.Drawing.Size(195, 45)
+        Me.ButtonDiscard.Size = New System.Drawing.Size(178, 45)
         Me.ButtonDiscard.TabIndex = 7
         Me.ButtonDiscard.Text = "Discard"
         '
@@ -388,7 +388,7 @@ Partial Class AddVoter
         Me.Panel1.Controls.Add(Me.Guna2HtmlLabel5)
         Me.Panel1.Location = New System.Drawing.Point(11, 17)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(462, 785)
+        Me.Panel1.Size = New System.Drawing.Size(445, 785)
         Me.Panel1.TabIndex = 8
         '
         'ButtonSubmit
@@ -407,7 +407,7 @@ Partial Class AddVoter
         Me.ButtonSubmit.Location = New System.Drawing.Point(3, 719)
         Me.ButtonSubmit.Name = "ButtonSubmit"
         Me.ButtonSubmit.ShadowDecoration.Parent = Me.ButtonSubmit
-        Me.ButtonSubmit.Size = New System.Drawing.Size(186, 45)
+        Me.ButtonSubmit.Size = New System.Drawing.Size(169, 45)
         Me.ButtonSubmit.TabIndex = 6
         Me.ButtonSubmit.Text = "Submit"
         '
@@ -420,7 +420,7 @@ Partial Class AddVoter
         Me.BackColor = System.Drawing.Color.White
         Me.Controls.Add(Me.Panel1)
         Me.Name = "AddVoter"
-        Me.Size = New System.Drawing.Size(476, 531)
+        Me.Size = New System.Drawing.Size(459, 531)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)

@@ -18,4 +18,15 @@ Module DBHelper
         Param.Size = Length
         Return Param
     End Function
+
+    Public Function TestConnection() As Boolean
+        Try
+            GetConnection.Open()
+            GetConnection.Close()
+            Return True
+        Catch ex As OleDb.OleDbException
+            Return False
+        End Try
+    End Function
+
 End Module

@@ -16,10 +16,10 @@
 - View Party
 - Update Party
 - Add Party
+- Start Election
 
 ### Unfinish
 - Admin Home
-- Start Election
 - View Vote Count
 - View Previous Election
 - Update Account
@@ -27,7 +27,7 @@
 - View Candidate(Voter Panel)
 - Vote
 - View Vote Count (Voter Panel)
-- View Result
+- View Final Result
 - Display Winner
 
 ## Contributors

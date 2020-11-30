@@ -15,6 +15,10 @@ Voting-SystemVB
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
+</member><member name="P:Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:Voting_SystemVB.My.Resources.Resources.candidate">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -83,6 +87,16 @@ Voting-SystemVB
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
+</member><member name="M:Voting_SystemVB.Student.CountAllAsync">
+	<summary>
+ Count the number of Voters Asynchronously
+ </summary>
+	<returns>Integer</returns>
+</member><member name="M:Voting_SystemVB.Student.CountAll">
+	<summary>
+ Count the number of Voters Asynchronously
+ </summary>
+	<returns>Integer</returns>
 </member>
 </members>
 </doc>

@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Voting-SystemVB.exe" size="1565696">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Voting-SystemVB.exe" size="1622016">
       <assemblyIdentity name="Voting-SystemVB" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ph0qNXzW9Re6pQnf3AhzX12L7EFjmSheZxCNCCHxCzg=</dsig:DigestValue>
+        <dsig:DigestValue>rAVe9wWIE2qASrCmGGl+xFAlIBUDtiYFRSRnt4Nm9RU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

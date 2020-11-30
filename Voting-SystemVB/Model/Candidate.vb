@@ -10,6 +10,7 @@ Public Class Candidate
     Private Shared ReadOnly QUERY_SELECT_ALL = "SELECT * FROM [CandidateQuery]"
     Private Shared ReadOnly QUERY_SELECT_BY_PARTY = "SELECT * FROM [CandidateQuery] WHERE [party_id]=?"
     Private Shared ReadOnly QUERY_SELECT_BY_POSITION = "SELECT * FROM [CandidateQuery] WHERE [position_id]=?"
+    Private Shared ReadOnly QUERY_COUNT_BY_POSITION = "SELECT COUNT(*) FROM Candidate WHERE [position_id]=?"
 
     Private Shared ReadOnly IMAGE_DEFAULT = "images\default\candidate.jpg"
 
@@ -62,10 +63,10 @@ Public Class Candidate
     End Property
     Public ReadOnly Property PartyImage As String
         Get
-            If IsNothing(_PartyImage) Then
+            If IsNothing(_PartyImage) OrElse _PartyImage.Length = 0 Then
                 Return ""
             End If
-            Return Util.GetFullPath(_PartyImage)
+            Return _PartyImage
         End Get
     End Property
     Public ReadOnly Property PartyID As Integer
@@ -155,7 +156,7 @@ Public Class Candidate
 
     Private ReadOnly Property Filename As String
         Get
-            Return "candidate-" & _ID
+            Return "candidate-" & _ID & ".jpg"
         End Get
     End Property
 
@@ -216,8 +217,8 @@ Public Class Candidate
         Dim Result As Boolean = False
 
         'Upload Image if there's is selected
-        If Not Image.Equals(IMAGE_DEFAULT) Then
-            ImagePath = Util.Upload(Election.ImageDirectory, Filename, Me.Image)
+        If Not IsNothing(_Image) Then
+            ImagePath = Util.Upload(Election.ImageDirectory, Filename, _Image)
         End If
 
         Await GetConnection().OpenAsync()
@@ -240,8 +241,8 @@ Public Class Candidate
         Dim Result As Boolean = False
 
         'Upload Image if there's is selected
-        If Not Image.Equals(IMAGE_DEFAULT) Then
-            ImagePath = Util.Upload(Election.ImageDirectory, Filename, Me.Image)
+        If Not IsNothing(_Image) Then
+            ImagePath = Util.Upload(Election.ImageDirectory, Filename, _Image)
         End If
 
         GetConnection().Open()
@@ -262,6 +263,30 @@ Public Class Candidate
     '
     '    SHARED FUNCTIONS
     '
+
+    'Count candidates in specific position
+    Public Shared Async Function CountAsync(PositionID As Integer) As Task(Of Integer)
+        Dim Res As Integer = 0
+        Await GetConnection().OpenAsync()
+        Using Cmd = New OleDbCommand(QUERY_COUNT_BY_POSITION, GetConnection())
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, PositionID, LENGTH_POSITION_ID))
+            Cmd.Prepare()
+            Res = DirectCast(Await Cmd.ExecuteScalarAsync(), Integer)
+        End Using
+        GetConnection().Close()
+        Return Res
+    End Function
+    Public Shared Function Count(PositionID As Integer) As Integer
+        Dim Res As Integer = 0
+        GetConnection().Open()
+        Using Cmd = New OleDbCommand(QUERY_COUNT_BY_POSITION, GetConnection())
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, PositionID, LENGTH_POSITION_ID))
+            Cmd.Prepare()
+            Res = DirectCast(Cmd.ExecuteScalar(), Integer)
+        End Using
+        GetConnection().Close()
+        Return Res
+    End Function
 
     'Find Specific Student by the given Student ID
     Public Shared Async Function FindByStudentIDAsync(StudentID As Integer) As Task(Of Candidate)

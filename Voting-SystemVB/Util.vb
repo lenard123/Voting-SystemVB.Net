@@ -10,6 +10,48 @@ Module Util
 
     Private FontAwesome As PrivateFontCollection
 
+    Private Const oneweek As Integer = 7 * 24 * 60 * 60
+    Private Const oneday As Integer = 24 * 60 * 60
+    Private Const onehour As Integer = 60 * 60
+    Private Const oneminute As Integer = 60
+
+    Function RemainingTimeToString(Remain As Integer) As String
+        Dim Res = ""
+        If Remain >= oneweek Then
+            Res &= (Remain \ oneweek) & "week"
+            If Remain >= oneweek * 2 Then Res &= "s"
+            Res &= " "
+            Remain = Remain Mod oneweek
+        End If
+
+        If Remain >= oneday Then
+            Res &= (Remain \ oneday) & "day"
+            If Remain >= oneday * 2 Then Res &= "s"
+            Res &= " "
+            Remain = Remain Mod oneday
+        End If
+
+        If Remain >= onehour Then
+            Res &= (Remain \ onehour) & "hour"
+            If Remain >= onehour * 2 Then Res &= "s"
+            Res &= " "
+            Remain = Remain Mod onehour
+        End If
+
+        If Remain >= oneminute Then
+            Res &= (Remain \ oneminute) & "minute"
+            If Remain > oneminute * 2 Then Res &= "s"
+            Res &= " "
+            Remain = Remain Mod oneminute
+        End If
+
+        If Remain >= 1 Then
+            Res &= Remain & "second"
+            If Remain >= 2 Then Res &= "s"
+        End If
+        Return Res
+    End Function
+
     'Returns a copy of image using the filename
     Public Function ConvertToImage(Filename As String) As Bitmap
         Dim ImagePath = ""

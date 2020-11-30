@@ -22,6 +22,7 @@ Partial Class AdminPanel
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdminPanel))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.indicator = New System.Windows.Forms.Panel()
@@ -32,8 +33,6 @@ Partial Class AdminPanel
         Me.ButtonVoter = New System.Windows.Forms.Button()
         Me.ButtonHome = New System.Windows.Forms.Button()
         Me.PanelHeader = New System.Windows.Forms.Panel()
-        Me.ButtonClose = New Voting_SystemVB.FontAwesome()
-        Me.ButtonMaximize = New Voting_SystemVB.FontAwesome()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -44,6 +43,11 @@ Partial Class AdminPanel
         Me.LabelFullname = New System.Windows.Forms.Label()
         Me.ChipElectionStatus = New Guna.UI2.WinForms.Guna2Chip()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.LabelCountdown = New System.Windows.Forms.Label()
+        Me.ElectionStartedLabel1 = New System.Windows.Forms.Label()
+        Me.CountDownTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.ButtonClose = New Voting_SystemVB.FontAwesome()
+        Me.ButtonMaximize = New Voting_SystemVB.FontAwesome()
         Me.Panel1.SuspendLayout()
         Me.PanelHeader.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -182,34 +186,6 @@ Partial Class AdminPanel
         Me.PanelHeader.Size = New System.Drawing.Size(913, 20)
         Me.PanelHeader.TabIndex = 1
         '
-        'ButtonClose
-        '
-        Me.ButtonClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonClose.AutoSize = True
-        Me.ButtonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonClose.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
-        Me.ButtonClose.HoverColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.ButtonClose.Location = New System.Drawing.Point(889, 2)
-        Me.ButtonClose.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonClose.Name = "ButtonClose"
-        Me.ButtonClose.Size = New System.Drawing.Size(21, 15)
-        Me.ButtonClose.TabIndex = 5
-        Me.ButtonClose.Text = "window-close"
-        '
-        'ButtonMaximize
-        '
-        Me.ButtonMaximize.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonMaximize.AutoSize = True
-        Me.ButtonMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonMaximize.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
-        Me.ButtonMaximize.HoverColor = System.Drawing.Color.Empty
-        Me.ButtonMaximize.Location = New System.Drawing.Point(868, 2)
-        Me.ButtonMaximize.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonMaximize.Name = "ButtonMaximize"
-        Me.ButtonMaximize.Size = New System.Drawing.Size(21, 15)
-        Me.ButtonMaximize.TabIndex = 5
-        Me.ButtonMaximize.Text = "window-maximize"
-        '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(81, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
@@ -317,14 +293,72 @@ Partial Class AdminPanel
         Me.Panel2.Controls.Add(Me.ChipElectionStatus)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Controls.Add(Me.Label2)
+        Me.Panel2.Controls.Add(Me.LabelCountdown)
         Me.Panel2.Controls.Add(Me.LabelFullname)
         Me.Panel2.Controls.Add(Me.Label3)
+        Me.Panel2.Controls.Add(Me.ElectionStartedLabel1)
         Me.Panel2.Controls.Add(Me.Label4)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(219, 20)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(913, 136)
         Me.Panel2.TabIndex = 5
+        '
+        'LabelCountdown
+        '
+        Me.LabelCountdown.AutoSize = True
+        Me.LabelCountdown.Font = New System.Drawing.Font("Century Gothic", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelCountdown.ForeColor = System.Drawing.Color.Black
+        Me.LabelCountdown.Location = New System.Drawing.Point(361, 100)
+        Me.LabelCountdown.Name = "LabelCountdown"
+        Me.LabelCountdown.Size = New System.Drawing.Size(0, 23)
+        Me.LabelCountdown.TabIndex = 1
+        Me.LabelCountdown.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'ElectionStartedLabel1
+        '
+        Me.ElectionStartedLabel1.AutoSize = True
+        Me.ElectionStartedLabel1.Font = New System.Drawing.Font("Century Gothic", 14.0!)
+        Me.ElectionStartedLabel1.ForeColor = System.Drawing.Color.Black
+        Me.ElectionStartedLabel1.Location = New System.Drawing.Point(182, 100)
+        Me.ElectionStartedLabel1.Name = "ElectionStartedLabel1"
+        Me.ElectionStartedLabel1.Size = New System.Drawing.Size(173, 22)
+        Me.ElectionStartedLabel1.TabIndex = 1
+        Me.ElectionStartedLabel1.Text = "Election will end in"
+        Me.ElectionStartedLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ElectionStartedLabel1.Visible = False
+        '
+        'CountDownTimer
+        '
+        Me.CountDownTimer.Interval = 1000
+        '
+        'ButtonClose
+        '
+        Me.ButtonClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonClose.AutoSize = True
+        Me.ButtonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonClose.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
+        Me.ButtonClose.HoverColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.ButtonClose.Location = New System.Drawing.Point(889, 2)
+        Me.ButtonClose.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonClose.Name = "ButtonClose"
+        Me.ButtonClose.Size = New System.Drawing.Size(21, 15)
+        Me.ButtonClose.TabIndex = 5
+        Me.ButtonClose.Text = "window-close"
+        '
+        'ButtonMaximize
+        '
+        Me.ButtonMaximize.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonMaximize.AutoSize = True
+        Me.ButtonMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonMaximize.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
+        Me.ButtonMaximize.HoverColor = System.Drawing.Color.Empty
+        Me.ButtonMaximize.Location = New System.Drawing.Point(868, 2)
+        Me.ButtonMaximize.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonMaximize.Name = "ButtonMaximize"
+        Me.ButtonMaximize.Size = New System.Drawing.Size(21, 15)
+        Me.ButtonMaximize.TabIndex = 5
+        Me.ButtonMaximize.Text = "window-maximize"
         '
         'AdminPanel
         '
@@ -368,5 +402,8 @@ Partial Class AdminPanel
     Friend WithEvents ButtonClose As Voting_SystemVB.FontAwesome
     Friend WithEvents ButtonMaximize As Voting_SystemVB.FontAwesome
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents CountDownTimer As System.Windows.Forms.Timer
+    Friend WithEvents LabelCountdown As System.Windows.Forms.Label
+    Friend WithEvents ElectionStartedLabel1 As System.Windows.Forms.Label
 
 End Class

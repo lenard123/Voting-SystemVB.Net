@@ -9,6 +9,7 @@ Public Class Student
 
     Private Shared ReadOnly QUERY_SELECT_BY_ID = "SELECT * FROM [Student] WHERE [ID]=?"
     Private Shared ReadOnly QUERY_SELECT_BY_STUDENT_ID = "SELECT * FROM [Student] WHERE [student_id]=?"
+    Private Shared ReadOnly QUERY_COUNT_ALL = "SELECT COUNT(*) From Student"
 
     Private Shared ReadOnly LENGTH_ID As Integer = 10
     Private Shared ReadOnly LENGTH_STUDENT_ID As Integer = 10
@@ -207,6 +208,39 @@ Public Class Student
     End Function
 
 
+    '
+    ' SHARED FUNCTIONS
+    '
+
+
+    ''' <summary>
+    ''' Count the number of Voters Asynchronously
+    ''' </summary>
+    ''' <returns>Integer</returns>
+    Public Shared Async Function CountAllAsync() As Task(Of Integer)
+        Dim Result As Integer = 0
+        Await GetConnection().OpenAsync()
+        Using Cmd = New OleDbCommand(QUERY_COUNT_ALL, GetConnection())
+            Result = Integer.Parse(Await Cmd.ExecuteScalarAsync())
+        End Using
+        GetConnection().Close()
+        Return Result
+    End Function
+
+    ''' <summary>
+    ''' Count the number of Voters Asynchronously
+    ''' </summary>
+    ''' <returns>Integer</returns>
+    Public Shared Function CountAll() As Integer
+        Dim Result As Integer = 0
+        GetConnection().Open()
+        Using Cmd = New OleDbCommand(QUERY_COUNT_ALL, GetConnection())
+            Result = Integer.Parse(Cmd.ExecuteScalar())
+        End Using
+        GetConnection().Close()
+        Return Result
+    End Function
+
     Public Function Update() As Boolean
         If Election.HasNotStarted Then
             Dim Query = "UPDATE [Student] SET [firstname]=?, [lastname]=?, [course]=?, [year_level]=?, [section]=?, [password]=? WHERE [ID]=?"
@@ -277,15 +311,6 @@ Public Class Student
                 End If
             End Using
         End Using
-        GetConnection().Close()
-        Return Result
-    End Function
-
-    Public Shared Function CountAll() As Integer
-        Dim Result As Integer = 0
-        GetConnection().Open()
-        Dim cmd = New OleDbCommand("SELECT Count(*) From Student", GetConnection())
-        Result = Integer.Parse(cmd.ExecuteScalar())
         GetConnection().Close()
         Return Result
     End Function
