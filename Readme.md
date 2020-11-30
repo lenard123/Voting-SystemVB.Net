@@ -17,10 +17,10 @@
 - Update Party
 - Add Party
 - Start Election
+- View Vote Count
 
 ### Unfinish
 - Admin Home
-- View Vote Count
 - View Previous Election
 - Update Account
 - Add Admin
