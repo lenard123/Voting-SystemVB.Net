@@ -35,11 +35,11 @@
     Private Sub LoadControl(content As Control)
         DisposeChild()
         content.Dock = DockStyle.Fill
-        MainContent.Controls.Add(content)
+        TotalCandidates.Controls.Add(content)
     End Sub
 
     Private Sub DisposeChild()
-        MainContent.Controls.Clear()
+        TotalCandidates.Controls.Clear()
     End Sub
 
     Private Sub HomeControl()
@@ -158,4 +158,23 @@
         Main.Instance.WindowState = FormWindowState.Maximized
     End Sub
 
+    Private Sub TotalVoters_TextChanged(sender As Object, e As EventArgs) Handles TotalVoters.TextChanged
+
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles ViewTotalParties.Click
+
+    End Sub
+
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles President.Click
+
+    End Sub
+
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Secretary.Click
+
+    End Sub
 End Class

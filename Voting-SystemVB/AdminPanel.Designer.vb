@@ -38,17 +38,29 @@ Partial Class AdminPanel
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.MainContent = New System.Windows.Forms.Panel()
+        Me.TotalCandidates = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.LabelFullname = New System.Windows.Forms.Label()
         Me.ChipElectionStatus = New Guna.UI2.WinForms.Guna2Chip()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.TotalVoters = New System.Windows.Forms.TextBox()
+        Me.Remaining = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ViewTotalCandidates = New System.Windows.Forms.Button()
+        Me.ViewTotalParties = New System.Windows.Forms.Button()
+        Me.President = New System.Windows.Forms.Label()
+        Me.VicePresident = New System.Windows.Forms.Label()
+        Me.Secretary = New System.Windows.Forms.Label()
+        Me.Treasurer = New System.Windows.Forms.Label()
+        Me.Auditor = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.PanelHeader.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TotalCandidates.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -187,12 +199,12 @@ Partial Class AdminPanel
         Me.ButtonClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonClose.AutoSize = True
         Me.ButtonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonClose.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
+        Me.ButtonClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.ButtonClose.HoverColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.ButtonClose.Location = New System.Drawing.Point(889, 2)
         Me.ButtonClose.Margin = New System.Windows.Forms.Padding(0)
         Me.ButtonClose.Name = "ButtonClose"
-        Me.ButtonClose.Size = New System.Drawing.Size(21, 15)
+        Me.ButtonClose.Size = New System.Drawing.Size(91, 17)
         Me.ButtonClose.TabIndex = 5
         Me.ButtonClose.Text = "window-close"
         '
@@ -201,12 +213,12 @@ Partial Class AdminPanel
         Me.ButtonMaximize.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonMaximize.AutoSize = True
         Me.ButtonMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonMaximize.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
+        Me.ButtonMaximize.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.ButtonMaximize.HoverColor = System.Drawing.Color.Empty
         Me.ButtonMaximize.Location = New System.Drawing.Point(868, 2)
         Me.ButtonMaximize.Margin = New System.Windows.Forms.Padding(0)
         Me.ButtonMaximize.Name = "ButtonMaximize"
-        Me.ButtonMaximize.Size = New System.Drawing.Size(21, 15)
+        Me.ButtonMaximize.Size = New System.Drawing.Size(115, 17)
         Me.ButtonMaximize.TabIndex = 5
         Me.ButtonMaximize.Text = "window-maximize"
         '
@@ -254,13 +266,18 @@ Partial Class AdminPanel
         Me.Label2.Text = "Supreme Student Council Election-System"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'MainContent
+        'TotalCandidates
         '
-        Me.MainContent.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MainContent.Location = New System.Drawing.Point(219, 156)
-        Me.MainContent.Name = "MainContent"
-        Me.MainContent.Size = New System.Drawing.Size(913, 481)
-        Me.MainContent.TabIndex = 3
+        Me.TotalCandidates.Controls.Add(Me.ViewTotalParties)
+        Me.TotalCandidates.Controls.Add(Me.ViewTotalCandidates)
+        Me.TotalCandidates.Controls.Add(Me.GroupBox1)
+        Me.TotalCandidates.Controls.Add(Me.Remaining)
+        Me.TotalCandidates.Controls.Add(Me.TotalVoters)
+        Me.TotalCandidates.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TotalCandidates.Location = New System.Drawing.Point(219, 156)
+        Me.TotalCandidates.Name = "TotalCandidates"
+        Me.TotalCandidates.Size = New System.Drawing.Size(913, 481)
+        Me.TotalCandidates.TabIndex = 3
         '
         'Label3
         '
@@ -326,11 +343,111 @@ Partial Class AdminPanel
         Me.Panel2.Size = New System.Drawing.Size(913, 136)
         Me.Panel2.TabIndex = 5
         '
+        'TotalVoters
+        '
+        Me.TotalVoters.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TotalVoters.Location = New System.Drawing.Point(377, 435)
+        Me.TotalVoters.Name = "TotalVoters"
+        Me.TotalVoters.Size = New System.Drawing.Size(204, 23)
+        Me.TotalVoters.TabIndex = 0
+        Me.TotalVoters.Text = "Total Voters: 200"
+        Me.TotalVoters.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Remaining
+        '
+        Me.Remaining.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Remaining.Location = New System.Drawing.Point(607, 435)
+        Me.Remaining.Name = "Remaining"
+        Me.Remaining.Size = New System.Drawing.Size(204, 23)
+        Me.Remaining.TabIndex = 1
+        Me.Remaining.Text = "Remaining Votes: 78"
+        Me.Remaining.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.Auditor)
+        Me.GroupBox1.Controls.Add(Me.Treasurer)
+        Me.GroupBox1.Controls.Add(Me.Secretary)
+        Me.GroupBox1.Controls.Add(Me.VicePresident)
+        Me.GroupBox1.Controls.Add(Me.President)
+        Me.GroupBox1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(186, 41)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(625, 366)
+        Me.GroupBox1.TabIndex = 2
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Total Candidates"
+        '
+        'ViewTotalCandidates
+        '
+        Me.ViewTotalCandidates.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ViewTotalCandidates.Location = New System.Drawing.Point(58, 138)
+        Me.ViewTotalCandidates.Name = "ViewTotalCandidates"
+        Me.ViewTotalCandidates.Size = New System.Drawing.Size(102, 48)
+        Me.ViewTotalCandidates.TabIndex = 3
+        Me.ViewTotalCandidates.Text = "View Total Candidates"
+        Me.ViewTotalCandidates.UseVisualStyleBackColor = True
+        '
+        'ViewTotalParties
+        '
+        Me.ViewTotalParties.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ViewTotalParties.Location = New System.Drawing.Point(58, 274)
+        Me.ViewTotalParties.Name = "ViewTotalParties"
+        Me.ViewTotalParties.Size = New System.Drawing.Size(102, 49)
+        Me.ViewTotalParties.TabIndex = 4
+        Me.ViewTotalParties.Text = "ViewTotal Parties"
+        Me.ViewTotalParties.UseVisualStyleBackColor = True
+        '
+        'President
+        '
+        Me.President.AutoSize = True
+        Me.President.Location = New System.Drawing.Point(55, 73)
+        Me.President.Name = "President"
+        Me.President.Size = New System.Drawing.Size(107, 21)
+        Me.President.TabIndex = 0
+        Me.President.Text = "President: 12"
+        '
+        'VicePresident
+        '
+        Me.VicePresident.AutoSize = True
+        Me.VicePresident.Location = New System.Drawing.Point(55, 124)
+        Me.VicePresident.Name = "VicePresident"
+        Me.VicePresident.Size = New System.Drawing.Size(145, 21)
+        Me.VicePresident.TabIndex = 1
+        Me.VicePresident.Text = "Vice President: 12"
+        '
+        'Secretary
+        '
+        Me.Secretary.AutoSize = True
+        Me.Secretary.Location = New System.Drawing.Point(55, 178)
+        Me.Secretary.Name = "Secretary"
+        Me.Secretary.Size = New System.Drawing.Size(101, 21)
+        Me.Secretary.TabIndex = 2
+        Me.Secretary.Text = "Secretary: 8"
+        '
+        'Treasurer
+        '
+        Me.Treasurer.AutoSize = True
+        Me.Treasurer.Location = New System.Drawing.Point(55, 233)
+        Me.Treasurer.Name = "Treasurer"
+        Me.Treasurer.Size = New System.Drawing.Size(97, 21)
+        Me.Treasurer.TabIndex = 3
+        Me.Treasurer.Text = "Treasurer: 9"
+        '
+        'Auditor
+        '
+        Me.Auditor.AutoSize = True
+        Me.Auditor.Location = New System.Drawing.Point(55, 290)
+        Me.Auditor.Name = "Auditor"
+        Me.Auditor.Size = New System.Drawing.Size(86, 21)
+        Me.Auditor.TabIndex = 4
+        Me.Auditor.Text = "Auditor: 7"
+        '
         'AdminPanel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.MainContent)
+        Me.Controls.Add(Me.TotalCandidates)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.PanelHeader)
         Me.Controls.Add(Me.Panel1)
@@ -342,8 +459,12 @@ Partial Class AdminPanel
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TotalCandidates.ResumeLayout(False)
+        Me.TotalCandidates.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -360,7 +481,7 @@ Partial Class AdminPanel
     Friend WithEvents ButtonAdmin As System.Windows.Forms.Button
     Friend WithEvents ButtonLogout As System.Windows.Forms.Button
     Friend WithEvents indicator As System.Windows.Forms.Panel
-    Friend WithEvents MainContent As System.Windows.Forms.Panel
+    Friend WithEvents TotalCandidates As System.Windows.Forms.Panel
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents LabelFullname As System.Windows.Forms.Label
@@ -368,5 +489,15 @@ Partial Class AdminPanel
     Friend WithEvents ButtonClose As Voting_SystemVB.FontAwesome
     Friend WithEvents ButtonMaximize As Voting_SystemVB.FontAwesome
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents Remaining As System.Windows.Forms.TextBox
+    Friend WithEvents TotalVoters As System.Windows.Forms.TextBox
+    Friend WithEvents ViewTotalCandidates As System.Windows.Forms.Button
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents ViewTotalParties As System.Windows.Forms.Button
+    Friend WithEvents President As System.Windows.Forms.Label
+    Friend WithEvents Treasurer As System.Windows.Forms.Label
+    Friend WithEvents Secretary As System.Windows.Forms.Label
+    Friend WithEvents VicePresident As System.Windows.Forms.Label
+    Friend WithEvents Auditor As System.Windows.Forms.Label
 
 End Class
