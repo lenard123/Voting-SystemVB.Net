@@ -26,14 +26,15 @@
     End Sub
 
     Private Async Function LoadCandidates() As Task
-        Dim Tasks = New List(Of Task(Of List(Of Candidate)))
-        Tasks.Add(Candidate.GetAllByPositionAsync(Position.PRESIDENT_ID))
-        Tasks.Add(Candidate.GetAllByPositionAsync(Position.VICE_PRESIDENT_ID))
-        Tasks.Add(Candidate.GetAllByPositionAsync(Position.SECRETARY_ID))
-        Tasks.Add(Candidate.GetAllByPositionAsync(Position.TREASURER_ID))
-        Tasks.Add(Candidate.GetAllByPositionAsync(Position.AUDITOR_ID))
-        Tasks.Add(Candidate.GetAllByPositionAsync(Position.PRO_ID))
-        Dim Result = Await Task.WhenAll(Tasks)
+        Dim Result As New List(Of List(Of Candidate))
+
+        Result.Add(Await Candidate.GetAllByPositionAsync(Position.PRESIDENT_ID))
+        Result.Add(Await Candidate.GetAllByPositionAsync(Position.VICE_PRESIDENT_ID))
+        Result.Add(Await Candidate.GetAllByPositionAsync(Position.SECRETARY_ID))
+        Result.Add(Await Candidate.GetAllByPositionAsync(Position.TREASURER_ID))
+        Result.Add(Await Candidate.GetAllByPositionAsync(Position.AUDITOR_ID))
+        Result.Add(Await Candidate.GetAllByPositionAsync(Position.PRO_ID))
+
         Dim Names() As String = {"President", "Vice President", "Secretary", "Treasurer", "Auditor", "P.R.O."}
         For I As Integer = 0 To 5
             FlowLayoutPanel1.Controls.Add(New CandidatesList(Result(I), Names(I), CandidatesList.CandidateType.Text))
