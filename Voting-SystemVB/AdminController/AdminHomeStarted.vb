@@ -154,4 +154,10 @@ Public Class AdminHomeStarted
             ResultPanel.SendToBack()
         End If
     End Sub
+
+    Private Sub GotoVoters(sender As Object, e As EventArgs) Handles Guna2ImageButton1.Click, Guna2ImageButton3.Click, Guna2ImageButton2.Click
+        AdminPanel.GetInstance().ButtonVoter.PerformClick()
+        ManageVoters.GetInstance().TextSearch.Text = DirectCast(sender, Control).Tag
+        ManageVoters.GetInstance().ButtonSearch.PerformClick()
+    End Sub
 End Class

@@ -22,14 +22,13 @@ Partial Class AdminHomeStarted
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Guna2ImageButton1 = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2ShadowPanel1 = New Guna.UI2.WinForms.Guna2ShadowPanel()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -38,7 +37,6 @@ Partial Class AdminHomeStarted
         Me.Label4 = New System.Windows.Forms.Label()
         Me.LabelDoneVoters = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Guna2ImageButton2 = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ButtonPRO = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonAuditor = New Guna.UI2.WinForms.Guna2Button()
@@ -51,19 +49,21 @@ Partial Class AdminHomeStarted
         Me.Label7 = New System.Windows.Forms.Label()
         Me.LabelRemainingVoters = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Guna2ImageButton3 = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.ResultPanel = New System.Windows.Forms.Panel()
         Me.ChartVoteCount = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.ResultText = New System.Windows.Forms.FlowLayoutPanel()
         Me.Guna2Separator1 = New Guna.UI2.WinForms.Guna2Separator()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.ButtonRefresh = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.DisplayPieChart = New Guna.UI2.WinForms.Guna2ToggleSwitch()
         Me.LabelLastUpdate = New Guna.UI2.WinForms.Guna2Chip()
-        Me.ResultText = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Guna2ImageButton3 = New Guna.UI2.WinForms.Guna2ImageButton()
+        Me.Guna2ImageButton2 = New Guna.UI2.WinForms.Guna2ImageButton()
+        Me.Guna2ImageButton1 = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.FontAwesome3 = New Voting_SystemVB.FontAwesome()
         Me.FontAwesome2 = New Voting_SystemVB.FontAwesome()
         Me.FontAwesome1 = New Voting_SystemVB.FontAwesome()
@@ -75,10 +75,10 @@ Partial Class AdminHomeStarted
         Me.Guna2ShadowPanel3.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        Me.Panel6.SuspendLayout()
         Me.ResultPanel.SuspendLayout()
         CType(Me.ChartVoteCount, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel5.SuspendLayout()
-        Me.Panel6.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -92,19 +92,6 @@ Partial Class AdminHomeStarted
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(269, 32)
         Me.Panel1.TabIndex = 0
-        '
-        'Guna2ImageButton1
-        '
-        Me.Guna2ImageButton1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ImageButton1.CheckedState.Parent = Me.Guna2ImageButton1
-        Me.Guna2ImageButton1.HoverState.Parent = Me.Guna2ImageButton1
-        Me.Guna2ImageButton1.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
-        Me.Guna2ImageButton1.ImageSize = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton1.Location = New System.Drawing.Point(152, 9)
-        Me.Guna2ImageButton1.Name = "Guna2ImageButton1"
-        Me.Guna2ImageButton1.PressedState.Parent = Me.Guna2ImageButton1
-        Me.Guna2ImageButton1.Size = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton1.TabIndex = 2
         '
         'Label1
         '
@@ -201,19 +188,6 @@ Partial Class AdminHomeStarted
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(269, 32)
         Me.Panel2.TabIndex = 0
-        '
-        'Guna2ImageButton2
-        '
-        Me.Guna2ImageButton2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ImageButton2.CheckedState.Parent = Me.Guna2ImageButton2
-        Me.Guna2ImageButton2.HoverState.Parent = Me.Guna2ImageButton2
-        Me.Guna2ImageButton2.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
-        Me.Guna2ImageButton2.ImageSize = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton2.Location = New System.Drawing.Point(152, 9)
-        Me.Guna2ImageButton2.Name = "Guna2ImageButton2"
-        Me.Guna2ImageButton2.PressedState.Parent = Me.Guna2ImageButton2
-        Me.Guna2ImageButton2.Size = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton2.TabIndex = 2
         '
         'Label6
         '
@@ -392,19 +366,6 @@ Partial Class AdminHomeStarted
         Me.Panel3.Size = New System.Drawing.Size(269, 32)
         Me.Panel3.TabIndex = 0
         '
-        'Guna2ImageButton3
-        '
-        Me.Guna2ImageButton3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ImageButton3.CheckedState.Parent = Me.Guna2ImageButton3
-        Me.Guna2ImageButton3.HoverState.Parent = Me.Guna2ImageButton3
-        Me.Guna2ImageButton3.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
-        Me.Guna2ImageButton3.ImageSize = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton3.Location = New System.Drawing.Point(152, 9)
-        Me.Guna2ImageButton3.Name = "Guna2ImageButton3"
-        Me.Guna2ImageButton3.PressedState.Parent = Me.Guna2ImageButton3
-        Me.Guna2ImageButton3.Size = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton3.TabIndex = 2
-        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -432,6 +393,16 @@ Partial Class AdminHomeStarted
         Me.Panel4.Size = New System.Drawing.Size(558, 399)
         Me.Panel4.TabIndex = 7
         '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.ResultPanel)
+        Me.Panel6.Controls.Add(Me.ResultText)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel6.Location = New System.Drawing.Point(0, 64)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(558, 335)
+        Me.Panel6.TabIndex = 0
+        '
         'ResultPanel
         '
         Me.ResultPanel.AutoScroll = True
@@ -444,30 +415,40 @@ Partial Class AdminHomeStarted
         '
         'ChartVoteCount
         '
-        ChartArea1.Name = "ChartAreaDonut"
-        ChartArea2.Name = "ChartAreaBar"
-        Me.ChartVoteCount.ChartAreas.Add(ChartArea1)
-        Me.ChartVoteCount.ChartAreas.Add(ChartArea2)
+        ChartArea3.Name = "ChartAreaDonut"
+        ChartArea4.Name = "ChartAreaBar"
+        Me.ChartVoteCount.ChartAreas.Add(ChartArea3)
+        Me.ChartVoteCount.ChartAreas.Add(ChartArea4)
         Me.ChartVoteCount.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend1.Name = "Legend1"
-        Legend2.Enabled = False
-        Legend2.Name = "Legend2"
-        Me.ChartVoteCount.Legends.Add(Legend1)
-        Me.ChartVoteCount.Legends.Add(Legend2)
+        Legend3.Name = "Legend1"
+        Legend4.Enabled = False
+        Legend4.Name = "Legend2"
+        Me.ChartVoteCount.Legends.Add(Legend3)
+        Me.ChartVoteCount.Legends.Add(Legend4)
         Me.ChartVoteCount.Location = New System.Drawing.Point(0, 0)
         Me.ChartVoteCount.Name = "ChartVoteCount"
-        Series1.ChartArea = "ChartAreaDonut"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Series2.ChartArea = "ChartAreaBar"
-        Series2.Legend = "Legend2"
-        Series2.Name = "Series2"
-        Me.ChartVoteCount.Series.Add(Series1)
-        Me.ChartVoteCount.Series.Add(Series2)
+        Series3.ChartArea = "ChartAreaDonut"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut
+        Series3.Legend = "Legend1"
+        Series3.Name = "Series1"
+        Series4.ChartArea = "ChartAreaBar"
+        Series4.Legend = "Legend2"
+        Series4.Name = "Series2"
+        Me.ChartVoteCount.Series.Add(Series3)
+        Me.ChartVoteCount.Series.Add(Series4)
         Me.ChartVoteCount.Size = New System.Drawing.Size(558, 335)
         Me.ChartVoteCount.TabIndex = 0
         Me.ChartVoteCount.Text = "Chart1"
+        '
+        'ResultText
+        '
+        Me.ResultText.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ResultText.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
+        Me.ResultText.Location = New System.Drawing.Point(0, 0)
+        Me.ResultText.Name = "ResultText"
+        Me.ResultText.Padding = New System.Windows.Forms.Padding(20)
+        Me.ResultText.Size = New System.Drawing.Size(558, 335)
+        Me.ResultText.TabIndex = 1
         '
         'Guna2Separator1
         '
@@ -546,25 +527,47 @@ Partial Class AdminHomeStarted
         Me.LabelLastUpdate.Text = "Result As of: November 11, 2020 7:16 am"
         Me.LabelLastUpdate.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         '
-        'ResultText
+        'Guna2ImageButton3
         '
-        Me.ResultText.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ResultText.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.ResultText.Location = New System.Drawing.Point(0, 0)
-        Me.ResultText.Name = "ResultText"
-        Me.ResultText.Padding = New System.Windows.Forms.Padding(20)
-        Me.ResultText.Size = New System.Drawing.Size(558, 335)
-        Me.ResultText.TabIndex = 1
+        Me.Guna2ImageButton3.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ImageButton3.CheckedState.Parent = Me.Guna2ImageButton3
+        Me.Guna2ImageButton3.HoverState.Parent = Me.Guna2ImageButton3
+        Me.Guna2ImageButton3.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
+        Me.Guna2ImageButton3.ImageSize = New System.Drawing.Size(15, 15)
+        Me.Guna2ImageButton3.Location = New System.Drawing.Point(152, 9)
+        Me.Guna2ImageButton3.Name = "Guna2ImageButton3"
+        Me.Guna2ImageButton3.PressedState.Parent = Me.Guna2ImageButton3
+        Me.Guna2ImageButton3.Size = New System.Drawing.Size(15, 15)
+        Me.Guna2ImageButton3.TabIndex = 2
+        Me.Guna2ImageButton3.Tag = "remaining voters"
         '
-        'Panel6
+        'Guna2ImageButton2
         '
-        Me.Panel6.Controls.Add(Me.ResultPanel)
-        Me.Panel6.Controls.Add(Me.ResultText)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel6.Location = New System.Drawing.Point(0, 64)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(558, 335)
-        Me.Panel6.TabIndex = 0
+        Me.Guna2ImageButton2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ImageButton2.CheckedState.Parent = Me.Guna2ImageButton2
+        Me.Guna2ImageButton2.HoverState.Parent = Me.Guna2ImageButton2
+        Me.Guna2ImageButton2.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
+        Me.Guna2ImageButton2.ImageSize = New System.Drawing.Size(15, 15)
+        Me.Guna2ImageButton2.Location = New System.Drawing.Point(152, 9)
+        Me.Guna2ImageButton2.Name = "Guna2ImageButton2"
+        Me.Guna2ImageButton2.PressedState.Parent = Me.Guna2ImageButton2
+        Me.Guna2ImageButton2.Size = New System.Drawing.Size(15, 15)
+        Me.Guna2ImageButton2.TabIndex = 2
+        Me.Guna2ImageButton2.Tag = "done voters"
+        '
+        'Guna2ImageButton1
+        '
+        Me.Guna2ImageButton1.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ImageButton1.CheckedState.Parent = Me.Guna2ImageButton1
+        Me.Guna2ImageButton1.HoverState.Parent = Me.Guna2ImageButton1
+        Me.Guna2ImageButton1.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
+        Me.Guna2ImageButton1.ImageSize = New System.Drawing.Size(15, 15)
+        Me.Guna2ImageButton1.Location = New System.Drawing.Point(152, 9)
+        Me.Guna2ImageButton1.Name = "Guna2ImageButton1"
+        Me.Guna2ImageButton1.PressedState.Parent = Me.Guna2ImageButton1
+        Me.Guna2ImageButton1.Size = New System.Drawing.Size(15, 15)
+        Me.Guna2ImageButton1.TabIndex = 2
+        Me.Guna2ImageButton1.Tag = ""
         '
         'FontAwesome3
         '
@@ -630,11 +633,11 @@ Partial Class AdminHomeStarted
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.Panel4.ResumeLayout(False)
+        Me.Panel6.ResumeLayout(False)
         Me.ResultPanel.ResumeLayout(False)
         CType(Me.ChartVoteCount, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
-        Me.Panel6.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
