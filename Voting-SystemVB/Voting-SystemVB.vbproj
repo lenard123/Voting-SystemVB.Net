@@ -257,6 +257,7 @@
     <Compile Include="Components\MaterialTextbox.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="MainControl.vb" />
     <Compile Include="Modal\Test.Designer.vb">
       <DependentUpon>Test.vb</DependentUpon>
     </Compile>
@@ -327,6 +328,12 @@
       <DependentUpon>VoterLogin.vb</DependentUpon>
     </Compile>
     <Compile Include="VoterLogin.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VotersPanel.Designer.vb">
+      <DependentUpon>VotersPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VotersPanel.vb">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
@@ -426,6 +433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VoterLogin.resx">
       <DependentUpon>VoterLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VotersPanel.resx">
+      <DependentUpon>VotersPanel.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -530,6 +540,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\error.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo %28Tentative%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -32,6 +32,8 @@ Public Class Student
     Private Shared ReadOnly INDEX_PASSWORD As Integer = 7
     Private Shared ReadOnly INDEX_HAS_VOTED As Integer = 8
 
+    Private Shared CurrentUser As Student
+
     Private _Id As Integer
     Private _StudentId, _Fullname, _Firstname, _Lastname, _Course, _Section, _YearLevel, _Password As String
     Private _HasVoted As Boolean
@@ -108,7 +110,6 @@ Public Class Student
     End Property
 
     Public Sub New()
-
     End Sub
     Public Sub New(Id As Integer, Password As String)
         Me._Id = Id
@@ -221,6 +222,14 @@ Public Class Student
     '
     ' SHARED FUNCTIONS
     '
+
+    Public Shared Sub SetCurrentUser(user As Student)
+        CurrentUser = user
+    End Sub
+
+    Public Shared Function GetCurrentUser() As Student
+        Return CurrentUser
+    End Function
 
 
     ''' <summary>

@@ -29,16 +29,21 @@
 
     Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
         If ValidateForm() Then
-            Dim Result = Student.Find(TextStudentId.Text)
-            If IsNothing(Result) Then
-                ValidationError.Alert("Student ID doesn't exists in the database", "Login Failed")
-                'MessageBox.Show("Student ID doesn't exists in the database")
+            If Election.GetCurrentElectionF().Status = Election.HasNotStarted Then
+                ValidationError.Alert("Election has not started yet", "Unable to Login")
             Else
-                If Not (Result.ComparePassword(TextPin.Text)) Then
-                    ValidationError.Alert("Wrong Password", "Login Failed")
-                    MessageBox.Show("Wrong Password")
+                Dim Result = Student.Find(TextStudentId.Text)
+                If IsNothing(Result) Then
+                    ValidationError.Alert("Student ID doesn't exists in the database", "Login Failed")
+                    'MessageBox.Show("Student ID doesn't exists in the database")
                 Else
-                    MessageBox.Show("Login Successfully")
+                    If Not (Result.ComparePassword(TextPin.Text)) Then
+                        ValidationError.Alert("Wrong Password", "Login Failed")
+                    Else
+                        Alert.ShowAlert("Login Successfully", Alert.AlertType.Success)
+                        Student.SetCurrentUser(Result)
+                        Main.LoadControl(VotersPanel.GetInstance())
+                    End If
                 End If
             End If
         End If
@@ -90,5 +95,9 @@
 
     Private Sub TextPin_Leave(sender As Object, e As EventArgs) Handles TextPin.Leave
         PanelPasswordStatus.BackColor = Color.Transparent
+    End Sub
+
+    Private Sub VoterLogin_Paint(sender As Object, e As EventArgs) Handles MyBase.Paint
+        TextPin.Clear()
     End Sub
 End Class
