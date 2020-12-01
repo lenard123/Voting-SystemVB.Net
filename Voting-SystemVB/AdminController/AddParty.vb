@@ -2,6 +2,8 @@
 
 Public Class AddParty
 
+    Implements MainControl
+
     Dim AllCandidates As List(Of Candidate)
     Dim IsValid As Boolean = False
     Private Shared Instance As AddParty
@@ -104,7 +106,7 @@ Public Class AddParty
         PictureBox1.ImageLocation = ""
     End Sub
 
-    Private Sub AddParty_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
+    Private Sub AddParty_Refresh() Implements MainControl.RefreshControl
         AllCandidates = Candidate.GetAll()
         PopulateCombobox(CBPresident, Position.PRESIDENT_ID)
         PopulateCombobox(CBVicePresident, Position.VICE_PRESIDENT_ID)

@@ -22,7 +22,6 @@ Public Class AdminHomeStarted
     End Function
 
     Private Async Sub AdminHomeStarted_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         'Fetch Voter Counts
         AllVoters = Await Student.CountAllAsync()
         LabelVotersCount.Text = AllVoters

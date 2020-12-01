@@ -2,6 +2,8 @@
 
 Public Class ManageCandidate
 
+    Implements MainControl
+
     Dim PreviousButton As Guna2Button
     Dim SelectedPosition As Integer
     Private Shared Instance As ManageCandidate
@@ -63,7 +65,7 @@ Public Class ManageCandidate
         ac.ShowPopup()
     End Sub
 
-    Private Async Sub ManageCandidate_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
+    Private Async Sub ManageCandidate_Refresh() Implements MainControl.RefreshControl
         PreviousButton = ButtonPresident
         If Not Election.HasNotStarted Then ButtonRegister.Visible = False
         Await LoadPosition(Position.PRESIDENT_ID)

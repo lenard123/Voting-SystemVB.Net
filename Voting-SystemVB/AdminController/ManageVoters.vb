@@ -1,7 +1,8 @@
-﻿
-Imports Guna.UI2.WinForms
+﻿Imports Guna.UI2.WinForms
 
 Public Class ManageVoters
+
+    Implements MainControl
 
     Private ResultSet As New List(Of Student)
     Private Filter = "All"
@@ -43,7 +44,7 @@ Public Class ManageVoters
         Return True
     End Function
 
-    Private Async Sub ManageVoters_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
+    Private Async Sub ManageVoters_Refresh() Implements MainControl.RefreshControl
         If Not Election.HasNotStarted Then
             ButtonAddVoter.Visible = False
         End If

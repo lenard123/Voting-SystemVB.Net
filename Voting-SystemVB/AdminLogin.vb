@@ -1,5 +1,7 @@
 ﻿Public Class AdminLogin
 
+    Implements MainControl
+
     'Have 1 Global Instance for Whole Application
     Private Shared Instance As AdminLogin
 
@@ -44,7 +46,6 @@
                 If Not Result.ComparePassword(TextPassword.Text) Then
                     Alert.ShowAlert("Wrong username or password", Alert.AlertType.Error)
                 Else
-                    TextPassword.Clear()
                     Alert.ShowAlert("Login Successfully", Alert.AlertType.Success)
                     Main.LoadControl(AdminPanel.GetInstance().SetUser(Result))
                 End If
@@ -92,4 +93,10 @@
     Private Sub TextPassword_Leave(sender As Object, e As EventArgs) Handles TextPassword.Leave
         PanelPasswordStatus.BackColor = Color.Transparent
     End Sub
+
+    Public Sub RefreshControl() Implements MainControl.RefreshControl
+        TextPassword.Clear()
+        Main.RestoreWindowState()
+    End Sub
+
 End Class

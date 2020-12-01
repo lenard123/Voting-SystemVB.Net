@@ -33,6 +33,8 @@ Partial Class AdminPanel
         Me.ButtonVoter = New System.Windows.Forms.Button()
         Me.ButtonHome = New System.Windows.Forms.Button()
         Me.PanelHeader = New System.Windows.Forms.Panel()
+        Me.ButtonClose = New Voting_SystemVB.FontAwesome()
+        Me.ButtonMaximize = New Voting_SystemVB.FontAwesome()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -46,8 +48,6 @@ Partial Class AdminPanel
         Me.LabelCountdown = New System.Windows.Forms.Label()
         Me.ElectionStartedLabel1 = New System.Windows.Forms.Label()
         Me.CountDownTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.ButtonClose = New Voting_SystemVB.FontAwesome()
-        Me.ButtonMaximize = New Voting_SystemVB.FontAwesome()
         Me.Panel1.SuspendLayout()
         Me.PanelHeader.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -185,6 +185,36 @@ Partial Class AdminPanel
         Me.PanelHeader.Name = "PanelHeader"
         Me.PanelHeader.Size = New System.Drawing.Size(913, 20)
         Me.PanelHeader.TabIndex = 1
+        '
+        'ButtonClose
+        '
+        Me.ButtonClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonClose.AutoSize = True
+        Me.ButtonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonClose.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
+        Me.ButtonClose.HoverColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.ButtonClose.IsHoverable = True
+        Me.ButtonClose.Location = New System.Drawing.Point(889, 2)
+        Me.ButtonClose.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonClose.Name = "ButtonClose"
+        Me.ButtonClose.Size = New System.Drawing.Size(21, 15)
+        Me.ButtonClose.TabIndex = 5
+        Me.ButtonClose.Text = "window-close"
+        '
+        'ButtonMaximize
+        '
+        Me.ButtonMaximize.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonMaximize.AutoSize = True
+        Me.ButtonMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonMaximize.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
+        Me.ButtonMaximize.HoverColor = System.Drawing.Color.Empty
+        Me.ButtonMaximize.IsHoverable = True
+        Me.ButtonMaximize.Location = New System.Drawing.Point(868, 2)
+        Me.ButtonMaximize.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonMaximize.Name = "ButtonMaximize"
+        Me.ButtonMaximize.Size = New System.Drawing.Size(21, 15)
+        Me.ButtonMaximize.TabIndex = 5
+        Me.ButtonMaximize.Text = "window-maximize"
         '
         'Panel3
         '
@@ -331,34 +361,6 @@ Partial Class AdminPanel
         'CountDownTimer
         '
         Me.CountDownTimer.Interval = 1000
-        '
-        'ButtonClose
-        '
-        Me.ButtonClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonClose.AutoSize = True
-        Me.ButtonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonClose.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
-        Me.ButtonClose.HoverColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.ButtonClose.Location = New System.Drawing.Point(889, 2)
-        Me.ButtonClose.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonClose.Name = "ButtonClose"
-        Me.ButtonClose.Size = New System.Drawing.Size(21, 15)
-        Me.ButtonClose.TabIndex = 5
-        Me.ButtonClose.Text = "window-close"
-        '
-        'ButtonMaximize
-        '
-        Me.ButtonMaximize.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonMaximize.AutoSize = True
-        Me.ButtonMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonMaximize.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
-        Me.ButtonMaximize.HoverColor = System.Drawing.Color.Empty
-        Me.ButtonMaximize.Location = New System.Drawing.Point(868, 2)
-        Me.ButtonMaximize.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonMaximize.Name = "ButtonMaximize"
-        Me.ButtonMaximize.Size = New System.Drawing.Size(21, 15)
-        Me.ButtonMaximize.TabIndex = 5
-        Me.ButtonMaximize.Text = "window-maximize"
         '
         'AdminPanel
         '

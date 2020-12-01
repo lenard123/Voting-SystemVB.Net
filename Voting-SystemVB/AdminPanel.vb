@@ -1,5 +1,7 @@
 ﻿Public Class AdminPanel
 
+    Implements MainControl
+
     'Handles Draggable Form
     Private IsFormBeingDragged As Boolean = False
     Private MouseDownX, MouseDownY As Integer
@@ -33,6 +35,11 @@
         MainContent.Controls.Clear()
         content.Dock = DockStyle.Fill
         MainContent.Controls.Add(content)
+
+        If TypeOf content Is MainControl Then
+            DirectCast(content, MainControl).RefreshControl()
+        End If
+
     End Sub
 
     Public Function AdminHomeControl() As Control
@@ -138,7 +145,7 @@
         RemainingTime -= 1
     End Sub
 
-    Private Sub AdminPanel_ParentChanged(sender As Object, e As EventArgs) Handles MyBase.ParentChanged
+    Private Sub AdminPanel_ParentChanged() Implements MainControl.RefreshControl
         If Not IsNothing(Account) Then
             RefreshState()
             ChangeView_Click(ButtonHome, Nothing)

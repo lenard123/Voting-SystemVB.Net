@@ -1,5 +1,7 @@
 ﻿Public Class StartElection
 
+    Implements MainControl
+
     Dim IsValidName = False
     Dim IsValidPassword = False
     Private Shared Instance As StartElection
@@ -21,7 +23,11 @@
         Return Instance
     End Function
 
-    Private Async Sub StartElection_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Async Sub StartElection_Refresh() Implements MainControl.RefreshControl
+        TextPassword.Text = ""
+        TextName.Text = ""
+        TextPassword.BorderColor = Color.FromArgb(217, 221, 226)
+        TextName.BorderColor = Color.FromArgb(217, 221, 226)
         Await LoadCandidates()
     End Sub
 
@@ -83,13 +89,6 @@
                 ErrorPassword.Text = "Password not match"
             End If
         End If
-    End Sub
-
-    Private Sub StartElection_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
-        TextPassword.Text = ""
-        TextName.Text = ""
-        TextPassword.BorderColor = Color.FromArgb(217, 221, 226)
-        TextName.BorderColor = Color.FromArgb(217, 221, 226)
     End Sub
 
     Private Sub ButtonCancel_Click(sender As Object, e As EventArgs) Handles ButtonCancel.Click

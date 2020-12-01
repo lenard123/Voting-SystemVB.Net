@@ -1,5 +1,7 @@
 ﻿Public Class ManageParty
 
+    Implements MainControl
+
     Private Shared Instance As ManageParty
     Private Shared UpdatePartyInstance As UpdateParty
 
@@ -28,7 +30,7 @@
             AdminPanel.GetInstance().LoadControl(UpdatePartyInstance)
         End If
     End Sub
-    Private Async Sub ManageParty_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
+    Private Async Sub ManageParty_Refresh() Implements MainControl.RefreshControl
         If Election.HasNotStarted Then
             ButtonAdd.Enabled = True
         End If

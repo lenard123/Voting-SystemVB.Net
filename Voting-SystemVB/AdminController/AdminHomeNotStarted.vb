@@ -1,5 +1,7 @@
 ﻿Public Class AdminHomeNotStarted
 
+    Implements MainControl
+
     Dim CandidateCounts As New List(Of KeyValuePair(Of Integer, Integer))
     Dim VoterCounts As Integer
 
@@ -45,7 +47,7 @@
         Return True
     End Function
 
-    Private Async Sub AdminHomeNotStarted_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Async Sub AdminHomeNotStarted_Refresh() Implements MainControl.RefreshControl
         VoterCounts = Await Student.CountAllAsync()
         For Each Id In Position.GetAll()
             CandidateCounts.Add(New KeyValuePair(Of Integer, Integer)(Id, Await Candidate.CountAsync(Id)))
