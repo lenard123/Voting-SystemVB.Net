@@ -35,7 +35,6 @@ Partial Class ManageVoters
         Me.ButtonFilter1st = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonFilter2nd = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonFilter3rd = New Guna.UI2.WinForms.Guna2Button()
-        Me.ButtonFilter4th = New Guna.UI2.WinForms.Guna2Button()
         Me.StudentDataGridView = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.StudentIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FullnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -50,9 +49,12 @@ Partial Class ManageVoters
         Me.ButtonRefresh = New Guna.UI2.WinForms.Guna2Button()
         Me.TextSearch = New Guna.UI2.WinForms.Guna2TextBox()
         Me.LabelResult = New System.Windows.Forms.Label()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.ButtonFilter4th = New Guna.UI2.WinForms.Guna2Button()
         CType(Me.StudentDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StudentBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2ShadowPanel1.SuspendLayout()
+        Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ButtonSearch
@@ -65,10 +67,10 @@ Partial Class ManageVoters
         Me.ButtonSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonSearch.ForeColor = System.Drawing.Color.White
         Me.ButtonSearch.HoverState.Parent = Me.ButtonSearch
-        Me.ButtonSearch.Location = New System.Drawing.Point(651, 66)
+        Me.ButtonSearch.Location = New System.Drawing.Point(777, 45)
         Me.ButtonSearch.Name = "ButtonSearch"
         Me.ButtonSearch.ShadowDecoration.Parent = Me.ButtonSearch
-        Me.ButtonSearch.Size = New System.Drawing.Size(137, 36)
+        Me.ButtonSearch.Size = New System.Drawing.Size(117, 36)
         Me.ButtonSearch.TabIndex = 1
         Me.ButtonSearch.Text = "Search"
         '
@@ -76,7 +78,7 @@ Partial Class ManageVoters
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 12.0!)
-        Me.Label1.Location = New System.Drawing.Point(29, 65)
+        Me.Label1.Location = New System.Drawing.Point(9, 53)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(56, 21)
         Me.Label1.TabIndex = 2
@@ -91,7 +93,7 @@ Partial Class ManageVoters
         Me.ButtonFilterAll.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonFilterAll.ForeColor = System.Drawing.Color.White
         Me.ButtonFilterAll.HoverState.Parent = Me.ButtonFilterAll
-        Me.ButtonFilterAll.Location = New System.Drawing.Point(91, 63)
+        Me.ButtonFilterAll.Location = New System.Drawing.Point(3, 3)
         Me.ButtonFilterAll.Name = "ButtonFilterAll"
         Me.ButtonFilterAll.ShadowDecoration.Parent = Me.ButtonFilterAll
         Me.ButtonFilterAll.Size = New System.Drawing.Size(76, 29)
@@ -107,7 +109,7 @@ Partial Class ManageVoters
         Me.ButtonFilter1st.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonFilter1st.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ButtonFilter1st.HoverState.Parent = Me.ButtonFilter1st
-        Me.ButtonFilter1st.Location = New System.Drawing.Point(173, 63)
+        Me.ButtonFilter1st.Location = New System.Drawing.Point(85, 3)
         Me.ButtonFilter1st.Name = "ButtonFilter1st"
         Me.ButtonFilter1st.ShadowDecoration.Parent = Me.ButtonFilter1st
         Me.ButtonFilter1st.Size = New System.Drawing.Size(76, 29)
@@ -123,7 +125,7 @@ Partial Class ManageVoters
         Me.ButtonFilter2nd.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonFilter2nd.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ButtonFilter2nd.HoverState.Parent = Me.ButtonFilter2nd
-        Me.ButtonFilter2nd.Location = New System.Drawing.Point(255, 63)
+        Me.ButtonFilter2nd.Location = New System.Drawing.Point(167, 3)
         Me.ButtonFilter2nd.Name = "ButtonFilter2nd"
         Me.ButtonFilter2nd.ShadowDecoration.Parent = Me.ButtonFilter2nd
         Me.ButtonFilter2nd.Size = New System.Drawing.Size(76, 29)
@@ -139,28 +141,12 @@ Partial Class ManageVoters
         Me.ButtonFilter3rd.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonFilter3rd.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ButtonFilter3rd.HoverState.Parent = Me.ButtonFilter3rd
-        Me.ButtonFilter3rd.Location = New System.Drawing.Point(337, 63)
+        Me.ButtonFilter3rd.Location = New System.Drawing.Point(249, 3)
         Me.ButtonFilter3rd.Name = "ButtonFilter3rd"
         Me.ButtonFilter3rd.ShadowDecoration.Parent = Me.ButtonFilter3rd
         Me.ButtonFilter3rd.Size = New System.Drawing.Size(76, 29)
         Me.ButtonFilter3rd.TabIndex = 3
         Me.ButtonFilter3rd.Text = "3rd Year"
-        '
-        'ButtonFilter4th
-        '
-        Me.ButtonFilter4th.BorderRadius = 15
-        Me.ButtonFilter4th.CheckedState.Parent = Me.ButtonFilter4th
-        Me.ButtonFilter4th.CustomImages.Parent = Me.ButtonFilter4th
-        Me.ButtonFilter4th.FillColor = System.Drawing.SystemColors.Control
-        Me.ButtonFilter4th.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonFilter4th.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ButtonFilter4th.HoverState.Parent = Me.ButtonFilter4th
-        Me.ButtonFilter4th.Location = New System.Drawing.Point(419, 63)
-        Me.ButtonFilter4th.Name = "ButtonFilter4th"
-        Me.ButtonFilter4th.ShadowDecoration.Parent = Me.ButtonFilter4th
-        Me.ButtonFilter4th.Size = New System.Drawing.Size(76, 29)
-        Me.ButtonFilter4th.TabIndex = 3
-        Me.ButtonFilter4th.Text = "4th Year"
         '
         'StudentDataGridView
         '
@@ -212,7 +198,7 @@ Partial Class ManageVoters
         Me.StudentDataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.StudentDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.StudentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.StudentDataGridView.Size = New System.Drawing.Size(735, 291)
+        Me.StudentDataGridView.Size = New System.Drawing.Size(859, 336)
         Me.StudentDataGridView.TabIndex = 4
         Me.StudentDataGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.WhiteGrid
         Me.StudentDataGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
@@ -287,11 +273,11 @@ Partial Class ManageVoters
         Me.Guna2ShadowPanel1.Controls.Add(Me.ButtonAddVoter)
         Me.Guna2ShadowPanel1.Controls.Add(Me.StudentDataGridView)
         Me.Guna2ShadowPanel1.FillColor = System.Drawing.Color.White
-        Me.Guna2ShadowPanel1.Location = New System.Drawing.Point(31, 123)
+        Me.Guna2ShadowPanel1.Location = New System.Drawing.Point(13, 104)
         Me.Guna2ShadowPanel1.Name = "Guna2ShadowPanel1"
         Me.Guna2ShadowPanel1.Radius = 10
         Me.Guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black
-        Me.Guna2ShadowPanel1.Size = New System.Drawing.Size(757, 314)
+        Me.Guna2ShadowPanel1.Size = New System.Drawing.Size(881, 359)
         Me.Guna2ShadowPanel1.TabIndex = 5
         '
         'ButtonAddVoter
@@ -306,7 +292,7 @@ Partial Class ManageVoters
         Me.ButtonAddVoter.Image = Global.Voting_SystemVB.My.Resources.Resources.plus_white
         Me.ButtonAddVoter.ImageOffset = New System.Drawing.Point(1, 1)
         Me.ButtonAddVoter.ImageSize = New System.Drawing.Size(25, 25)
-        Me.ButtonAddVoter.Location = New System.Drawing.Point(673, 252)
+        Me.ButtonAddVoter.Location = New System.Drawing.Point(797, 297)
         Me.ButtonAddVoter.Name = "ButtonAddVoter"
         Me.ButtonAddVoter.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
         Me.ButtonAddVoter.ShadowDecoration.Parent = Me.ButtonAddVoter
@@ -335,10 +321,10 @@ Partial Class ManageVoters
         Me.ButtonRefresh.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonRefresh.ForeColor = System.Drawing.Color.Black
         Me.ButtonRefresh.HoverState.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.Location = New System.Drawing.Point(508, 66)
+        Me.ButtonRefresh.Location = New System.Drawing.Point(657, 44)
         Me.ButtonRefresh.Name = "ButtonRefresh"
         Me.ButtonRefresh.ShadowDecoration.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.Size = New System.Drawing.Size(137, 36)
+        Me.ButtonRefresh.Size = New System.Drawing.Size(114, 36)
         Me.ButtonRefresh.TabIndex = 1
         Me.ButtonRefresh.Text = "Refresh"
         '
@@ -359,46 +345,72 @@ Partial Class ManageVoters
         Me.TextSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TextSearch.HoverState.Parent = Me.TextSearch
         Me.TextSearch.IconLeft = CType(resources.GetObject("TextSearch.IconLeft"), System.Drawing.Image)
-        Me.TextSearch.Location = New System.Drawing.Point(31, 22)
+        Me.TextSearch.Location = New System.Drawing.Point(13, 3)
         Me.TextSearch.Name = "TextSearch"
         Me.TextSearch.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.TextSearch.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TextSearch.PlaceholderText = "    Search Voters Here"
         Me.TextSearch.SelectedText = ""
         Me.TextSearch.ShadowDecoration.Parent = Me.TextSearch
-        Me.TextSearch.Size = New System.Drawing.Size(757, 36)
+        Me.TextSearch.Size = New System.Drawing.Size(881, 36)
         Me.TextSearch.TabIndex = 0
         '
         'LabelResult
         '
         Me.LabelResult.AutoSize = True
         Me.LabelResult.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelResult.Location = New System.Drawing.Point(29, 99)
+        Me.LabelResult.Location = New System.Drawing.Point(36, 82)
         Me.LabelResult.Name = "LabelResult"
         Me.LabelResult.Size = New System.Drawing.Size(213, 19)
         Me.LabelResult.TabIndex = 6
         Me.LabelResult.Text = "Search Results for: ""Lenard"""
         '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.AutoSize = True
+        Me.FlowLayoutPanel1.Controls.Add(Me.ButtonFilterAll)
+        Me.FlowLayoutPanel1.Controls.Add(Me.ButtonFilter1st)
+        Me.FlowLayoutPanel1.Controls.Add(Me.ButtonFilter2nd)
+        Me.FlowLayoutPanel1.Controls.Add(Me.ButtonFilter3rd)
+        Me.FlowLayoutPanel1.Controls.Add(Me.ButtonFilter4th)
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(71, 44)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(417, 35)
+        Me.FlowLayoutPanel1.TabIndex = 7
+        '
+        'ButtonFilter4th
+        '
+        Me.ButtonFilter4th.BorderRadius = 15
+        Me.ButtonFilter4th.CheckedState.Parent = Me.ButtonFilter4th
+        Me.ButtonFilter4th.CustomImages.Parent = Me.ButtonFilter4th
+        Me.ButtonFilter4th.FillColor = System.Drawing.SystemColors.Control
+        Me.ButtonFilter4th.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonFilter4th.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.ButtonFilter4th.HoverState.Parent = Me.ButtonFilter4th
+        Me.ButtonFilter4th.Location = New System.Drawing.Point(331, 3)
+        Me.ButtonFilter4th.Name = "ButtonFilter4th"
+        Me.ButtonFilter4th.ShadowDecoration.Parent = Me.ButtonFilter4th
+        Me.ButtonFilter4th.Size = New System.Drawing.Size(76, 29)
+        Me.ButtonFilter4th.TabIndex = 3
+        Me.ButtonFilter4th.Text = "4th Year"
+        '
         'ManageVoters
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.LabelResult)
         Me.Controls.Add(Me.Guna2ShadowPanel1)
-        Me.Controls.Add(Me.ButtonFilter4th)
-        Me.Controls.Add(Me.ButtonFilter3rd)
-        Me.Controls.Add(Me.ButtonFilter2nd)
-        Me.Controls.Add(Me.ButtonFilter1st)
-        Me.Controls.Add(Me.ButtonFilterAll)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ButtonRefresh)
         Me.Controls.Add(Me.ButtonSearch)
         Me.Controls.Add(Me.TextSearch)
         Me.Name = "ManageVoters"
-        Me.Size = New System.Drawing.Size(807, 455)
+        Me.Size = New System.Drawing.Size(913, 481)
         CType(Me.StudentDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.StudentBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Guna2ShadowPanel1.ResumeLayout(False)
+        Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -410,7 +422,6 @@ Partial Class ManageVoters
     Friend WithEvents ButtonFilter1st As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents ButtonFilter2nd As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents ButtonFilter3rd As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents ButtonFilter4th As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents StudentDataGridView As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents StudentBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents StudentIdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -424,5 +435,7 @@ Partial Class ManageVoters
     Friend WithEvents Guna2HtmlToolTip1 As Guna.UI2.WinForms.Guna2HtmlToolTip
     Friend WithEvents ButtonRefresh As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents LabelResult As System.Windows.Forms.Label
+    Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
+    Friend WithEvents ButtonFilter4th As Guna.UI2.WinForms.Guna2Button
 
 End Class

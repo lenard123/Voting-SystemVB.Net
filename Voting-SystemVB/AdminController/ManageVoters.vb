@@ -3,10 +3,11 @@ Imports Guna.UI2.WinForms
 
 Public Class ManageVoters
 
-    Private ResultSet As List(Of Student)
+    Private ResultSet As New List(Of Student)
     Private Filter = "All"
     Private PreviousFilter As Guna2Button
     Private Shared Instance As ManageVoters
+    Public FilterVoter As Integer = 0
 
     Public Shared Function GetInstance() As ManageVoters
         If IsNothing(Instance) Then
@@ -17,10 +18,15 @@ Public Class ManageVoters
 
     Private ReadOnly Property FilteredResultSet As List(Of Student)
         Get
-            If Filter.Equals("All") Then Return ResultSet
+            If FilterVoter = 0 Then
+                LabelResult.Text = ""
+                If Filter.Equals("All") Then
+                    Return ResultSet
+                End If
+            End If
             Dim _FilteredRS = New List(Of Student)
             For Each Item In ResultSet
-                If Filter.Equals(Item.YearLevel) Then
+                If IsValidItem(Item) Then
                     _FilteredRS.Add(Item)
                 End If
             Next
@@ -28,12 +34,21 @@ Public Class ManageVoters
         End Get
     End Property
 
+    Public Function IsValidItem(item As Student) As Boolean
+        If Not Filter.Equals(item.YearLevel) And Not Filter.Equals("All") Then Return False
+        If Election.IsOngoing Then
+            If FilterVoter = 1 And Not item.HasVoted Then Return False
+            If FilterVoter = 2 And item.HasVoted Then Return False
+        End If
+        Return True
+    End Function
+
     Private Async Sub ManageVoters_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
         If Not Election.HasNotStarted Then
             ButtonAddVoter.Visible = False
         End If
-        LabelResult.Text = ""
-        PreviousFilter = ButtonFilterAll
+
+        If IsNothing(PreviousFilter) Then PreviousFilter = ButtonFilterAll
         Await RefreshStudent()
     End Sub
 
@@ -85,7 +100,7 @@ Public Class ManageVoters
     End Sub
 
     Private Async Sub ButtonRefresh_Click(sender As Object, e As EventArgs) Handles ButtonRefresh.Click
-        LabelResult.Text = ""
+        FilterVoter = 0
         Await RefreshStudent()
     End Sub
 
@@ -97,9 +112,18 @@ Public Class ManageVoters
     End Sub
 
     Private Async Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click
-        LabelResult.Text = "Searching..."
-        ResultSet = Await Student.SearchAsync(TextSearch.Text)
-        LabelResult.Text = "Search Results for: """ & TextSearch.Text & """"
+        If TextSearch.Text.Trim.ToUpper.Equals("DONE VOTERS") Then
+            FilterVoter = 1
+            LabelResult.Text = "Showing Voters who already voted"
+        ElseIf TextSearch.Text.Trim.ToUpper.Equals("REMAINING VOTERS") Then
+            FilterVoter = 2
+            LabelResult.Text = "Showing Voters who haven't voted yet"
+        ElseIf Not TextSearch.Text.Trim.Equals("") Then
+            FilterVoter = 0
+            LabelResult.Text = "Searching..."
+            ResultSet = Await Student.SearchAsync(TextSearch.Text)
+            LabelResult.Text = "Search Results for: """ & TextSearch.Text & """"
+        End If
         LoadStudent()
     End Sub
 
