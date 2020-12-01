@@ -4,10 +4,12 @@ Public Class Admin
 
     Private Shared ReadOnly QUERY_SELECT_BY_USERNAME = "SELECT * FROM [Admin] WHERE [username]=?"
     Private Shared ReadOnly QUERY_UPDATE = "UPDATE [Admin] SET [username]=?, [fullname]=? WHERE [ID]=?"
+    Private Shared ReadOnly QUERY_INSERT = "INSERT INTO [Admin]([fullname], [username], [password]) VALUES(?,?,?)"
 
     Public Shared ReadOnly ADMIN_ID_LENGTH = 10
     Public Shared ReadOnly ADMIN_USERNAME_LENGTH = 40
     Public Shared ReadOnly ADMIN_FULLNAME_LENGTH = 40
+    Public Shared ReadOnly ADMIN_PASSWORD_LENGTH = 40
 
     Public Shared ReadOnly ADMIN_ID_INDEX = 0
     Public Shared ReadOnly ADMIN_FULLNAME_INDEX = 1
@@ -15,7 +17,7 @@ Public Class Admin
     Public Shared ReadOnly ADMIN_PASSWORD_INDEX = 3
 
     Private Id As Integer
-    Private _Fullname, _Username, Password As String
+    Private _Fullname, _Username, _Password As String
 
     Private Shared _CurrentUser As Admin = Nothing
 
@@ -35,15 +37,23 @@ Public Class Admin
             _Username = value
         End Set
     End Property
+    Public Property Password As String
+        Get
+            Return _Password
+        End Get
+        Set(value As String)
+            _Password = value
+        End Set
+    End Property
 
     Public Sub New(ByVal Id As Integer, ByVal Password As String)
         Me.Id = Id
-        Me.Password = Password
+        Me._Password = Password
     End Sub
 
     'Verify Password
     Public Function ComparePassword(ByVal Password As String)
-        Return Me.Password.Equals(Password)
+        Return Me._Password.Equals(Password)
     End Function
 
     Public Function Update() As Boolean
@@ -53,6 +63,20 @@ Public Class Admin
             Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me.Username, ADMIN_USERNAME_LENGTH))
             Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me.Fullname, ADMIN_FULLNAME_LENGTH))
             Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me.Id, ADMIN_ID_LENGTH))
+            Cmd.Prepare()
+            Res = Cmd.ExecuteNonQuery() <> -1
+        End Using
+        GetConnection().Close()
+        Return Res
+    End Function
+
+    Public Function Save() As Boolean
+        Dim Res As Boolean = False
+        GetConnection().Open()
+        Using Cmd As New OleDbCommand(QUERY_INSERT, GetConnection())
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me._Fullname, ADMIN_FULLNAME_LENGTH))
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me._Username, ADMIN_USERNAME_LENGTH))
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me._Password, ADMIN_PASSWORD_LENGTH))
             Cmd.Prepare()
             Res = Cmd.ExecuteNonQuery() <> -1
         End Using
