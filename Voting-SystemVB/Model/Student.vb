@@ -7,8 +7,10 @@ Public Class Student
     Public Shared ReadOnly YEAR_3 = "3rd"
     Public Shared ReadOnly YEAR_4 = "4th"
 
-    Private Shared ReadOnly QUERY_SELECT_BY_ID = "SELECT * FROM [Student] WHERE [ID]=?"
-    Private Shared ReadOnly QUERY_SELECT_BY_STUDENT_ID = "SELECT * FROM [Student] WHERE [student_id]=?"
+    Private Shared ReadOnly QUERY_SEARCH = "SELECT DISTINCT [Student].*, [Votes].[student_id] as [has_voted] FROM [Votes] RIGHT JOIN [Student] ON [Votes].[student_id]=[Student].[ID] WHERE [Student].[student_id] LIKE ? OR [Student].[firstname] LIKE ? OR [Student].[lastname] LIKE ?"
+    Private Shared ReadOnly QUERY_SELECT_ALL = "SELECT DISTINCT [Student].*, [Votes].[student_id] as [has_voted] FROM [Votes] RIGHT JOIN [Student] ON [Votes].[student_id]=[Student].[ID]"
+    Private Shared ReadOnly QUERY_SELECT_BY_ID = "SELECT DISTINCT [Student].*, [Votes].[student_id] as [has_voted] FROM [Votes] RIGHT JOIN [Student] ON [Votes].[student_id]=[Student].[ID] WHERE [Student].[ID]=?"
+    Private Shared ReadOnly QUERY_SELECT_BY_STUDENT_ID = "SELECT DISTINCT [Student].*, [Votes].[student_id] as [has_voted] FROM [Votes] RIGHT JOIN [Student] ON [Votes].[student_id]=[Student].[ID] WHERE [Student].[student_id]=?"
     Private Shared ReadOnly QUERY_COUNT_ALL = "SELECT COUNT(*) From Student"
 
     Private Shared ReadOnly LENGTH_ID As Integer = 10
@@ -28,13 +30,23 @@ Public Class Student
     Private Shared ReadOnly INDEX_COURSE As Integer = 5
     Private Shared ReadOnly INDEX_SECTION As Integer = 6
     Private Shared ReadOnly INDEX_PASSWORD As Integer = 7
+    Private Shared ReadOnly INDEX_HAS_VOTED As Integer = 8
 
     Private _Id As Integer
-    Private _StudentId, _Fullname, _Firstname, _Lastname, _Course, _Section, _YearLevel, Password As String
+    Private _StudentId, _Fullname, _Firstname, _Lastname, _Course, _Section, _YearLevel, _Password As String
+    Private _HasVoted As Boolean
 
     Private Shared CachedAllStudent As List(Of Student) = Nothing
     Private Shared NeedRefresh As Boolean = True
 
+    Public Property HasVoted As Boolean
+        Get
+            Return _HasVoted
+        End Get
+        Set(value As Boolean)
+            _HasVoted = value
+        End Set
+    End Property
 
     Public ReadOnly Property Id As Integer
         Get
@@ -100,11 +112,11 @@ Public Class Student
     End Sub
     Public Sub New(Id As Integer, Password As String)
         Me._Id = Id
-        Me.Password = Password
+        Me._Password = Password
     End Sub
 
     Public Function ComparePassword(Password As String) As Boolean
-        Return Me.Password.Equals(Password)
+        Return Me._Password.Equals(Password)
     End Function
 
     Public Shared Function Find(Id As Integer) As Student
@@ -127,7 +139,7 @@ Public Class Student
         Query = "%" & Query & "%"
         Dim Result As New List(Of Student)
         Await GetConnection().OpenAsync()
-        Using Cmd = New OleDbCommand("SELECT * FROM [Student] WHERE [student_id] LIKE ? OR [firstname] LIKE ? OR [lastname] LIKE ?", GetConnection())
+        Using Cmd = New OleDbCommand(QUERY_SEARCH, GetConnection())
             Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
             Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
             Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
@@ -144,10 +156,9 @@ Public Class Student
 
     Public Shared Function Search(Query As String) As List(Of Student)
         Query = "%" & Query & "%"
-        Dim sql_query = "SELECT * FROM [Student] WHERE [student_id] like ? or firstname like ? or lastname like ?"
         Dim Result As New List(Of Student)
         GetConnection().Open()
-        Using Cmd As New OleDbCommand(sql_query, GetConnection())
+        Using Cmd As New OleDbCommand(QUERY_SEARCH, GetConnection())
             Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
             Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
             Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
@@ -169,7 +180,7 @@ Public Class Student
     Public Shared Async Function GetAllAsync() As Task(Of List(Of Student))
         Dim Result = New List(Of Student)
         Await GetConnection().OpenAsync()
-        Using Cmd As New OleDbCommand("SELECT * FROM [Student]", GetConnection())
+        Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
             Using Reader = Await Cmd.ExecuteReaderAsync()
                 While Reader.Read()
                     Result.Add(GetStudent(Reader))
@@ -183,10 +194,9 @@ Public Class Student
     Public Shared Function GetAll() As List(Of Student)
         'Return Cached if not empty
         If IsNothing(CachedAllStudent) Or NeedRefresh Then
-            Dim query = "SELECT * FROM Student"
             Dim Result As New List(Of Student)
             GetConnection().Open()
-            Using Cmd As New OleDbCommand(query, GetConnection())
+            Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
                 Using Reader = Cmd.ExecuteReader()
                     While (Reader.Read())
                         Result.Add(GetStudent(Reader))
@@ -252,7 +262,7 @@ Public Class Student
                 Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Course, LENGTH_COURSE))
                 Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _YearLevel, LENGTH_YEAR))
                 Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Section, LENGTH_SECTION))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Password, LENGTH_PASSWORD))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _Password, LENGTH_PASSWORD))
                 Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, Id, LENGTH_ID))
                 Cmd.Prepare()
                 NeedRefresh = True
@@ -324,6 +334,7 @@ Public Class Student
             Result.Course = Reader.GetString(INDEX_COURSE)
             Result.YearLevel = Reader.GetString(INDEX_YEAR)
             Result.Section = Reader.GetString(INDEX_SECTION)
+            Result.HasVoted = Not Reader.IsDBNull(INDEX_HAS_VOTED)
         Catch e As Exception
             Console.WriteLine(e.Message)
         End Try
