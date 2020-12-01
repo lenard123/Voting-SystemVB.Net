@@ -177,4 +177,8 @@
     Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Secretary.Click
 
     End Sub
+
+    Private Sub PanelHeader_Paint(sender As Object, e As PaintEventArgs) Handles PanelHeader.Paint
+
+    End Sub
 End Class
