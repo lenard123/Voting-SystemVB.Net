@@ -51,7 +51,7 @@
     End Sub
 
     Private Sub Finish()
-        If (ValidConnection.Equals(0)) Then
+        If Not ValidConnection Then
             Dim popup As New SystemCrashError("Oops!!", "An error occured while connecting to database")
             popup.ShowPopup()
         Else
