@@ -348,6 +348,22 @@ Public Class Candidate
         Return Result
     End Function
 
+    'Return Data In Dictionary Structure
+    Public Shared Async Function GetAll2Async() As Task(Of Dictionary(Of Integer, List(Of Candidate)))
+        Dim Result As New Dictionary(Of Integer, List(Of Candidate))
+        Await GetConnection().OpenAsync()
+        Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
+            Using Reader = Await Cmd.ExecuteReaderAsync()
+                While Reader.Read()
+                    Dim iCandidate = GetCandidate(Reader)
+                    If Not Result.ContainsKey(iCandidate.PositionID) Then Result.Add(iCandidate.PositionID, New List(Of Candidate))
+                    Result(iCandidate.PositionID).Add(iCandidate)
+                End While
+            End Using
+        End Using
+        Return Result
+    End Function
+
     'Get All Candidate in Specific Party
     Public Shared Async Function GetAllByPartyIDAsync(PartyId As Integer) As Task(Of List(Of Candidate))
         Dim Result As New List(Of Candidate)

@@ -149,6 +149,9 @@
         If Not IsNothing(Account) Then
             RefreshState()
             ChangeView_Click(ButtonHome, Nothing)
+        Else
+            Alert.ShowAlert("Login first", Alert.AlertType.Info)
+            Main.LoadControl(AdminLogin.GetInstance())
         End If
     End Sub
 End Class

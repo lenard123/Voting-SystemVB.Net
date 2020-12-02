@@ -324,6 +324,18 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Util.vb" />
+    <Compile Include="VoterController\CandidateInfo.Designer.vb">
+      <DependentUpon>CandidateInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VoterController\CandidateInfo.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VoterController\PartyInfo.Designer.vb">
+      <DependentUpon>PartyInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VoterController\PartyInfo.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="VoterLogin.Designer.vb">
       <DependentUpon>VoterLogin.vb</DependentUpon>
     </Compile>
@@ -430,6 +442,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\SystemCrashError.resx">
       <DependentUpon>SystemCrashError.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoterController\CandidateInfo.resx">
+      <DependentUpon>CandidateInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoterController\PartyInfo.resx">
+      <DependentUpon>PartyInfo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VoterLogin.resx">
       <DependentUpon>VoterLogin.vb</DependentUpon>

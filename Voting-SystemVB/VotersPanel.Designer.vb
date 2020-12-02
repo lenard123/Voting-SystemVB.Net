@@ -24,10 +24,10 @@ Partial Class VotersPanel
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
+        Me.Indicator = New System.Windows.Forms.Panel()
+        Me.SideBarButton = New System.Windows.Forms.FlowLayoutPanel()
+        Me.ButtonCandidate = New Guna.UI2.WinForms.Guna2Button()
+        Me.ButtonParty = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button6 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button4 = New Guna.UI2.WinForms.Guna2Button()
@@ -40,15 +40,17 @@ Partial Class VotersPanel
         Me.Guna2GradientPanel1 = New Guna.UI2.WinForms.Guna2GradientPanel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Guna2Separator1 = New Guna.UI2.WinForms.Guna2Separator()
-        Me.Guna2Chip1 = New Guna.UI2.WinForms.Guna2Chip()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.ChipStatus = New Guna.UI2.WinForms.Guna2Chip()
+        Me.LabelCountdown = New System.Windows.Forms.Label()
+        Me.LabelName = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Guna2DragControl1 = New Guna.UI2.WinForms.Guna2DragControl(Me.components)
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.ChildPanel = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
-        Me.FlowLayoutPanel1.SuspendLayout()
+        Me.SideBarButton.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -56,70 +58,72 @@ Partial Class VotersPanel
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.Panel4)
-        Me.Panel1.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Panel1.Controls.Add(Me.Indicator)
+        Me.Panel1.Controls.Add(Me.SideBarButton)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(225, 531)
+        Me.Panel1.Size = New System.Drawing.Size(225, 691)
         Me.Panel1.TabIndex = 1
         '
-        'Panel4
+        'Indicator
         '
-        Me.Panel4.BackColor = System.Drawing.Color.White
-        Me.Panel4.Location = New System.Drawing.Point(0, 144)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(5, 40)
-        Me.Panel4.TabIndex = 4
+        Me.Indicator.BackColor = System.Drawing.Color.White
+        Me.Indicator.Location = New System.Drawing.Point(0, 144)
+        Me.Indicator.Name = "Indicator"
+        Me.Indicator.Size = New System.Drawing.Size(5, 40)
+        Me.Indicator.TabIndex = 4
         '
-        'FlowLayoutPanel1
+        'SideBarButton
         '
-        Me.FlowLayoutPanel1.Controls.Add(Me.Guna2Button1)
-        Me.FlowLayoutPanel1.Controls.Add(Me.Guna2Button2)
-        Me.FlowLayoutPanel1.Controls.Add(Me.Guna2Button3)
-        Me.FlowLayoutPanel1.Controls.Add(Me.Guna2Button6)
-        Me.FlowLayoutPanel1.Controls.Add(Me.Guna2Button4)
-        Me.FlowLayoutPanel1.Controls.Add(Me.Guna2Button5)
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(5, 144)
-        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(220, 384)
-        Me.FlowLayoutPanel1.TabIndex = 3
+        Me.SideBarButton.Controls.Add(Me.ButtonCandidate)
+        Me.SideBarButton.Controls.Add(Me.ButtonParty)
+        Me.SideBarButton.Controls.Add(Me.Guna2Button3)
+        Me.SideBarButton.Controls.Add(Me.Guna2Button6)
+        Me.SideBarButton.Controls.Add(Me.Guna2Button4)
+        Me.SideBarButton.Controls.Add(Me.Guna2Button5)
+        Me.SideBarButton.Location = New System.Drawing.Point(5, 144)
+        Me.SideBarButton.Name = "SideBarButton"
+        Me.SideBarButton.Size = New System.Drawing.Size(220, 384)
+        Me.SideBarButton.TabIndex = 3
         '
-        'Guna2Button1
+        'ButtonCandidate
         '
-        Me.Guna2Button1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.ButtonCandidate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Button1.CheckedState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.CustomImages.Parent = Me.Guna2Button1
-        Me.Guna2Button1.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button1.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button1.HoverState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2Button1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Button1.Name = "Guna2Button1"
-        Me.Guna2Button1.ShadowDecoration.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Size = New System.Drawing.Size(220, 40)
-        Me.Guna2Button1.TabIndex = 0
-        Me.Guna2Button1.Text = "CANDIDATE INFO"
+        Me.ButtonCandidate.CheckedState.Parent = Me.ButtonCandidate
+        Me.ButtonCandidate.CustomImages.Parent = Me.ButtonCandidate
+        Me.ButtonCandidate.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.ButtonCandidate.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonCandidate.ForeColor = System.Drawing.Color.White
+        Me.ButtonCandidate.HoverState.Parent = Me.ButtonCandidate
+        Me.ButtonCandidate.Location = New System.Drawing.Point(0, 0)
+        Me.ButtonCandidate.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonCandidate.Name = "ButtonCandidate"
+        Me.ButtonCandidate.ShadowDecoration.Parent = Me.ButtonCandidate
+        Me.ButtonCandidate.Size = New System.Drawing.Size(220, 40)
+        Me.ButtonCandidate.TabIndex = 0
+        Me.ButtonCandidate.Tag = "1"
+        Me.ButtonCandidate.Text = "CANDIDATE INFO"
         '
-        'Guna2Button2
+        'ButtonParty
         '
-        Me.Guna2Button2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.ButtonParty.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Button2.CheckedState.Parent = Me.Guna2Button2
-        Me.Guna2Button2.CustomImages.Parent = Me.Guna2Button2
-        Me.Guna2Button2.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.Guna2Button2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button2.ForeColor = System.Drawing.SystemColors.ControlDark
-        Me.Guna2Button2.HoverState.Parent = Me.Guna2Button2
-        Me.Guna2Button2.Location = New System.Drawing.Point(0, 40)
-        Me.Guna2Button2.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Button2.Name = "Guna2Button2"
-        Me.Guna2Button2.ShadowDecoration.Parent = Me.Guna2Button2
-        Me.Guna2Button2.Size = New System.Drawing.Size(220, 40)
-        Me.Guna2Button2.TabIndex = 1
-        Me.Guna2Button2.Text = "PARTY"
+        Me.ButtonParty.CheckedState.Parent = Me.ButtonParty
+        Me.ButtonParty.CustomImages.Parent = Me.ButtonParty
+        Me.ButtonParty.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.ButtonParty.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonParty.ForeColor = System.Drawing.SystemColors.ControlDark
+        Me.ButtonParty.HoverState.Parent = Me.ButtonParty
+        Me.ButtonParty.Location = New System.Drawing.Point(0, 40)
+        Me.ButtonParty.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonParty.Name = "ButtonParty"
+        Me.ButtonParty.ShadowDecoration.Parent = Me.ButtonParty
+        Me.ButtonParty.Size = New System.Drawing.Size(220, 40)
+        Me.ButtonParty.TabIndex = 1
+        Me.ButtonParty.Tag = "2"
+        Me.ButtonParty.Text = "PARTY"
         '
         'Guna2Button3
         '
@@ -137,6 +141,7 @@ Partial Class VotersPanel
         Me.Guna2Button3.ShadowDecoration.Parent = Me.Guna2Button3
         Me.Guna2Button3.Size = New System.Drawing.Size(220, 40)
         Me.Guna2Button3.TabIndex = 2
+        Me.Guna2Button3.Tag = "3"
         Me.Guna2Button3.Text = "VOTE NOW"
         '
         'Guna2Button6
@@ -155,6 +160,7 @@ Partial Class VotersPanel
         Me.Guna2Button6.ShadowDecoration.Parent = Me.Guna2Button6
         Me.Guna2Button6.Size = New System.Drawing.Size(220, 40)
         Me.Guna2Button6.TabIndex = 5
+        Me.Guna2Button6.Tag = "4"
         Me.Guna2Button6.Text = "VOTE INFO"
         '
         'Guna2Button4
@@ -173,6 +179,7 @@ Partial Class VotersPanel
         Me.Guna2Button4.ShadowDecoration.Parent = Me.Guna2Button4
         Me.Guna2Button4.Size = New System.Drawing.Size(220, 40)
         Me.Guna2Button4.TabIndex = 3
+        Me.Guna2Button4.Tag = "5"
         Me.Guna2Button4.Text = "CURRENT VOTE COUNT"
         '
         'Guna2Button5
@@ -191,6 +198,7 @@ Partial Class VotersPanel
         Me.Guna2Button5.ShadowDecoration.Parent = Me.Guna2Button5
         Me.Guna2Button5.Size = New System.Drawing.Size(220, 40)
         Me.Guna2Button5.TabIndex = 4
+        Me.Guna2Button5.Tag = "6"
         Me.Guna2Button5.Text = "LOGOUT"
         '
         'Panel2
@@ -203,7 +211,7 @@ Partial Class VotersPanel
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(225, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(859, 41)
+        Me.Panel2.Size = New System.Drawing.Size(989, 41)
         Me.Panel2.TabIndex = 3
         '
         'Label1
@@ -224,7 +232,7 @@ Partial Class VotersPanel
         Me.Guna2ControlBox2.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.Guna2ControlBox2.HoverState.Parent = Me.Guna2ControlBox2
         Me.Guna2ControlBox2.IconColor = System.Drawing.Color.White
-        Me.Guna2ControlBox2.Location = New System.Drawing.Point(788, 8)
+        Me.Guna2ControlBox2.Location = New System.Drawing.Point(918, 8)
         Me.Guna2ControlBox2.Name = "Guna2ControlBox2"
         Me.Guna2ControlBox2.ShadowDecoration.Parent = Me.Guna2ControlBox2
         Me.Guna2ControlBox2.Size = New System.Drawing.Size(27, 23)
@@ -236,7 +244,7 @@ Partial Class VotersPanel
         Me.Guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.Guna2ControlBox1.HoverState.Parent = Me.Guna2ControlBox1
         Me.Guna2ControlBox1.IconColor = System.Drawing.Color.White
-        Me.Guna2ControlBox1.Location = New System.Drawing.Point(821, 8)
+        Me.Guna2ControlBox1.Location = New System.Drawing.Point(951, 8)
         Me.Guna2ControlBox1.Name = "Guna2ControlBox1"
         Me.Guna2ControlBox1.ShadowDecoration.Parent = Me.Guna2ControlBox1
         Me.Guna2ControlBox1.Size = New System.Drawing.Size(27, 23)
@@ -257,26 +265,26 @@ Partial Class VotersPanel
         '
         Me.Guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.Guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.Guna2GradientPanel1.Location = New System.Drawing.Point(225, 41)
         Me.Guna2GradientPanel1.Name = "Guna2GradientPanel1"
         Me.Guna2GradientPanel1.ShadowDecoration.Parent = Me.Guna2GradientPanel1
-        Me.Guna2GradientPanel1.Size = New System.Drawing.Size(15, 490)
+        Me.Guna2GradientPanel1.Size = New System.Drawing.Size(15, 650)
         Me.Guna2GradientPanel1.TabIndex = 4
         '
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.Guna2Separator1)
-        Me.Panel3.Controls.Add(Me.Guna2Chip1)
-        Me.Panel3.Controls.Add(Me.Label5)
-        Me.Panel3.Controls.Add(Me.Label3)
+        Me.Panel3.Controls.Add(Me.ChipStatus)
+        Me.Panel3.Controls.Add(Me.LabelCountdown)
+        Me.Panel3.Controls.Add(Me.LabelName)
         Me.Panel3.Controls.Add(Me.Label2)
         Me.Panel3.Controls.Add(Me.Label6)
         Me.Panel3.Controls.Add(Me.Label4)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(240, 41)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(844, 93)
+        Me.Panel3.Size = New System.Drawing.Size(974, 93)
         Me.Panel3.TabIndex = 5
         '
         'Guna2Separator1
@@ -284,44 +292,44 @@ Partial Class VotersPanel
         Me.Guna2Separator1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Guna2Separator1.Location = New System.Drawing.Point(0, 83)
         Me.Guna2Separator1.Name = "Guna2Separator1"
-        Me.Guna2Separator1.Size = New System.Drawing.Size(844, 10)
+        Me.Guna2Separator1.Size = New System.Drawing.Size(974, 10)
         Me.Guna2Separator1.TabIndex = 4
         '
-        'Guna2Chip1
+        'ChipStatus
         '
-        Me.Guna2Chip1.BorderRadius = 5
-        Me.Guna2Chip1.FillColor = System.Drawing.Color.Red
-        Me.Guna2Chip1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Chip1.ForeColor = System.Drawing.Color.White
-        Me.Guna2Chip1.Location = New System.Drawing.Point(90, 59)
-        Me.Guna2Chip1.Name = "Guna2Chip1"
-        Me.Guna2Chip1.ShadowDecoration.Parent = Me.Guna2Chip1
-        Me.Guna2Chip1.Size = New System.Drawing.Size(75, 18)
-        Me.Guna2Chip1.TabIndex = 3
-        Me.Guna2Chip1.Text = "Not Yet"
-        Me.Guna2Chip1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.ChipStatus.BorderRadius = 5
+        Me.ChipStatus.FillColor = System.Drawing.Color.Red
+        Me.ChipStatus.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ChipStatus.ForeColor = System.Drawing.Color.White
+        Me.ChipStatus.Location = New System.Drawing.Point(90, 59)
+        Me.ChipStatus.Name = "ChipStatus"
+        Me.ChipStatus.ShadowDecoration.Parent = Me.ChipStatus
+        Me.ChipStatus.Size = New System.Drawing.Size(75, 18)
+        Me.ChipStatus.TabIndex = 3
+        Me.ChipStatus.Text = "Not Yet"
+        Me.ChipStatus.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         '
-        'Label5
+        'LabelCountdown
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(157, 35)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(75, 21)
-        Me.Label5.TabIndex = 2
-        Me.Label5.Text = "5seconds"
+        Me.LabelCountdown.AutoSize = True
+        Me.LabelCountdown.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.LabelCountdown.ForeColor = System.Drawing.Color.White
+        Me.LabelCountdown.Location = New System.Drawing.Point(157, 35)
+        Me.LabelCountdown.Name = "LabelCountdown"
+        Me.LabelCountdown.Size = New System.Drawing.Size(75, 21)
+        Me.LabelCountdown.TabIndex = 2
+        Me.LabelCountdown.Text = "Loading..."
         '
-        'Label3
+        'LabelName
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(113, 14)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(162, 21)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Lenard Mangay-ayam"
+        Me.LabelName.AutoSize = True
+        Me.LabelName.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.LabelName.ForeColor = System.Drawing.Color.White
+        Me.LabelName.Location = New System.Drawing.Point(113, 14)
+        Me.LabelName.Name = "LabelName"
+        Me.LabelName.Size = New System.Drawing.Size(162, 21)
+        Me.LabelName.TabIndex = 2
+        Me.LabelName.Text = "Lenard Mangay-ayam"
         '
         'Label2
         '
@@ -360,19 +368,32 @@ Partial Class VotersPanel
         '
         Me.Guna2DragControl1.TargetControl = Me.Panel2
         '
+        'Timer1
+        '
+        Me.Timer1.Interval = 1000
+        '
+        'ChildPanel
+        '
+        Me.ChildPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ChildPanel.Location = New System.Drawing.Point(240, 134)
+        Me.ChildPanel.Name = "ChildPanel"
+        Me.ChildPanel.Size = New System.Drawing.Size(974, 557)
+        Me.ChildPanel.TabIndex = 6
+        '
         'VotersPanel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.Controls.Add(Me.ChildPanel)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Guna2GradientPanel1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "VotersPanel"
-        Me.Size = New System.Drawing.Size(1084, 531)
+        Me.Size = New System.Drawing.Size(1214, 691)
         Me.Panel1.ResumeLayout(False)
-        Me.FlowLayoutPanel1.ResumeLayout(False)
+        Me.SideBarButton.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
@@ -381,10 +402,10 @@ Partial Class VotersPanel
 
     End Sub
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Panel4 As System.Windows.Forms.Panel
-    Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
-    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Indicator As System.Windows.Forms.Panel
+    Friend WithEvents SideBarButton As System.Windows.Forms.FlowLayoutPanel
+    Friend WithEvents ButtonCandidate As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonParty As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button3 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button6 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button4 As Guna.UI2.WinForms.Guna2Button
@@ -397,12 +418,14 @@ Partial Class VotersPanel
     Friend WithEvents Guna2GradientPanel1 As Guna.UI2.WinForms.Guna2GradientPanel
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Guna2Separator1 As Guna.UI2.WinForms.Guna2Separator
-    Friend WithEvents Guna2Chip1 As Guna.UI2.WinForms.Guna2Chip
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents ChipStatus As Guna.UI2.WinForms.Guna2Chip
+    Friend WithEvents LabelCountdown As System.Windows.Forms.Label
+    Friend WithEvents LabelName As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Guna2DragControl1 As Guna.UI2.WinForms.Guna2DragControl
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents ChildPanel As System.Windows.Forms.Panel
 
 End Class
