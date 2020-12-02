@@ -18,7 +18,7 @@ Public Class VotersPanel
         Return Instance
     End Function
 
-    Private Async Sub RefreshControl() Implements MainControl.RefreshControl
+    Private Sub RefreshControl() Implements MainControl.RefreshControl
         If IsNothing(Student.GetCurrentUser()) Then
             Alert.ShowAlert("You need to login first", Alert.AlertType.Info)
             Main.LoadControl(VoterLogin.GetInstance())

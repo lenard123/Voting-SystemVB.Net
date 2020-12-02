@@ -20,7 +20,7 @@ Public Class CandidateInfo
         ButtonPresident.PerformClick()
     End Sub
 
-    Private Async Sub ChangePosition(sender As Guna2Button, e As EventArgs) Handles ButtonPresident.Click, ButtonVicePresident.Click, ButtonSecretary.Click, ButtonTreasurer.Click, ButtonAuditor.Click, ButtonPRO.Click
+    Private Sub ChangePosition(sender As Guna2Button, e As EventArgs) Handles ButtonPresident.Click, ButtonVicePresident.Click, ButtonSecretary.Click, ButtonTreasurer.Click, ButtonAuditor.Click, ButtonPRO.Click
         'Parse Tag to Integer   
         Dim tag = Integer.Parse(sender.Tag)
 
@@ -39,16 +39,16 @@ Public Class CandidateInfo
         SelectedButton = sender
         SelectedPosition = tag
 
-        Await LoadData()
+        LoadData()
     End Sub
 
-    Private Async Function LoadData() As Task
+    Private Async Sub LoadData()
         If IsNothing(CandidateCards) Then Await InitCards()
         FlowLayoutPanel2.Controls.Clear()
         For Each card In CandidateCards(SelectedPosition)
             FlowLayoutPanel2.Controls.Add(card)
         Next
-    End Function
+    End Sub
 
     Private Async Function InitCards() As Task
         Dim Candidates = Await VotersPanel.GetCandidates()

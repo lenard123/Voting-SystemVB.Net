@@ -22,6 +22,7 @@ Partial Class UpdatePassword
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        components = New System.ComponentModel.Container()
         Me.SuspendLayout()
         '
         'UpdatePassword
