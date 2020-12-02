@@ -212,6 +212,12 @@
     <Compile Include="AdminController\UpdateParty.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="AdminController\UpdatePassword.Designer.vb">
+      <DependentUpon>UpdatePassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\UpdatePassword.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="AdminController\UpdateVoter.Designer.vb">
       <DependentUpon>UpdateVoter.vb</DependentUpon>
     </Compile>
@@ -388,6 +394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\UpdateParty.resx">
       <DependentUpon>UpdateParty.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\UpdatePassword.resx">
+      <DependentUpon>UpdatePassword.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\UpdateVoter.resx">
       <DependentUpon>UpdateVoter.vb</DependentUpon>

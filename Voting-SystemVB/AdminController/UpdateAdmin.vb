@@ -26,4 +26,8 @@
     Private Sub ButtonAddAdmin_Click(sender As Object, e As EventArgs) Handles ButtonAddAdmin.Click
         AdminPanel.GetInstance().LoadControl(AddAdmin.GetInstance())
     End Sub
+
+    Private Sub ButtonChangePass_Click(sender As Object, e As EventArgs) Handles ButtonChangePass.Click
+        AdminPanel.GetInstance().LoadControl(New UpdatePassword)
+    End Sub
 End Class
