@@ -18,13 +18,13 @@
 - Add Party
 - Start Election
 - View Vote Count
+- View Candidate(Voter Panel)
 
 ### Unfinish
 - Admin Home
 - View Previous Election
 - Update Account
 - Add Admin
-- View Candidate(Voter Panel)
 - Vote
 - View Vote Count (Voter Panel)
 - View Final Result
