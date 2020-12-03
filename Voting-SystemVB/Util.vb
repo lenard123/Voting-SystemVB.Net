@@ -92,6 +92,7 @@ Module Util
         If File.Exists(fil) Then
             'Replace the file if it already exist
             File.Replace(source, fil, Nothing)
+            File.Copy(fil, source)
         Else
             'Copy the File to Desired Directory
             File.Copy(source, fil)
@@ -183,6 +184,7 @@ Module Util
                 If Not res Then
                     BorderColor = Color.Red
                     ErrorMessage.Text = Name & " Field must only contain letters."
+                    Return False
                 End If
             End If
         Next

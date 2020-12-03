@@ -22,7 +22,6 @@ Partial Class CandidateCard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CandidateCard))
         Me.LabelFullname = New System.Windows.Forms.Label()
         Me.LabelTagline = New System.Windows.Forms.Label()
@@ -35,12 +34,11 @@ Partial Class CandidateCard
         Me.LabelYear = New System.Windows.Forms.Label()
         Me.LabelPosition = New System.Windows.Forms.Label()
         Me.Guna2ShadowPanel1 = New Guna.UI2.WinForms.Guna2ShadowPanel()
-        Me.LabelStudentID = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Guna2Elipse1 = New Guna.UI2.WinForms.Guna2Elipse(Me.components)
         Me.ButtonEdit = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.LabelStudentID = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2ShadowPanel1.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -178,6 +176,50 @@ Partial Class CandidateCard
         Me.Guna2ShadowPanel1.Size = New System.Drawing.Size(286, 384)
         Me.Guna2ShadowPanel1.TabIndex = 3
         '
+        'ButtonEdit
+        '
+        Me.ButtonEdit.CheckedState.Parent = Me.ButtonEdit
+        Me.ButtonEdit.CustomImages.Parent = Me.ButtonEdit
+        Me.ButtonEdit.FillColor = System.Drawing.Color.Transparent
+        Me.ButtonEdit.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonEdit.ForeColor = System.Drawing.Color.White
+        Me.ButtonEdit.HoverState.Parent = Me.ButtonEdit
+        Me.ButtonEdit.Image = CType(resources.GetObject("ButtonEdit.Image"), System.Drawing.Image)
+        Me.ButtonEdit.ImageSize = New System.Drawing.Size(24, 24)
+        Me.ButtonEdit.Location = New System.Drawing.Point(72, 174)
+        Me.ButtonEdit.Name = "ButtonEdit"
+        Me.ButtonEdit.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.ButtonEdit.ShadowDecoration.Parent = Me.ButtonEdit
+        Me.ButtonEdit.Size = New System.Drawing.Size(24, 24)
+        Me.ButtonEdit.TabIndex = 5
+        Me.ButtonEdit.Visible = False
+        '
+        'Guna2PictureBox2
+        '
+        Me.Guna2PictureBox2.BackColor = System.Drawing.Color.Gray
+        Me.Guna2PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Guna2PictureBox2.ErrorImage = Global.Voting_SystemVB.My.Resources.Resources._error
+        Me.Guna2PictureBox2.Location = New System.Drawing.Point(20, 125)
+        Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
+        Me.Guna2PictureBox2.ShadowDecoration.Parent = Me.Guna2PictureBox2
+        Me.Guna2PictureBox2.Size = New System.Drawing.Size(75, 75)
+        Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.Guna2PictureBox2.TabIndex = 6
+        Me.Guna2PictureBox2.TabStop = False
+        '
+        'Guna2PictureBox1
+        '
+        Me.Guna2PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Guna2PictureBox1.ErrorImage = Global.Voting_SystemVB.My.Resources.Resources._error
+        Me.Guna2PictureBox1.FillColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Guna2PictureBox1.Location = New System.Drawing.Point(6, 6)
+        Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
+        Me.Guna2PictureBox1.ShadowDecoration.Parent = Me.Guna2PictureBox1
+        Me.Guna2PictureBox1.Size = New System.Drawing.Size(274, 148)
+        Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.Guna2PictureBox1.TabIndex = 3
+        Me.Guna2PictureBox1.TabStop = False
+        '
         'LabelStudentID
         '
         Me.LabelStudentID.AutoSize = True
@@ -199,54 +241,6 @@ Partial Class CandidateCard
         Me.Label1.Size = New System.Drawing.Size(80, 19)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "StudentID:"
-        '
-        'Guna2Elipse1
-        '
-        Me.Guna2Elipse1.BorderRadius = 75
-        Me.Guna2Elipse1.TargetControl = Me.Guna2PictureBox2
-        '
-        'ButtonEdit
-        '
-        Me.ButtonEdit.CheckedState.Parent = Me.ButtonEdit
-        Me.ButtonEdit.CustomImages.Parent = Me.ButtonEdit
-        Me.ButtonEdit.FillColor = System.Drawing.Color.Transparent
-        Me.ButtonEdit.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonEdit.ForeColor = System.Drawing.Color.White
-        Me.ButtonEdit.HoverState.Parent = Me.ButtonEdit
-        Me.ButtonEdit.Image = CType(resources.GetObject("ButtonEdit.Image"), System.Drawing.Image)
-        Me.ButtonEdit.ImageSize = New System.Drawing.Size(24, 24)
-        Me.ButtonEdit.Location = New System.Drawing.Point(72, 163)
-        Me.ButtonEdit.Name = "ButtonEdit"
-        Me.ButtonEdit.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.ButtonEdit.ShadowDecoration.Parent = Me.ButtonEdit
-        Me.ButtonEdit.Size = New System.Drawing.Size(24, 24)
-        Me.ButtonEdit.TabIndex = 5
-        Me.ButtonEdit.Visible = False
-        '
-        'Guna2PictureBox2
-        '
-        Me.Guna2PictureBox2.BackColor = System.Drawing.Color.Gray
-        Me.Guna2PictureBox2.ErrorImage = Global.Voting_SystemVB.My.Resources.Resources._error
-        Me.Guna2PictureBox2.Location = New System.Drawing.Point(20, 125)
-        Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
-        Me.Guna2PictureBox2.ShadowDecoration.Parent = Me.Guna2PictureBox2
-        Me.Guna2PictureBox2.Size = New System.Drawing.Size(77, 73)
-        Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.Guna2PictureBox2.TabIndex = 6
-        Me.Guna2PictureBox2.TabStop = False
-        '
-        'Guna2PictureBox1
-        '
-        Me.Guna2PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Guna2PictureBox1.ErrorImage = Global.Voting_SystemVB.My.Resources.Resources._error
-        Me.Guna2PictureBox1.FillColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Guna2PictureBox1.Location = New System.Drawing.Point(6, 6)
-        Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
-        Me.Guna2PictureBox1.ShadowDecoration.Parent = Me.Guna2PictureBox1
-        Me.Guna2PictureBox1.Size = New System.Drawing.Size(274, 148)
-        Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.Guna2PictureBox1.TabIndex = 3
-        Me.Guna2PictureBox1.TabStop = False
         '
         'CandidateCard
         '
@@ -277,7 +271,6 @@ Partial Class CandidateCard
     Friend WithEvents LabelPosition As System.Windows.Forms.Label
     Friend WithEvents Guna2ShadowPanel1 As Guna.UI2.WinForms.Guna2ShadowPanel
     Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
-    Friend WithEvents Guna2Elipse1 As Guna.UI2.WinForms.Guna2Elipse
     Friend WithEvents LabelStudentID As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents ButtonEdit As Guna.UI2.WinForms.Guna2CircleButton

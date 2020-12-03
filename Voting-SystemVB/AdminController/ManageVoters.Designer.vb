@@ -23,11 +23,11 @@ Partial Class ManageVoters
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ManageVoters))
         Me.ButtonSearch = New Guna.UI2.WinForms.Guna2Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -51,6 +51,8 @@ Partial Class ManageVoters
         Me.LabelResult = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.ButtonFilter4th = New Guna.UI2.WinForms.Guna2Button()
+        Me.BackgroundWorkerRefreshStudent = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundWorkerSearch = New System.ComponentModel.BackgroundWorker()
         CType(Me.StudentDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StudentBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2ShadowPanel1.SuspendLayout()
@@ -98,7 +100,7 @@ Partial Class ManageVoters
         Me.ButtonFilterAll.ShadowDecoration.Parent = Me.ButtonFilterAll
         Me.ButtonFilterAll.Size = New System.Drawing.Size(76, 29)
         Me.ButtonFilterAll.TabIndex = 3
-        Me.ButtonFilterAll.Text = "ALL"
+        Me.ButtonFilterAll.Text = "All"
         '
         'ButtonFilter1st
         '
@@ -114,7 +116,7 @@ Partial Class ManageVoters
         Me.ButtonFilter1st.ShadowDecoration.Parent = Me.ButtonFilter1st
         Me.ButtonFilter1st.Size = New System.Drawing.Size(76, 29)
         Me.ButtonFilter1st.TabIndex = 3
-        Me.ButtonFilter1st.Text = "1st Year"
+        Me.ButtonFilter1st.Text = "1st year"
         '
         'ButtonFilter2nd
         '
@@ -130,7 +132,7 @@ Partial Class ManageVoters
         Me.ButtonFilter2nd.ShadowDecoration.Parent = Me.ButtonFilter2nd
         Me.ButtonFilter2nd.Size = New System.Drawing.Size(76, 29)
         Me.ButtonFilter2nd.TabIndex = 3
-        Me.ButtonFilter2nd.Text = "2nd Year"
+        Me.ButtonFilter2nd.Text = "2nd year"
         '
         'ButtonFilter3rd
         '
@@ -146,15 +148,15 @@ Partial Class ManageVoters
         Me.ButtonFilter3rd.ShadowDecoration.Parent = Me.ButtonFilter3rd
         Me.ButtonFilter3rd.Size = New System.Drawing.Size(76, 29)
         Me.ButtonFilter3rd.TabIndex = 3
-        Me.ButtonFilter3rd.Text = "3rd Year"
+        Me.ButtonFilter3rd.Text = "3rd year"
         '
         'StudentDataGridView
         '
         Me.StudentDataGridView.AllowUserToAddRows = False
         Me.StudentDataGridView.AllowUserToDeleteRows = False
         Me.StudentDataGridView.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        Me.StudentDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.White
+        Me.StudentDataGridView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
         Me.StudentDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -164,25 +166,25 @@ Partial Class ManageVoters
         Me.StudentDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.StudentDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.StudentDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.5!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.StudentDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 10.5!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.StudentDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.StudentDataGridView.ColumnHeadersHeight = 40
         Me.StudentDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.StudentIdDataGridViewTextBoxColumn, Me.FullnameDataGridViewTextBoxColumn, Me.CourseDataGridViewTextBoxColumn, Me.YearLevelDataGridViewTextBoxColumn, Me.SectionDataGridViewTextBoxColumn})
         Me.StudentDataGridView.DataSource = Me.StudentBindingSource
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(239, Byte), Integer), CType(CType(241, Byte), Integer), CType(CType(243, Byte), Integer))
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.StudentDataGridView.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 10.5!)
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(239, Byte), Integer), CType(CType(241, Byte), Integer), CType(CType(243, Byte), Integer))
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.StudentDataGridView.DefaultCellStyle = DataGridViewCellStyle14
         Me.StudentDataGridView.EnableHeadersVisualStyles = False
         Me.StudentDataGridView.GridColor = System.Drawing.Color.FromArgb(CType(CType(239, Byte), Integer), CType(CType(241, Byte), Integer), CType(CType(243, Byte), Integer))
         Me.StudentDataGridView.Location = New System.Drawing.Point(12, 11)
@@ -190,9 +192,9 @@ Partial Class ManageVoters
         Me.StudentDataGridView.Name = "StudentDataGridView"
         Me.StudentDataGridView.ReadOnly = True
         Me.StudentDataGridView.RowHeadersVisible = False
-        DataGridViewCellStyle5.Padding = New System.Windows.Forms.Padding(4, 4, 0, 4)
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.StudentDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle15.Padding = New System.Windows.Forms.Padding(4, 4, 0, 4)
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.StudentDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle15
         Me.StudentDataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.StudentDataGridView.RowTemplate.Height = 40
         Me.StudentDataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
@@ -254,8 +256,8 @@ Partial Class ManageVoters
         'SectionDataGridViewTextBoxColumn
         '
         Me.SectionDataGridViewTextBoxColumn.DataPropertyName = "Section"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.SectionDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.SectionDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle13
         Me.SectionDataGridViewTextBoxColumn.HeaderText = "Section"
         Me.SectionDataGridViewTextBoxColumn.Name = "SectionDataGridViewTextBoxColumn"
         Me.SectionDataGridViewTextBoxColumn.ReadOnly = True
@@ -392,7 +394,13 @@ Partial Class ManageVoters
         Me.ButtonFilter4th.ShadowDecoration.Parent = Me.ButtonFilter4th
         Me.ButtonFilter4th.Size = New System.Drawing.Size(76, 29)
         Me.ButtonFilter4th.TabIndex = 3
-        Me.ButtonFilter4th.Text = "4th Year"
+        Me.ButtonFilter4th.Text = "4th year"
+        '
+        'BackgroundWorkerRefreshStudent
+        '
+        '
+        'BackgroundWorkerSearch
+        '
         '
         'ManageVoters
         '
@@ -437,5 +445,7 @@ Partial Class ManageVoters
     Friend WithEvents LabelResult As System.Windows.Forms.Label
     Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents ButtonFilter4th As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BackgroundWorkerRefreshStudent As System.ComponentModel.BackgroundWorker
+    Friend WithEvents BackgroundWorkerSearch As System.ComponentModel.BackgroundWorker
 
 End Class

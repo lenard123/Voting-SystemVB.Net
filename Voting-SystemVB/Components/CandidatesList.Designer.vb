@@ -22,12 +22,10 @@ Partial Class CandidatesList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Guna2Elipse1 = New Guna.UI2.WinForms.Guna2Elipse(Me.components)
+        Me.LabelPosition = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.LabelPosition = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -42,10 +40,16 @@ Partial Class CandidatesList
         Me.Panel1.Size = New System.Drawing.Size(458, 44)
         Me.Panel1.TabIndex = 0
         '
-        'Guna2Elipse1
+        'LabelPosition
         '
-        Me.Guna2Elipse1.BorderRadius = 20
-        Me.Guna2Elipse1.TargetControl = Me
+        Me.LabelPosition.AutoSize = True
+        Me.LabelPosition.Font = New System.Drawing.Font("Century Gothic", 16.0!)
+        Me.LabelPosition.ForeColor = System.Drawing.Color.White
+        Me.LabelPosition.Location = New System.Drawing.Point(11, 7)
+        Me.LabelPosition.Name = "LabelPosition"
+        Me.LabelPosition.Size = New System.Drawing.Size(109, 25)
+        Me.LabelPosition.TabIndex = 0
+        Me.LabelPosition.Text = "President"
         '
         'Panel2
         '
@@ -73,17 +77,6 @@ Partial Class CandidatesList
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(419, 30)
         Me.FlowLayoutPanel1.TabIndex = 0
         '
-        'LabelPosition
-        '
-        Me.LabelPosition.AutoSize = True
-        Me.LabelPosition.Font = New System.Drawing.Font("Segoe UI", 16.0!)
-        Me.LabelPosition.ForeColor = System.Drawing.Color.White
-        Me.LabelPosition.Location = New System.Drawing.Point(11, 7)
-        Me.LabelPosition.Name = "LabelPosition"
-        Me.LabelPosition.Size = New System.Drawing.Size(103, 30)
-        Me.LabelPosition.TabIndex = 0
-        Me.LabelPosition.Text = "President"
-        '
         'CandidatesList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -105,7 +98,6 @@ Partial Class CandidatesList
 
     End Sub
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Guna2Elipse1 As Guna.UI2.WinForms.Guna2Elipse
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents LabelPosition As System.Windows.Forms.Label

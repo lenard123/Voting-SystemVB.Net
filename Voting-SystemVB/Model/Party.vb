@@ -47,6 +47,7 @@ Public Class Party
 
     Public Property Description As String
         Get
+            If IsNothing(_Description) Then Return ""
             Return _Description
         End Get
         Set(value As String)
@@ -94,12 +95,6 @@ Public Class Party
         Return res
     End Function
 
-    Public Async Function UpdateAsync(Members As List(Of Integer)) As Task(Of Boolean)
-        Return Await Task.Run(Function()
-                                  Return Update(Members)
-                              End Function)
-    End Function
-
     Public Function Update(Members As List(Of Integer)) As Boolean
         If Election.HasNotStarted Then
             Dim Image = OriginalImage
@@ -134,12 +129,6 @@ Public Class Party
             Return Res
         End If
         Return False
-    End Function
-
-    Public Async Function SaveAsync(Members As List(Of Integer)) As Task(Of Boolean)
-        Return Await Task.Run(Function()
-                                  Return Save(Members)
-                              End Function)
     End Function
 
     Public Function Save(Members As List(Of Integer)) As Boolean
@@ -189,19 +178,7 @@ Public Class Party
         Return result
     End Function
 
-    Public Shared Async Function GetAllAsync() As Task(Of List(Of Party))
-        Dim Result As New List(Of Party)
-        Await GetConnection().OpenAsync()
-        Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
-            Using Reader = Await Cmd.ExecuteReaderAsync()
-                While Reader.Read()
-                    Result.Add(GetParty(Reader))
-                End While
-            End Using
-        End Using
-        GetConnection().Close()
-        Return Result
-    End Function
+   
     Public Shared Function GetAll() As List(Of Party)
         Dim Result As New List(Of Party)
         GetConnection().Open()

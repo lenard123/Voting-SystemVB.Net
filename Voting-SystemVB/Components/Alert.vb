@@ -8,10 +8,17 @@
     End Enum
 
     Dim x, y As Integer
+    Dim AutoHide As Boolean
+
     Public Sub setAlert(msg As String, type As AlertType)
+        setAlert(msg, type, True)
+    End Sub
+
+    Public Sub setAlert(msg As String, type As AlertType, AutoHide As Boolean)
         Dim fname As String
         Me.Opacity = 0
         Me.StartPosition = FormStartPosition.Manual
+        Me.AutoHide = AutoHide
         'Me.TopMost = True
         For i As Integer = 1 To 10
             fname = "alert" & i.ToString()
@@ -66,14 +73,18 @@
                     End If
                 End If
             Case actionEnum.wait
-                Timer1.Interval = 3000
-                action = actionEnum.close
+                If AutoHide Then
+                    Timer1.Interval = 3000
+                    action = actionEnum.close
+                Else
+                    Timer1.Stop()
+                End If
             Case actionEnum.close
                 Timer1.Interval = 1
                 Me.Opacity -= 0.1
                 Me.Left -= 3
                 If Me.Opacity = 0 Then
-                    Close()
+                    Dispose()
                 End If
         End Select
     End Sub
@@ -81,11 +92,16 @@
     Public Sub CloseAlert()
         action = actionEnum.close
         Timer1.Interval = 1
+        Timer1.Start()
     End Sub
 
     Public Shared Function ShowAlert(msg As String, type As AlertType) As Alert
+        Return ShowAlert(msg, type, True)
+    End Function
+
+    Public Shared Function ShowAlert(msg As String, type As AlertType, AutoHide As Boolean) As Alert
         Dim _alert As New Alert
-        _alert.setAlert(msg, type)
+        _alert.setAlert(msg, type, AutoHide)
         Return _alert
     End Function
 

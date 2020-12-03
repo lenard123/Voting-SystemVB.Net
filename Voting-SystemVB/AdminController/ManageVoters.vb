@@ -44,88 +44,86 @@ Public Class ManageVoters
         Return True
     End Function
 
-    Private Async Sub ManageVoters_Refresh() Implements MainControl.RefreshControl
+    Private Sub ManageVoters_Refresh() Implements MainControl.RefreshControl
         If Not Election.HasNotStarted Then
             ButtonAddVoter.Visible = False
         End If
 
         If IsNothing(PreviousFilter) Then PreviousFilter = ButtonFilterAll
-        Await RefreshStudent()
+        RefreshStudent()
     End Sub
 
-    Public Async Function RefreshStudent() As Task
-        ResultSet = Await Student.GetAllAsync()
-        LoadStudent()
-    End Function
+    Public Sub RefreshStudent()
+        If BackgroundWorkerRefreshStudent.IsBusy Then Return
+        BackgroundWorkerRefreshStudent.RunWorkerAsync()
+    End Sub
 
     Private Sub LoadStudent()
         StudentDataGridView.DataSource = FilteredResultSet
     End Sub
 
-    Private Sub ButtonFilter_Click(sender As Object, e As EventArgs) Handles ButtonFilterAll.Click, ButtonFilter1st.Click, ButtonFilter4th.Click, ButtonFilter3rd.Click, ButtonFilter2nd.Click
+    Private Sub ButtonFilter_Click(sender As Guna2Button, e As EventArgs) Handles ButtonFilterAll.Click, ButtonFilter1st.Click, ButtonFilter4th.Click, ButtonFilter3rd.Click, ButtonFilter2nd.Click
         If (sender.Equals(PreviousFilter)) Then Return
+
         PreviousFilter.FillColor = SystemColors.Control
         PreviousFilter.ForeColor = SystemColors.ControlDarkDark
-        If (sender.Equals(ButtonFilterAll)) Then
-            ButtonFilterAll.FillColor = Color.FromArgb(255, 164, 91)
-            ButtonFilterAll.ForeColor = Color.White
-            PreviousFilter = ButtonFilterAll
-            Filter = "All"
-        ElseIf sender.Equals(ButtonFilter1st) Then
-            ButtonFilter1st.FillColor = Color.FromArgb(255, 164, 91)
-            ButtonFilter1st.ForeColor = Color.White
-            PreviousFilter = ButtonFilter1st
-            Filter = "1st year"
-        ElseIf sender.Equals(ButtonFilter2nd) Then
-            ButtonFilter2nd.FillColor = Color.FromArgb(255, 164, 91)
-            ButtonFilter2nd.ForeColor = Color.White
-            PreviousFilter = ButtonFilter2nd
-            Filter = "2nd year"
-        ElseIf sender.Equals(ButtonFilter3rd) Then
-            ButtonFilter3rd.FillColor = Color.FromArgb(255, 164, 91)
-            ButtonFilter3rd.ForeColor = Color.White
-            PreviousFilter = ButtonFilter3rd
-            Filter = "3rd year"
-        ElseIf sender.Equals(ButtonFilter4th) Then
-            ButtonFilter4th.FillColor = Color.FromArgb(255, 164, 91)
-            ButtonFilter4th.ForeColor = Color.White
-            PreviousFilter = ButtonFilter4th
-            Filter = "4th year"
-        End If
+
+        sender.FillColor = Color.FromArgb(255, 164, 91)
+        sender.ForeColor = Color.White
+        PreviousFilter = sender
+        Filter = sender.Text
+
         LoadStudent()
     End Sub
 
     Private Sub ButtonAddVoter_Click(sender As Object, e As EventArgs) Handles ButtonAddVoter.Click
-        Dim add As New AddVoter(Me)
+        Dim add As New AddVoter()
         add.ShowPopup()
     End Sub
 
-    Private Async Sub ButtonRefresh_Click(sender As Object, e As EventArgs) Handles ButtonRefresh.Click
+    Private Sub ButtonRefresh_Click(sender As Object, e As EventArgs) Handles ButtonRefresh.Click
         FilterVoter = 0
-        Await RefreshStudent()
+        RefreshStudent()
     End Sub
 
     Private Sub StudentDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles StudentDataGridView.CellDoubleClick
         If Election.HasNotStarted Then
-            Dim update As New UpdateVoter(FilteredResultSet(e.RowIndex), Me)
+            Dim update As New UpdateVoter(FilteredResultSet(e.RowIndex))
             update.ShowPopup()
         End If
     End Sub
 
-    Private Async Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click
+    Private Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click
         If TextSearch.Text.Trim.ToUpper.Equals("DONE VOTERS") Then
             FilterVoter = 1
             LabelResult.Text = "Showing Voters who already voted"
+            LoadStudent()
         ElseIf TextSearch.Text.Trim.ToUpper.Equals("REMAINING VOTERS") Then
             FilterVoter = 2
             LabelResult.Text = "Showing Voters who haven't voted yet"
-        ElseIf Not TextSearch.Text.Trim.Equals("") Then
+            LoadStudent()
+        ElseIf Not TextSearch.Text.Trim.Equals("") And Not BackgroundWorkerSearch.IsBusy Then
             FilterVoter = 0
             LabelResult.Text = "Searching..."
-            ResultSet = Await Student.SearchAsync(TextSearch.Text)
-            LabelResult.Text = "Search Results for: """ & TextSearch.Text & """"
+            BackgroundWorkerSearch.RunWorkerAsync(TextSearch.Text)
         End If
+    End Sub
+
+    Private Sub BackgroundWorkerRefreshStudent_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerRefreshStudent.DoWork
+        ResultSet = Student.GetAllF()
+    End Sub
+
+    Private Sub BackgroundWorkerLoadStudent_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerRefreshStudent.RunWorkerCompleted
         LoadStudent()
     End Sub
 
+    Private Sub BackgroundWorkerSearch_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerSearch.DoWork
+        ResultSet = Student.Search(e.Argument)
+        e.Result = e.Argument
+    End Sub
+
+    Private Sub BackgroundWorkerSearch_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerSearch.RunWorkerCompleted
+        LoadStudent()
+        LabelResult.Text = "Search Results for: """ & e.Result & """"
+    End Sub
 End Class

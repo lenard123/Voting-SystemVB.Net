@@ -17,7 +17,7 @@
         ' Add any initialization after the InitializeComponent() call.
         Me._Candidate = _Candidate
         Me.LabelFullname.Text = _Candidate.Fullname.ToUpper()
-        Me.LabelPosition.Text = "For " & _Candidate.CandidatePosition
+        Me.LabelPosition.Text = "For " & Position.GetName(_Candidate.PositionID)
         Me.LabelCourse.Text = _Candidate.Course
         Me.LabelYear.Text = _Candidate.Year + " Year"
         Me.LabelTagline.Text = _Candidate.Tagline

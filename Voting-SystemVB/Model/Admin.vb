@@ -84,22 +84,7 @@ Public Class Admin
         Return Res
     End Function
 
-    'Get Specific admin using their username
-    Public Shared Async Function FindAsync(Username As String) As Task(Of Admin)
-        Dim Result As Admin = Nothing
-        Await GetConnection().OpenAsync()
-        Using Cmd = New OleDbCommand(QUERY_SELECT_BY_USERNAME, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Username, ADMIN_USERNAME_LENGTH))
-            Cmd.Prepare()
-            Using Reader = Await Cmd.ExecuteReaderAsync()
-                If Reader.Read Then
-                    Result = GetAdmin(Reader)
-                End If
-            End Using
-        End Using
-        GetConnection().Close()
-        Return Result
-    End Function
+   
     Public Shared Function Find(ByVal Username As String) As Admin
         Dim Result As Admin = Nothing
         GetConnection().Open()

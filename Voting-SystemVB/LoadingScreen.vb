@@ -1,5 +1,7 @@
 ﻿Public Class LoadingScreen
 
+    Implements MainControl
+
     Dim Percent As Integer = 0
 
     Dim ValidConnection As Boolean = False
@@ -22,9 +24,8 @@
                 AdminPanel.GetInstance()
             Case 5
                 AdminHomeNotStarted.GetInstance()
-                AdminHomeStarted.GetInstance()
             Case 6
-                AddParty.GetInstance()
+                AdminHomeStarted.GetInstance()
             Case 7
                 ManageCandidate.GetInstance()
             Case 8
@@ -64,7 +65,7 @@
         PanelProgress.Width = (Percent / 100) * Me.Width
     End Sub
 
-    Private Sub LoadingScreen_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub LoadingScreen_Load() Implements MainControl.RefreshControl
         Timer1.Start()
     End Sub
 End Class

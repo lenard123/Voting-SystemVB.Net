@@ -1,6 +1,6 @@
 ﻿Public Class AddCandidate
 
-    Private Popup As New ModalPopup
+    Public Popup As New ModalPopup
     Dim IsValid = False
     Dim sStudent As Student
     Dim loadingAlert As Alert
@@ -10,12 +10,25 @@
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-
         CBPosition.DataSource = Position.GetDatatable()
         CBPosition.ValueMember = "id"
         CBPosition.DisplayMember = "name"
         CBPosition.SelectedValue = PositionID
+        Guna2PictureBox1.ImageLocation = Candidate.IMAGE_DEFAULT
 
+    End Sub
+
+    Public Sub New(rStudent As Student)
+        InitializeComponent()
+
+        CBPosition.DataSource = Position.GetDatatable()
+        CBPosition.ValueMember = "id"
+        CBPosition.DisplayMember = "name"
+
+        TextVoter.Select()
+        TextVoter.Text = rStudent.StudentId
+        CBPosition.Select()
+        Guna2PictureBox1.ImageLocation = Candidate.IMAGE_DEFAULT
     End Sub
 
     Public Sub ShowPopup()
@@ -48,41 +61,52 @@
         End If
     End Sub
 
-    Private Sub ButtonSelectPicture_Click(sender As Object, e As EventArgs) Handles ButtonSelectPicture.Click
+    Private Sub ButtonSelectPicture_Click(sender As Object, e As EventArgs) Handles Guna2PictureBox1.Click
         If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
             Guna2PictureBox1.ImageLocation = OpenFileDialog1.FileName
         End If
     End Sub
 
-    Private Async Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
+    Private Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
         TextVoter_Leave(sender, e)
         If IsValid Then
-            Me.Enabled = False
-            loadingAlert = Alert.ShowAlert("Saving...", Alert.AlertType.Info)
-            Await Save()
+            ButtonSave.Enabled = False
+            ButtonDiscard.Enabled = False
+            loadingAlert = Alert.ShowAlert("Saving...", Alert.AlertType.Info, False)
+
+            Dim nCandidate = New Candidate(sStudent.Id)
+            loadingAlert.CloseAlert()
+            nCandidate.Tagline = TextTagline.Text
+            nCandidate.Image = Guna2PictureBox1.ImageLocation
+            nCandidate.PositionID = CBPosition.SelectedValue
+
+            BackgroundWorkerSave.RunWorkerAsync(nCandidate)
+
         End If
     End Sub
 
-    Private Async Function Save() As Task
-        Dim nCandidate = New Candidate(sStudent.Id)
+    Private Sub ButtonClear_Click(sender As Object, e As EventArgs) Handles ButtonClear.Click
+        Guna2PictureBox1.ImageLocation = Candidate.IMAGE_DEFAULT
+    End Sub
+
+    Private Sub BackgroundWorkerSave_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerSave.DoWork
+        e.Result = DirectCast(e.Argument, Candidate).Save()
+    End Sub
+
+    Private Sub BackgroundWorkerSave_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerSave.RunWorkerCompleted
+        ButtonSave.Enabled = True
+        ButtonDiscard.Enabled = True
         loadingAlert.CloseAlert()
-        nCandidate.Tagline = TextTagline.Text
-        nCandidate.Image = Guna2PictureBox1.ImageLocation
-        nCandidate.PositionID = CBPosition.SelectedValue
-        Dim Res = Await nCandidate.SaveAsync()
-        If Res Then
+
+        If e.Result Then
             Alert.setAlert("Candidate Registered Successfully", Alert.AlertType.Success)
+            Popup.ClosePopup()
+            ManageCandidate.GetInstance().RefreshCandidate()
         Else
             Alert.setAlert("An error occured", Alert.AlertType.Error)
         End If
-        ButtonSave.Enabled = True
-        ButtonSave.Text = "Save"
-        ButtonDiscard.Enabled = True
-        Popup.ClosePopup()
-        Await ManageCandidate.GetInstance().LoadPosition(CBPosition.SelectedValue)
-    End Function
 
-    Private Sub ButtonClear_Click(sender As Object, e As EventArgs) Handles ButtonClear.Click
-        Guna2PictureBox1.ImageLocation = ""
+
     End Sub
+
 End Class

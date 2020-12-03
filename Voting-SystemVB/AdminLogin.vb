@@ -5,6 +5,8 @@
     'Have 1 Global Instance for Whole Application
     Private Shared Instance As AdminLogin
 
+    Private LoadingAlert As Alert
+
     'Return AdminLogin Instance
     Public Shared Function GetInstance() As AdminLogin
         If IsNothing(Instance) Then
@@ -18,11 +20,6 @@
         Main.LoadControl(VoterLogin.GetInstance())
     End Sub
 
-    'Close Program
-    Private Sub ButtonClose_Click(sender As Object, e As EventArgs) Handles ButtonClose.Click
-        Application.Exit()
-    End Sub
-
     'Show/Hide Password
     Private Sub ButtonVisibility_Click(sender As Object, e As EventArgs) Handles ButtonVisibility.Click
         If (TextPassword.UseSystemPasswordChar) Then
@@ -31,26 +28,6 @@
         Else
             ButtonVisibility.Image = My.Resources.show
             TextPassword.UseSystemPasswordChar = True
-        End If
-    End Sub
-
-    'Login
-    Private Async Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
-        If ValidateForm() Then
-            Dim loadingAlert = Alert.ShowAlert("Logging in, please wait", Alert.AlertType.Info)
-            Dim Result = Await Admin.FindAsync(TextUsername.Text)
-            loadingAlert.CloseAlert()
-            If IsNothing(Result) Then
-                Alert.ShowAlert("Invalid username", Alert.AlertType.Error)
-            Else
-                If Not Result.ComparePassword(TextPassword.Text) Then
-                    Alert.ShowAlert("Wrong username or password", Alert.AlertType.Error)
-                Else
-                    Alert.ShowAlert("Login Successfully", Alert.AlertType.Success)
-                    Main.LoadControl(AdminPanel.GetInstance().SetUser(Result))
-                End If
-            End If
-
         End If
     End Sub
 
@@ -74,29 +51,61 @@
         End If
         Return ValidationError.Length.Equals(0)
     End Function
-
-
-
-    'Focus Indicators
-    Private Sub TextUsername_Enter(sender As Object, e As EventArgs) Handles TextUsername.Enter
-        PanelUsernameStatus.BackColor = Color.FromArgb(255, 164, 91)
+    Private Sub Field_Enter(sender As Control, e As EventArgs) Handles TextUsername.Enter, TextPassword.Enter
+        If sender.Equals(TextUsername) Then sender = PanelUsernameStatus
+        If sender.Equals(TextPassword) Then sender = PanelPasswordStatus
+        sender.BackColor = Color.FromArgb(255, 164, 91)
     End Sub
-
-    Private Sub TextPassword_Enter(sender As Object, e As EventArgs) Handles TextPassword.Enter
-        PanelPasswordStatus.BackColor = Color.FromArgb(255, 164, 91)
-    End Sub
-
-    Private Sub TextUsername_Leave(sender As Object, e As EventArgs) Handles TextUsername.Leave
-        PanelUsernameStatus.BackColor = Color.Transparent
-    End Sub
-
-    Private Sub TextPassword_Leave(sender As Object, e As EventArgs) Handles TextPassword.Leave
-        PanelPasswordStatus.BackColor = Color.Transparent
+    Private Sub Field_Leave(sender As Control, e As EventArgs) Handles TextUsername.Leave, TextPassword.Leave
+        If sender.Equals(TextUsername) Then sender = PanelUsernameStatus
+        If sender.Equals(TextPassword) Then sender = PanelPasswordStatus
+        sender.BackColor = Color.Transparent
     End Sub
 
     Public Sub RefreshControl() Implements MainControl.RefreshControl
         TextPassword.Clear()
-        Main.RestoreWindowState()
     End Sub
 
+
+    'Login
+    Enum WorkerResult
+        INVALID_USERNAME
+        INVALID_PASSWORD
+        SUCCESS
+    End Enum
+    Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
+        If ValidateForm() Then
+            If Not BackgroundWorkerLogin.IsBusy Then
+                LoadingAlert = Alert.ShowAlert("Logging in, please wait", Alert.AlertType.Info, False)
+                BackgroundWorkerLogin.RunWorkerAsync()
+            End If
+        End If
+    End Sub
+
+    Private Sub BackgroundWorkerLogin_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerLogin.DoWork
+        Dim Result = Admin.Find(TextUsername.Text)
+        If IsNothing(Result) Then
+            e.Result = WorkerResult.INVALID_USERNAME
+        Else
+            If Not Result.ComparePassword(TextPassword.Text) Then
+                e.Result = WorkerResult.INVALID_PASSWORD
+            Else
+                e.Result = WorkerResult.SUCCESS
+                Admin.SetCurrentUser(Result)
+            End If
+        End If
+    End Sub
+
+    Private Sub BackgroundWorkerLogin_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerLogin.RunWorkerCompleted
+        LoadingAlert.CloseAlert()
+        Select Case e.Result
+            Case WorkerResult.INVALID_USERNAME
+                Alert.ShowAlert("Invalid username", Alert.AlertType.Error)
+            Case WorkerResult.INVALID_PASSWORD
+                Alert.ShowAlert("Wrong username or password", Alert.AlertType.Error)
+            Case WorkerResult.SUCCESS
+                Alert.ShowAlert("Login Successfully", Alert.AlertType.Success)
+                Main.LoadControl(AdminPanel.GetInstance())
+        End Select
+    End Sub
 End Class

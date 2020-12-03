@@ -136,25 +136,7 @@ Public Class Student
         Return Result
     End Function
 
-    Public Shared Async Function SearchAsync(Query As String) As Task(Of List(Of Student))
-        Query = "%" & Query & "%"
-        Dim Result As New List(Of Student)
-        Await GetConnection().OpenAsync()
-        Using Cmd = New OleDbCommand(QUERY_SEARCH, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
-            Cmd.Prepare()
-            Using Reader = Await Cmd.ExecuteReaderAsync()
-                While Reader.Read()
-                    Result.Add(GetStudent(Reader))
-                End While
-            End Using
-        End Using
-        GetConnection.Close()
-        Return Result
-    End Function
-
+   
     Public Shared Function Search(Query As String) As List(Of Student)
         Query = "%" & Query & "%"
         Dim Result As New List(Of Student)
@@ -212,11 +194,6 @@ Public Class Student
         End If
     End Function
 
-    Public Function SaveAsync() As Task(Of Boolean)
-        Return Task.Run(Function()
-                            Return Save()
-                        End Function)
-    End Function
 
 
     '
@@ -232,19 +209,6 @@ Public Class Student
     End Function
 
 
-    ''' <summary>
-    ''' Count the number of Voters Asynchronously
-    ''' </summary>
-    ''' <returns>Integer</returns>
-    Public Shared Async Function CountAllAsync() As Task(Of Integer)
-        Dim Result As Integer = 0
-        Await GetConnection().OpenAsync()
-        Using Cmd = New OleDbCommand(QUERY_COUNT_ALL, GetConnection())
-            Result = Integer.Parse(Await Cmd.ExecuteScalarAsync())
-        End Using
-        GetConnection().Close()
-        Return Result
-    End Function
 
     ''' <summary>
     ''' Count the number of Voters Asynchronously

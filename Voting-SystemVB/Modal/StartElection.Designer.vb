@@ -25,11 +25,14 @@ Partial Class StartElection
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.BackgroundWorkerLoad = New System.ComponentModel.BackgroundWorker()
         Me.Card1 = New Voting_SystemVB.Card()
+        Me.LabelLoading = New System.Windows.Forms.Label()
+        Me.Guna2WinProgressIndicator1 = New Guna.UI2.WinForms.Guna2WinProgressIndicator()
         Me.ErrorPassword = New System.Windows.Forms.Label()
         Me.ErrorName = New System.Windows.Forms.Label()
         Me.ButtonCancel = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
+        Me.ButtonStart = New Guna.UI2.WinForms.Guna2Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Guna2RadioButton1 = New Guna.UI2.WinForms.Guna2RadioButton()
@@ -47,12 +50,15 @@ Partial Class StartElection
         '
         'Panel1
         '
+        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.AutoScroll = True
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.FlowLayoutPanel1)
-        Me.Panel1.Location = New System.Drawing.Point(363, 32)
+        Me.Panel1.Location = New System.Drawing.Point(352, 32)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(506, 440)
+        Me.Panel1.Size = New System.Drawing.Size(517, 440)
         Me.Panel1.TabIndex = 5
         '
         'FlowLayoutPanel1
@@ -63,27 +69,32 @@ Partial Class StartElection
         Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(13, 13)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(479, 413)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(490, 413)
         Me.FlowLayoutPanel1.TabIndex = 0
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label4.Location = New System.Drawing.Point(272, 497)
+        Me.Label4.Location = New System.Drawing.Point(421, 485)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(328, 15)
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "Note: Once the election started, you can not manually stop it"
         '
+        'BackgroundWorkerLoad
+        '
+        '
         'Card1
         '
         Me.Card1.BackColor = System.Drawing.Color.White
         Me.Card1.BGColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.Card1.Controls.Add(Me.LabelLoading)
+        Me.Card1.Controls.Add(Me.Guna2WinProgressIndicator1)
         Me.Card1.Controls.Add(Me.ErrorPassword)
         Me.Card1.Controls.Add(Me.ErrorName)
         Me.Card1.Controls.Add(Me.ButtonCancel)
-        Me.Card1.Controls.Add(Me.Guna2Button1)
+        Me.Card1.Controls.Add(Me.ButtonStart)
         Me.Card1.Controls.Add(Me.Label2)
         Me.Card1.Controls.Add(Me.Panel2)
         Me.Card1.Controls.Add(Me.TextName)
@@ -93,8 +104,30 @@ Partial Class StartElection
         Me.Card1.Controls.Add(Me.TextPassword)
         Me.Card1.Location = New System.Drawing.Point(14, 32)
         Me.Card1.Name = "Card1"
-        Me.Card1.Size = New System.Drawing.Size(343, 440)
+        Me.Card1.Size = New System.Drawing.Size(332, 440)
         Me.Card1.TabIndex = 9
+        '
+        'LabelLoading
+        '
+        Me.LabelLoading.AutoSize = True
+        Me.LabelLoading.BackColor = System.Drawing.Color.Transparent
+        Me.LabelLoading.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.LabelLoading.ForeColor = System.Drawing.Color.Black
+        Me.LabelLoading.Location = New System.Drawing.Point(42, 341)
+        Me.LabelLoading.Name = "LabelLoading"
+        Me.LabelLoading.Size = New System.Drawing.Size(85, 19)
+        Me.LabelLoading.TabIndex = 18
+        Me.LabelLoading.Text = "Please wait..."
+        Me.LabelLoading.Visible = False
+        '
+        'Guna2WinProgressIndicator1
+        '
+        Me.Guna2WinProgressIndicator1.CircleSize = 0.01!
+        Me.Guna2WinProgressIndicator1.Location = New System.Drawing.Point(8, 337)
+        Me.Guna2WinProgressIndicator1.Name = "Guna2WinProgressIndicator1"
+        Me.Guna2WinProgressIndicator1.Size = New System.Drawing.Size(30, 30)
+        Me.Guna2WinProgressIndicator1.TabIndex = 17
+        Me.Guna2WinProgressIndicator1.Visible = False
         '
         'ErrorPassword
         '
@@ -118,34 +151,35 @@ Partial Class StartElection
         '
         'ButtonCancel
         '
+        Me.ButtonCancel.Animated = True
         Me.ButtonCancel.BorderColor = System.Drawing.Color.LightGray
-        Me.ButtonCancel.BorderThickness = 1
         Me.ButtonCancel.CheckedState.Parent = Me.ButtonCancel
         Me.ButtonCancel.CustomImages.Parent = Me.ButtonCancel
         Me.ButtonCancel.FillColor = System.Drawing.Color.White
         Me.ButtonCancel.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonCancel.ForeColor = System.Drawing.Color.Black
+        Me.ButtonCancel.ForeColor = System.Drawing.Color.Gray
         Me.ButtonCancel.HoverState.Parent = Me.ButtonCancel
-        Me.ButtonCancel.Location = New System.Drawing.Point(178, 340)
+        Me.ButtonCancel.Location = New System.Drawing.Point(183, 388)
         Me.ButtonCancel.Name = "ButtonCancel"
         Me.ButtonCancel.ShadowDecoration.Parent = Me.ButtonCancel
-        Me.ButtonCancel.Size = New System.Drawing.Size(144, 36)
+        Me.ButtonCancel.Size = New System.Drawing.Size(106, 23)
         Me.ButtonCancel.TabIndex = 8
         Me.ButtonCancel.Text = "CANCEL"
         '
-        'Guna2Button1
+        'ButtonStart
         '
-        Me.Guna2Button1.CheckedState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.CustomImages.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button1.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button1.HoverState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Location = New System.Drawing.Point(17, 340)
-        Me.Guna2Button1.Name = "Guna2Button1"
-        Me.Guna2Button1.ShadowDecoration.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Size = New System.Drawing.Size(144, 36)
-        Me.Guna2Button1.TabIndex = 8
-        Me.Guna2Button1.Text = "START ELECTION"
+        Me.ButtonStart.Animated = True
+        Me.ButtonStart.CheckedState.Parent = Me.ButtonStart
+        Me.ButtonStart.CustomImages.Parent = Me.ButtonStart
+        Me.ButtonStart.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonStart.ForeColor = System.Drawing.Color.White
+        Me.ButtonStart.HoverState.Parent = Me.ButtonStart
+        Me.ButtonStart.Location = New System.Drawing.Point(46, 381)
+        Me.ButtonStart.Name = "ButtonStart"
+        Me.ButtonStart.ShadowDecoration.Parent = Me.ButtonStart
+        Me.ButtonStart.Size = New System.Drawing.Size(118, 37)
+        Me.ButtonStart.TabIndex = 8
+        Me.ButtonStart.Text = "START ELECTION"
         '
         'Label2
         '
@@ -164,7 +198,7 @@ Partial Class StartElection
         Me.Panel2.Controls.Add(Me.Guna2RadioButton2)
         Me.Panel2.Location = New System.Drawing.Point(17, 171)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(305, 73)
+        Me.Panel2.Size = New System.Drawing.Size(300, 73)
         Me.Panel2.TabIndex = 7
         '
         'Guna2RadioButton1
@@ -245,7 +279,7 @@ Partial Class StartElection
         Me.TextName.PlaceholderText = ""
         Me.TextName.SelectedText = ""
         Me.TextName.ShadowDecoration.Parent = Me.TextName
-        Me.TextName.Size = New System.Drawing.Size(305, 36)
+        Me.TextName.Size = New System.Drawing.Size(300, 36)
         Me.TextName.TabIndex = 3
         '
         'Label1
@@ -271,7 +305,7 @@ Partial Class StartElection
         Me.Guna2DateTimePicker1.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
         Me.Guna2DateTimePicker1.Name = "Guna2DateTimePicker1"
         Me.Guna2DateTimePicker1.ShadowDecoration.Parent = Me.Guna2DateTimePicker1
-        Me.Guna2DateTimePicker1.Size = New System.Drawing.Size(305, 36)
+        Me.Guna2DateTimePicker1.Size = New System.Drawing.Size(300, 36)
         Me.Guna2DateTimePicker1.TabIndex = 4
         Me.Guna2DateTimePicker1.Value = New Date(2020, 11, 28, 0, 0, 0, 0)
         '
@@ -304,7 +338,7 @@ Partial Class StartElection
         Me.TextPassword.PlaceholderText = ""
         Me.TextPassword.SelectedText = ""
         Me.TextPassword.ShadowDecoration.Parent = Me.TextPassword
-        Me.TextPassword.Size = New System.Drawing.Size(305, 36)
+        Me.TextPassword.Size = New System.Drawing.Size(300, 36)
         Me.TextPassword.TabIndex = 3
         Me.TextPassword.UseSystemPasswordChar = True
         '
@@ -338,7 +372,7 @@ Partial Class StartElection
     Friend WithEvents Guna2RadioButton2 As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents Guna2RadioButton3 As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonStart As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents ButtonCancel As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents TextPassword As Guna.UI2.WinForms.Guna2TextBox
@@ -346,5 +380,8 @@ Partial Class StartElection
     Friend WithEvents Card1 As Voting_SystemVB.Card
     Friend WithEvents ErrorPassword As System.Windows.Forms.Label
     Friend WithEvents ErrorName As System.Windows.Forms.Label
+    Friend WithEvents LabelLoading As System.Windows.Forms.Label
+    Friend WithEvents Guna2WinProgressIndicator1 As Guna.UI2.WinForms.Guna2WinProgressIndicator
+    Friend WithEvents BackgroundWorkerLoad As System.ComponentModel.BackgroundWorker
 
 End Class

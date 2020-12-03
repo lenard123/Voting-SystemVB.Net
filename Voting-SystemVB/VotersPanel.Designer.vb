@@ -31,7 +31,7 @@ Partial Class VotersPanel
         Me.Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button6 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button4 = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button5 = New Guna.UI2.WinForms.Guna2Button()
+        Me.ButtonLogout = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2ControlBox2 = New Guna.UI2.WinForms.Guna2ControlBox()
@@ -81,7 +81,7 @@ Partial Class VotersPanel
         Me.SideBarButton.Controls.Add(Me.Guna2Button3)
         Me.SideBarButton.Controls.Add(Me.Guna2Button6)
         Me.SideBarButton.Controls.Add(Me.Guna2Button4)
-        Me.SideBarButton.Controls.Add(Me.Guna2Button5)
+        Me.SideBarButton.Controls.Add(Me.ButtonLogout)
         Me.SideBarButton.Location = New System.Drawing.Point(5, 144)
         Me.SideBarButton.Name = "SideBarButton"
         Me.SideBarButton.Size = New System.Drawing.Size(220, 384)
@@ -182,24 +182,24 @@ Partial Class VotersPanel
         Me.Guna2Button4.Tag = "5"
         Me.Guna2Button4.Text = "CURRENT VOTE COUNT"
         '
-        'Guna2Button5
+        'ButtonLogout
         '
-        Me.Guna2Button5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.ButtonLogout.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Button5.CheckedState.Parent = Me.Guna2Button5
-        Me.Guna2Button5.CustomImages.Parent = Me.Guna2Button5
-        Me.Guna2Button5.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.Guna2Button5.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button5.ForeColor = System.Drawing.SystemColors.ControlDark
-        Me.Guna2Button5.HoverState.Parent = Me.Guna2Button5
-        Me.Guna2Button5.Location = New System.Drawing.Point(0, 200)
-        Me.Guna2Button5.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Button5.Name = "Guna2Button5"
-        Me.Guna2Button5.ShadowDecoration.Parent = Me.Guna2Button5
-        Me.Guna2Button5.Size = New System.Drawing.Size(220, 40)
-        Me.Guna2Button5.TabIndex = 4
-        Me.Guna2Button5.Tag = "6"
-        Me.Guna2Button5.Text = "LOGOUT"
+        Me.ButtonLogout.CheckedState.Parent = Me.ButtonLogout
+        Me.ButtonLogout.CustomImages.Parent = Me.ButtonLogout
+        Me.ButtonLogout.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.ButtonLogout.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonLogout.ForeColor = System.Drawing.SystemColors.ControlDark
+        Me.ButtonLogout.HoverState.Parent = Me.ButtonLogout
+        Me.ButtonLogout.Location = New System.Drawing.Point(0, 200)
+        Me.ButtonLogout.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonLogout.Name = "ButtonLogout"
+        Me.ButtonLogout.ShadowDecoration.Parent = Me.ButtonLogout
+        Me.ButtonLogout.Size = New System.Drawing.Size(220, 40)
+        Me.ButtonLogout.TabIndex = 4
+        Me.ButtonLogout.Tag = "6"
+        Me.ButtonLogout.Text = "LOGOUT"
         '
         'Panel2
         '
@@ -409,7 +409,7 @@ Partial Class VotersPanel
     Friend WithEvents Guna2Button3 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button6 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button4 As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button5 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonLogout As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Guna2ControlBox2 As Guna.UI2.WinForms.Guna2ControlBox

@@ -30,7 +30,6 @@ Partial Class VoterLogin
         Me.Label2 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.btn_close = New System.Windows.Forms.Button()
         Me.PanelStudentID = New System.Windows.Forms.Panel()
         Me.PanelStudentIdStatus = New System.Windows.Forms.Panel()
         Me.TextStudentId = New System.Windows.Forms.TextBox()
@@ -43,6 +42,8 @@ Partial Class VoterLogin
         Me.ButtonLogin = New System.Windows.Forms.Button()
         Me.ButtonAdmin = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.BackgroundWorkerLogin = New System.ComponentModel.BackgroundWorker()
+        Me.Guna2ControlBox1 = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelStudentID.SuspendLayout()
@@ -122,22 +123,6 @@ Partial Class VoterLogin
         Me.Label4.TabIndex = 4
         Me.Label4.Text = "Login to your Voters Account"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'btn_close
-        '
-        Me.btn_close.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_close.FlatAppearance.BorderSize = 0
-        Me.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_close.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.btn_close.ForeColor = System.Drawing.Color.Gray
-        Me.btn_close.Location = New System.Drawing.Point(821, 0)
-        Me.btn_close.Name = "btn_close"
-        Me.btn_close.Size = New System.Drawing.Size(20, 23)
-        Me.btn_close.TabIndex = 5
-        Me.btn_close.TabStop = False
-        Me.btn_close.Text = "X"
-        Me.btn_close.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btn_close.UseVisualStyleBackColor = True
         '
         'PanelStudentID
         '
@@ -267,13 +252,28 @@ Partial Class VoterLogin
         Me.ToolTip1.IsBalloon = True
         Me.ToolTip1.ShowAlways = True
         '
+        'BackgroundWorkerLogin
+        '
+        '
+        'Guna2ControlBox1
+        '
+        Me.Guna2ControlBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2ControlBox1.FillColor = System.Drawing.Color.Transparent
+        Me.Guna2ControlBox1.HoverState.Parent = Me.Guna2ControlBox1
+        Me.Guna2ControlBox1.IconColor = System.Drawing.Color.Gray
+        Me.Guna2ControlBox1.Location = New System.Drawing.Point(819, 3)
+        Me.Guna2ControlBox1.Name = "Guna2ControlBox1"
+        Me.Guna2ControlBox1.ShadowDecoration.Parent = Me.Guna2ControlBox1
+        Me.Guna2ControlBox1.Size = New System.Drawing.Size(19, 24)
+        Me.Guna2ControlBox1.TabIndex = 6
+        '
         'VoterLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.Guna2ControlBox1)
         Me.Controls.Add(Me.ButtonAdmin)
         Me.Controls.Add(Me.ButtonLogin)
-        Me.Controls.Add(Me.btn_close)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.PanelStudentID)
@@ -300,7 +300,6 @@ Partial Class VoterLogin
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents btn_close As System.Windows.Forms.Button
     Friend WithEvents PanelStudentID As System.Windows.Forms.Panel
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
@@ -313,5 +312,7 @@ Partial Class VoterLogin
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents PanelStudentIdStatus As System.Windows.Forms.Panel
     Friend WithEvents PanelPasswordStatus As System.Windows.Forms.Panel
+    Friend WithEvents BackgroundWorkerLogin As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Guna2ControlBox1 As Guna.UI2.WinForms.Guna2ControlBox
 
 End Class

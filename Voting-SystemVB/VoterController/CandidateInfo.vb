@@ -1,4 +1,5 @@
 ﻿Imports Guna.UI2.WinForms
+Imports System.ComponentModel
 
 Public Class CandidateInfo
 
@@ -17,11 +18,12 @@ Public Class CandidateInfo
     End Function
 
     Private Sub OnLoadRefresh() Implements MainControl.RefreshControl
-        ButtonPresident.PerformClick()
+        If Not IsNothing(CandidateCards) Then ButtonPresident.PerformClick()
     End Sub
 
-    Private Sub ChangePosition(sender As Guna2Button, e As EventArgs) Handles ButtonPresident.Click, ButtonVicePresident.Click, ButtonSecretary.Click, ButtonTreasurer.Click, ButtonAuditor.Click, ButtonPRO.Click
-        'Parse Tag to Integer   
+    Private Sub ChangePosition(sender As Object, e As EventArgs) Handles ButtonPresident.Click, ButtonVicePresident.Click, ButtonSecretary.Click, ButtonTreasurer.Click, ButtonAuditor.Click, ButtonPRO.Click
+        'Parse Tag to Integer
+        sender = DirectCast(sender, Guna2Button)
         Dim tag = Integer.Parse(sender.Tag)
 
         'Ignore if choose the same button
@@ -39,19 +41,19 @@ Public Class CandidateInfo
         SelectedButton = sender
         SelectedPosition = tag
 
-        LoadData()
+        LoadPanel()
     End Sub
 
-    Private Async Sub LoadData()
-        If IsNothing(CandidateCards) Then Await InitCards()
+    Sub LoadPanel()
         FlowLayoutPanel2.Controls.Clear()
         For Each card In CandidateCards(SelectedPosition)
             FlowLayoutPanel2.Controls.Add(card)
         Next
     End Sub
 
-    Private Async Function InitCards() As Task
-        Dim Candidates = Await VotersPanel.GetCandidates()
+
+    Private Sub InitCards()
+        Dim Candidates = VotersPanel.GetCandidates()
         CandidateCards = New Dictionary(Of Integer, List(Of CandidateCard))
         For i = 1 To 6
             CandidateCards.Add(i, New List(Of CandidateCard))
@@ -60,6 +62,17 @@ Public Class CandidateInfo
                 CandidateCards(i).Add(New CandidateCard(iCandidate))
             Next
         Next
-    End Function
+    End Sub
 
+    Private Sub CandidateInfo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        BackgroundWorker1.RunWorkerAsync()
+    End Sub
+
+    Private Sub BackgroundWorker1_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+        InitCards()
+    End Sub
+
+    Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
+        ButtonPresident.PerformClick()
+    End Sub
 End Class

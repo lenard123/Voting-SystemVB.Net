@@ -2,22 +2,14 @@
 
     Implements MainControl
 
-    'Handles Draggable Form
-    Private IsFormBeingDragged As Boolean = False
-    Private MouseDownX, MouseDownY As Integer
+    Private Shared Instance As AdminPanel
 
-    'Handles Maximizing Form
-    Private IsNormal As Boolean = True
-
-    Private Account As Admin
     Private ElectionStatus As Integer
     Private ActivePage As Button
-
-    Private Shared Instance As AdminPanel
     Private isCountDownStart As Boolean = False
     Private RemainingTime As Long
 
-
+    'Get Instance
     Public Shared Function GetInstance() As AdminPanel
         If IsNothing(Instance) Then
             Instance = New AdminPanel
@@ -25,32 +17,27 @@
         Return Instance
     End Function
 
-    Public Function SetUser(Account As Admin) As AdminPanel
-        Me.Account = Account
-        Admin.SetCurrentUser(Account)
-        Return Me
-    End Function
-
+    'Load Control
     Public Sub LoadControl(content As Control)
         MainContent.Controls.Clear()
         content.Dock = DockStyle.Fill
         MainContent.Controls.Add(content)
-
         If TypeOf content Is MainControl Then
             DirectCast(content, MainControl).RefreshControl()
         End If
-
     End Sub
 
+    'Return Admin Home Depending on Election Status
     Public Function AdminHomeControl() As Control
         If Election.HasNotStarted Then
-            Return AdminHomeNotStarted.GetInstance()
+            Return AdminHomeNotStarted1.GetInstance()
         ElseIf Election.IsOngoing Then
             Return AdminHomeStarted.GetInstance()
         End If
         Return Nothing
     End Function
 
+    'Display Election Status
     Private Sub ShowElectionStatus()
         Dim state = ElectionStatus
         If state.Equals(Election.STATUS_NOT_STARTED) Then
@@ -72,38 +59,13 @@
         End If
     End Sub
 
+    'Logout Button
     Private Sub ButtonLogout_Click(sender As Object, e As EventArgs) Handles ButtonLogout.Click
-        SetUser(Nothing)
+        Admin.SetCurrentUser(Nothing)
         Main.LoadControl(AdminLogin.GetInstance())
     End Sub
 
-    Private Sub AdminPanel_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseDown
-        If e.Button = MouseButtons.Left And IsNormal Then
-            IsFormBeingDragged = True
-            MouseDownX = e.X
-            MouseDownY = e.Y
-        End If
-
-    End Sub
-
-    Private Sub AdminPanel_MouseUp(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseUp
-        IsFormBeingDragged = False
-    End Sub
-
-    Private Sub AdminPanel_MouseMove(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseMove
-        If IsFormBeingDragged Then
-            Dim temp As Point = New Point
-            temp.X = Main.Instance.Location.X + (e.X - MouseDownX)
-            temp.Y = Main.Instance.Location.Y + (e.Y - MouseDownY)
-            Main.Instance.Location = temp
-            temp = Nothing
-        End If
-    End Sub
-
-    Private Sub ButtonClose_Click(sender As Object, e As EventArgs) Handles ButtonClose.Click
-        Application.Exit()
-    End Sub
-
+    'Switch Control
     Private Sub ChangeView_Click(sender As Object, e As EventArgs) Handles ButtonVoter.Click, ButtonHome.Click, ButtonCandidate.Click, ButtonParty.Click, ButtonAdmin.Click
         If sender.Equals(ActivePage) Then Return
 
@@ -118,17 +80,31 @@
         ElseIf sender.Equals(ButtonAdmin) Then
             LoadControl(UpdateAdmin.GetInstance())
         End If
+
         indicator.Location = New Point(0, DirectCast(sender, Control).Location.Y)
         ActivePage = sender
     End Sub
 
-    Private Sub ButtonMaximize_Click(sender As Object, e As EventArgs) Handles ButtonMaximize.Click
-        Main.Instance.WindowState = FormWindowState.Maximized
+    'Countdown Tick
+    Private Sub CountDownTimer_Tick(sender As Object, e As EventArgs) Handles CountDownTimer.Tick
+        LabelCountdown.Text = RemainingTimeToString(RemainingTime)
+        RemainingTime -= 1
     End Sub
 
-    Public Sub RefreshState()
+    Public Sub Admin_Panel_Reload() Implements MainControl.RefreshControl
+        If IsNothing(Admin.GetCurrentUser()) Then
+            Alert.ShowAlert("Login first", Alert.AlertType.Info)
+            Main.LoadControl(AdminLogin.GetInstance())
+        Else
+            BackgroundWorkerRefresh.RunWorkerAsync()
+        End If
+    End Sub
+
+    Private Sub BackgroundWorkerRefresh_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerRefresh.DoWork
         ElectionStatus = Election.GetCurrentElectionF().Status
-        LabelFullname.Text = Account.Fullname
+    End Sub
+    Private Sub BackgroundWorkerRefresh_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerRefresh.RunWorkerCompleted
+        LabelFullname.Text = Admin.GetCurrentUser().Fullname
         ShowElectionStatus()
 
         If Election.IsOngoing And Not isCountDownStart Then
@@ -138,20 +114,7 @@
             isCountDownStart = True
         End If
 
+        ButtonHome.PerformClick()
     End Sub
 
-    Private Sub CountDownTimer_Tick(sender As Object, e As EventArgs) Handles CountDownTimer.Tick
-        LabelCountdown.Text = RemainingTimeToString(RemainingTime)
-        RemainingTime -= 1
-    End Sub
-
-    Private Sub AdminPanel_ParentChanged() Implements MainControl.RefreshControl
-        If Not IsNothing(Account) Then
-            RefreshState()
-            ChangeView_Click(ButtonHome, Nothing)
-        Else
-            Alert.ShowAlert("Login first", Alert.AlertType.Info)
-            Main.LoadControl(AdminLogin.GetInstance())
-        End If
-    End Sub
 End Class

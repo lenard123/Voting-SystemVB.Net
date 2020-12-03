@@ -33,8 +33,8 @@ Partial Class AdminPanel
         Me.ButtonVoter = New System.Windows.Forms.Button()
         Me.ButtonHome = New System.Windows.Forms.Button()
         Me.PanelHeader = New System.Windows.Forms.Panel()
-        Me.ButtonClose = New Voting_SystemVB.FontAwesome()
-        Me.ButtonMaximize = New Voting_SystemVB.FontAwesome()
+        Me.Guna2ControlBox2 = New Guna.UI2.WinForms.Guna2ControlBox()
+        Me.Guna2ControlBox1 = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -48,6 +48,8 @@ Partial Class AdminPanel
         Me.LabelCountdown = New System.Windows.Forms.Label()
         Me.ElectionStartedLabel1 = New System.Windows.Forms.Label()
         Me.CountDownTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.Guna2DragControl1 = New Guna.UI2.WinForms.Guna2DragControl(Me.components)
+        Me.BackgroundWorkerRefresh = New System.ComponentModel.BackgroundWorker()
         Me.Panel1.SuspendLayout()
         Me.PanelHeader.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -178,43 +180,38 @@ Partial Class AdminPanel
         'PanelHeader
         '
         Me.PanelHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(81, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
-        Me.PanelHeader.Controls.Add(Me.ButtonClose)
-        Me.PanelHeader.Controls.Add(Me.ButtonMaximize)
+        Me.PanelHeader.Controls.Add(Me.Guna2ControlBox2)
+        Me.PanelHeader.Controls.Add(Me.Guna2ControlBox1)
         Me.PanelHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelHeader.Location = New System.Drawing.Point(219, 0)
         Me.PanelHeader.Name = "PanelHeader"
         Me.PanelHeader.Size = New System.Drawing.Size(913, 20)
         Me.PanelHeader.TabIndex = 1
         '
-        'ButtonClose
+        'Guna2ControlBox2
         '
-        Me.ButtonClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonClose.AutoSize = True
-        Me.ButtonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonClose.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
-        Me.ButtonClose.HoverColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.ButtonClose.IsHoverable = True
-        Me.ButtonClose.Location = New System.Drawing.Point(889, 2)
-        Me.ButtonClose.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonClose.Name = "ButtonClose"
-        Me.ButtonClose.Size = New System.Drawing.Size(21, 15)
-        Me.ButtonClose.TabIndex = 5
-        Me.ButtonClose.Text = "window-close"
+        Me.Guna2ControlBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox
+        Me.Guna2ControlBox2.FillColor = System.Drawing.Color.Transparent
+        Me.Guna2ControlBox2.HoverState.Parent = Me.Guna2ControlBox2
+        Me.Guna2ControlBox2.IconColor = System.Drawing.Color.White
+        Me.Guna2ControlBox2.Location = New System.Drawing.Point(866, 1)
+        Me.Guna2ControlBox2.Name = "Guna2ControlBox2"
+        Me.Guna2ControlBox2.ShadowDecoration.Parent = Me.Guna2ControlBox2
+        Me.Guna2ControlBox2.Size = New System.Drawing.Size(21, 20)
+        Me.Guna2ControlBox2.TabIndex = 0
         '
-        'ButtonMaximize
+        'Guna2ControlBox1
         '
-        Me.ButtonMaximize.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonMaximize.AutoSize = True
-        Me.ButtonMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonMaximize.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 10.0!)
-        Me.ButtonMaximize.HoverColor = System.Drawing.Color.Empty
-        Me.ButtonMaximize.IsHoverable = True
-        Me.ButtonMaximize.Location = New System.Drawing.Point(868, 2)
-        Me.ButtonMaximize.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonMaximize.Name = "ButtonMaximize"
-        Me.ButtonMaximize.Size = New System.Drawing.Size(21, 15)
-        Me.ButtonMaximize.TabIndex = 5
-        Me.ButtonMaximize.Text = "window-maximize"
+        Me.Guna2ControlBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2ControlBox1.FillColor = System.Drawing.Color.Transparent
+        Me.Guna2ControlBox1.HoverState.Parent = Me.Guna2ControlBox1
+        Me.Guna2ControlBox1.IconColor = System.Drawing.Color.White
+        Me.Guna2ControlBox1.Location = New System.Drawing.Point(889, 1)
+        Me.Guna2ControlBox1.Name = "Guna2ControlBox1"
+        Me.Guna2ControlBox1.ShadowDecoration.Parent = Me.Guna2ControlBox1
+        Me.Guna2ControlBox1.Size = New System.Drawing.Size(21, 20)
+        Me.Guna2ControlBox1.TabIndex = 0
         '
         'Panel3
         '
@@ -362,6 +359,13 @@ Partial Class AdminPanel
         '
         Me.CountDownTimer.Interval = 1000
         '
+        'Guna2DragControl1
+        '
+        Me.Guna2DragControl1.TargetControl = Me.PanelHeader
+        '
+        'BackgroundWorkerRefresh
+        '
+        '
         'AdminPanel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -374,7 +378,6 @@ Partial Class AdminPanel
         Me.Size = New System.Drawing.Size(1132, 637)
         Me.Panel1.ResumeLayout(False)
         Me.PanelHeader.ResumeLayout(False)
-        Me.PanelHeader.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -401,11 +404,13 @@ Partial Class AdminPanel
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents LabelFullname As System.Windows.Forms.Label
     Friend WithEvents ChipElectionStatus As Guna.UI2.WinForms.Guna2Chip
-    Friend WithEvents ButtonClose As Voting_SystemVB.FontAwesome
-    Friend WithEvents ButtonMaximize As Voting_SystemVB.FontAwesome
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents CountDownTimer As System.Windows.Forms.Timer
     Friend WithEvents LabelCountdown As System.Windows.Forms.Label
     Friend WithEvents ElectionStartedLabel1 As System.Windows.Forms.Label
+    Friend WithEvents Guna2ControlBox2 As Guna.UI2.WinForms.Guna2ControlBox
+    Friend WithEvents Guna2ControlBox1 As Guna.UI2.WinForms.Guna2ControlBox
+    Friend WithEvents Guna2DragControl1 As Guna.UI2.WinForms.Guna2DragControl
+    Friend WithEvents BackgroundWorkerRefresh As System.ComponentModel.BackgroundWorker
 
 End Class

@@ -4,8 +4,9 @@ Public Class ManageCandidate
 
     Implements MainControl
 
+    Dim Candidates As New Dictionary(Of Integer, List(Of Candidate))
     Dim PreviousButton As Guna2Button
-    Dim SelectedPosition As Integer
+    Dim SelectedPosition As Integer = 1
     Private Shared Instance As ManageCandidate
 
     Public Shared Function GetInstance() As ManageCandidate
@@ -15,19 +16,17 @@ Public Class ManageCandidate
         Return Instance
     End Function
 
-    Public Async Function LoadPosition(Position As Integer) As Task
-        Dim Rs = Await Candidate.GetAllByPositionAsync(Position)
+    Public Sub LoadPosition()
         FlowLayoutPanel1.Controls.Remove(ButtonRegister)
         DisposeChild()
-        For Each item As Candidate In Rs
+        For Each item As Candidate In Candidates(SelectedPosition)
             Dim ctl = New CandidateCard(item)
             If Election.HasNotStarted Then ctl.Editable()
             FlowLayoutPanel1.Controls.Add(ctl)
             ctl.BringToFront()
         Next
         FlowLayoutPanel1.Controls.Add(ButtonRegister)
-        SelectedPosition = Position
-    End Function
+    End Sub
 
     Private Sub DisposeChild()
         While FlowLayoutPanel1.Controls.Count > 0
@@ -37,10 +36,11 @@ Public Class ManageCandidate
         End While
     End Sub
 
-    Private Async Sub SwitchView(sender As Object, e As EventArgs) Handles ButtonPresident.Click, ButtonVPresident.Click, ButtonSecretary.Click, ButtonTreasurer.Click, ButtonAuditor.Click, ButtonPRO.Click
-        If (sender.Equals(PreviousButton)) Then Return
-        PreviousButton.FillColor = Color.White
-        PreviousButton.ForeColor = Color.Black
+    Private Sub SwitchView(sender As Guna2Button, e As EventArgs) Handles ButtonPresident.Click, ButtonVPresident.Click, ButtonSecretary.Click, ButtonTreasurer.Click, ButtonAuditor.Click, ButtonPRO.Click
+        If Not IsNothing(PreviousButton) Then
+            PreviousButton.FillColor = Color.White
+            PreviousButton.ForeColor = Color.Black
+        End If
         If ButtonPresident.Equals(sender) Then
             SelectedPosition = Position.PRESIDENT_ID
         ElseIf ButtonVPresident.Equals(sender) Then
@@ -54,10 +54,10 @@ Public Class ManageCandidate
         ElseIf ButtonPRO.Equals(sender) Then
             SelectedPosition = Position.PRO_ID
         End If
-        Await LoadPosition(SelectedPosition)
-        DirectCast(sender, Guna2Button).FillColor = Color.FromArgb(255, 164, 91)
-        DirectCast(sender, Guna2Button).ForeColor = Color.White
+        sender.FillColor = Color.FromArgb(255, 164, 91)
+        sender.ForeColor = Color.White
         PreviousButton = sender
+        LoadPosition()
     End Sub
 
     Private Sub ButtonRegister_Click(sender As Object, e As EventArgs) Handles ButtonRegister.Click
@@ -65,9 +65,29 @@ Public Class ManageCandidate
         ac.ShowPopup()
     End Sub
 
-    Private Async Sub ManageCandidate_Refresh() Implements MainControl.RefreshControl
-        PreviousButton = ButtonPresident
+    Private Sub ManageCandidate_Refresh() Implements MainControl.RefreshControl
+        If IsNothing(PreviousButton) Then PreviousButton = ButtonPresident
         If Not Election.HasNotStarted Then ButtonRegister.Visible = False
-        Await LoadPosition(Position.PRESIDENT_ID)
+        BackgroundWorkerRefresh.RunWorkerAsync()
+    End Sub
+
+    Sub RefreshCandidate()
+        If BackgroundWorkerRefresh.IsBusy Then Return
+        FlowLayoutPanel1.Controls.Remove(ButtonRegister)
+        DisposeChild()
+        BackgroundWorkerRefresh.RunWorkerAsync()
+    End Sub
+
+    Private Sub BackgroundWorkerRefresh_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerRefresh.DoWork
+        e.Result = Candidate.GetAll2()
+    End Sub
+
+    Private Sub BackgroundWorkerRefresh_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerRefresh.RunWorkerCompleted
+        Candidates = e.Result
+        If Not IsNothing(PreviousButton) Then PreviousButton.PerformClick()
+    End Sub
+
+    Private Sub ButtonRefresh_Click(sender As Object, e As EventArgs) Handles ButtonRefresh.Click
+        BackgroundWorkerRefresh.RunWorkerAsync()
     End Sub
 End Class
