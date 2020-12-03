@@ -38,9 +38,9 @@ Public Class VotersPanel
         End If
     End Sub
 
-    Public Shared Async Function GetCandidates() As Task(Of Dictionary(Of Integer, List(Of Candidate)))
+    Public Shared Function GetCandidates() As Dictionary(Of Integer, List(Of Candidate))
         If IsNothing(Candidates) Then
-            Candidates = Await Candidate.GetAll2Async()
+            Candidates = Candidate.GetAll2()
         End If
         Return Candidates
     End Function
@@ -77,5 +77,11 @@ Public Class VotersPanel
                 LoadControl(PartyInfo.GetInstance())
         End Select
 
+    End Sub
+
+
+    Private Sub ButtonLogout_Click(sender As Object, e As EventArgs) Handles ButtonLogout.Click
+        Student.SetCurrentUser(Nothing)
+        Main.LoadControl(VoterLogin.GetInstance())
     End Sub
 End Class

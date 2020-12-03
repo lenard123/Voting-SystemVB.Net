@@ -3,17 +3,22 @@ Imports System.Data.OleDb
 
 Public Class Party
 
-    Private Shared ReadOnly QUERY_SELECT_ALL = "SELECT * FROM [Party]"
+    Private Const QUERY_SELECT_ALL = "SELECT * FROM [Party]"
+    Private Const QUERY_FIND = "SELECT * FROM [Party] WHERE [Title]=?"
+    Private Const QUERY_UPDATE = "UPDATE [Party] SET [Title]=?, [Description]=?, [image_path]=? WHERE [ID]=?"
+    Private Const QUERY_INSERT = "INSERT INTO [Party]([Title], [Description], [image_path]) VALUES (?, ?, ?)"
+    Private Const QUERY_DELETE_PARTY_MEMBERS = "DELETE FROM [CandidateParty] WHERE [party_id]=?"
+    Private Const QUERY_ADD_PARTY_MEMBERS = "INSERT INTO [CandidateParty]([candidate_id], [party_id]) VALUES (?,?)"
 
-    Public Shared ReadOnly LENGTH_ID = 10
-    Public Shared ReadOnly LENGTH_TITLE = 64
-    Public Shared ReadOnly LENGTH_DESC = 255
-    Public Shared ReadOnly LENGTH_IMAGE = 128
+    Public Const LENGTH_ID = 10
+    Public Const LENGTH_TITLE = 64
+    Public Const LENGTH_DESC = 255
+    Public Const LENGTH_IMAGE = 128
 
-    Private Shared ReadOnly INDEX_ID = 0
-    Private Shared ReadOnly INDEX_TITLE = 1
-    Private Shared ReadOnly INDEX_DESCRIPTION = 2
-    Private Shared ReadOnly INDEX_IMAGE = 3
+    Private Const INDEX_ID = 0
+    Private Const INDEX_TITLE = 1
+    Private Const INDEX_DESCRIPTION = 2
+    Private Const INDEX_IMAGE = 3
 
     Private _ID As Integer
     Private _Title, _Description, _Image, _OriginalImage As String
@@ -23,7 +28,6 @@ Public Class Party
             Return _ID
         End Get
     End Property
-
     ReadOnly Property OriginalImage As String
         Get
             If IsNothing(_OriginalImage) Then
@@ -32,7 +36,6 @@ Public Class Party
             Return _OriginalImage
         End Get
     End Property
-
     Public Property Image As String
         Get
             If IsNothing(_Image) Then
@@ -44,16 +47,15 @@ Public Class Party
             _Image = value
         End Set
     End Property
-
     Public Property Description As String
         Get
+            If IsNothing(_Description) Then Return ""
             Return _Description
         End Get
         Set(value As String)
             _Description = value
         End Set
     End Property
-
     Public Property Title As String
         Get
             Return _Title
@@ -65,7 +67,6 @@ Public Class Party
 
     Public Sub New()
     End Sub
-
     Public Sub New(ID As Integer)
         Me._ID = ID
     End Sub
@@ -74,87 +75,40 @@ Public Class Party
         _OriginalImage = Image
     End Sub
 
-    Public Shared Function Find(Title As String) As Party
-        GetConnection().Open()
-        Dim res = Find(Title, GetConnection())
-        GetConnection().Close()
-        Return res
-    End Function
-    Public Shared Function Find(Title As String, conn As OleDbConnection) As Party
-        Dim res As Party = Nothing
-        Using Cmd As New OleDbCommand("SELECT * FROM [Party] WHERE [Title]=?", conn)
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Title, LENGTH_TITLE))
-            Cmd.Prepare()
-            Using Reader = Cmd.ExecuteReader()
-                If Reader.Read() Then
-                    res = GetParty(Reader)
-                End If
-            End Using
-        End Using
-        Return res
-    End Function
-
-    Public Async Function UpdateAsync(Members As List(Of Integer)) As Task(Of Boolean)
-        Return Await Task.Run(Function()
-                                  Return Update(Members)
-                              End Function)
-    End Function
-
+    'Update Party Information
     Public Function Update(Members As List(Of Integer)) As Boolean
         If Election.HasNotStarted Then
-            Dim Image = OriginalImage
-            Dim Dirname = "election-" & Election.GetCurrentElection().Id
-            Dim Filename = "party-" & ID & ".jpg"
-            Dim Res = False
-            If Me.Image.Equals("") And Not OriginalImage.Equals("") Then
-                'No image - then delete old image
-                Util.DeleteFile(OriginalImage)
-                Image = ""
-            ElseIf Not Me.Image.Equals("") And Not Me.Image.Equals(OriginalImage) Then
-                'Replace Image
-                If Not OriginalImage.Equals("images\" & Dirname & "\" & Filename) Then
-                    Util.DeleteFile(OriginalImage)
-                End If
-                Image = Util.Upload(Dirname, Filename, Me.Image)
-            End If
+            Dim Result As Boolean = False
+            Dim NewImage = GetImage(Image, OriginalImage)
             GetConnection().Open()
-            Using Cmd = New OleDbCommand("UPDATE [Party] SET [Title]=?, [Description]=?, [image_path]=? WHERE [ID]=?", GetConnection())
+            Using Cmd = New OleDbCommand(QUERY_UPDATE, GetConnection())
                 Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Title, LENGTH_TITLE))
                 Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Description, LENGTH_DESC))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Image, LENGTH_IMAGE))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, NewImage, LENGTH_IMAGE))
                 Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, ID, LENGTH_ID))
                 Cmd.Prepare()
                 If Cmd.ExecuteNonQuery() <> -1 Then
                     If UpdateMembers(Members, GetConnection()) Then
-                        Res = True
+                        Result = True
                     End If
                 End If
             End Using
             GetConnection().Close()
-            Return Res
+            Return Result
         End If
         Return False
     End Function
 
-    Public Async Function SaveAsync(Members As List(Of Integer)) As Task(Of Boolean)
-        Return Await Task.Run(Function()
-                                  Return Save(Members)
-                              End Function)
-    End Function
-
+    'Register New Party
     Public Function Save(Members As List(Of Integer)) As Boolean
         If Election.HasNotStarted Then
-            Dim Dir = "election-" & Election.GetCurrentElection().Id
-            Dim filename = "party-" & Date.Now().Ticks & ".jpg"
-            Dim Image As String = ""
-            If Not IsNothing(Me._Image) Or Me.Image <> "" Then Image = Util.Upload(Dir, filename, Me.Image)
-            Dim Query = "INSERT INTO [Party]([Title], [Description], [image_path]) VALUES (?, ?, ?)"
+            Dim NewImage = GetImage(Image, "")
             Dim result = False
             GetConnection().Open()
-            Using Cmd = New OleDbCommand(Query, GetConnection())
+            Using Cmd = New OleDbCommand(QUERY_INSERT, GetConnection())
                 Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Title, LENGTH_TITLE))
                 Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Description, LENGTH_DESC))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Image, LENGTH_IMAGE))
+                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, NewImage, LENGTH_IMAGE))
                 Cmd.Prepare()
                 If Cmd.ExecuteNonQuery() Then
                     Dim _Party = Find(Title, GetConnection())
@@ -169,39 +123,29 @@ Public Class Party
         Return False
     End Function
 
-    Public Function UpdateMembers(Members As List(Of Integer), conn As OleDbConnection) As Boolean
+    'Update Party Members
+    Private Function UpdateMembers(Members As List(Of Integer), conn As OleDbConnection) As Boolean
         Dim result = False
-        Using Cmd As New OleDbCommand("DELETE FROM [CandidateParty] WHERE [party_id]=?", conn)
+        Using Cmd As New OleDbCommand(QUERY_DELETE_PARTY_MEMBERS, conn)
             Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, _ID, LENGTH_ID))
             Cmd.Prepare()
             If Cmd.ExecuteNonQuery() <> -1 Then
-                Dim Cmd2 As New OleDbCommand("INSERT INTO [CandidateParty]([candidate_id], [party_id]) VALUES (?,?)", GetConnection())
-                For Each member In Members
-                    Cmd2.Parameters.Clear()
-                    Cmd2.Parameters.Add(ConvertToParam(OleDbType.Integer, member, LENGTH_ID))
-                    Cmd2.Parameters.Add(ConvertToParam(OleDbType.Integer, _ID, LENGTH_ID))
-                    Cmd2.Prepare()
-                    Cmd2.ExecuteNonQuery()
-                Next
-                result = True
+                Using Cmd2 As New OleDbCommand(QUERY_ADD_PARTY_MEMBERS, GetConnection())
+                    For Each member In Members
+                        Cmd2.Parameters.Clear()
+                        Cmd2.Parameters.Add(ConvertToParam(OleDbType.Integer, member, LENGTH_ID))
+                        Cmd2.Parameters.Add(ConvertToParam(OleDbType.Integer, _ID, LENGTH_ID))
+                        Cmd2.Prepare()
+                        Cmd2.ExecuteNonQuery()
+                    Next
+                    result = True
+                End Using
             End If
         End Using
         Return result
     End Function
 
-    Public Shared Async Function GetAllAsync() As Task(Of List(Of Party))
-        Dim Result As New List(Of Party)
-        Await GetConnection().OpenAsync()
-        Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
-            Using Reader = Await Cmd.ExecuteReaderAsync()
-                While Reader.Read()
-                    Result.Add(GetParty(Reader))
-                End While
-            End Using
-        End Using
-        GetConnection().Close()
-        Return Result
-    End Function
+    'Get All Party
     Public Shared Function GetAll() As List(Of Party)
         Dim Result As New List(Of Party)
         GetConnection().Open()
@@ -216,6 +160,53 @@ Public Class Party
         Return Result
     End Function
 
+    'Upload Party Image
+    Private Shared Function GetImage(Source As String, _Default As String) As String
+
+        Dim Dir = Election.GetImageDirectory()
+        Dim FileName = "party-" & Date.Now().Ticks & ".jpg"
+        'ADD CASES
+        '1. NO IMAGE
+        '2. UPLOAD IMAGE
+
+        'UPDATE CASES
+        '1. CHANGE NOTHING
+        '2. CHANGE IMAGE
+        '3. CLEAR IMAGE
+
+        If Source.Equals(_Default) Then
+            Return _Default
+        ElseIf IsNothing(Source) Or Source.Equals("") Then
+            Util.DeleteFile(_Default)
+            Return ""
+        Else
+            Util.DeleteFile(_Default)
+            Return Util.Upload(Dir, FileName, Source)
+        End If
+    End Function
+
+    'Find Party Using Title
+    Public Shared Function Find(Title As String) As Party
+        GetConnection().Open()
+        Dim res = Find(Title, GetConnection())
+        GetConnection().Close()
+        Return res
+    End Function
+    Public Shared Function Find(Title As String, conn As OleDbConnection) As Party
+        Dim res As Party = Nothing
+        Using Cmd As New OleDbCommand(QUERY_FIND, conn)
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Title, LENGTH_TITLE))
+            Cmd.Prepare()
+            Using Reader = Cmd.ExecuteReader()
+                If Reader.Read() Then
+                    res = GetParty(Reader)
+                End If
+            End Using
+        End Using
+        Return res
+    End Function
+
+    'Convert Reader into Party Model
     Private Shared Function GetParty(Reader As OleDbDataReader) As Party
         Dim ID As Integer
         Dim Title As String

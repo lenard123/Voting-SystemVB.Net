@@ -2,24 +2,25 @@
 
 Public Class Election
 
-    Private Shared ReadOnly QUERY_START_ELECTION = "UPDATE [Election] SET [Title]=?, [Status]=?, [Started]=?, [Ended]=? WHERE [ID]=?"
+    Private Const QUERY_START_ELECTION = "UPDATE [Election] SET [Title]=?, [Status]=?, [Started]=?, [Ended]=? WHERE [ID]=?"
+    Private Const QUERY_CURRENT_ELECTION = "SELECT TOP 1 * FROM Election ORDER BY ID DESC;"
 
-    Public Shared ReadOnly STATUS_NOT_STARTED = 0
-    Public Shared ReadOnly STATUS_ONGOING = 1
-    Public Shared ReadOnly STATUS_ENDED = 2
+    Public Const STATUS_NOT_STARTED = 0
+    Public Const STATUS_ONGOING = 1
+    Public Const STATUS_ENDED = 2
 
-    Private Shared ReadOnly LENGTH_ID = 10
-    Private Shared ReadOnly LENGTH_TITLE = 60
-    Private Shared ReadOnly LENGTH_STATUS = 1
-    Private Shared ReadOnly LENGTH_STARTED = 255
-    Private Shared ReadOnly LENGTH_ENDED = 255
+    Private Const LENGTH_ID = 10
+    Private Const LENGTH_TITLE = 60
+    Private Const LENGTH_STATUS = 1
+    Private Const LENGTH_STARTED = 255
+    Private Const LENGTH_ENDED = 255
 
 
-    Private Shared ReadOnly INDEX_ID = 0
-    Private Shared ReadOnly INDEX_TITLE = 1
-    Private Shared ReadOnly INDEX_STATUS = 2
-    Private Shared ReadOnly INDEX_STARTED = 3
-    Private Shared ReadOnly INDEX_ENDED = 4
+    Private Const INDEX_ID = 0
+    Private Const INDEX_TITLE = 1
+    Private Const INDEX_STATUS = 2
+    Private Const INDEX_STARTED = 3
+    Private Const INDEX_ENDED = 4
 
     Private Shared CurrentElection As Election
 
@@ -34,21 +35,15 @@ Public Class Election
         Me._Ended = Ended
     End Sub
 
-    Public Shared ReadOnly Property HasNotStarted As Boolean
-        Get
-            Return CurrentElection.Status = STATUS_NOT_STARTED
-        End Get
-    End Property
-    Public Shared ReadOnly Property IsOngoing As Boolean
-        Get
-            Return CurrentElection.Status = STATUS_ONGOING
-        End Get
-    End Property
-    Public Shared ReadOnly Property HasEnded As Boolean
-        Get
-            Return CurrentElection.Status = STATUS_ENDED
-        End Get
-    End Property
+    Public Shared Function HasNotStarted() As Boolean
+        Return CurrentElection.Status = STATUS_NOT_STARTED
+    End Function
+    Public Shared Function IsOngoing() As Boolean
+        Return CurrentElection.Status = STATUS_ONGOING
+    End Function
+    Public Shared Function HasEnded() As Boolean
+        Return CurrentElection.Status = STATUS_ENDED
+    End Function
 
     Public ReadOnly Property Id As Integer
         Get
@@ -79,20 +74,22 @@ Public Class Election
         End Get
     End Property
 
-    Public Shared ReadOnly Property ImageDirectory As String
-        Get
-            Return "election-" & CurrentElection.Id
-        End Get
-    End Property
+    'Get The Image Directory of Current Election
+    Public Shared Function GetImageDirectory() As String
+        Return "election-" & CurrentElection.Id
+    End Function
 
+    'Refresh the status Current Election
     Public Shared Function GetCurrentElectionF() As Election
         CurrentElection = Nothing
         Return GetCurrentElection()
     End Function
+
+    'Get the current election
     Public Shared Function GetCurrentElection() As Election
         If IsNothing(CurrentElection) Then
             GetConnection.Open()
-            Dim Cmd As New OleDbCommand("SELECT TOP 1 * FROM Election ORDER BY ID DESC;", GetConnection())
+            Dim Cmd As New OleDbCommand(QUERY_CURRENT_ELECTION, GetConnection())
             Dim Reader = Cmd.ExecuteReader()
             If Reader.Read() Then
                 CurrentElection = GetElection(Reader)
@@ -104,9 +101,9 @@ Public Class Election
         Return CurrentElection
     End Function
 
+    'Start the current election
     Public Shared Function StartElection(Title As String, EndDate As Date) As Boolean
-        If HasNotStarted Then
-            Console.WriteLine(EndDate)
+        If HasNotStarted() Then
             Dim Result = False
             GetConnection().Open()
             Using Cmd = New OleDbCommand(QUERY_START_ELECTION, GetConnection())
@@ -126,15 +123,18 @@ Public Class Election
         Return False
     End Function
 
+    'Convert Reader into Election Model
     Private Shared Function GetElection(ByRef Reader As OleDbDataReader) As Election
         Dim Id = Reader.GetInt32(INDEX_ID)
         Dim Status = Reader.GetInt16(INDEX_STATUS)
         Dim Title As String = Nothing
-        If (Not Reader.IsDBNull(INDEX_TITLE)) Then Title = Reader.GetString(INDEX_TITLE)
         Dim Started As DateTime = Nothing
-        If (Not Reader.IsDBNull(INDEX_STARTED)) Then Started = Reader.GetDateTime(INDEX_STARTED)
         Dim Ended As DateTime = Nothing
+
+        If (Not Reader.IsDBNull(INDEX_TITLE)) Then Title = Reader.GetString(INDEX_TITLE)
+        If (Not Reader.IsDBNull(INDEX_STARTED)) Then Started = Reader.GetDateTime(INDEX_STARTED)
         If (Not Reader.IsDBNull(INDEX_ENDED)) Then Ended = Reader.GetDateTime(INDEX_ENDED)
+
         Dim Result As Election = New Election(Id, Status, Started, Ended)
         Result.Title = Title
         Return Result

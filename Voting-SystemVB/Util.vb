@@ -79,30 +79,26 @@ Module Util
         Return Path.Combine(Application.StartupPath, file)
     End Function
 
+    Public Function Upload(Destination As String, SourcePath As String) As String
+        If Not File.Exists(SourcePath) Then Return ""
+        If File.Exists(Destination) Then File.Delete(Destination)
+        File.Copy(SourcePath, Destination)
+        Return Destination
+    End Function
+
     'Upload image and returns it filename as result
-    Public Function Upload(directoryname As String, filename As String, source As String)
-        Dim dir = Path.Combine(Application.StartupPath, "images", directoryname)
-        Dim fil = Path.Combine(dir, filename)
+    Public Function Upload(directoryname As String, filename As String, source As String) As String
+        Dim FullDirectory = Path.Combine("images", directoryname)
+        Dim Destination = Path.Combine(FullDirectory, filename)
 
-        'Create Directory if not Exists
-        If Not Directory.Exists(dir) Then
-            Directory.CreateDirectory(dir)
-        End If
+        If Not Directory.Exists(FullDirectory) Then Directory.CreateDirectory(FullDirectory)
 
-        If File.Exists(fil) Then
-            'Replace the file if it already exist
-            File.Replace(source, fil, Nothing)
-        Else
-            'Copy the File to Desired Directory
-            File.Copy(source, fil)
-        End If
-
-        'Return Result
-        Return Path.Combine("images", directoryname, filename)
+        Return Upload(Destination, source)
     End Function
 
     'Delete the file
     Public Sub DeleteFile(fname As String)
+        If IsNothing(fname) Or fname.Equals("") Then Return
         If File.Exists(fname) Then
             File.Delete(fname)
         ElseIf File.Exists(GetFullPath(fname)) Then
@@ -183,6 +179,7 @@ Module Util
                 If Not res Then
                     BorderColor = Color.Red
                     ErrorMessage.Text = Name & " Field must only contain letters."
+                    Return False
                 End If
             End If
         Next

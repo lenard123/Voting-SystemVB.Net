@@ -22,21 +22,25 @@ Partial Class AdminHomeStarted
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea9 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea10 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend9 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Legend10 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series10 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Guna2ImageButton1 = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2ShadowPanel1 = New Guna.UI2.WinForms.Guna2ShadowPanel()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.FontAwesome1 = New Voting_SystemVB.FontAwesome()
         Me.LabelVotersCount = New System.Windows.Forms.Label()
         Me.Guna2ShadowPanel2 = New Guna.UI2.WinForms.Guna2ShadowPanel()
+        Me.FontAwesome2 = New Voting_SystemVB.FontAwesome()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.LabelDoneVoters = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Guna2ImageButton2 = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ButtonPRO = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonAuditor = New Guna.UI2.WinForms.Guna2Button()
@@ -46,9 +50,11 @@ Partial Class AdminHomeStarted
         Me.ButtonPresident = New Guna.UI2.WinForms.Guna2Button()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Guna2ShadowPanel3 = New Guna.UI2.WinForms.Guna2ShadowPanel()
+        Me.FontAwesome3 = New Voting_SystemVB.FontAwesome()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.LabelRemainingVoters = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Guna2ImageButton3 = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
@@ -61,12 +67,8 @@ Partial Class AdminHomeStarted
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.DisplayPieChart = New Guna.UI2.WinForms.Guna2ToggleSwitch()
         Me.LabelLastUpdate = New Guna.UI2.WinForms.Guna2Chip()
-        Me.Guna2ImageButton3 = New Guna.UI2.WinForms.Guna2ImageButton()
-        Me.Guna2ImageButton2 = New Guna.UI2.WinForms.Guna2ImageButton()
-        Me.Guna2ImageButton1 = New Guna.UI2.WinForms.Guna2ImageButton()
-        Me.FontAwesome3 = New Voting_SystemVB.FontAwesome()
-        Me.FontAwesome2 = New Voting_SystemVB.FontAwesome()
-        Me.FontAwesome1 = New Voting_SystemVB.FontAwesome()
+        Me.BackgroundWorkerInit = New System.ComponentModel.BackgroundWorker()
+        Me.BackgroundWorkerRefresh = New System.ComponentModel.BackgroundWorker()
         Me.Panel1.SuspendLayout()
         Me.Guna2ShadowPanel1.SuspendLayout()
         Me.Guna2ShadowPanel2.SuspendLayout()
@@ -92,6 +94,20 @@ Partial Class AdminHomeStarted
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(269, 32)
         Me.Panel1.TabIndex = 0
+        '
+        'Guna2ImageButton1
+        '
+        Me.Guna2ImageButton1.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ImageButton1.CheckedState.Parent = Me.Guna2ImageButton1
+        Me.Guna2ImageButton1.HoverState.Parent = Me.Guna2ImageButton1
+        Me.Guna2ImageButton1.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
+        Me.Guna2ImageButton1.ImageSize = New System.Drawing.Size(15, 15)
+        Me.Guna2ImageButton1.Location = New System.Drawing.Point(152, 9)
+        Me.Guna2ImageButton1.Name = "Guna2ImageButton1"
+        Me.Guna2ImageButton1.PressedState.Parent = Me.Guna2ImageButton1
+        Me.Guna2ImageButton1.Size = New System.Drawing.Size(15, 15)
+        Me.Guna2ImageButton1.TabIndex = 2
+        Me.Guna2ImageButton1.Tag = ""
         '
         'Label1
         '
@@ -130,6 +146,19 @@ Partial Class AdminHomeStarted
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Total No. of Voters"
         '
+        'FontAwesome1
+        '
+        Me.FontAwesome1.AutoSize = True
+        Me.FontAwesome1.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
+        Me.FontAwesome1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(57, Byte), Integer))
+        Me.FontAwesome1.HoverColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(57, Byte), Integer))
+        Me.FontAwesome1.IsHoverable = False
+        Me.FontAwesome1.Location = New System.Drawing.Point(169, 22)
+        Me.FontAwesome1.Name = "FontAwesome1"
+        Me.FontAwesome1.Size = New System.Drawing.Size(82, 51)
+        Me.FontAwesome1.TabIndex = 4
+        Me.FontAwesome1.Text = "users"
+        '
         'LabelVotersCount
         '
         Me.LabelVotersCount.AutoSize = True
@@ -154,6 +183,19 @@ Partial Class AdminHomeStarted
         Me.Guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black
         Me.Guna2ShadowPanel2.Size = New System.Drawing.Size(279, 127)
         Me.Guna2ShadowPanel2.TabIndex = 5
+        '
+        'FontAwesome2
+        '
+        Me.FontAwesome2.AutoSize = True
+        Me.FontAwesome2.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
+        Me.FontAwesome2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.FontAwesome2.HoverColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.FontAwesome2.IsHoverable = False
+        Me.FontAwesome2.Location = New System.Drawing.Point(181, 22)
+        Me.FontAwesome2.Name = "FontAwesome2"
+        Me.FontAwesome2.Size = New System.Drawing.Size(70, 51)
+        Me.FontAwesome2.TabIndex = 4
+        Me.FontAwesome2.Text = "check-double"
         '
         'Label4
         '
@@ -188,6 +230,20 @@ Partial Class AdminHomeStarted
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(269, 32)
         Me.Panel2.TabIndex = 0
+        '
+        'Guna2ImageButton2
+        '
+        Me.Guna2ImageButton2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ImageButton2.CheckedState.Parent = Me.Guna2ImageButton2
+        Me.Guna2ImageButton2.HoverState.Parent = Me.Guna2ImageButton2
+        Me.Guna2ImageButton2.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
+        Me.Guna2ImageButton2.ImageSize = New System.Drawing.Size(15, 15)
+        Me.Guna2ImageButton2.Location = New System.Drawing.Point(152, 9)
+        Me.Guna2ImageButton2.Name = "Guna2ImageButton2"
+        Me.Guna2ImageButton2.PressedState.Parent = Me.Guna2ImageButton2
+        Me.Guna2ImageButton2.Size = New System.Drawing.Size(15, 15)
+        Me.Guna2ImageButton2.TabIndex = 2
+        Me.Guna2ImageButton2.Tag = "done voters"
         '
         'Label6
         '
@@ -332,6 +388,19 @@ Partial Class AdminHomeStarted
         Me.Guna2ShadowPanel3.Size = New System.Drawing.Size(279, 127)
         Me.Guna2ShadowPanel3.TabIndex = 6
         '
+        'FontAwesome3
+        '
+        Me.FontAwesome3.AutoSize = True
+        Me.FontAwesome3.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
+        Me.FontAwesome3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(104, Byte), Integer))
+        Me.FontAwesome3.HoverColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(104, Byte), Integer))
+        Me.FontAwesome3.IsHoverable = False
+        Me.FontAwesome3.Location = New System.Drawing.Point(169, 22)
+        Me.FontAwesome3.Name = "FontAwesome3"
+        Me.FontAwesome3.Size = New System.Drawing.Size(82, 51)
+        Me.FontAwesome3.TabIndex = 4
+        Me.FontAwesome3.Text = "vote-yea"
+        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -365,6 +434,20 @@ Partial Class AdminHomeStarted
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(269, 32)
         Me.Panel3.TabIndex = 0
+        '
+        'Guna2ImageButton3
+        '
+        Me.Guna2ImageButton3.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ImageButton3.CheckedState.Parent = Me.Guna2ImageButton3
+        Me.Guna2ImageButton3.HoverState.Parent = Me.Guna2ImageButton3
+        Me.Guna2ImageButton3.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
+        Me.Guna2ImageButton3.ImageSize = New System.Drawing.Size(15, 15)
+        Me.Guna2ImageButton3.Location = New System.Drawing.Point(152, 9)
+        Me.Guna2ImageButton3.Name = "Guna2ImageButton3"
+        Me.Guna2ImageButton3.PressedState.Parent = Me.Guna2ImageButton3
+        Me.Guna2ImageButton3.Size = New System.Drawing.Size(15, 15)
+        Me.Guna2ImageButton3.TabIndex = 2
+        Me.Guna2ImageButton3.Tag = "remaining voters"
         '
         'Label9
         '
@@ -415,27 +498,27 @@ Partial Class AdminHomeStarted
         '
         'ChartVoteCount
         '
-        ChartArea3.Name = "ChartAreaDonut"
-        ChartArea4.Name = "ChartAreaBar"
-        Me.ChartVoteCount.ChartAreas.Add(ChartArea3)
-        Me.ChartVoteCount.ChartAreas.Add(ChartArea4)
+        ChartArea9.Name = "ChartAreaDonut"
+        ChartArea10.Name = "ChartAreaBar"
+        Me.ChartVoteCount.ChartAreas.Add(ChartArea9)
+        Me.ChartVoteCount.ChartAreas.Add(ChartArea10)
         Me.ChartVoteCount.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend3.Name = "Legend1"
-        Legend4.Enabled = False
-        Legend4.Name = "Legend2"
-        Me.ChartVoteCount.Legends.Add(Legend3)
-        Me.ChartVoteCount.Legends.Add(Legend4)
+        Legend9.Name = "Legend1"
+        Legend10.Enabled = False
+        Legend10.Name = "Legend2"
+        Me.ChartVoteCount.Legends.Add(Legend9)
+        Me.ChartVoteCount.Legends.Add(Legend10)
         Me.ChartVoteCount.Location = New System.Drawing.Point(0, 0)
         Me.ChartVoteCount.Name = "ChartVoteCount"
-        Series3.ChartArea = "ChartAreaDonut"
-        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut
-        Series3.Legend = "Legend1"
-        Series3.Name = "Series1"
-        Series4.ChartArea = "ChartAreaBar"
-        Series4.Legend = "Legend2"
-        Series4.Name = "Series2"
-        Me.ChartVoteCount.Series.Add(Series3)
-        Me.ChartVoteCount.Series.Add(Series4)
+        Series9.ChartArea = "ChartAreaDonut"
+        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut
+        Series9.Legend = "Legend1"
+        Series9.Name = "Series1"
+        Series10.ChartArea = "ChartAreaBar"
+        Series10.Legend = "Legend2"
+        Series10.Name = "Series2"
+        Me.ChartVoteCount.Series.Add(Series9)
+        Me.ChartVoteCount.Series.Add(Series10)
         Me.ChartVoteCount.Size = New System.Drawing.Size(558, 335)
         Me.ChartVoteCount.TabIndex = 0
         Me.ChartVoteCount.Text = "Chart1"
@@ -527,86 +610,11 @@ Partial Class AdminHomeStarted
         Me.LabelLastUpdate.Text = "Result As of: November 11, 2020 7:16 am"
         Me.LabelLastUpdate.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         '
-        'Guna2ImageButton3
+        'BackgroundWorkerInit
         '
-        Me.Guna2ImageButton3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ImageButton3.CheckedState.Parent = Me.Guna2ImageButton3
-        Me.Guna2ImageButton3.HoverState.Parent = Me.Guna2ImageButton3
-        Me.Guna2ImageButton3.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
-        Me.Guna2ImageButton3.ImageSize = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton3.Location = New System.Drawing.Point(152, 9)
-        Me.Guna2ImageButton3.Name = "Guna2ImageButton3"
-        Me.Guna2ImageButton3.PressedState.Parent = Me.Guna2ImageButton3
-        Me.Guna2ImageButton3.Size = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton3.TabIndex = 2
-        Me.Guna2ImageButton3.Tag = "remaining voters"
         '
-        'Guna2ImageButton2
+        'BackgroundWorkerRefresh
         '
-        Me.Guna2ImageButton2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ImageButton2.CheckedState.Parent = Me.Guna2ImageButton2
-        Me.Guna2ImageButton2.HoverState.Parent = Me.Guna2ImageButton2
-        Me.Guna2ImageButton2.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
-        Me.Guna2ImageButton2.ImageSize = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton2.Location = New System.Drawing.Point(152, 9)
-        Me.Guna2ImageButton2.Name = "Guna2ImageButton2"
-        Me.Guna2ImageButton2.PressedState.Parent = Me.Guna2ImageButton2
-        Me.Guna2ImageButton2.Size = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton2.TabIndex = 2
-        Me.Guna2ImageButton2.Tag = "done voters"
-        '
-        'Guna2ImageButton1
-        '
-        Me.Guna2ImageButton1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ImageButton1.CheckedState.Parent = Me.Guna2ImageButton1
-        Me.Guna2ImageButton1.HoverState.Parent = Me.Guna2ImageButton1
-        Me.Guna2ImageButton1.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
-        Me.Guna2ImageButton1.ImageSize = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton1.Location = New System.Drawing.Point(152, 9)
-        Me.Guna2ImageButton1.Name = "Guna2ImageButton1"
-        Me.Guna2ImageButton1.PressedState.Parent = Me.Guna2ImageButton1
-        Me.Guna2ImageButton1.Size = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton1.TabIndex = 2
-        Me.Guna2ImageButton1.Tag = ""
-        '
-        'FontAwesome3
-        '
-        Me.FontAwesome3.AutoSize = True
-        Me.FontAwesome3.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
-        Me.FontAwesome3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(104, Byte), Integer))
-        Me.FontAwesome3.HoverColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(104, Byte), Integer))
-        Me.FontAwesome3.IsHoverable = False
-        Me.FontAwesome3.Location = New System.Drawing.Point(169, 22)
-        Me.FontAwesome3.Name = "FontAwesome3"
-        Me.FontAwesome3.Size = New System.Drawing.Size(82, 51)
-        Me.FontAwesome3.TabIndex = 4
-        Me.FontAwesome3.Text = "vote-yea"
-        '
-        'FontAwesome2
-        '
-        Me.FontAwesome2.AutoSize = True
-        Me.FontAwesome2.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
-        Me.FontAwesome2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.FontAwesome2.HoverColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.FontAwesome2.IsHoverable = False
-        Me.FontAwesome2.Location = New System.Drawing.Point(181, 22)
-        Me.FontAwesome2.Name = "FontAwesome2"
-        Me.FontAwesome2.Size = New System.Drawing.Size(70, 51)
-        Me.FontAwesome2.TabIndex = 4
-        Me.FontAwesome2.Text = "check-double"
-        '
-        'FontAwesome1
-        '
-        Me.FontAwesome1.AutoSize = True
-        Me.FontAwesome1.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
-        Me.FontAwesome1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(57, Byte), Integer))
-        Me.FontAwesome1.HoverColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(57, Byte), Integer))
-        Me.FontAwesome1.IsHoverable = False
-        Me.FontAwesome1.Location = New System.Drawing.Point(169, 22)
-        Me.FontAwesome1.Name = "FontAwesome1"
-        Me.FontAwesome1.Size = New System.Drawing.Size(82, 51)
-        Me.FontAwesome1.TabIndex = 4
-        Me.FontAwesome1.Text = "users"
         '
         'AdminHomeStarted
         '
@@ -681,5 +689,7 @@ Partial Class AdminHomeStarted
     Friend WithEvents ChartVoteCount As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents ResultText As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
+    Friend WithEvents BackgroundWorkerInit As System.ComponentModel.BackgroundWorker
+    Friend WithEvents BackgroundWorkerRefresh As System.ComponentModel.BackgroundWorker
 
 End Class

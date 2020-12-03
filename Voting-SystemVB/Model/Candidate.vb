@@ -4,37 +4,37 @@ Imports System.Data.OleDb
 Public Class Candidate
 
     'DATA CONFIGURATIONS AND QUERIES
-    Private Shared ReadOnly QUERY_UPDATE = "UPDATE [Candidate] SET [description]=?, [image_path]=? WHERE [ID]=?"
-    Private Shared ReadOnly QUERY_INSERT = "INSERT INTO [Candidate]([student_id],[description],[position_id],[image_path]) VALUES (?,?,?,?)"
-    Private Shared ReadOnly QUERY_FIND_STUDENT = "SELECT * FROM [CandidateQuery] WHERE student_id=?"
-    Private Shared ReadOnly QUERY_SELECT_ALL = "SELECT * FROM [CandidateQuery]"
-    Private Shared ReadOnly QUERY_SELECT_BY_PARTY = "SELECT * FROM [CandidateQuery] WHERE [party_id]=?"
-    Private Shared ReadOnly QUERY_SELECT_BY_POSITION = "SELECT * FROM [CandidateQuery] WHERE [position_id]=?"
-    Private Shared ReadOnly QUERY_COUNT_BY_POSITION = "SELECT COUNT(*) FROM Candidate WHERE [position_id]=?"
+    Private Const QUERY_UPDATE = "UPDATE [Candidate] SET [description]=?, [image_path]=? WHERE [ID]=?"
+    Private Const QUERY_INSERT = "INSERT INTO [Candidate]([student_id],[description],[position_id],[image_path]) VALUES (?,?,?,?)"
+    Private Const QUERY_FIND_STUDENT = "SELECT * FROM [CandidateQuery] WHERE student_id=?"
+    Private Const QUERY_SELECT_ALL = "SELECT * FROM [CandidateQuery]"
+    Private Const QUERY_SELECT_BY_PARTY = "SELECT * FROM [CandidateQuery] WHERE [party_id]=?"
+    Private Const QUERY_SELECT_BY_POSITION = "SELECT * FROM [CandidateQuery] WHERE [position_id]=?"
+    Private Const QUERY_COUNT_BY_POSITION = "SELECT COUNT(*) FROM Candidate WHERE [position_id]=?"
 
-    Private Shared ReadOnly IMAGE_DEFAULT = "images\default\candidate.jpg"
+    Public Const IMAGE_DEFAULT = "images\default\candidate.jpg"
 
-    Private Shared ReadOnly LENGTH_ID = 10
-    Private Shared ReadOnly LENGTH_STUDENT_ID = 10
-    Private Shared ReadOnly LENGTH_TAGLINE = 100
-    Private Shared ReadOnly LENGTH_POSITION_ID = 10
-    Private Shared ReadOnly LENGTH_IMAGE = 100
-    Private Shared ReadOnly LENGTH_GENDER = 6
+    Private Const LENGTH_ID = 10
+    Private Const LENGTH_STUDENT_ID = 10
+    Private Const LENGTH_TAGLINE = 100
+    Private Const LENGTH_POSITION_ID = 10
+    Private Const LENGTH_IMAGE = 100
+    Private Const LENGTH_GENDER = 6
 
-    Private Shared ReadOnly INDEX_ID = 0
-    Private Shared ReadOnly INDEX_STUDENT_ID = 1
-    Private Shared ReadOnly INDEX_TAGLINE = 2
-    Private Shared ReadOnly INDEX_POSITION_ID = 3
-    Private Shared ReadOnly INDEX_IMAGE = 4
-    Private Shared ReadOnly INDEX_GENDER = 5
-    Private Shared ReadOnly INDEX_FULLNAME = 6
-    Private Shared ReadOnly INDEX_YEAR = 7
-    Private Shared ReadOnly INDEX_COURSE = 8
-    Private Shared ReadOnly INDEX_PARTY = 9
-    Private Shared ReadOnly INDEX_PARTY_IMAGE = 10
-    Private Shared ReadOnly INDEX_PARTY_DESCRIPTION = 11
-    Private Shared ReadOnly INDEX_PARTY_ID = 12
-    Private Shared ReadOnly INDEX_STUDENT_STUDENT_ID = 13
+    Private Const INDEX_ID = 0
+    Private Const INDEX_STUDENT_ID = 1
+    Private Const INDEX_TAGLINE = 2
+    Private Const INDEX_POSITION_ID = 3
+    Private Const INDEX_IMAGE = 4
+    Private Const INDEX_GENDER = 5
+    Private Const INDEX_FULLNAME = 6
+    Private Const INDEX_YEAR = 7
+    Private Const INDEX_COURSE = 8
+    Private Const INDEX_PARTY = 9
+    Private Const INDEX_PARTY_IMAGE = 10
+    Private Const INDEX_PARTY_DESCRIPTION = 11
+    Private Const INDEX_PARTY_ID = 12
+    Private Const INDEX_STUDENT_STUDENT_ID = 13
 
     'Encapsulated data
     Private _ID, _StudentID, _PositionID, _PartyID As Integer
@@ -92,25 +92,6 @@ Public Class Candidate
             Return _Course
         End Get
     End Property
-    Public ReadOnly Property CandidatePosition As String
-        Get
-            Select Case PositionID
-                Case Position.PRESIDENT_ID
-                    Return "President"
-                Case Position.VICE_PRESIDENT_ID
-                    Return "Vice President"
-                Case Position.SECRETARY_ID
-                    Return "Secretary"
-                Case Position.TREASURER_ID
-                    Return "Treasurer"
-                Case Position.AUDITOR_ID
-                    Return "Auditor"
-                Case Position.PRO_ID
-                    Return "P.R.O."
-            End Select
-            Return "(Invalid Position)"
-        End Get
-    End Property
     Public ReadOnly Property ID As Integer
         Get
             Return _ID
@@ -154,53 +135,23 @@ Public Class Candidate
         End Get
     End Property
 
-    Private ReadOnly Property Filename As String
-        Get
-            Return "candidate-" & _ID & ".jpg"
-        End Get
-    End Property
-
-    'Update Candidate Asynchronously
-    Public Async Function UpdateAsync() As Task(Of Boolean)
-        If Not Election.HasNotStarted Then Return False
-        Dim Res = False
-        Dim _ImagePath = ""
-
-        If Image.Equals("images\" & Election.ImageDirectory & "\" & Filename) Then
-            _ImagePath = "images\" & Election.ImageDirectory & "\" & Filename
-        ElseIf Not Image.Equals(IMAGE_DEFAULT) Then
-            _ImagePath = Util.Upload(Election.ImageDirectory, Filename, Image)
-        End If
-
-        Await GetConnection().OpenAsync()
-        Using Cmd As New OleDbCommand(QUERY_UPDATE, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _Tagline, LENGTH_TAGLINE))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _ImagePath, LENGTH_IMAGE))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, _ID, LENGTH_ID))
-            Cmd.Prepare()
-            Res = Await Cmd.ExecuteNonQueryAsync() <> -1
-        End Using
-        GetConnection().Close()
-
-        Return Res
+    'Get Image Path
+    Private Function GetFilename() As String
+        Return "candidate-" & _StudentID & ".jpg"
     End Function
+
     'Update Candidate
     Public Function Update() As Boolean
         'Prevent Updating When the election has started
         If Not Election.HasNotStarted Then Return False
-        Dim _ImagePath = ""
-        Dim Res = False
 
-        'IF there's a selected image by the user
-        If Not Image.Equals("images\" & Election.ImageDirectory & "\" & Filename) And Not Image.Equals(IMAGE_DEFAULT) Then
-            'Upload Image
-            _ImagePath = Util.Upload(Election.ImageDirectory, Filename, Image)
-        End If
+        Dim NewImage = GetImage(Image, GetFilename(), "images\" & Election.GetImageDirectory() & "\" & GetFilename())
+        Dim Res = False
 
         GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_UPDATE, GetConnection())
             Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _Tagline, LENGTH_TAGLINE))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _ImagePath, LENGTH_IMAGE))
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, NewImage, LENGTH_IMAGE))
             Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, _ID, LENGTH_ID))
             Cmd.Prepare()
             Res = Cmd.ExecuteNonQuery() <> -1
@@ -210,47 +161,19 @@ Public Class Candidate
         Return Res
     End Function
 
-    'Save Candidate Asynchronously
-    Public Async Function SaveAsync() As Task(Of Boolean)
-        If Not Election.HasNotStarted Then Return False
-        Dim ImagePath As String = ""
-        Dim Result As Boolean = False
-
-        'Upload Image if there's is selected
-        If Not IsNothing(_Image) Then
-            ImagePath = Util.Upload(Election.ImageDirectory, Filename, _Image)
-        End If
-
-        Await GetConnection().OpenAsync()
-        Using Cmd As New OleDbCommand(QUERY_INSERT, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, _StudentID, LENGTH_STUDENT_ID))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _Tagline, LENGTH_TAGLINE))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, _PositionID, LENGTH_POSITION_ID))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, ImagePath, LENGTH_IMAGE))
-            Cmd.Prepare()
-            Result = (Await Cmd.ExecuteNonQueryAsync()) <> -1
-        End Using
-        GetConnection().Close()
-
-        Return Result
-    End Function
     'Save Candidate
     Public Function Save() As Boolean
         If Not Election.HasNotStarted Then Return False
-        Dim ImagePath As String = ""
-        Dim Result As Boolean = False
 
-        'Upload Image if there's is selected
-        If Not IsNothing(_Image) Then
-            ImagePath = Util.Upload(Election.ImageDirectory, Filename, _Image)
-        End If
+        Dim Result As Boolean = False
+        Dim NewImage = GetImage(Image, GetFilename(), IMAGE_DEFAULT)
 
         GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_INSERT, GetConnection())
             Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, _StudentID, LENGTH_STUDENT_ID))
             Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _Tagline, LENGTH_TAGLINE))
             Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, _PositionID, LENGTH_POSITION_ID))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, ImagePath, LENGTH_IMAGE))
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, NewImage, LENGTH_IMAGE))
             Cmd.Prepare()
             Result = Cmd.ExecuteNonQuery() <> -1
         End Using
@@ -264,18 +187,32 @@ Public Class Candidate
     '    SHARED FUNCTIONS
     '
 
-    'Count candidates in specific position
-    Public Shared Async Function CountAsync(PositionID As Integer) As Task(Of Integer)
-        Dim Res As Integer = 0
-        Await GetConnection().OpenAsync()
-        Using Cmd = New OleDbCommand(QUERY_COUNT_BY_POSITION, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, PositionID, LENGTH_POSITION_ID))
-            Cmd.Prepare()
-            Res = DirectCast(Await Cmd.ExecuteScalarAsync(), Integer)
-        End Using
-        GetConnection().Close()
-        Return Res
+    'Upload Candidate Image
+    Private Shared Function GetImage(Source As String, FileName As String, _Default As String) As String
+
+        Dim Dir = Election.GetImageDirectory()
+        'ADD CASES
+        '1. NO IMAGE
+        '2. UPLOAD IMAGE
+
+        'UPDATE CASES
+        '1. CHANGE NOTHING
+        '2. CHANGE IMAGE
+        '3. CLEAR IMAGE
+
+        If Source.Equals(_Default) Then
+            Return _Default
+        ElseIf IsNothing(Source) Or Source.Equals("") Then
+            If Not FileName.Equals(_Default) Then
+                Util.DeleteFile(IO.Path.Combine(Dir, FileName))
+            End If
+            Return ""
+        Else
+            Return Util.Upload(Dir, FileName, Source)
+        End If
     End Function
+
+    'Count candidates in specific position
     Public Shared Function Count(PositionID As Integer) As Integer
         Dim Res As Integer = 0
         GetConnection().Open()
@@ -289,21 +226,6 @@ Public Class Candidate
     End Function
 
     'Find Specific Student by the given Student ID
-    Public Shared Async Function FindByStudentIDAsync(StudentID As Integer) As Task(Of Candidate)
-        Dim Result As Candidate = Nothing
-        Await GetConnection().OpenAsync()
-        Using Cmd As New OleDbCommand(QUERY_FIND_STUDENT, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, StudentID, LENGTH_STUDENT_ID))
-            Cmd.Prepare()
-            Using Reader = Await Cmd.ExecuteReaderAsync()
-                If Reader.Read() Then
-                    Result = GetCandidate(Reader)
-                End If
-            End Using
-        End Using
-        GetConnection().Close()
-        Return Result
-    End Function
     Public Shared Function FindByStudentID(StudentID As Integer) As Candidate
         Dim Result As Candidate = Nothing
         GetConnection().Open()
@@ -321,19 +243,6 @@ Public Class Candidate
     End Function
 
     'Get All Candidates
-    Public Shared Async Function GetAllAsync() As Task(Of List(Of Candidate))
-        Dim Result As New List(Of Candidate)
-        Await GetConnection().OpenAsync()
-        Using Cmd = New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
-            Using Reader = Await Cmd.ExecuteReaderAsync()
-                While Reader.Read()
-                    Result.Add(GetCandidate(Reader))
-                End While
-            End Using
-        End Using
-        GetConnection().Close()
-        Return Result
-    End Function
     Public Shared Function GetAll() As List(Of Candidate)
         Dim Result As New List(Of Candidate)
         GetConnection().Open()
@@ -349,37 +258,31 @@ Public Class Candidate
     End Function
 
     'Return Data In Dictionary Structure
-    Public Shared Async Function GetAll2Async() As Task(Of Dictionary(Of Integer, List(Of Candidate)))
-        Dim Result As New Dictionary(Of Integer, List(Of Candidate))
-        Await GetConnection().OpenAsync()
+    Public Shared Function GetAll2() As Dictionary(Of Integer, List(Of Candidate))
+        Dim Result = GetEmptyDictionary()
+        GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
-            Using Reader = Await Cmd.ExecuteReaderAsync()
+            Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
                     Dim iCandidate = GetCandidate(Reader)
-                    If Not Result.ContainsKey(iCandidate.PositionID) Then Result.Add(iCandidate.PositionID, New List(Of Candidate))
                     Result(iCandidate.PositionID).Add(iCandidate)
                 End While
             End Using
         End Using
+        GetConnection().Close()
         Return Result
     End Function
 
-    'Get All Candidate in Specific Party
-    Public Shared Async Function GetAllByPartyIDAsync(PartyId As Integer) As Task(Of List(Of Candidate))
-        Dim Result As New List(Of Candidate)
-        Await GetConnection().OpenAsync()
-        Using Cmd As New OleDbCommand(QUERY_SELECT_BY_PARTY, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, PartyId, Voting_SystemVB.Party.LENGTH_ID))
-            Cmd.Prepare()
-            Using Reader = Await Cmd.ExecuteReaderAsync()
-                While Reader.Read()
-                    Result.Add(GetCandidate(Reader))
-                End While
-            End Using
-        End Using
-        GetConnection.Close()
-        Return Result
+    'Initialize Dictionary Data
+    Public Shared Function GetEmptyDictionary() As Dictionary(Of Integer, List(Of Candidate))
+        Dim EmptyDictionary = New Dictionary(Of Integer, List(Of Candidate))
+        For Each item In Position.GetAll()
+            EmptyDictionary.Add(item, New List(Of Candidate))
+        Next
+        Return EmptyDictionary
     End Function
+
+    'Get All Candidate in Specific Party
     Public Shared Function GetAllByPartyID(PartyID As Integer) As List(Of Candidate)
         Dim Result As New List(Of Candidate)
         GetConnection().Open()
@@ -396,22 +299,7 @@ Public Class Candidate
         Return Result
     End Function
 
-    'Get All Candidate in Specific Position
-    Public Shared Async Function GetAllByPositionAsync(Position As Integer) As Task(Of List(Of Candidate))
-        Dim Result As New List(Of Candidate)
-        Await GetConnection().OpenAsync()
-        Using Cmd As New OleDbCommand(QUERY_SELECT_BY_POSITION, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, Position, Voting_SystemVB.Party.LENGTH_ID))
-            Cmd.Prepare()
-            Using Reader = Await Cmd.ExecuteReaderAsync()
-                While Reader.Read()
-                    Result.Add(GetCandidate(Reader))
-                End While
-            End Using
-        End Using
-        GetConnection.Close()
-        Return Result
-    End Function
+    'Get All Candidate By Positions
     Public Shared Function GetAllByPosition(Position As Integer) As List(Of Candidate)
         Dim Result As New List(Of Candidate)
         GetConnection().Open()

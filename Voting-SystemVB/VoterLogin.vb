@@ -1,5 +1,7 @@
 ﻿Public Class VoterLogin
 
+    Implements MainControl
+
     Private Shared Instance As VoterLogin
 
     Public Shared Function GetInstance() As VoterLogin
@@ -9,10 +11,9 @@
         Return Instance
     End Function
 
-    Private Sub btn_close_Click(sender As Object, e As EventArgs) Handles btn_close.Click
-        Application.Exit()
-    End Sub
+    Dim LoadingAlert As Alert
 
+    'Toggle password Visibility
     Private Sub ButtonVisibility_Click(sender As Object, e As EventArgs) Handles ButtonVisibility.Click
         If (TextPin.UseSystemPasswordChar) Then
             ButtonVisibility.Image = My.Resources.hide
@@ -23,32 +24,16 @@
         End If
     End Sub
 
+    'Go To Admin Login
     Private Sub ButtonAdmin_Click(sender As Object, e As EventArgs) Handles ButtonAdmin.Click
         Main.LoadControl(AdminLogin.GetInstance())
     End Sub
 
-    Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
-        If ValidateForm() Then
-            If Election.GetCurrentElectionF().Status = Election.HasNotStarted Then
-                ValidationError.Alert("Election has not started yet", "Unable to Login")
-            Else
-                Dim Result = Student.Find(TextStudentId.Text)
-                If IsNothing(Result) Then
-                    ValidationError.Alert("Student ID doesn't exists in the database", "Login Failed")
-                    'MessageBox.Show("Student ID doesn't exists in the database")
-                Else
-                    If Not (Result.ComparePassword(TextPin.Text)) Then
-                        ValidationError.Alert("Wrong Password", "Login Failed")
-                    Else
-                        Alert.ShowAlert("Login Successfully", Alert.AlertType.Success)
-                        Student.SetCurrentUser(Result)
-                        Main.LoadControl(VotersPanel.GetInstance())
-                    End If
-                End If
-            End If
-        End If
+    Public Sub RefreshControl() Implements MainControl.RefreshControl
+        TextPin.Clear()
     End Sub
 
+    'VALIDATORS
     Private Function ValidateForm() As Boolean
         Dim _ValidationError As String = ""
         Dim StudentID = TextStudentId.Text
@@ -78,26 +63,61 @@
         End If
         Return _ValidationError.Length.Equals(0)
     End Function
-
-
-
-    Private Sub TextStudentId_Enter(sender As Object, e As EventArgs) Handles TextStudentId.Enter
-        PanelStudentIdStatus.BackColor = Color.FromArgb(255, 164, 91)
+    Private Sub Field_Enter(sender As Control, e As EventArgs) Handles TextStudentId.Enter, TextPin.Enter
+        If sender.Equals(TextStudentId) Then sender = PanelStudentIdStatus
+        If sender.Equals(TextPin) Then sender = PanelPasswordStatus
+        sender.BackColor = Color.FromArgb(255, 164, 91)
+    End Sub
+    Private Sub Field_Leave(sender As Control, e As EventArgs) Handles TextStudentId.Leave, TextPin.Leave
+        If sender.Equals(TextStudentId) Then sender = PanelStudentIdStatus
+        If sender.Equals(TextPin) Then sender = PanelPasswordStatus
+        sender.BackColor = Color.Transparent
     End Sub
 
-    Private Sub TextStudentId_Leave(sender As Object, e As EventArgs) Handles TextStudentId.Leave
-        PanelStudentIdStatus.BackColor = Color.Transparent
+    'Start Worker Logging in
+    Enum WorkerResult
+        ELECTION_NOT_STARTED
+        INVALID_STUDENT_ID
+        INVALID_PASSWORD
+        SUCCESS_LOGIN
+    End Enum
+    Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
+        If ValidateForm() Then
+            If Not BackgroundWorkerLogin.IsBusy Then
+                LoadingAlert = Alert.ShowAlert("Logging in, please wait", Alert.AlertType.Info, False)
+                BackgroundWorkerLogin.RunWorkerAsync()
+            End If
+        End If
     End Sub
-
-    Private Sub TextPin_Enter(sender As Object, e As EventArgs) Handles TextPin.Enter
-        PanelPasswordStatus.BackColor = Color.FromArgb(255, 164, 91)
+    Private Sub BackgroundWorkerLogin_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerLogin.DoWork
+        If Election.GetCurrentElectionF().Status = Election.HasNotStarted Then
+            e.Result = WorkerResult.ELECTION_NOT_STARTED
+        Else
+            Dim Result = Student.Find(TextStudentId.Text)
+            If IsNothing(Result) Then
+                e.Result = WorkerResult.INVALID_STUDENT_ID
+            Else
+                If Not (Result.ComparePassword(TextPin.Text)) Then
+                    e.Result = WorkerResult.INVALID_PASSWORD
+                Else
+                    Student.SetCurrentUser(Result)
+                    e.Result = WorkerResult.SUCCESS_LOGIN
+                End If
+            End If
+        End If
     End Sub
-
-    Private Sub TextPin_Leave(sender As Object, e As EventArgs) Handles TextPin.Leave
-        PanelPasswordStatus.BackColor = Color.Transparent
-    End Sub
-
-    Private Sub VoterLogin_Paint(sender As Object, e As EventArgs) Handles MyBase.Paint
-        TextPin.Clear()
+    Private Sub BackgroundWorkerLogin_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerLogin.RunWorkerCompleted
+        LoadingAlert.CloseAlert()
+        Select Case e.Result
+            Case WorkerResult.ELECTION_NOT_STARTED
+                Alert.ShowAlert("Election has not started yet", Alert.AlertType.Error)
+            Case WorkerResult.INVALID_STUDENT_ID
+                Alert.ShowAlert("Student ID doesn't Exist", Alert.AlertType.Error)
+            Case WorkerResult.INVALID_PASSWORD
+                Alert.ShowAlert("Wrong Password", Alert.AlertType.Error)
+            Case WorkerResult.SUCCESS_LOGIN
+                Alert.ShowAlert("Login Successfully", Alert.AlertType.Success)
+                Main.LoadControl(VotersPanel.GetInstance())
+        End Select
     End Sub
 End Class

@@ -34,6 +34,7 @@ Partial Class CandidateInfo
         Me.ButtonTreasurer = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonAuditor = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonPRO = New Guna.UI2.WinForms.Guna2Button()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Guna2Panel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -214,6 +215,9 @@ Partial Class CandidateInfo
         Me.ButtonPRO.Tag = "6"
         Me.ButtonPRO.Text = "P.R.O"
         '
+        'BackgroundWorker1
+        '
+        '
         'CandidateInfo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -245,5 +249,6 @@ Partial Class CandidateInfo
     Friend WithEvents ButtonPRO As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents FlowLayoutPanel2 As System.Windows.Forms.FlowLayoutPanel
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
 
 End Class

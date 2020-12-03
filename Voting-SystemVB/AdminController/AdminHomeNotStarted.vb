@@ -47,11 +47,14 @@
         Return True
     End Function
 
-    Private Async Sub AdminHomeNotStarted_Refresh() Implements MainControl.RefreshControl
-        VoterCounts = Await Student.CountAllAsync()
-        For Each Id In Position.GetAll()
-            CandidateCounts.Add(New KeyValuePair(Of Integer, Integer)(Id, Await Candidate.CountAsync(Id)))
-        Next
+    Private Sub AdminHomeNotStarted_Refresh() Implements MainControl.RefreshControl
+        'VoterCounts = Await Student.CountAllAsync()
+        'For Each Id In Position.GetAll()
+        '    CandidateCounts.Add(New KeyValuePair(Of Integer, Integer)(Id, Await Candidate.CountAsync(Id)))
+        'Next
     End Sub
 
+    Private Sub TotalParties_Click(sender As Object, e As EventArgs) Handles TotalParties.Click
+        StartElection1.ShowPopup()
+    End Sub
 End Class

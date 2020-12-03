@@ -3,7 +3,6 @@
     Implements MainControl
 
     Private Shared Instance As ManageParty
-    Private Shared UpdatePartyInstance As UpdateParty
 
     Public Shared Function GetInstance() As ManageParty
         If IsNothing(Instance) Then
@@ -12,28 +11,31 @@
         Return Instance
     End Function
 
-    Public Async Function RefreshParty() As Task
-        PartyDataGridView.DataSource = Await Party.GetAllAsync()
-    End Function
-
-    Private Async Sub ButtonRefresh_Click(sender As Object, e As EventArgs) Handles ButtonRefresh.Click
-        Await RefreshParty()
+    Private Sub ButtonRefresh_Click(sender As Object, e As EventArgs) Handles ButtonRefresh.Click
+        BackgroundWorkerRefresh.RunWorkerAsync()
     End Sub
     Private Sub ButtonAdd_Click(sender As Object, e As EventArgs) Handles ButtonAdd.Click
-        AdminPanel.GetInstance().LoadControl(AddParty.GetInstance())
+        AddParty.ShowPopup()
     End Sub
     Private Sub PartyDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles PartyDataGridView.CellDoubleClick
-        If Not Election.HasNotStarted Then
-            Dim SelectedParty = DirectCast(PartyDataGridView.DataSource, List(Of Party))(e.RowIndex)
-            If (Not IsNothing(UpdatePartyInstance)) Then UpdatePartyInstance.Dispose()
-            UpdatePartyInstance = New UpdateParty(SelectedParty)
-            AdminPanel.GetInstance().LoadControl(UpdatePartyInstance)
+        If Election.HasNotStarted Then
+            Dim sParty = DirectCast(PartyDataGridView.DataSource, List(Of Party))(e.RowIndex)
+            UpdateParty.ShowPopup(sParty)
         End If
     End Sub
-    Private Async Sub ManageParty_Refresh() Implements MainControl.RefreshControl
+    Private Sub ManageParty_Refresh() Implements MainControl.RefreshControl
         If Election.HasNotStarted Then
             ButtonAdd.Enabled = True
         End If
-        Await RefreshParty()
+        ButtonRefresh.PerformClick()
+    End Sub
+
+
+    Private Sub BackgroundWorkerRefresh_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerRefresh.DoWork
+        e.Result = Party.GetAll()
+    End Sub
+
+    Private Sub BackgroundWorkerRefresh_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerRefresh.RunWorkerCompleted
+        PartyDataGridView.DataSource = e.Result
     End Sub
 End Class
