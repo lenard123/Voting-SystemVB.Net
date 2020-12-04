@@ -39,7 +39,7 @@
         Me.ButtonEdit.Visible = True
     End Sub
 
-    Private Sub ButtonEdit_Click(sender As Object, e As EventArgs) Handles ButtonEdit.Click
+    Private Sub ButtonEdit_Click(sender As Object, e As EventArgs)
         Dim uCandidate = New UpdateCandidate(_Candidate)
         uCandidate.ShowPopup()
     End Sub

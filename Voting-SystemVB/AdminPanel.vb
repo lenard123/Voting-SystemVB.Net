@@ -1,11 +1,13 @@
-﻿Public Class AdminPanel
+﻿Imports Guna.UI2.WinForms
+
+Public Class AdminPanel
 
     Implements MainControl
 
     Private Shared Instance As AdminPanel
 
     Private ElectionStatus As Integer
-    Private ActivePage As Button
+    Private ActivePage As Guna2Button
     Private isCountDownStart As Boolean = False
     Private RemainingTime As Long
 
@@ -66,8 +68,11 @@
     End Sub
 
     'Switch Control
-    Private Sub ChangeView_Click(sender As Object, e As EventArgs) Handles ButtonVoter.Click, ButtonHome.Click, ButtonCandidate.Click, ButtonParty.Click, ButtonAdmin.Click
+    Private Sub ChangeView_Click(sender As Guna2Button, e As EventArgs) Handles ButtonVoter.Click, ButtonHome.Click, ButtonCandidate.Click, ButtonAdmin.Click, ButtonParty.Click
         If sender.Equals(ActivePage) Then Return
+
+        If Not IsNothing(ActivePage) Then ActivePage.ForeColor = Color.DarkGray
+        sender.ForeColor = Color.White
 
         If sender.Equals(ButtonHome) Then
             LoadControl(AdminHomeControl())
@@ -81,7 +86,7 @@
             LoadControl(UpdateAdmin.GetInstance())
         End If
 
-        indicator.Location = New Point(0, DirectCast(sender, Control).Location.Y)
+        indicator.Location = New Point(0, sender.Location.Y + PanelButtonGroup.Location.Y)
         ActivePage = sender
     End Sub
 

@@ -25,13 +25,14 @@ Partial Class AdminPanel
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdminPanel))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PanelButtonGroup = New System.Windows.Forms.FlowLayoutPanel()
+        Me.ButtonHome = New Guna.UI2.WinForms.Guna2Button()
+        Me.ButtonVoter = New Guna.UI2.WinForms.Guna2Button()
+        Me.ButtonCandidate = New Guna.UI2.WinForms.Guna2Button()
+        Me.ButtonParty = New Guna.UI2.WinForms.Guna2Button()
+        Me.ButtonAdmin = New Guna.UI2.WinForms.Guna2Button()
+        Me.ButtonLogout = New Guna.UI2.WinForms.Guna2Button()
         Me.indicator = New System.Windows.Forms.Panel()
-        Me.ButtonLogout = New System.Windows.Forms.Button()
-        Me.ButtonAdmin = New System.Windows.Forms.Button()
-        Me.ButtonParty = New System.Windows.Forms.Button()
-        Me.ButtonCandidate = New System.Windows.Forms.Button()
-        Me.ButtonVoter = New System.Windows.Forms.Button()
-        Me.ButtonHome = New System.Windows.Forms.Button()
         Me.PanelHeader = New System.Windows.Forms.Panel()
         Me.Guna2ControlBox2 = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.Guna2ControlBox1 = New Guna.UI2.WinForms.Guna2ControlBox()
@@ -51,6 +52,7 @@ Partial Class AdminPanel
         Me.Guna2DragControl1 = New Guna.UI2.WinForms.Guna2DragControl(Me.components)
         Me.BackgroundWorkerRefresh = New System.ComponentModel.BackgroundWorker()
         Me.Panel1.SuspendLayout()
+        Me.PanelButtonGroup.SuspendLayout()
         Me.PanelHeader.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -60,122 +62,148 @@ Partial Class AdminPanel
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.PanelButtonGroup)
         Me.Panel1.Controls.Add(Me.indicator)
-        Me.Panel1.Controls.Add(Me.ButtonLogout)
-        Me.Panel1.Controls.Add(Me.ButtonAdmin)
-        Me.Panel1.Controls.Add(Me.ButtonParty)
-        Me.Panel1.Controls.Add(Me.ButtonCandidate)
-        Me.Panel1.Controls.Add(Me.ButtonVoter)
-        Me.Panel1.Controls.Add(Me.ButtonHome)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(219, 637)
+        Me.Panel1.Size = New System.Drawing.Size(220, 637)
         Me.Panel1.TabIndex = 0
+        '
+        'PanelButtonGroup
+        '
+        Me.PanelButtonGroup.Controls.Add(Me.ButtonHome)
+        Me.PanelButtonGroup.Controls.Add(Me.ButtonVoter)
+        Me.PanelButtonGroup.Controls.Add(Me.ButtonCandidate)
+        Me.PanelButtonGroup.Controls.Add(Me.ButtonParty)
+        Me.PanelButtonGroup.Controls.Add(Me.ButtonAdmin)
+        Me.PanelButtonGroup.Controls.Add(Me.ButtonLogout)
+        Me.PanelButtonGroup.Location = New System.Drawing.Point(5, 80)
+        Me.PanelButtonGroup.Name = "PanelButtonGroup"
+        Me.PanelButtonGroup.Size = New System.Drawing.Size(215, 330)
+        Me.PanelButtonGroup.TabIndex = 5
+        '
+        'ButtonHome
+        '
+        Me.ButtonHome.Animated = True
+        Me.ButtonHome.CheckedState.Parent = Me.ButtonHome
+        Me.ButtonHome.CustomImages.Parent = Me.ButtonHome
+        Me.ButtonHome.FillColor = System.Drawing.Color.Transparent
+        Me.ButtonHome.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonHome.ForeColor = System.Drawing.Color.DarkGray
+        Me.ButtonHome.HoverState.Parent = Me.ButtonHome
+        Me.ButtonHome.Image = Global.Voting_SystemVB.My.Resources.Resources.home
+        Me.ButtonHome.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.ButtonHome.Location = New System.Drawing.Point(0, 0)
+        Me.ButtonHome.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonHome.Name = "ButtonHome"
+        Me.ButtonHome.ShadowDecoration.Parent = Me.ButtonHome
+        Me.ButtonHome.Size = New System.Drawing.Size(215, 45)
+        Me.ButtonHome.TabIndex = 0
+        Me.ButtonHome.Text = "Home"
+        '
+        'ButtonVoter
+        '
+        Me.ButtonVoter.Animated = True
+        Me.ButtonVoter.CheckedState.Parent = Me.ButtonVoter
+        Me.ButtonVoter.CustomImages.Parent = Me.ButtonVoter
+        Me.ButtonVoter.FillColor = System.Drawing.Color.Transparent
+        Me.ButtonVoter.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonVoter.ForeColor = System.Drawing.Color.DarkGray
+        Me.ButtonVoter.HoverState.Parent = Me.ButtonVoter
+        Me.ButtonVoter.Image = Global.Voting_SystemVB.My.Resources.Resources.voter
+        Me.ButtonVoter.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.ButtonVoter.Location = New System.Drawing.Point(0, 45)
+        Me.ButtonVoter.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonVoter.Name = "ButtonVoter"
+        Me.ButtonVoter.ShadowDecoration.Parent = Me.ButtonVoter
+        Me.ButtonVoter.Size = New System.Drawing.Size(215, 45)
+        Me.ButtonVoter.TabIndex = 1
+        Me.ButtonVoter.Text = "Voters"
+        '
+        'ButtonCandidate
+        '
+        Me.ButtonCandidate.Animated = True
+        Me.ButtonCandidate.CheckedState.Parent = Me.ButtonCandidate
+        Me.ButtonCandidate.CustomImages.Parent = Me.ButtonCandidate
+        Me.ButtonCandidate.FillColor = System.Drawing.Color.Transparent
+        Me.ButtonCandidate.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonCandidate.ForeColor = System.Drawing.Color.DarkGray
+        Me.ButtonCandidate.HoverState.Parent = Me.ButtonCandidate
+        Me.ButtonCandidate.Image = Global.Voting_SystemVB.My.Resources.Resources.candidate
+        Me.ButtonCandidate.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.ButtonCandidate.Location = New System.Drawing.Point(0, 90)
+        Me.ButtonCandidate.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonCandidate.Name = "ButtonCandidate"
+        Me.ButtonCandidate.ShadowDecoration.Parent = Me.ButtonCandidate
+        Me.ButtonCandidate.Size = New System.Drawing.Size(215, 45)
+        Me.ButtonCandidate.TabIndex = 2
+        Me.ButtonCandidate.Text = "Candidates"
+        '
+        'ButtonParty
+        '
+        Me.ButtonParty.Animated = True
+        Me.ButtonParty.CheckedState.Parent = Me.ButtonParty
+        Me.ButtonParty.CustomImages.Parent = Me.ButtonParty
+        Me.ButtonParty.FillColor = System.Drawing.Color.Transparent
+        Me.ButtonParty.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonParty.ForeColor = System.Drawing.Color.DarkGray
+        Me.ButtonParty.HoverState.Parent = Me.ButtonParty
+        Me.ButtonParty.Image = Global.Voting_SystemVB.My.Resources.Resources.party
+        Me.ButtonParty.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.ButtonParty.Location = New System.Drawing.Point(0, 135)
+        Me.ButtonParty.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonParty.Name = "ButtonParty"
+        Me.ButtonParty.ShadowDecoration.Parent = Me.ButtonParty
+        Me.ButtonParty.Size = New System.Drawing.Size(215, 45)
+        Me.ButtonParty.TabIndex = 3
+        Me.ButtonParty.Text = "Party"
+        '
+        'ButtonAdmin
+        '
+        Me.ButtonAdmin.Animated = True
+        Me.ButtonAdmin.CheckedState.Parent = Me.ButtonAdmin
+        Me.ButtonAdmin.CustomImages.Parent = Me.ButtonAdmin
+        Me.ButtonAdmin.FillColor = System.Drawing.Color.Transparent
+        Me.ButtonAdmin.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonAdmin.ForeColor = System.Drawing.Color.DarkGray
+        Me.ButtonAdmin.HoverState.Parent = Me.ButtonAdmin
+        Me.ButtonAdmin.Image = Global.Voting_SystemVB.My.Resources.Resources.settings
+        Me.ButtonAdmin.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.ButtonAdmin.Location = New System.Drawing.Point(0, 180)
+        Me.ButtonAdmin.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonAdmin.Name = "ButtonAdmin"
+        Me.ButtonAdmin.ShadowDecoration.Parent = Me.ButtonAdmin
+        Me.ButtonAdmin.Size = New System.Drawing.Size(215, 45)
+        Me.ButtonAdmin.TabIndex = 4
+        Me.ButtonAdmin.Text = "Update Account"
+        '
+        'ButtonLogout
+        '
+        Me.ButtonLogout.Animated = True
+        Me.ButtonLogout.CheckedState.Parent = Me.ButtonLogout
+        Me.ButtonLogout.CustomImages.Parent = Me.ButtonLogout
+        Me.ButtonLogout.FillColor = System.Drawing.Color.Transparent
+        Me.ButtonLogout.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonLogout.ForeColor = System.Drawing.Color.DarkGray
+        Me.ButtonLogout.HoverState.Parent = Me.ButtonLogout
+        Me.ButtonLogout.Image = Global.Voting_SystemVB.My.Resources.Resources.logout
+        Me.ButtonLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.ButtonLogout.Location = New System.Drawing.Point(0, 225)
+        Me.ButtonLogout.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonLogout.Name = "ButtonLogout"
+        Me.ButtonLogout.ShadowDecoration.Parent = Me.ButtonLogout
+        Me.ButtonLogout.Size = New System.Drawing.Size(215, 45)
+        Me.ButtonLogout.TabIndex = 5
+        Me.ButtonLogout.Text = "Logout"
         '
         'indicator
         '
         Me.indicator.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.indicator.Location = New System.Drawing.Point(0, 67)
+        Me.indicator.Location = New System.Drawing.Point(0, 80)
         Me.indicator.Name = "indicator"
-        Me.indicator.Size = New System.Drawing.Size(10, 47)
+        Me.indicator.Size = New System.Drawing.Size(5, 47)
         Me.indicator.TabIndex = 4
-        '
-        'ButtonLogout
-        '
-        Me.ButtonLogout.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonLogout.FlatAppearance.BorderSize = 0
-        Me.ButtonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonLogout.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonLogout.ForeColor = System.Drawing.Color.White
-        Me.ButtonLogout.Image = Global.Voting_SystemVB.My.Resources.Resources.logout
-        Me.ButtonLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ButtonLogout.Location = New System.Drawing.Point(11, 332)
-        Me.ButtonLogout.Name = "ButtonLogout"
-        Me.ButtonLogout.Size = New System.Drawing.Size(205, 47)
-        Me.ButtonLogout.TabIndex = 3
-        Me.ButtonLogout.Text = "Logout"
-        Me.ButtonLogout.UseVisualStyleBackColor = True
-        '
-        'ButtonAdmin
-        '
-        Me.ButtonAdmin.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonAdmin.FlatAppearance.BorderSize = 0
-        Me.ButtonAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonAdmin.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonAdmin.ForeColor = System.Drawing.Color.White
-        Me.ButtonAdmin.Image = Global.Voting_SystemVB.My.Resources.Resources.settings
-        Me.ButtonAdmin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ButtonAdmin.Location = New System.Drawing.Point(11, 279)
-        Me.ButtonAdmin.Name = "ButtonAdmin"
-        Me.ButtonAdmin.Size = New System.Drawing.Size(205, 47)
-        Me.ButtonAdmin.TabIndex = 3
-        Me.ButtonAdmin.Text = "Update Account"
-        Me.ButtonAdmin.UseVisualStyleBackColor = True
-        '
-        'ButtonParty
-        '
-        Me.ButtonParty.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonParty.FlatAppearance.BorderSize = 0
-        Me.ButtonParty.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonParty.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonParty.ForeColor = System.Drawing.Color.White
-        Me.ButtonParty.Image = Global.Voting_SystemVB.My.Resources.Resources.party
-        Me.ButtonParty.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ButtonParty.Location = New System.Drawing.Point(11, 226)
-        Me.ButtonParty.Name = "ButtonParty"
-        Me.ButtonParty.Size = New System.Drawing.Size(205, 47)
-        Me.ButtonParty.TabIndex = 3
-        Me.ButtonParty.Text = "Party"
-        Me.ButtonParty.UseVisualStyleBackColor = True
-        '
-        'ButtonCandidate
-        '
-        Me.ButtonCandidate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonCandidate.FlatAppearance.BorderSize = 0
-        Me.ButtonCandidate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonCandidate.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonCandidate.ForeColor = System.Drawing.Color.White
-        Me.ButtonCandidate.Image = Global.Voting_SystemVB.My.Resources.Resources.candidate
-        Me.ButtonCandidate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ButtonCandidate.Location = New System.Drawing.Point(11, 173)
-        Me.ButtonCandidate.Name = "ButtonCandidate"
-        Me.ButtonCandidate.Size = New System.Drawing.Size(205, 47)
-        Me.ButtonCandidate.TabIndex = 3
-        Me.ButtonCandidate.Text = "Candidates"
-        Me.ButtonCandidate.UseVisualStyleBackColor = True
-        '
-        'ButtonVoter
-        '
-        Me.ButtonVoter.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonVoter.FlatAppearance.BorderSize = 0
-        Me.ButtonVoter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonVoter.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonVoter.ForeColor = System.Drawing.Color.White
-        Me.ButtonVoter.Image = Global.Voting_SystemVB.My.Resources.Resources.voter
-        Me.ButtonVoter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ButtonVoter.Location = New System.Drawing.Point(11, 120)
-        Me.ButtonVoter.Name = "ButtonVoter"
-        Me.ButtonVoter.Size = New System.Drawing.Size(205, 47)
-        Me.ButtonVoter.TabIndex = 3
-        Me.ButtonVoter.Text = "Voters"
-        Me.ButtonVoter.UseVisualStyleBackColor = True
-        '
-        'ButtonHome
-        '
-        Me.ButtonHome.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonHome.FlatAppearance.BorderSize = 0
-        Me.ButtonHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonHome.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonHome.ForeColor = System.Drawing.Color.White
-        Me.ButtonHome.Image = CType(resources.GetObject("ButtonHome.Image"), System.Drawing.Image)
-        Me.ButtonHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ButtonHome.Location = New System.Drawing.Point(11, 67)
-        Me.ButtonHome.Name = "ButtonHome"
-        Me.ButtonHome.Size = New System.Drawing.Size(205, 47)
-        Me.ButtonHome.TabIndex = 3
-        Me.ButtonHome.Text = "Home"
-        Me.ButtonHome.UseVisualStyleBackColor = True
         '
         'PanelHeader
         '
@@ -183,9 +211,9 @@ Partial Class AdminPanel
         Me.PanelHeader.Controls.Add(Me.Guna2ControlBox2)
         Me.PanelHeader.Controls.Add(Me.Guna2ControlBox1)
         Me.PanelHeader.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelHeader.Location = New System.Drawing.Point(219, 0)
+        Me.PanelHeader.Location = New System.Drawing.Point(220, 0)
         Me.PanelHeader.Name = "PanelHeader"
-        Me.PanelHeader.Size = New System.Drawing.Size(913, 20)
+        Me.PanelHeader.Size = New System.Drawing.Size(912, 20)
         Me.PanelHeader.TabIndex = 1
         '
         'Guna2ControlBox2
@@ -195,7 +223,7 @@ Partial Class AdminPanel
         Me.Guna2ControlBox2.FillColor = System.Drawing.Color.Transparent
         Me.Guna2ControlBox2.HoverState.Parent = Me.Guna2ControlBox2
         Me.Guna2ControlBox2.IconColor = System.Drawing.Color.White
-        Me.Guna2ControlBox2.Location = New System.Drawing.Point(866, 1)
+        Me.Guna2ControlBox2.Location = New System.Drawing.Point(865, 1)
         Me.Guna2ControlBox2.Name = "Guna2ControlBox2"
         Me.Guna2ControlBox2.ShadowDecoration.Parent = Me.Guna2ControlBox2
         Me.Guna2ControlBox2.Size = New System.Drawing.Size(21, 20)
@@ -207,7 +235,7 @@ Partial Class AdminPanel
         Me.Guna2ControlBox1.FillColor = System.Drawing.Color.Transparent
         Me.Guna2ControlBox1.HoverState.Parent = Me.Guna2ControlBox1
         Me.Guna2ControlBox1.IconColor = System.Drawing.Color.White
-        Me.Guna2ControlBox1.Location = New System.Drawing.Point(889, 1)
+        Me.Guna2ControlBox1.Location = New System.Drawing.Point(888, 1)
         Me.Guna2ControlBox1.Name = "Guna2ControlBox1"
         Me.Guna2ControlBox1.ShadowDecoration.Parent = Me.Guna2ControlBox1
         Me.Guna2ControlBox1.Size = New System.Drawing.Size(21, 20)
@@ -260,9 +288,9 @@ Partial Class AdminPanel
         'MainContent
         '
         Me.MainContent.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MainContent.Location = New System.Drawing.Point(219, 156)
+        Me.MainContent.Location = New System.Drawing.Point(220, 156)
         Me.MainContent.Name = "MainContent"
-        Me.MainContent.Size = New System.Drawing.Size(913, 481)
+        Me.MainContent.Size = New System.Drawing.Size(912, 481)
         Me.MainContent.TabIndex = 3
         '
         'Label3
@@ -303,7 +331,6 @@ Partial Class AdminPanel
         '
         'ChipElectionStatus
         '
-        Me.ChipElectionStatus.BorderRadius = 5
         Me.ChipElectionStatus.FillColor = System.Drawing.Color.Green
         Me.ChipElectionStatus.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ChipElectionStatus.ForeColor = System.Drawing.Color.White
@@ -326,9 +353,9 @@ Partial Class AdminPanel
         Me.Panel2.Controls.Add(Me.ElectionStartedLabel1)
         Me.Panel2.Controls.Add(Me.Label4)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(219, 20)
+        Me.Panel2.Location = New System.Drawing.Point(220, 20)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(913, 136)
+        Me.Panel2.Size = New System.Drawing.Size(912, 136)
         Me.Panel2.TabIndex = 5
         '
         'LabelCountdown
@@ -377,6 +404,7 @@ Partial Class AdminPanel
         Me.Name = "AdminPanel"
         Me.Size = New System.Drawing.Size(1132, 637)
         Me.Panel1.ResumeLayout(False)
+        Me.PanelButtonGroup.ResumeLayout(False)
         Me.PanelHeader.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
@@ -388,16 +416,10 @@ Partial Class AdminPanel
     End Sub
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents PanelHeader As System.Windows.Forms.Panel
-    Friend WithEvents ButtonHome As System.Windows.Forms.Button
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents ButtonParty As System.Windows.Forms.Button
-    Friend WithEvents ButtonCandidate As System.Windows.Forms.Button
-    Friend WithEvents ButtonVoter As System.Windows.Forms.Button
-    Friend WithEvents ButtonAdmin As System.Windows.Forms.Button
-    Friend WithEvents ButtonLogout As System.Windows.Forms.Button
     Friend WithEvents indicator As System.Windows.Forms.Panel
     Friend WithEvents MainContent As System.Windows.Forms.Panel
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -412,5 +434,12 @@ Partial Class AdminPanel
     Friend WithEvents Guna2ControlBox1 As Guna.UI2.WinForms.Guna2ControlBox
     Friend WithEvents Guna2DragControl1 As Guna.UI2.WinForms.Guna2DragControl
     Friend WithEvents BackgroundWorkerRefresh As System.ComponentModel.BackgroundWorker
+    Friend WithEvents PanelButtonGroup As System.Windows.Forms.FlowLayoutPanel
+    Friend WithEvents ButtonHome As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonVoter As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonCandidate As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonParty As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonAdmin As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonLogout As Guna.UI2.WinForms.Guna2Button
 
 End Class
