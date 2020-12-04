@@ -4,6 +4,7 @@ Public Class Election
 
     Private Const QUERY_START_ELECTION = "UPDATE [Election] SET [Title]=?, [Status]=?, [Started]=?, [Ended]=? WHERE [ID]=?"
     Private Const QUERY_CURRENT_ELECTION = "SELECT TOP 1 * FROM Election ORDER BY ID DESC;"
+    Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) FROM [ELECTION]"
 
     Public Const STATUS_NOT_STARTED = 0
     Public Const STATUS_ONGOING = 1
@@ -73,6 +74,17 @@ Public Class Election
             Return _Ended
         End Get
     End Property
+
+    'Count all Elections
+    Public Shared Function CountAll() As Integer
+        Dim Count = 0
+        GetConnection().Open()
+        Using Cmd = New OleDbCommand(QUERY_COUNT_ALL, GetConnection())
+            Count = Integer.Parse(Cmd.ExecuteScalar())
+        End Using
+        GetConnection().Close()
+        Return Count
+    End Function
 
     'Get The Image Directory of Current Election
     Public Shared Function GetImageDirectory() As String

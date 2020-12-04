@@ -140,10 +140,10 @@
     <Compile Include="AdminController\AddAdmin.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AdminController\AdminHomeNotStarted1.Designer.vb">
-      <DependentUpon>AdminHomeNotStarted1.vb</DependentUpon>
+    <Compile Include="AdminController\AdminHomeNotStarted.Designer.vb">
+      <DependentUpon>AdminHomeNotStarted.vb</DependentUpon>
     </Compile>
-    <Compile Include="AdminController\AdminHomeNotStarted1.vb">
+    <Compile Include="AdminController\AdminHomeNotStarted.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\CandidateList1.Designer.vb">
@@ -168,12 +168,6 @@
       <DependentUpon>AddVoter.vb</DependentUpon>
     </Compile>
     <Compile Include="Modal\AddVoter.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="AdminController\AdminHomeNotStarted.Designer.vb">
-      <DependentUpon>AdminHomeNotStarted.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AdminController\AdminHomeNotStarted.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="AdminController\AdminHomeStarted.Designer.vb">
@@ -377,8 +371,8 @@
     <EmbeddedResource Include="AdminController\AddAdmin.resx">
       <DependentUpon>AddAdmin.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminController\AdminHomeNotStarted1.resx">
-      <DependentUpon>AdminHomeNotStarted1.vb</DependentUpon>
+    <EmbeddedResource Include="AdminController\AdminHomeNotStarted.resx">
+      <DependentUpon>AdminHomeNotStarted.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CandidateList1.resx">
       <DependentUpon>CandidateList1.vb</DependentUpon>
@@ -391,9 +385,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\AddVoter.resx">
       <DependentUpon>AddVoter.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdminController\AdminHomeNotStarted.resx">
-      <DependentUpon>AdminHomeNotStarted.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\AdminHomeStarted.resx">
       <DependentUpon>AdminHomeStarted.vb</DependentUpon>

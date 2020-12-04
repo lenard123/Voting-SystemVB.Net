@@ -32,7 +32,7 @@ Public Class AdminPanel
     'Return Admin Home Depending on Election Status
     Public Function AdminHomeControl() As Control
         If Election.HasNotStarted Then
-            Return AdminHomeNotStarted1.GetInstance()
+            Return AdminHomeNotStarted.GetInstance()
         ElseIf Election.IsOngoing Then
             Return AdminHomeStarted.GetInstance()
         End If

@@ -9,6 +9,7 @@ Public Class Party
     Private Const QUERY_INSERT = "INSERT INTO [Party]([Title], [Description], [image_path]) VALUES (?, ?, ?)"
     Private Const QUERY_DELETE_PARTY_MEMBERS = "DELETE FROM [CandidateParty] WHERE [party_id]=?"
     Private Const QUERY_ADD_PARTY_MEMBERS = "INSERT INTO [CandidateParty]([candidate_id], [party_id]) VALUES (?,?)"
+    Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) FROM [Party]"
 
     Public Const LENGTH_ID = 10
     Public Const LENGTH_TITLE = 64
@@ -224,6 +225,16 @@ Public Class Party
         Result.Description = Description
         Result.Image = Image
         Return Result
+    End Function
+
+    Public Shared Function CountAll() As Integer
+        Dim Count = 0
+        GetConnection().Open()
+        Using Cmd = New OleDbCommand(QUERY_COUNT_ALL, GetConnection())
+            Count = Integer.Parse(Cmd.ExecuteScalar())
+        End Using
+        GetConnection().Close()
+        Return Count
     End Function
 
 End Class
