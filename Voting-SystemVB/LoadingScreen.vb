@@ -33,11 +33,9 @@
             Case 9
                 ManageVoters.GetInstance()
             Case 10
-                StartElection.GetInstance()
+                LoadFont()
             Case 11
                 UpdateAdmin.GetInstance()
-            Case 12
-                LoadFont()
         End Select
 
         If Percent >= 100 Then

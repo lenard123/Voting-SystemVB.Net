@@ -1,32 +1,53 @@
 ﻿Public Class StartElection
 
-    Implements MainControl
+    Private Shared Popup As ModalPopup
 
-    Dim IsValidName = False
-    Dim IsValidPassword = False
-    Dim Candidates As Dictionary(Of Integer, List(Of Candidate))
-    Private Shared Instance As StartElection
+    Dim IsValidName As Boolean = False
+    Dim IsValidPassword As Boolean = False
 
-    Public Shared Function GetInstance() As StartElection
-        If IsNothing(Instance) Then
-            Instance = New StartElection()
-        End If
-        Return Instance
-    End Function
+    Dim Title As String
+    Dim EndDate As Date
 
-    Private Sub StartElection_Refresh() Implements MainControl.RefreshControl
-        TextPassword.Text = ""
-        TextName.Text = ""
-        TextPassword.BorderColor = Color.FromArgb(217, 221, 226)
-        TextName.BorderColor = Color.FromArgb(217, 221, 226)
-        ' Add any initialization after the InitializeComponent() call.
+    Private Sub StartElection1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TextName.Text = Date.Now().Year & " Student Council Election"
         Guna2DateTimePicker1.MaxDate = Date.Now().AddMonths(1)
         Guna2DateTimePicker1.MinDate = Date.Now().AddDays(1)
 
-        StartLoading()
-        BackgroundWorkerLoad.RunWorkerAsync()
-        'Await LoadCandidates()
     End Sub
+
+    Public Shared Sub ShowPopup()
+        Popup = New ModalPopup
+        Popup.Init(New StartElection)
+        Popup.ShowPopup()
+    End Sub
+
+    Private Sub ButtonCancel_Click(sender As Object, e As EventArgs) Handles ButtonCancel.Click
+        Popup.ClosePopup()
+    End Sub
+
+    Private Sub TextName_Leave(sender As Object, e As EventArgs) Handles TextName.Leave
+        IsValidName = Util.Validator("Name", TextName, ErrorName, "required", "min:6")
+    End Sub
+
+    Private Sub TextPassword_Leave(sender As Object, e As EventArgs) Handles TextPassword.Leave
+        IsValidPassword = Util.Validator("Password", TextPassword, ErrorPassword, "required")
+        If IsValidPassword Then
+            If Not Admin.GetCurrentUser().ComparePassword(TextPassword.Text) Then
+                TextPassword.BorderColor = Color.Red
+                ErrorPassword.Text = "Password not match"
+            End If
+        End If
+    End Sub
+
+    Public Function GetEndDate() As Date
+        Dim Hour As Double = 0D
+        If Guna2RadioButton1.Checked Then Hour = 7
+        If Guna2RadioButton2.Checked Then Hour = 12
+        If Guna2RadioButton3.Checked Then Hour = 18
+        Dim eDate = Guna2DateTimePicker1.Value
+        Dim Res = New Date(eDate.Year, eDate.Month, eDate.Day, Hour, 0, 0)
+        Return Res
+    End Function
 
     Sub StartLoading()
         LabelLoading.Visible = True
@@ -43,77 +64,31 @@
         ButtonStart.Enabled = True
     End Sub
 
-    'Private Async Function LoadCandidates() As Task
-    '    Dim Result As New List(Of List(Of Candidate))
-
-    '    Result.Add(Await Candidate.GetAllByPositionAsync(Position.PRESIDENT_ID))
-    '    Result.Add(Await Candidate.GetAllByPositionAsync(Position.VICE_PRESIDENT_ID))
-    '    Result.Add(Await Candidate.GetAllByPositionAsync(Position.SECRETARY_ID))
-    '    Result.Add(Await Candidate.GetAllByPositionAsync(Position.TREASURER_ID))
-    '    Result.Add(Await Candidate.GetAllByPositionAsync(Position.AUDITOR_ID))
-    '    Result.Add(Await Candidate.GetAllByPositionAsync(Position.PRO_ID))
-
-    '    Dim Names() As String = {"President", "Vice President", "Secretary", "Treasurer", "Auditor", "P.R.O."}
-    '    For I As Integer = 0 To 5
-    '        FlowLayoutPanel1.Controls.Add(New CandidatesList(Result(I), Names(I), CandidatesList.CandidateType.Text))
-    '    Next
-    'End Function
-
-    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles ButtonStart.Click
-        If ValidateForm() Then
-            If Election.StartElection(TextName.Text, GetEndDate()) Then
-                Alert.ShowAlert("Election successfully started", Alert.AlertType.Success)
-                AdminPanel.GetInstance().Admin_Panel_Reload()
-                Dispose()
-            Else
-                Alert.ShowAlert("Election failed to start", Alert.AlertType.Error)
-            End If
+    Private Sub ButtonStart_Click(sender As Object, e As EventArgs) Handles ButtonStart.Click
+        TextName_Leave(sender, e)
+        TextPassword_Leave(sender, e)
+        If IsValidName And IsValidPassword Then
+            Title = TextName.Text
+            EndDate = GetEndDate()
+            StartLoading()
+            BackgroundWorkerStartElection.RunWorkerAsync()
         End If
     End Sub
 
-    Public Function GetEndDate() As Date
-        Dim Hour As Double = 0D
-        If Guna2RadioButton1.Checked Then Hour = 7
-        If Guna2RadioButton2.Checked Then Hour = 12
-        If Guna2RadioButton3.Checked Then Hour = 18
-        Dim eDate = Guna2DateTimePicker1.Value
-        Dim Res = New Date(eDate.Year, eDate.Month, eDate.Day, Hour, 0, 0)
-        Return Res
-    End Function
-
-    Private Function ValidateForm() As Boolean
-        TextName_Leave(Nothing, Nothing)
-        TextPassword_Leave(Nothing, Nothing)
-        Return IsValidName And IsValidPassword
-    End Function
-
-    Private Sub TextName_Leave(sender As Object, e As EventArgs) Handles TextName.Leave
-        IsValidName = Util.Validator("Name", TextName, ErrorName, "required")
+    Private Sub BackgroundWorkerStartElection_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerStartElection.DoWork
+        e.Result = Election.StartElection(Title, EndDate)
+        Election.GetCurrentElectionF()
     End Sub
 
-    Private Sub TextPassword_Leave(sender As Object, e As EventArgs) Handles TextPassword.Leave
-        IsValidPassword = Util.Validator("Password", TextPassword, ErrorPassword, "required")
-        If IsValidPassword Then
-            If Not Admin.GetCurrentUser().ComparePassword(TextPassword.Text) Then
-                IsValidPassword = False
-                TextPassword.BorderColor = Color.Red
-                ErrorPassword.Text = "Password not match"
-            End If
-        End If
-    End Sub
-
-    Private Sub ButtonCancel_Click(sender As Object, e As EventArgs) Handles ButtonCancel.Click
-        AdminPanel.GetInstance().ButtonHome.PerformClick()
-    End Sub
-
-    Private Sub BackgroundWorkerLoad_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerLoad.DoWork
-        Candidates = Candidate.GetAll2()
-    End Sub
-
-    Private Sub BackgroundWorkerLoad_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerLoad.RunWorkerCompleted
+    Private Sub BackgroundWorkerStartElection_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerStartElection.RunWorkerCompleted
         StopLoading()
-        For Each item In Candidates
-            FlowLayoutPanel1.Controls.Add(New CandidatesList(item.Value, Position.GetName(item.Key), CandidatesList.CandidateType.Text))
-        Next
+        If e.Result Then
+            Popup.ClosePopup()
+            AdminPanel.GetInstance().ActivePage = Nothing
+            Alert.ShowAlert("Election has started Successfully", Alert.AlertType.Success)
+            AdminPanel.GetInstance().Admin_Panel_Reload()
+        Else
+            Alert.ShowAlert("An error occurred", Alert.AlertType.Error)
+        End If
     End Sub
 End Class

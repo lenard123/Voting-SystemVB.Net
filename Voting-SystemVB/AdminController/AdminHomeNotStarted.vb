@@ -26,7 +26,7 @@
         Guna2WinProgressIndicator1.Stop()
     End Sub
 
-    Private Sub RefreshData() Implements MainControl.RefreshControl
+    Public Sub RefreshData() Implements MainControl.RefreshControl
         StartLoading()
         BackgroundWorkerFetchData.RunWorkerAsync()
     End Sub
@@ -53,7 +53,7 @@
 
     Private Sub ButtonStartElection_Click(sender As Object, e As EventArgs) Handles ButtonStartElection.Click
         If CanStartElection() Then
-            StartElection1.ShowPopup()
+            StartElection.ShowPopup()
         End If
     End Sub
 

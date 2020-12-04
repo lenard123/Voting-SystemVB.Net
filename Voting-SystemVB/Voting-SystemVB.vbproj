@@ -194,22 +194,16 @@
     <Compile Include="AdminController\ManageVoters.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Modal\StartElection.Designer.vb">
-      <DependentUpon>StartElection.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Modal\StartElection.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="AdminController\UpdateAdmin.Designer.vb">
       <DependentUpon>UpdateAdmin.vb</DependentUpon>
     </Compile>
     <Compile Include="AdminController\UpdateAdmin.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Modal\StartElection1.Designer.vb">
-      <DependentUpon>StartElection1.vb</DependentUpon>
+    <Compile Include="Modal\StartElection.Designer.vb">
+      <DependentUpon>StartElection.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modal\StartElection1.vb">
+    <Compile Include="Modal\StartElection.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Modal\UpdateCandidate.Designer.vb">
@@ -398,14 +392,11 @@
     <EmbeddedResource Include="AdminController\ManageVoters.resx">
       <DependentUpon>ManageVoters.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modal\StartElection.resx">
-      <DependentUpon>StartElection.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AdminController\UpdateAdmin.resx">
       <DependentUpon>UpdateAdmin.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modal\StartElection1.resx">
-      <DependentUpon>StartElection1.vb</DependentUpon>
+    <EmbeddedResource Include="Modal\StartElection.resx">
+      <DependentUpon>StartElection.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\UpdateCandidate.resx">
       <DependentUpon>UpdateCandidate.vb</DependentUpon>

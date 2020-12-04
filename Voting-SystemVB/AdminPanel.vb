@@ -7,7 +7,7 @@ Public Class AdminPanel
     Private Shared Instance As AdminPanel
 
     Private ElectionStatus As Integer
-    Private ActivePage As Guna2Button
+    Public ActivePage As Guna2Button
     Private isCountDownStart As Boolean = False
     Private RemainingTime As Long
 
@@ -31,9 +31,9 @@ Public Class AdminPanel
 
     'Return Admin Home Depending on Election Status
     Public Function AdminHomeControl() As Control
-        If Election.HasNotStarted Then
+        If Election.HasNotStarted() Then
             Return AdminHomeNotStarted.GetInstance()
-        ElseIf Election.IsOngoing Then
+        ElseIf Election.IsOngoing() Then
             Return AdminHomeStarted.GetInstance()
         End If
         Return Nothing

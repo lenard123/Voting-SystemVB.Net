@@ -22,90 +22,67 @@ Partial Class StartElection
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.BackgroundWorkerLoad = New System.ComponentModel.BackgroundWorker()
-        Me.Card1 = New Voting_SystemVB.Card()
+        Me.Guna2GroupBox1 = New Guna.UI2.WinForms.Guna2GroupBox()
+        Me.ErrorName = New System.Windows.Forms.Label()
         Me.LabelLoading = New System.Windows.Forms.Label()
         Me.Guna2WinProgressIndicator1 = New Guna.UI2.WinForms.Guna2WinProgressIndicator()
-        Me.ErrorPassword = New System.Windows.Forms.Label()
-        Me.ErrorName = New System.Windows.Forms.Label()
         Me.ButtonCancel = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonStart = New Guna.UI2.WinForms.Guna2Button()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TextPassword = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Guna2RadioButton1 = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.Guna2RadioButton3 = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.Guna2RadioButton2 = New Guna.UI2.WinForms.Guna2RadioButton()
-        Me.TextName = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2DateTimePicker1 = New Guna.UI2.WinForms.Guna2DateTimePicker()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextPassword = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Panel1.SuspendLayout()
-        Me.Card1.SuspendLayout()
+        Me.TextName = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ErrorPassword = New System.Windows.Forms.Label()
+        Me.BackgroundWorkerStartElection = New System.ComponentModel.BackgroundWorker()
+        Me.Guna2GroupBox1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Panel1
+        'Guna2GroupBox1
         '
-        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.AutoScroll = True
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.FlowLayoutPanel1)
-        Me.Panel1.Location = New System.Drawing.Point(352, 32)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(517, 440)
-        Me.Panel1.TabIndex = 5
+        Me.Guna2GroupBox1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.Guna2GroupBox1.Controls.Add(Me.ErrorPassword)
+        Me.Guna2GroupBox1.Controls.Add(Me.ErrorName)
+        Me.Guna2GroupBox1.Controls.Add(Me.LabelLoading)
+        Me.Guna2GroupBox1.Controls.Add(Me.Guna2WinProgressIndicator1)
+        Me.Guna2GroupBox1.Controls.Add(Me.ButtonCancel)
+        Me.Guna2GroupBox1.Controls.Add(Me.ButtonStart)
+        Me.Guna2GroupBox1.Controls.Add(Me.TextPassword)
+        Me.Guna2GroupBox1.Controls.Add(Me.Label3)
+        Me.Guna2GroupBox1.Controls.Add(Me.Panel2)
+        Me.Guna2GroupBox1.Controls.Add(Me.Guna2DateTimePicker1)
+        Me.Guna2GroupBox1.Controls.Add(Me.TextName)
+        Me.Guna2GroupBox1.Controls.Add(Me.Label2)
+        Me.Guna2GroupBox1.Controls.Add(Me.Label4)
+        Me.Guna2GroupBox1.Controls.Add(Me.Label1)
+        Me.Guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.Guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Guna2GroupBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.Guna2GroupBox1.ForeColor = System.Drawing.Color.White
+        Me.Guna2GroupBox1.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2GroupBox1.Name = "Guna2GroupBox1"
+        Me.Guna2GroupBox1.ShadowDecoration.Parent = Me.Guna2GroupBox1
+        Me.Guna2GroupBox1.Size = New System.Drawing.Size(519, 528)
+        Me.Guna2GroupBox1.TabIndex = 0
+        Me.Guna2GroupBox1.Text = "START ELECTION"
         '
-        'FlowLayoutPanel1
+        'ErrorName
         '
-        Me.FlowLayoutPanel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.FlowLayoutPanel1.AutoSize = True
-        Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(13, 13)
-        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(490, 413)
-        Me.FlowLayoutPanel1.TabIndex = 0
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label4.Location = New System.Drawing.Point(421, 485)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(328, 15)
-        Me.Label4.TabIndex = 1
-        Me.Label4.Text = "Note: Once the election started, you can not manually stop it"
-        '
-        'BackgroundWorkerLoad
-        '
-        '
-        'Card1
-        '
-        Me.Card1.BackColor = System.Drawing.Color.White
-        Me.Card1.BGColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.Card1.Controls.Add(Me.LabelLoading)
-        Me.Card1.Controls.Add(Me.Guna2WinProgressIndicator1)
-        Me.Card1.Controls.Add(Me.ErrorPassword)
-        Me.Card1.Controls.Add(Me.ErrorName)
-        Me.Card1.Controls.Add(Me.ButtonCancel)
-        Me.Card1.Controls.Add(Me.ButtonStart)
-        Me.Card1.Controls.Add(Me.Label2)
-        Me.Card1.Controls.Add(Me.Panel2)
-        Me.Card1.Controls.Add(Me.TextName)
-        Me.Card1.Controls.Add(Me.Label1)
-        Me.Card1.Controls.Add(Me.Guna2DateTimePicker1)
-        Me.Card1.Controls.Add(Me.Label3)
-        Me.Card1.Controls.Add(Me.TextPassword)
-        Me.Card1.Location = New System.Drawing.Point(14, 32)
-        Me.Card1.Name = "Card1"
-        Me.Card1.Size = New System.Drawing.Size(332, 440)
-        Me.Card1.TabIndex = 9
+        Me.ErrorName.AutoSize = True
+        Me.ErrorName.BackColor = System.Drawing.Color.Transparent
+        Me.ErrorName.Font = New System.Drawing.Font("Segoe UI", 8.0!)
+        Me.ErrorName.ForeColor = System.Drawing.Color.Red
+        Me.ErrorName.Location = New System.Drawing.Point(31, 136)
+        Me.ErrorName.Name = "ErrorName"
+        Me.ErrorName.Size = New System.Drawing.Size(0, 13)
+        Me.ErrorName.TabIndex = 21
         '
         'LabelLoading
         '
@@ -113,41 +90,21 @@ Partial Class StartElection
         Me.LabelLoading.BackColor = System.Drawing.Color.Transparent
         Me.LabelLoading.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.LabelLoading.ForeColor = System.Drawing.Color.Black
-        Me.LabelLoading.Location = New System.Drawing.Point(42, 341)
+        Me.LabelLoading.Location = New System.Drawing.Point(79, 444)
         Me.LabelLoading.Name = "LabelLoading"
         Me.LabelLoading.Size = New System.Drawing.Size(85, 19)
-        Me.LabelLoading.TabIndex = 18
+        Me.LabelLoading.TabIndex = 20
         Me.LabelLoading.Text = "Please wait..."
         Me.LabelLoading.Visible = False
         '
         'Guna2WinProgressIndicator1
         '
         Me.Guna2WinProgressIndicator1.CircleSize = 0.01!
-        Me.Guna2WinProgressIndicator1.Location = New System.Drawing.Point(8, 337)
+        Me.Guna2WinProgressIndicator1.Location = New System.Drawing.Point(43, 438)
         Me.Guna2WinProgressIndicator1.Name = "Guna2WinProgressIndicator1"
         Me.Guna2WinProgressIndicator1.Size = New System.Drawing.Size(30, 30)
-        Me.Guna2WinProgressIndicator1.TabIndex = 17
+        Me.Guna2WinProgressIndicator1.TabIndex = 19
         Me.Guna2WinProgressIndicator1.Visible = False
-        '
-        'ErrorPassword
-        '
-        Me.ErrorPassword.AutoSize = True
-        Me.ErrorPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.ErrorPassword.ForeColor = System.Drawing.Color.Red
-        Me.ErrorPassword.Location = New System.Drawing.Point(18, 319)
-        Me.ErrorPassword.Name = "ErrorPassword"
-        Me.ErrorPassword.Size = New System.Drawing.Size(0, 13)
-        Me.ErrorPassword.TabIndex = 9
-        '
-        'ErrorName
-        '
-        Me.ErrorName.AutoSize = True
-        Me.ErrorName.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.ErrorName.ForeColor = System.Drawing.Color.Red
-        Me.ErrorName.Location = New System.Drawing.Point(18, 89)
-        Me.ErrorName.Name = "ErrorName"
-        Me.ErrorName.Size = New System.Drawing.Size(0, 13)
-        Me.ErrorName.TabIndex = 9
         '
         'ButtonCancel
         '
@@ -159,11 +116,11 @@ Partial Class StartElection
         Me.ButtonCancel.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonCancel.ForeColor = System.Drawing.Color.Gray
         Me.ButtonCancel.HoverState.Parent = Me.ButtonCancel
-        Me.ButtonCancel.Location = New System.Drawing.Point(183, 388)
+        Me.ButtonCancel.Location = New System.Drawing.Point(251, 443)
         Me.ButtonCancel.Name = "ButtonCancel"
         Me.ButtonCancel.ShadowDecoration.Parent = Me.ButtonCancel
         Me.ButtonCancel.Size = New System.Drawing.Size(106, 23)
-        Me.ButtonCancel.TabIndex = 8
+        Me.ButtonCancel.TabIndex = 11
         Me.ButtonCancel.Text = "CANCEL"
         '
         'ButtonStart
@@ -174,32 +131,59 @@ Partial Class StartElection
         Me.ButtonStart.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonStart.ForeColor = System.Drawing.Color.White
         Me.ButtonStart.HoverState.Parent = Me.ButtonStart
-        Me.ButtonStart.Location = New System.Drawing.Point(46, 381)
+        Me.ButtonStart.Location = New System.Drawing.Point(363, 433)
         Me.ButtonStart.Name = "ButtonStart"
         Me.ButtonStart.ShadowDecoration.Parent = Me.ButtonStart
         Me.ButtonStart.Size = New System.Drawing.Size(118, 37)
-        Me.ButtonStart.TabIndex = 8
+        Me.ButtonStart.TabIndex = 12
         Me.ButtonStart.Text = "START ELECTION"
         '
-        'Label2
+        'TextPassword
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(17, 26)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(110, 21)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Election Name"
+        Me.TextPassword.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TextPassword.DefaultText = ""
+        Me.TextPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TextPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TextPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TextPassword.DisabledState.Parent = Me.TextPassword
+        Me.TextPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TextPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TextPassword.FocusedState.Parent = Me.TextPassword
+        Me.TextPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TextPassword.HoverState.Parent = Me.TextPassword
+        Me.TextPassword.Location = New System.Drawing.Point(35, 343)
+        Me.TextPassword.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.TextPassword.Name = "TextPassword"
+        Me.TextPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TextPassword.PlaceholderText = "For Security Reason"
+        Me.TextPassword.SelectedText = ""
+        Me.TextPassword.ShadowDecoration.Parent = Me.TextPassword
+        Me.TextPassword.Size = New System.Drawing.Size(446, 36)
+        Me.TextPassword.TabIndex = 10
+        Me.TextPassword.UseSystemPasswordChar = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.ForeColor = System.Drawing.Color.Black
+        Me.Label3.Location = New System.Drawing.Point(31, 317)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(77, 21)
+        Me.Label3.TabIndex = 9
+        Me.Label3.Text = "Password"
         '
         'Panel2
         '
+        Me.Panel2.BackColor = System.Drawing.Color.Transparent
         Me.Panel2.Controls.Add(Me.Guna2RadioButton1)
         Me.Panel2.Controls.Add(Me.Guna2RadioButton3)
         Me.Panel2.Controls.Add(Me.Guna2RadioButton2)
-        Me.Panel2.Location = New System.Drawing.Point(17, 171)
+        Me.Panel2.ForeColor = System.Drawing.Color.Black
+        Me.Panel2.Location = New System.Drawing.Point(35, 224)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(300, 73)
-        Me.Panel2.TabIndex = 7
+        Me.Panel2.Size = New System.Drawing.Size(446, 79)
+        Me.Panel2.TabIndex = 8
         '
         'Guna2RadioButton1
         '
@@ -211,7 +195,7 @@ Partial Class StartElection
         Me.Guna2RadioButton1.CheckedState.InnerOffset = -4
         Me.Guna2RadioButton1.Location = New System.Drawing.Point(3, 3)
         Me.Guna2RadioButton1.Name = "Guna2RadioButton1"
-        Me.Guna2RadioButton1.Size = New System.Drawing.Size(116, 17)
+        Me.Guna2RadioButton1.Size = New System.Drawing.Size(167, 25)
         Me.Guna2RadioButton1.TabIndex = 6
         Me.Guna2RadioButton1.Text = "07:00 am (Morning)"
         Me.Guna2RadioButton1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
@@ -230,7 +214,7 @@ Partial Class StartElection
         Me.Guna2RadioButton3.CheckedState.InnerOffset = -4
         Me.Guna2RadioButton3.Location = New System.Drawing.Point(3, 51)
         Me.Guna2RadioButton3.Name = "Guna2RadioButton3"
-        Me.Guna2RadioButton3.Size = New System.Drawing.Size(117, 17)
+        Me.Guna2RadioButton3.Size = New System.Drawing.Size(163, 25)
         Me.Guna2RadioButton3.TabIndex = 6
         Me.Guna2RadioButton3.Text = "06:00 pm (Evening)"
         Me.Guna2RadioButton3.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
@@ -250,7 +234,7 @@ Partial Class StartElection
         Me.Guna2RadioButton2.CheckedState.InnerOffset = -4
         Me.Guna2RadioButton2.Location = New System.Drawing.Point(3, 27)
         Me.Guna2RadioButton2.Name = "Guna2RadioButton2"
-        Me.Guna2RadioButton2.Size = New System.Drawing.Size(124, 17)
+        Me.Guna2RadioButton2.Size = New System.Drawing.Size(178, 25)
         Me.Guna2RadioButton2.TabIndex = 6
         Me.Guna2RadioButton2.TabStop = True
         Me.Guna2RadioButton2.Text = "12:00 pm (Afternoon)"
@@ -259,6 +243,25 @@ Partial Class StartElection
         Me.Guna2RadioButton2.UncheckedState.FillColor = System.Drawing.Color.Transparent
         Me.Guna2RadioButton2.UncheckedState.InnerColor = System.Drawing.Color.Transparent
         Me.Guna2RadioButton2.UseVisualStyleBackColor = True
+        '
+        'Guna2DateTimePicker1
+        '
+        Me.Guna2DateTimePicker1.BackColor = System.Drawing.SystemColors.Control
+        Me.Guna2DateTimePicker1.BorderColor = System.Drawing.Color.LightGray
+        Me.Guna2DateTimePicker1.BorderThickness = 1
+        Me.Guna2DateTimePicker1.CheckedState.Parent = Me.Guna2DateTimePicker1
+        Me.Guna2DateTimePicker1.FillColor = System.Drawing.Color.White
+        Me.Guna2DateTimePicker1.ForeColor = System.Drawing.Color.Black
+        Me.Guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
+        Me.Guna2DateTimePicker1.HoverState.Parent = Me.Guna2DateTimePicker1
+        Me.Guna2DateTimePicker1.Location = New System.Drawing.Point(35, 181)
+        Me.Guna2DateTimePicker1.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
+        Me.Guna2DateTimePicker1.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
+        Me.Guna2DateTimePicker1.Name = "Guna2DateTimePicker1"
+        Me.Guna2DateTimePicker1.ShadowDecoration.Parent = Me.Guna2DateTimePicker1
+        Me.Guna2DateTimePicker1.Size = New System.Drawing.Size(446, 37)
+        Me.Guna2DateTimePicker1.TabIndex = 2
+        Me.Guna2DateTimePicker1.Value = New Date(2020, 12, 4, 13, 44, 45, 554)
         '
         'TextName
         '
@@ -273,115 +276,95 @@ Partial Class StartElection
         Me.TextName.FocusedState.Parent = Me.TextName
         Me.TextName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TextName.HoverState.Parent = Me.TextName
-        Me.TextName.Location = New System.Drawing.Point(17, 50)
+        Me.TextName.Location = New System.Drawing.Point(35, 99)
+        Me.TextName.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextName.Name = "TextName"
         Me.TextName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TextName.PlaceholderText = ""
         Me.TextName.SelectedText = ""
         Me.TextName.ShadowDecoration.Parent = Me.TextName
-        Me.TextName.Size = New System.Drawing.Size(300, 36)
-        Me.TextName.TabIndex = 3
+        Me.TextName.Size = New System.Drawing.Size(446, 36)
+        Me.TextName.TabIndex = 1
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Location = New System.Drawing.Point(31, 157)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(72, 21)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "End Date"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(79, 498)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(324, 21)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "Note: You Can not manually Stop the Election"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(17, 257)
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.ForeColor = System.Drawing.Color.Black
+        Me.Label1.Location = New System.Drawing.Point(31, 73)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(280, 21)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Please Enter your password to Confirm"
+        Me.Label1.Size = New System.Drawing.Size(110, 21)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Election Name"
         '
-        'Guna2DateTimePicker1
+        'ErrorPassword
         '
-        Me.Guna2DateTimePicker1.BorderColor = System.Drawing.Color.LightGray
-        Me.Guna2DateTimePicker1.BorderThickness = 1
-        Me.Guna2DateTimePicker1.CheckedState.Parent = Me.Guna2DateTimePicker1
-        Me.Guna2DateTimePicker1.FillColor = System.Drawing.Color.White
-        Me.Guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
-        Me.Guna2DateTimePicker1.HoverState.Parent = Me.Guna2DateTimePicker1
-        Me.Guna2DateTimePicker1.Location = New System.Drawing.Point(17, 129)
-        Me.Guna2DateTimePicker1.MaxDate = New Date(2020, 11, 28, 0, 0, 0, 0)
-        Me.Guna2DateTimePicker1.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
-        Me.Guna2DateTimePicker1.Name = "Guna2DateTimePicker1"
-        Me.Guna2DateTimePicker1.ShadowDecoration.Parent = Me.Guna2DateTimePicker1
-        Me.Guna2DateTimePicker1.Size = New System.Drawing.Size(300, 36)
-        Me.Guna2DateTimePicker1.TabIndex = 4
-        Me.Guna2DateTimePicker1.Value = New Date(2020, 11, 28, 0, 0, 0, 0)
+        Me.ErrorPassword.AutoSize = True
+        Me.ErrorPassword.BackColor = System.Drawing.Color.Transparent
+        Me.ErrorPassword.Font = New System.Drawing.Font("Segoe UI", 8.0!)
+        Me.ErrorPassword.ForeColor = System.Drawing.Color.Red
+        Me.ErrorPassword.Location = New System.Drawing.Point(35, 384)
+        Me.ErrorPassword.Name = "ErrorPassword"
+        Me.ErrorPassword.Size = New System.Drawing.Size(0, 13)
+        Me.ErrorPassword.TabIndex = 22
         '
-        'Label3
+        'BackgroundWorkerStartElection
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(17, 105)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(72, 21)
-        Me.Label3.TabIndex = 1
-        Me.Label3.Text = "End Date"
         '
-        'TextPassword
-        '
-        Me.TextPassword.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TextPassword.DefaultText = ""
-        Me.TextPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TextPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TextPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TextPassword.DisabledState.Parent = Me.TextPassword
-        Me.TextPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TextPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TextPassword.FocusedState.Parent = Me.TextPassword
-        Me.TextPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TextPassword.HoverState.Parent = Me.TextPassword
-        Me.TextPassword.Location = New System.Drawing.Point(17, 281)
-        Me.TextPassword.Name = "TextPassword"
-        Me.TextPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TextPassword.PlaceholderText = ""
-        Me.TextPassword.SelectedText = ""
-        Me.TextPassword.ShadowDecoration.Parent = Me.TextPassword
-        Me.TextPassword.Size = New System.Drawing.Size(300, 36)
-        Me.TextPassword.TabIndex = 3
-        Me.TextPassword.UseSystemPasswordChar = True
-        '
-        'StartElection
+        'StartElection1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.Control
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Card1)
-        Me.Name = "StartElection"
-        Me.Size = New System.Drawing.Size(889, 512)
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        Me.Card1.ResumeLayout(False)
-        Me.Card1.PerformLayout()
+        Me.Controls.Add(Me.Guna2GroupBox1)
+        Me.Name = "StartElection1"
+        Me.Size = New System.Drawing.Size(519, 528)
+        Me.Guna2GroupBox1.ResumeLayout(False)
+        Me.Guna2GroupBox1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TextName As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Guna2DateTimePicker1 As Guna.UI2.WinForms.Guna2DateTimePicker
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
-    Friend WithEvents Guna2RadioButton1 As Guna.UI2.WinForms.Guna2RadioButton
-    Friend WithEvents Guna2RadioButton2 As Guna.UI2.WinForms.Guna2RadioButton
-    Friend WithEvents Guna2RadioButton3 As Guna.UI2.WinForms.Guna2RadioButton
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents ButtonStart As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents ButtonCancel As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Guna2GroupBox1 As Guna.UI2.WinForms.Guna2GroupBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents TextName As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2DateTimePicker1 As Guna.UI2.WinForms.Guna2DateTimePicker
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents Guna2RadioButton1 As Guna.UI2.WinForms.Guna2RadioButton
+    Friend WithEvents Guna2RadioButton3 As Guna.UI2.WinForms.Guna2RadioButton
+    Friend WithEvents Guna2RadioButton2 As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents TextPassword As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Card1 As Voting_SystemVB.Card
-    Friend WithEvents ErrorPassword As System.Windows.Forms.Label
-    Friend WithEvents ErrorName As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents ButtonCancel As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonStart As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents LabelLoading As System.Windows.Forms.Label
     Friend WithEvents Guna2WinProgressIndicator1 As Guna.UI2.WinForms.Guna2WinProgressIndicator
-    Friend WithEvents BackgroundWorkerLoad As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents ErrorName As System.Windows.Forms.Label
+    Friend WithEvents ErrorPassword As System.Windows.Forms.Label
+    Friend WithEvents BackgroundWorkerStartElection As System.ComponentModel.BackgroundWorker
 
 End Class
