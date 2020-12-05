@@ -33,6 +33,7 @@
         IsValidPassword = Util.Validator("Password", TextPassword, ErrorPassword, "required")
         If IsValidPassword Then
             If Not Admin.GetCurrentUser().ComparePassword(TextPassword.Text) Then
+                IsValidPassword = False
                 TextPassword.BorderColor = Color.Red
                 ErrorPassword.Text = "Password not match"
             End If

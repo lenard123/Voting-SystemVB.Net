@@ -59,7 +59,7 @@ Public Class Party
     End Property
     Public Property Title As String
         Get
-            Return _Title
+            Return _Title.ToUpper
         End Get
         Set(value As String)
             _Title = value

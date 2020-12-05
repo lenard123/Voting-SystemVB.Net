@@ -30,9 +30,18 @@ Public Class VotersPanel
             If Student.GetCurrentUser().HasVoted Then
                 ChipStatus.FillColor = Color.Green
                 ChipStatus.Text = "Done"
+
+                ButtonVoteInfo.Visible = True
+                ButtonVoteNow.Visible = False
+
             Else
                 ChipStatus.FillColor = Color.Red
                 ChipStatus.Text = "Not yet"
+
+
+                ButtonVoteInfo.Visible = False
+                ButtonVoteNow.Visible = True
+
             End If
             ButtonCandidate.PerformClick()
         End If
@@ -59,7 +68,7 @@ Public Class VotersPanel
         End If
     End Sub
 
-    Private Sub ButtonClick(sender As Guna2Button, e As EventArgs) Handles ButtonCandidate.Click, ButtonParty.Click
+    Private Sub ButtonClick(sender As Guna2Button, e As EventArgs) Handles ButtonCandidate.Click, ButtonParty.Click, ButtonVoteNow.Click
         Dim tag As Integer = Integer.Parse(sender.Tag)
 
         If sender.Equals(SelectedButton) Then Return
@@ -75,6 +84,8 @@ Public Class VotersPanel
                 LoadControl(CandidateInfo.GetInstance())
             Case 2
                 LoadControl(PartyInfo.GetInstance())
+            Case 3
+                LoadControl(VoteNow.GetInstance())
         End Select
 
     End Sub

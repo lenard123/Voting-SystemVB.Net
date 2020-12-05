@@ -44,6 +44,9 @@ Partial Class VoterLogin
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.BackgroundWorkerLogin = New System.ComponentModel.BackgroundWorker()
         Me.Guna2ControlBox1 = New Guna.UI2.WinForms.Guna2ControlBox()
+        Me.Guna2GradientPanel1 = New Guna.UI2.WinForms.Guna2GradientPanel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Guna2ControlBox2 = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelStudentID.SuspendLayout()
@@ -51,6 +54,8 @@ Partial Class VoterLogin
         Me.Panel3.SuspendLayout()
         CType(Me.ButtonVisibility, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2GradientPanel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -267,17 +272,52 @@ Partial Class VoterLogin
         Me.Guna2ControlBox1.Size = New System.Drawing.Size(19, 24)
         Me.Guna2ControlBox1.TabIndex = 6
         '
+        'Guna2GradientPanel1
+        '
+        Me.Guna2GradientPanel1.Controls.Add(Me.Panel2)
+        Me.Guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.Guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
+        Me.Guna2GradientPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2GradientPanel1.Name = "Guna2GradientPanel1"
+        Me.Guna2GradientPanel1.ShadowDecoration.Parent = Me.Guna2GradientPanel1
+        Me.Guna2GradientPanel1.Size = New System.Drawing.Size(841, 531)
+        Me.Guna2GradientPanel1.TabIndex = 7
+        '
+        'Panel2
+        '
+        Me.Panel2.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Panel2.Controls.Add(Me.Guna2ControlBox2)
+        Me.Panel2.Controls.Add(Me.Guna2ControlBox1)
+        Me.Panel2.Controls.Add(Me.ButtonAdmin)
+        Me.Panel2.Controls.Add(Me.ButtonLogin)
+        Me.Panel2.Controls.Add(Me.Label4)
+        Me.Panel2.Controls.Add(Me.Panel3)
+        Me.Panel2.Controls.Add(Me.PanelStudentID)
+        Me.Panel2.Controls.Add(Me.Panel1)
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(841, 531)
+        Me.Panel2.TabIndex = 0
+        '
+        'Guna2ControlBox2
+        '
+        Me.Guna2ControlBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox
+        Me.Guna2ControlBox2.FillColor = System.Drawing.Color.Transparent
+        Me.Guna2ControlBox2.HoverState.Parent = Me.Guna2ControlBox2
+        Me.Guna2ControlBox2.IconColor = System.Drawing.Color.Gray
+        Me.Guna2ControlBox2.Location = New System.Drawing.Point(794, 3)
+        Me.Guna2ControlBox2.Name = "Guna2ControlBox2"
+        Me.Guna2ControlBox2.ShadowDecoration.Parent = Me.Guna2ControlBox2
+        Me.Guna2ControlBox2.Size = New System.Drawing.Size(19, 24)
+        Me.Guna2ControlBox2.TabIndex = 6
+        '
         'VoterLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.Guna2ControlBox1)
-        Me.Controls.Add(Me.ButtonAdmin)
-        Me.Controls.Add(Me.ButtonLogin)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.PanelStudentID)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Guna2GradientPanel1)
         Me.MinimumSize = New System.Drawing.Size(841, 531)
         Me.Name = "VoterLogin"
         Me.Size = New System.Drawing.Size(841, 531)
@@ -291,8 +331,10 @@ Partial Class VoterLogin
         Me.Panel3.PerformLayout()
         CType(Me.ButtonVisibility, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2GradientPanel1.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
@@ -315,5 +357,8 @@ Partial Class VoterLogin
     Friend WithEvents PanelPasswordStatus As System.Windows.Forms.Panel
     Friend WithEvents BackgroundWorkerLogin As System.ComponentModel.BackgroundWorker
     Friend WithEvents Guna2ControlBox1 As Guna.UI2.WinForms.Guna2ControlBox
+    Friend WithEvents Guna2GradientPanel1 As Guna.UI2.WinForms.Guna2GradientPanel
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents Guna2ControlBox2 As Guna.UI2.WinForms.Guna2ControlBox
 
 End Class
