@@ -18,6 +18,7 @@ Public Class Main
 
         Instance = Me
 
+        Me.MaximumSize = Screen.FromControl(Me).WorkingArea.Size
         Me.SetStyle(ControlStyles.AllPaintingInWmPaint Or ControlStyles.OptimizedDoubleBuffer Or ControlStyles.UserPaint, True)
         Me.DoubleBuffered = True
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
@@ -53,4 +54,7 @@ Public Class Main
                 End If
         End Select
     End Sub
+
+
+
 End Class
