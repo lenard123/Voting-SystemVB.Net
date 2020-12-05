@@ -13,6 +13,7 @@ Public Class ManageVoters
     Public Shared Function GetInstance() As ManageVoters
         If IsNothing(Instance) Then
             Instance = New ManageVoters()
+            Instance.DoubleBuffered = True
         End If
         Return Instance
     End Function

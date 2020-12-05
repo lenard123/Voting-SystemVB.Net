@@ -96,6 +96,7 @@ Partial Class LoadingScreen
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.MinimumSize = New System.Drawing.Size(752, 217)
         Me.Name = "LoadingScreen"
         Me.Size = New System.Drawing.Size(752, 217)
         Me.PanelProgressBar.ResumeLayout(False)

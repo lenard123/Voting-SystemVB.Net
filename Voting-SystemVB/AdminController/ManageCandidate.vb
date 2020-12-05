@@ -12,6 +12,7 @@ Public Class ManageCandidate
     Public Shared Function GetInstance() As ManageCandidate
         If IsNothing(Instance) Then
             Instance = New ManageCandidate
+            Instance.DoubleBuffered = True
         End If
         Return Instance
     End Function

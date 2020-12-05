@@ -278,6 +278,7 @@ Partial Class VoterLogin
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.PanelStudentID)
         Me.Controls.Add(Me.Panel1)
+        Me.MinimumSize = New System.Drawing.Size(841, 531)
         Me.Name = "VoterLogin"
         Me.Size = New System.Drawing.Size(841, 531)
         Me.Panel1.ResumeLayout(False)

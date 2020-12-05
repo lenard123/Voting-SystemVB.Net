@@ -7,6 +7,7 @@
     Public Shared Function GetInstance() As ManageParty
         If IsNothing(Instance) Then
             Instance = New ManageParty()
+            Instance.DoubleBuffered = True
         End If
         Return Instance
     End Function

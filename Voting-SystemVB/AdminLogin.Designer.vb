@@ -44,6 +44,9 @@ Partial Class AdminLogin
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Guna2ControlBox1 = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.BackgroundWorkerLogin = New System.ComponentModel.BackgroundWorker()
+        Me.Guna2GradientPanel1 = New Guna.UI2.WinForms.Guna2GradientPanel()
+        Me.Guna2ControlBox2 = New Guna.UI2.WinForms.Guna2ControlBox()
+        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
@@ -51,6 +54,8 @@ Partial Class AdminLogin
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2GradientPanel1.SuspendLayout()
+        Me.Panel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -254,6 +259,7 @@ Partial Class AdminLogin
         'Guna2ControlBox1
         '
         Me.Guna2ControlBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2ControlBox1.BackColor = System.Drawing.Color.Transparent
         Me.Guna2ControlBox1.FillColor = System.Drawing.Color.Transparent
         Me.Guna2ControlBox1.HoverState.Parent = Me.Guna2ControlBox1
         Me.Guna2ControlBox1.IconColor = System.Drawing.Color.Gray
@@ -266,17 +272,55 @@ Partial Class AdminLogin
         'BackgroundWorkerLogin
         '
         '
+        'Guna2GradientPanel1
+        '
+        Me.Guna2GradientPanel1.Controls.Add(Me.Panel4)
+        Me.Guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.Guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
+        Me.Guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
+        Me.Guna2GradientPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2GradientPanel1.Name = "Guna2GradientPanel1"
+        Me.Guna2GradientPanel1.ShadowDecoration.Parent = Me.Guna2GradientPanel1
+        Me.Guna2GradientPanel1.Size = New System.Drawing.Size(841, 531)
+        Me.Guna2GradientPanel1.TabIndex = 13
+        '
+        'Guna2ControlBox2
+        '
+        Me.Guna2ControlBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2ControlBox2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox
+        Me.Guna2ControlBox2.FillColor = System.Drawing.Color.Transparent
+        Me.Guna2ControlBox2.HoverState.Parent = Me.Guna2ControlBox2
+        Me.Guna2ControlBox2.IconColor = System.Drawing.Color.Gray
+        Me.Guna2ControlBox2.Location = New System.Drawing.Point(794, 3)
+        Me.Guna2ControlBox2.Name = "Guna2ControlBox2"
+        Me.Guna2ControlBox2.ShadowDecoration.Parent = Me.Guna2ControlBox2
+        Me.Guna2ControlBox2.Size = New System.Drawing.Size(19, 24)
+        Me.Guna2ControlBox2.TabIndex = 12
+        '
+        'Panel4
+        '
+        Me.Panel4.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Panel4.Controls.Add(Me.Guna2ControlBox1)
+        Me.Panel4.Controls.Add(Me.Guna2ControlBox2)
+        Me.Panel4.Controls.Add(Me.Panel1)
+        Me.Panel4.Controls.Add(Me.Label4)
+        Me.Panel4.Controls.Add(Me.Panel3)
+        Me.Panel4.Controls.Add(Me.Panel2)
+        Me.Panel4.Controls.Add(Me.ButtonVoter)
+        Me.Panel4.Controls.Add(Me.ButtonLogin)
+        Me.Panel4.Location = New System.Drawing.Point(0, 0)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(841, 531)
+        Me.Panel4.TabIndex = 13
+        '
         'AdminLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.Guna2ControlBox1)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.ButtonVoter)
-        Me.Controls.Add(Me.ButtonLogin)
+        Me.Controls.Add(Me.Guna2GradientPanel1)
+        Me.MinimumSize = New System.Drawing.Size(841, 531)
         Me.Name = "AdminLogin"
         Me.Size = New System.Drawing.Size(841, 531)
         Me.Panel1.ResumeLayout(False)
@@ -289,8 +333,10 @@ Partial Class AdminLogin
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2GradientPanel1.ResumeLayout(False)
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
@@ -313,5 +359,8 @@ Partial Class AdminLogin
     Friend WithEvents PanelUsernameStatus As System.Windows.Forms.Panel
     Friend WithEvents Guna2ControlBox1 As Guna.UI2.WinForms.Guna2ControlBox
     Friend WithEvents BackgroundWorkerLogin As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Guna2GradientPanel1 As Guna.UI2.WinForms.Guna2GradientPanel
+    Friend WithEvents Guna2ControlBox2 As Guna.UI2.WinForms.Guna2ControlBox
+    Friend WithEvents Panel4 As System.Windows.Forms.Panel
 
 End Class

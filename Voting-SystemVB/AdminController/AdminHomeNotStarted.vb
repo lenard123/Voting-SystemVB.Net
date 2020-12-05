@@ -11,6 +11,7 @@
     Public Shared Function GetInstance() As AdminHomeNotStarted
         If IsNothing(Instance) Then
             Instance = New AdminHomeNotStarted
+            Instance.DoubleBuffered = True
         End If
         Return Instance
     End Function

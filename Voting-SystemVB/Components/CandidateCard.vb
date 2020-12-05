@@ -2,17 +2,11 @@
 
     Private _Candidate As Candidate
 
-    Public Sub New()
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-
-    End Sub
-
     Public Sub New(_Candidate As Candidate)
         ' This call is required by the designer.
         InitializeComponent()
+
+        DoubleBuffered = True
 
         ' Add any initialization after the InitializeComponent() call.
         Me._Candidate = _Candidate

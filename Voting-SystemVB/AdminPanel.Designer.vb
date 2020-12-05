@@ -401,6 +401,7 @@ Partial Class AdminPanel
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.PanelHeader)
         Me.Controls.Add(Me.Panel1)
+        Me.MinimumSize = New System.Drawing.Size(1132, 637)
         Me.Name = "AdminPanel"
         Me.Size = New System.Drawing.Size(1132, 637)
         Me.Panel1.ResumeLayout(False)

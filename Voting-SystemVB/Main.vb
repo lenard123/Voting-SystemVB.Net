@@ -25,6 +25,8 @@ Public Class Main
 
         TimerFade.Interval = 1
 
+        DoubleBuffered = True
+
         LoadControl(New LoadingScreen())
     End Sub
 
@@ -55,6 +57,12 @@ Public Class Main
         End Select
     End Sub
 
-
-
+    Private Sub Main_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        If Not IsNothing(ActiveChild) Then
+            If Me.WindowState = FormWindowState.Normal And Me.Width <> ActiveChild.MinimumSize.Width And Me.Height <> ActiveChild.MinimumSize.Height Then
+                Me.Size = ActiveChild.MinimumSize
+                Me.CenterToScreen()
+            End If
+        End If
+    End Sub
 End Class

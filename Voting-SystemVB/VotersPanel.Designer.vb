@@ -390,6 +390,7 @@ Partial Class VotersPanel
         Me.Controls.Add(Me.Guna2GradientPanel1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
+        Me.MinimumSize = New System.Drawing.Size(1214, 691)
         Me.Name = "VotersPanel"
         Me.Size = New System.Drawing.Size(1214, 691)
         Me.Panel1.ResumeLayout(False)

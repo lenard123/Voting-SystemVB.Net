@@ -5,6 +5,7 @@
     Public Shared Function GetInstance() As UpdateAdmin
         If IsNothing(Instance) Then
             Instance = New UpdateAdmin()
+            Instance.DoubleBuffered = True
         End If
 
         Return Instance

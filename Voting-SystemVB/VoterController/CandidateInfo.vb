@@ -13,6 +13,7 @@ Public Class CandidateInfo
     Public Shared Function GetInstance() As CandidateInfo
         If IsNothing(Instance) Then
             Instance = New CandidateInfo
+            Instance.DoubleBuffered = True
         End If
         Return Instance
     End Function

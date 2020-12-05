@@ -15,6 +15,7 @@ Public Class AdminPanel
     Public Shared Function GetInstance() As AdminPanel
         If IsNothing(Instance) Then
             Instance = New AdminPanel
+            Instance.DoubleBuffered = True
         End If
         Return Instance
     End Function
