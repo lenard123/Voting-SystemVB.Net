@@ -146,6 +146,12 @@
     <Compile Include="AdminController\AdminHomeNotStarted.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="AdminController\AdminHomeStarted2.Designer.vb">
+      <DependentUpon>AdminHomeStarted2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\AdminHomeStarted2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Components\CandidateList1.Designer.vb">
       <DependentUpon>CandidateList1.vb</DependentUpon>
     </Compile>
@@ -367,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\AdminHomeNotStarted.resx">
       <DependentUpon>AdminHomeNotStarted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\AdminHomeStarted2.resx">
+      <DependentUpon>AdminHomeStarted2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CandidateList1.resx">
       <DependentUpon>CandidateList1.vb</DependentUpon>

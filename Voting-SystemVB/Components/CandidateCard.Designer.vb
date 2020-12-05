@@ -91,7 +91,7 @@ Partial Class CandidateCard
         '
         Me.Guna2PictureBox2.BackColor = System.Drawing.Color.Gray
         Me.Guna2PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Guna2PictureBox2.ErrorImage = Global.Voting_SystemVB.My.Resources.Resources._error
+        Me.Guna2PictureBox2.ErrorImage = Global.Voting_SystemVB.My.Resources.Resources.error_image
         Me.Guna2PictureBox2.Location = New System.Drawing.Point(15, 120)
         Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
         Me.Guna2PictureBox2.ShadowDecoration.Parent = Me.Guna2PictureBox2
@@ -103,7 +103,7 @@ Partial Class CandidateCard
         'Guna2PictureBox1
         '
         Me.Guna2PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Guna2PictureBox1.ErrorImage = Global.Voting_SystemVB.My.Resources.Resources._error
+        Me.Guna2PictureBox1.ErrorImage = Global.Voting_SystemVB.My.Resources.Resources.error_image
         Me.Guna2PictureBox1.FillColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Guna2PictureBox1.Location = New System.Drawing.Point(1, 1)
         Me.Guna2PictureBox1.Name = "Guna2PictureBox1"

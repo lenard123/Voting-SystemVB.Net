@@ -193,7 +193,7 @@ Partial Class AddCandidate
         '
         Me.Guna2PictureBox1.BackColor = System.Drawing.Color.White
         Me.Guna2PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Guna2PictureBox1.ErrorImage = Global.Voting_SystemVB.My.Resources.Resources._error
+        Me.Guna2PictureBox1.ErrorImage = Global.Voting_SystemVB.My.Resources.Resources.error_image
         Me.Guna2PictureBox1.FillColor = System.Drawing.Color.White
         Me.Guna2PictureBox1.ImageLocation = ""
         Me.Guna2PictureBox1.Location = New System.Drawing.Point(24, 77)
