@@ -25,7 +25,6 @@
             Case 5
                 AdminHomeNotStarted.GetInstance()
             Case 6
-                AdminHomeStarted.GetInstance()
             Case 7
                 ManageCandidate.GetInstance()
             Case 8

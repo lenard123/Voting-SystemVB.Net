@@ -35,7 +35,7 @@ Public Class AdminPanel
         If Election.HasNotStarted() Then
             Return AdminHomeNotStarted.GetInstance()
         Else 'If Election.IsOngoing() Then
-            Return AdminHomeStarted2.GetInstance()
+            Return AdminHomeStarted.GetInstance()
         End If
         Return Nothing
     End Function

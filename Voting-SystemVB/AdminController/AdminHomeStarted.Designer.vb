@@ -22,593 +22,357 @@ Partial Class AdminHomeStarted
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea9 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim ChartArea10 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend9 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Legend10 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series10 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Me.VPresident = New Guna.UI2.WinForms.Guna2Button()
+        Me.Secretary = New Guna.UI2.WinForms.Guna2Button()
+        Me.Treasurer = New Guna.UI2.WinForms.Guna2Button()
+        Me.Auditor = New Guna.UI2.WinForms.Guna2Button()
+        Me.PRO = New Guna.UI2.WinForms.Guna2Button()
+        Me.ViewChart = New System.Windows.Forms.Label()
+        Me.ShowCandidates = New Guna.UI2.WinForms.Guna2GroupBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Guna2ImageButton1 = New Guna.UI2.WinForms.Guna2ImageButton()
+        Me.PanelChart = New System.Windows.Forms.Panel()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.TotalVotersCircle = New Guna.UI2.WinForms.Guna2CircleProgressBar()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Guna2ShadowPanel1 = New Guna.UI2.WinForms.Guna2ShadowPanel()
+        Me.TotalVotersCount = New System.Windows.Forms.Label()
+        Me.AlreadyVotedCircle = New Guna.UI2.WinForms.Guna2CircleProgressBar()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.FontAwesome1 = New Voting_SystemVB.FontAwesome()
-        Me.LabelVotersCount = New System.Windows.Forms.Label()
-        Me.Guna2ShadowPanel2 = New Guna.UI2.WinForms.Guna2ShadowPanel()
-        Me.FontAwesome2 = New Voting_SystemVB.FontAwesome()
+        Me.AlreadyVotedCount = New System.Windows.Forms.Label()
+        Me.RemainingVotersCircle = New Guna.UI2.WinForms.Guna2CircleProgressBar()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.LabelDoneVoters = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Guna2ImageButton2 = New Guna.UI2.WinForms.Guna2ImageButton()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.ButtonPRO = New Guna.UI2.WinForms.Guna2Button()
-        Me.ButtonAuditor = New Guna.UI2.WinForms.Guna2Button()
-        Me.ButtonTreasurer = New Guna.UI2.WinForms.Guna2Button()
-        Me.ButtonSecretary = New Guna.UI2.WinForms.Guna2Button()
-        Me.ButtonVPresident = New Guna.UI2.WinForms.Guna2Button()
-        Me.ButtonPresident = New Guna.UI2.WinForms.Guna2Button()
-        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Guna2ShadowPanel3 = New Guna.UI2.WinForms.Guna2ShadowPanel()
-        Me.FontAwesome3 = New Voting_SystemVB.FontAwesome()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.LabelRemainingVoters = New System.Windows.Forms.Label()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Guna2ImageButton3 = New Guna.UI2.WinForms.Guna2ImageButton()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.ResultPanel = New System.Windows.Forms.Panel()
-        Me.ChartVoteCount = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.ResultText = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Guna2Separator1 = New Guna.UI2.WinForms.Guna2Separator()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.ButtonRefresh = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.DisplayPieChart = New Guna.UI2.WinForms.Guna2ToggleSwitch()
-        Me.LabelLastUpdate = New Guna.UI2.WinForms.Guna2Chip()
+        Me.RemainingVotersCount = New System.Windows.Forms.Label()
         Me.BackgroundWorkerInit = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundWorkerRefresh = New System.ComponentModel.BackgroundWorker()
+        Me.Guna2Separator1 = New Guna.UI2.WinForms.Guna2Separator()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.President = New Guna.UI2.WinForms.Guna2Button()
+        Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
+        Me.ShowCandidates.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.Guna2ShadowPanel1.SuspendLayout()
-        Me.Guna2ShadowPanel2.SuspendLayout()
-        Me.Panel2.SuspendLayout()
+        Me.PanelChart.SuspendLayout()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TotalVotersCircle.SuspendLayout()
+        Me.AlreadyVotedCircle.SuspendLayout()
+        Me.RemainingVotersCircle.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
-        Me.Guna2ShadowPanel3.SuspendLayout()
-        Me.Panel3.SuspendLayout()
-        Me.Panel4.SuspendLayout()
-        Me.Panel6.SuspendLayout()
-        Me.ResultPanel.SuspendLayout()
-        CType(Me.ChartVoteCount, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel5.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'VPresident
+        '
+        Me.VPresident.Animated = True
+        Me.VPresident.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.VPresident.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.VPresident.CheckedState.ForeColor = System.Drawing.Color.White
+        Me.VPresident.CheckedState.Parent = Me.VPresident
+        Me.VPresident.CustomImages.Parent = Me.VPresident
+        Me.VPresident.FillColor = System.Drawing.Color.White
+        Me.VPresident.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.VPresident.ForeColor = System.Drawing.Color.Black
+        Me.VPresident.HoverState.Parent = Me.VPresident
+        Me.VPresident.Location = New System.Drawing.Point(0, 37)
+        Me.VPresident.Margin = New System.Windows.Forms.Padding(0)
+        Me.VPresident.Name = "VPresident"
+        Me.VPresident.ShadowDecoration.Parent = Me.VPresident
+        Me.VPresident.Size = New System.Drawing.Size(144, 37)
+        Me.VPresident.TabIndex = 14
+        Me.VPresident.Tag = "2"
+        Me.VPresident.Text = "Vice President"
+        '
+        'Secretary
+        '
+        Me.Secretary.Animated = True
+        Me.Secretary.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.Secretary.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.Secretary.CheckedState.ForeColor = System.Drawing.Color.White
+        Me.Secretary.CheckedState.Parent = Me.Secretary
+        Me.Secretary.CustomImages.Parent = Me.Secretary
+        Me.Secretary.FillColor = System.Drawing.Color.White
+        Me.Secretary.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Secretary.ForeColor = System.Drawing.Color.Black
+        Me.Secretary.HoverState.Parent = Me.Secretary
+        Me.Secretary.Location = New System.Drawing.Point(0, 74)
+        Me.Secretary.Margin = New System.Windows.Forms.Padding(0)
+        Me.Secretary.Name = "Secretary"
+        Me.Secretary.ShadowDecoration.Parent = Me.Secretary
+        Me.Secretary.Size = New System.Drawing.Size(144, 37)
+        Me.Secretary.TabIndex = 15
+        Me.Secretary.Tag = "3"
+        Me.Secretary.Text = "Secretary"
+        '
+        'Treasurer
+        '
+        Me.Treasurer.Animated = True
+        Me.Treasurer.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.Treasurer.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.Treasurer.CheckedState.ForeColor = System.Drawing.Color.White
+        Me.Treasurer.CheckedState.Parent = Me.Treasurer
+        Me.Treasurer.CustomImages.Parent = Me.Treasurer
+        Me.Treasurer.FillColor = System.Drawing.Color.White
+        Me.Treasurer.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Treasurer.ForeColor = System.Drawing.Color.Black
+        Me.Treasurer.HoverState.Parent = Me.Treasurer
+        Me.Treasurer.Location = New System.Drawing.Point(0, 111)
+        Me.Treasurer.Margin = New System.Windows.Forms.Padding(0)
+        Me.Treasurer.Name = "Treasurer"
+        Me.Treasurer.ShadowDecoration.Parent = Me.Treasurer
+        Me.Treasurer.Size = New System.Drawing.Size(144, 37)
+        Me.Treasurer.TabIndex = 16
+        Me.Treasurer.Tag = "4"
+        Me.Treasurer.Text = "Treasurer"
+        '
+        'Auditor
+        '
+        Me.Auditor.Animated = True
+        Me.Auditor.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.Auditor.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.Auditor.CheckedState.ForeColor = System.Drawing.Color.White
+        Me.Auditor.CheckedState.Parent = Me.Auditor
+        Me.Auditor.CustomImages.Parent = Me.Auditor
+        Me.Auditor.FillColor = System.Drawing.Color.White
+        Me.Auditor.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Auditor.ForeColor = System.Drawing.Color.Black
+        Me.Auditor.HoverState.Parent = Me.Auditor
+        Me.Auditor.Location = New System.Drawing.Point(0, 148)
+        Me.Auditor.Margin = New System.Windows.Forms.Padding(0)
+        Me.Auditor.Name = "Auditor"
+        Me.Auditor.ShadowDecoration.Parent = Me.Auditor
+        Me.Auditor.Size = New System.Drawing.Size(144, 37)
+        Me.Auditor.TabIndex = 17
+        Me.Auditor.Tag = "5"
+        Me.Auditor.Text = "Auditor"
+        '
+        'PRO
+        '
+        Me.PRO.Animated = True
+        Me.PRO.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.PRO.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.PRO.CheckedState.ForeColor = System.Drawing.Color.White
+        Me.PRO.CheckedState.Parent = Me.PRO
+        Me.PRO.CustomImages.Parent = Me.PRO
+        Me.PRO.FillColor = System.Drawing.Color.White
+        Me.PRO.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PRO.ForeColor = System.Drawing.Color.Black
+        Me.PRO.HoverState.Parent = Me.PRO
+        Me.PRO.Location = New System.Drawing.Point(0, 185)
+        Me.PRO.Margin = New System.Windows.Forms.Padding(0)
+        Me.PRO.Name = "PRO"
+        Me.PRO.ShadowDecoration.Parent = Me.PRO
+        Me.PRO.Size = New System.Drawing.Size(144, 37)
+        Me.PRO.TabIndex = 18
+        Me.PRO.Tag = "6"
+        Me.PRO.Text = "P.R.O."
+        '
+        'ViewChart
+        '
+        Me.ViewChart.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ViewChart.AutoSize = True
+        Me.ViewChart.BackColor = System.Drawing.Color.Transparent
+        Me.ViewChart.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ViewChart.Location = New System.Drawing.Point(567, 54)
+        Me.ViewChart.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.ViewChart.Name = "ViewChart"
+        Me.ViewChart.Size = New System.Drawing.Size(69, 17)
+        Me.ViewChart.TabIndex = 21
+        Me.ViewChart.Text = "Bar Chart"
+        '
+        'ShowCandidates
+        '
+        Me.ShowCandidates.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ShowCandidates.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.ShowCandidates.Controls.Add(Me.Guna2Button2)
+        Me.ShowCandidates.Controls.Add(Me.Panel1)
+        Me.ShowCandidates.Controls.Add(Me.ViewChart)
+        Me.ShowCandidates.CustomBorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.ShowCandidates.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ShowCandidates.ForeColor = System.Drawing.Color.White
+        Me.ShowCandidates.Location = New System.Drawing.Point(180, 193)
+        Me.ShowCandidates.Margin = New System.Windows.Forms.Padding(4)
+        Me.ShowCandidates.Name = "ShowCandidates"
+        Me.ShowCandidates.ShadowDecoration.Parent = Me.ShowCandidates
+        Me.ShowCandidates.Size = New System.Drawing.Size(714, 265)
+        Me.ShowCandidates.TabIndex = 22
+        Me.ShowCandidates.Text = "Results as of 6:00am"
+        Me.ShowCandidates.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         '
         'Panel1
         '
-        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.Guna2ImageButton1)
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(5, 89)
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.PanelChart)
+        Me.Panel1.Location = New System.Drawing.Point(14, 54)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(269, 32)
-        Me.Panel1.TabIndex = 0
+        Me.Panel1.Size = New System.Drawing.Size(687, 194)
+        Me.Panel1.TabIndex = 22
         '
-        'Guna2ImageButton1
+        'PanelChart
         '
-        Me.Guna2ImageButton1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ImageButton1.CheckedState.Parent = Me.Guna2ImageButton1
-        Me.Guna2ImageButton1.HoverState.Parent = Me.Guna2ImageButton1
-        Me.Guna2ImageButton1.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
-        Me.Guna2ImageButton1.ImageSize = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton1.Location = New System.Drawing.Point(152, 9)
-        Me.Guna2ImageButton1.Name = "Guna2ImageButton1"
-        Me.Guna2ImageButton1.PressedState.Parent = Me.Guna2ImageButton1
-        Me.Guna2ImageButton1.Size = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton1.TabIndex = 2
-        Me.Guna2ImageButton1.Tag = ""
+        Me.PanelChart.Controls.Add(Me.Chart1)
+        Me.PanelChart.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelChart.Location = New System.Drawing.Point(0, 0)
+        Me.PanelChart.Name = "PanelChart"
+        Me.PanelChart.Size = New System.Drawing.Size(687, 194)
+        Me.PanelChart.TabIndex = 1
+        '
+        'Chart1
+        '
+        ChartArea3.Name = "ChartAreaBar"
+        Me.Chart1.ChartAreas.Add(ChartArea3)
+        Me.Chart1.Dock = System.Windows.Forms.DockStyle.Fill
+        Legend3.Name = "Legend2"
+        Me.Chart1.Legends.Add(Legend3)
+        Me.Chart1.Location = New System.Drawing.Point(0, 0)
+        Me.Chart1.Name = "Chart1"
+        Series3.ChartArea = "ChartAreaBar"
+        Series3.Legend = "Legend2"
+        Series3.Name = "Series2"
+        Me.Chart1.Series.Add(Series3)
+        Me.Chart1.Size = New System.Drawing.Size(687, 194)
+        Me.Chart1.TabIndex = 1
+        Me.Chart1.Text = "Chart1"
+        '
+        'TotalVotersCircle
+        '
+        Me.TotalVotersCircle.AccessibleName = "TotalVotersCircle"
+        Me.TotalVotersCircle.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.TotalVotersCircle.Animated = True
+        Me.TotalVotersCircle.AnimationSpeed = 2.0!
+        Me.TotalVotersCircle.Controls.Add(Me.Label1)
+        Me.TotalVotersCircle.Controls.Add(Me.TotalVotersCount)
+        Me.TotalVotersCircle.FillThickness = 10
+        Me.TotalVotersCircle.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical
+        Me.TotalVotersCircle.Location = New System.Drawing.Point(213, 12)
+        Me.TotalVotersCircle.Name = "TotalVotersCircle"
+        Me.TotalVotersCircle.ProgressColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.TotalVotersCircle.ProgressColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.TotalVotersCircle.ProgressThickness = 10
+        Me.TotalVotersCircle.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.TotalVotersCircle.ShadowDecoration.Parent = Me.TotalVotersCircle
+        Me.TotalVotersCircle.Size = New System.Drawing.Size(153, 153)
+        Me.TotalVotersCircle.TabIndex = 30
+        Me.TotalVotersCircle.Value = 100
         '
         'Label1
         '
+        Me.Label1.AccessibleName = "TotalVotersDesc"
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(93, 10)
+        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.Label1.Location = New System.Drawing.Point(25, 83)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(59, 13)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "More Info"
+        Me.Label1.Size = New System.Drawing.Size(105, 34)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Total Number of " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Voters"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Guna2ShadowPanel1
+        'TotalVotersCount
         '
-        Me.Guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ShadowPanel1.Controls.Add(Me.Label2)
-        Me.Guna2ShadowPanel1.Controls.Add(Me.FontAwesome1)
-        Me.Guna2ShadowPanel1.Controls.Add(Me.LabelVotersCount)
-        Me.Guna2ShadowPanel1.Controls.Add(Me.Panel1)
-        Me.Guna2ShadowPanel1.FillColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(171, Byte), Integer), CType(CType(71, Byte), Integer))
-        Me.Guna2ShadowPanel1.Location = New System.Drawing.Point(28, 28)
-        Me.Guna2ShadowPanel1.Name = "Guna2ShadowPanel1"
-        Me.Guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black
-        Me.Guna2ShadowPanel1.Size = New System.Drawing.Size(279, 127)
-        Me.Guna2ShadowPanel1.TabIndex = 1
+        Me.TotalVotersCount.AccessibleName = "TotalVotersCount"
+        Me.TotalVotersCount.BackColor = System.Drawing.Color.Transparent
+        Me.TotalVotersCount.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold)
+        Me.TotalVotersCount.Location = New System.Drawing.Point(3, 45)
+        Me.TotalVotersCount.Name = "TotalVotersCount"
+        Me.TotalVotersCount.Size = New System.Drawing.Size(147, 38)
+        Me.TotalVotersCount.TabIndex = 0
+        Me.TotalVotersCount.Text = "0"
+        Me.TotalVotersCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'AlreadyVotedCircle
+        '
+        Me.AlreadyVotedCircle.AccessibleName = "AlreadyVotedCircle"
+        Me.AlreadyVotedCircle.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.AlreadyVotedCircle.AnimationSpeed = 2.0!
+        Me.AlreadyVotedCircle.Controls.Add(Me.Label2)
+        Me.AlreadyVotedCircle.Controls.Add(Me.AlreadyVotedCount)
+        Me.AlreadyVotedCircle.FillThickness = 10
+        Me.AlreadyVotedCircle.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical
+        Me.AlreadyVotedCircle.Location = New System.Drawing.Point(396, 12)
+        Me.AlreadyVotedCircle.Name = "AlreadyVotedCircle"
+        Me.AlreadyVotedCircle.ProgressColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
+        Me.AlreadyVotedCircle.ProgressColor2 = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
+        Me.AlreadyVotedCircle.ProgressEndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor
+        Me.AlreadyVotedCircle.ProgressThickness = 10
+        Me.AlreadyVotedCircle.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.AlreadyVotedCircle.ShadowDecoration.Parent = Me.AlreadyVotedCircle
+        Me.AlreadyVotedCircle.Size = New System.Drawing.Size(153, 153)
+        Me.AlreadyVotedCircle.TabIndex = 31
         '
         'Label2
         '
+        Me.Label2.AccessibleName = "AlreadyVotedDesc"
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(15, 58)
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.Label2.Location = New System.Drawing.Point(21, 83)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(106, 15)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Total No. of Voters"
+        Me.Label2.Size = New System.Drawing.Size(112, 34)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "Students Already " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Voted"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'FontAwesome1
+        'AlreadyVotedCount
         '
-        Me.FontAwesome1.AutoSize = True
-        Me.FontAwesome1.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
-        Me.FontAwesome1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(57, Byte), Integer))
-        Me.FontAwesome1.HoverColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(57, Byte), Integer))
-        Me.FontAwesome1.IsHoverable = False
-        Me.FontAwesome1.Location = New System.Drawing.Point(169, 22)
-        Me.FontAwesome1.Name = "FontAwesome1"
-        Me.FontAwesome1.Size = New System.Drawing.Size(82, 51)
-        Me.FontAwesome1.TabIndex = 4
-        Me.FontAwesome1.Text = "users"
+        Me.AlreadyVotedCount.AccessibleName = "AlreadyVotedCount"
+        Me.AlreadyVotedCount.BackColor = System.Drawing.Color.Transparent
+        Me.AlreadyVotedCount.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold)
+        Me.AlreadyVotedCount.Location = New System.Drawing.Point(3, 45)
+        Me.AlreadyVotedCount.Name = "AlreadyVotedCount"
+        Me.AlreadyVotedCount.Size = New System.Drawing.Size(147, 38)
+        Me.AlreadyVotedCount.TabIndex = 0
+        Me.AlreadyVotedCount.Text = "0"
+        Me.AlreadyVotedCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LabelVotersCount
+        'RemainingVotersCircle
         '
-        Me.LabelVotersCount.AutoSize = True
-        Me.LabelVotersCount.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelVotersCount.ForeColor = System.Drawing.Color.White
-        Me.LabelVotersCount.Location = New System.Drawing.Point(12, 22)
-        Me.LabelVotersCount.Name = "LabelVotersCount"
-        Me.LabelVotersCount.Size = New System.Drawing.Size(29, 32)
-        Me.LabelVotersCount.TabIndex = 3
-        Me.LabelVotersCount.Text = "0"
-        '
-        'Guna2ShadowPanel2
-        '
-        Me.Guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ShadowPanel2.Controls.Add(Me.FontAwesome2)
-        Me.Guna2ShadowPanel2.Controls.Add(Me.Label4)
-        Me.Guna2ShadowPanel2.Controls.Add(Me.LabelDoneVoters)
-        Me.Guna2ShadowPanel2.Controls.Add(Me.Panel2)
-        Me.Guna2ShadowPanel2.FillColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.Guna2ShadowPanel2.Location = New System.Drawing.Point(28, 168)
-        Me.Guna2ShadowPanel2.Name = "Guna2ShadowPanel2"
-        Me.Guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black
-        Me.Guna2ShadowPanel2.Size = New System.Drawing.Size(279, 127)
-        Me.Guna2ShadowPanel2.TabIndex = 5
-        '
-        'FontAwesome2
-        '
-        Me.FontAwesome2.AutoSize = True
-        Me.FontAwesome2.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
-        Me.FontAwesome2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.FontAwesome2.HoverColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.FontAwesome2.IsHoverable = False
-        Me.FontAwesome2.Location = New System.Drawing.Point(181, 22)
-        Me.FontAwesome2.Name = "FontAwesome2"
-        Me.FontAwesome2.Size = New System.Drawing.Size(70, 51)
-        Me.FontAwesome2.TabIndex = 4
-        Me.FontAwesome2.Text = "check-double"
+        Me.RemainingVotersCircle.AccessibleName = "RemainingVotersCircle"
+        Me.RemainingVotersCircle.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.RemainingVotersCircle.AnimationSpeed = 2.0!
+        Me.RemainingVotersCircle.Controls.Add(Me.Label4)
+        Me.RemainingVotersCircle.Controls.Add(Me.RemainingVotersCount)
+        Me.RemainingVotersCircle.FillThickness = 10
+        Me.RemainingVotersCircle.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical
+        Me.RemainingVotersCircle.Location = New System.Drawing.Point(579, 12)
+        Me.RemainingVotersCircle.Name = "RemainingVotersCircle"
+        Me.RemainingVotersCircle.ProgressColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.RemainingVotersCircle.ProgressColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.RemainingVotersCircle.ProgressEndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor
+        Me.RemainingVotersCircle.ProgressStartCap = System.Drawing.Drawing2D.LineCap.Square
+        Me.RemainingVotersCircle.ProgressThickness = 10
+        Me.RemainingVotersCircle.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.RemainingVotersCircle.ShadowDecoration.Parent = Me.RemainingVotersCircle
+        Me.RemainingVotersCircle.Size = New System.Drawing.Size(153, 153)
+        Me.RemainingVotersCircle.TabIndex = 32
         '
         'Label4
         '
+        Me.Label4.AccessibleName = "RemainingVotersDesc"
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(15, 58)
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.Label4.Location = New System.Drawing.Point(23, 92)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(140, 15)
-        Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Voters who already voted"
+        Me.Label4.Size = New System.Drawing.Size(112, 17)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "Remaining Voters"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LabelDoneVoters
+        'RemainingVotersCount
         '
-        Me.LabelDoneVoters.AutoSize = True
-        Me.LabelDoneVoters.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelDoneVoters.ForeColor = System.Drawing.Color.White
-        Me.LabelDoneVoters.Location = New System.Drawing.Point(12, 22)
-        Me.LabelDoneVoters.Name = "LabelDoneVoters"
-        Me.LabelDoneVoters.Size = New System.Drawing.Size(29, 32)
-        Me.LabelDoneVoters.TabIndex = 3
-        Me.LabelDoneVoters.Text = "0"
-        '
-        'Panel2
-        '
-        Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Panel2.Controls.Add(Me.Guna2ImageButton2)
-        Me.Panel2.Controls.Add(Me.Label6)
-        Me.Panel2.Location = New System.Drawing.Point(5, 89)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(269, 32)
-        Me.Panel2.TabIndex = 0
-        '
-        'Guna2ImageButton2
-        '
-        Me.Guna2ImageButton2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ImageButton2.CheckedState.Parent = Me.Guna2ImageButton2
-        Me.Guna2ImageButton2.HoverState.Parent = Me.Guna2ImageButton2
-        Me.Guna2ImageButton2.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
-        Me.Guna2ImageButton2.ImageSize = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton2.Location = New System.Drawing.Point(152, 9)
-        Me.Guna2ImageButton2.Name = "Guna2ImageButton2"
-        Me.Guna2ImageButton2.PressedState.Parent = Me.Guna2ImageButton2
-        Me.Guna2ImageButton2.Size = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton2.TabIndex = 2
-        Me.Guna2ImageButton2.Tag = "done voters"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.BackColor = System.Drawing.Color.Transparent
-        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(93, 10)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(59, 13)
-        Me.Label6.TabIndex = 2
-        Me.Label6.Text = "More Info"
-        '
-        'ButtonPRO
-        '
-        Me.ButtonPRO.CheckedState.Parent = Me.ButtonPRO
-        Me.ButtonPRO.CustomImages.Parent = Me.ButtonPRO
-        Me.ButtonPRO.FillColor = System.Drawing.Color.White
-        Me.ButtonPRO.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonPRO.ForeColor = System.Drawing.Color.Black
-        Me.ButtonPRO.HoverState.Parent = Me.ButtonPRO
-        Me.ButtonPRO.Location = New System.Drawing.Point(410, 0)
-        Me.ButtonPRO.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonPRO.Name = "ButtonPRO"
-        Me.ButtonPRO.ShadowDecoration.Parent = Me.ButtonPRO
-        Me.ButtonPRO.Size = New System.Drawing.Size(82, 28)
-        Me.ButtonPRO.TabIndex = 7
-        Me.ButtonPRO.Tag = "6"
-        Me.ButtonPRO.Text = "P.R.O."
-        '
-        'ButtonAuditor
-        '
-        Me.ButtonAuditor.CheckedState.Parent = Me.ButtonAuditor
-        Me.ButtonAuditor.CustomImages.Parent = Me.ButtonAuditor
-        Me.ButtonAuditor.FillColor = System.Drawing.Color.White
-        Me.ButtonAuditor.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonAuditor.ForeColor = System.Drawing.Color.Black
-        Me.ButtonAuditor.HoverState.Parent = Me.ButtonAuditor
-        Me.ButtonAuditor.Location = New System.Drawing.Point(328, 0)
-        Me.ButtonAuditor.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonAuditor.Name = "ButtonAuditor"
-        Me.ButtonAuditor.ShadowDecoration.Parent = Me.ButtonAuditor
-        Me.ButtonAuditor.Size = New System.Drawing.Size(82, 28)
-        Me.ButtonAuditor.TabIndex = 8
-        Me.ButtonAuditor.Tag = "5"
-        Me.ButtonAuditor.Text = "Auditor"
-        '
-        'ButtonTreasurer
-        '
-        Me.ButtonTreasurer.CheckedState.Parent = Me.ButtonTreasurer
-        Me.ButtonTreasurer.CustomImages.Parent = Me.ButtonTreasurer
-        Me.ButtonTreasurer.FillColor = System.Drawing.Color.White
-        Me.ButtonTreasurer.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonTreasurer.ForeColor = System.Drawing.Color.Black
-        Me.ButtonTreasurer.HoverState.Parent = Me.ButtonTreasurer
-        Me.ButtonTreasurer.Location = New System.Drawing.Point(246, 0)
-        Me.ButtonTreasurer.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonTreasurer.Name = "ButtonTreasurer"
-        Me.ButtonTreasurer.ShadowDecoration.Parent = Me.ButtonTreasurer
-        Me.ButtonTreasurer.Size = New System.Drawing.Size(82, 28)
-        Me.ButtonTreasurer.TabIndex = 9
-        Me.ButtonTreasurer.Tag = "4"
-        Me.ButtonTreasurer.Text = "Treasurer"
-        '
-        'ButtonSecretary
-        '
-        Me.ButtonSecretary.CheckedState.Parent = Me.ButtonSecretary
-        Me.ButtonSecretary.CustomImages.Parent = Me.ButtonSecretary
-        Me.ButtonSecretary.FillColor = System.Drawing.Color.White
-        Me.ButtonSecretary.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonSecretary.ForeColor = System.Drawing.Color.Black
-        Me.ButtonSecretary.HoverState.Parent = Me.ButtonSecretary
-        Me.ButtonSecretary.Location = New System.Drawing.Point(164, 0)
-        Me.ButtonSecretary.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonSecretary.Name = "ButtonSecretary"
-        Me.ButtonSecretary.ShadowDecoration.Parent = Me.ButtonSecretary
-        Me.ButtonSecretary.Size = New System.Drawing.Size(82, 28)
-        Me.ButtonSecretary.TabIndex = 10
-        Me.ButtonSecretary.Tag = "3"
-        Me.ButtonSecretary.Text = "Secretary"
-        '
-        'ButtonVPresident
-        '
-        Me.ButtonVPresident.CheckedState.Parent = Me.ButtonVPresident
-        Me.ButtonVPresident.CustomImages.Parent = Me.ButtonVPresident
-        Me.ButtonVPresident.FillColor = System.Drawing.Color.White
-        Me.ButtonVPresident.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonVPresident.ForeColor = System.Drawing.Color.Black
-        Me.ButtonVPresident.HoverState.Parent = Me.ButtonVPresident
-        Me.ButtonVPresident.Location = New System.Drawing.Point(82, 0)
-        Me.ButtonVPresident.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonVPresident.Name = "ButtonVPresident"
-        Me.ButtonVPresident.ShadowDecoration.Parent = Me.ButtonVPresident
-        Me.ButtonVPresident.Size = New System.Drawing.Size(82, 28)
-        Me.ButtonVPresident.TabIndex = 11
-        Me.ButtonVPresident.Tag = "2"
-        Me.ButtonVPresident.Text = "Vice President"
-        '
-        'ButtonPresident
-        '
-        Me.ButtonPresident.CheckedState.Parent = Me.ButtonPresident
-        Me.ButtonPresident.CustomImages.Parent = Me.ButtonPresident
-        Me.ButtonPresident.FillColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(248, Byte), Integer))
-        Me.ButtonPresident.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonPresident.ForeColor = System.Drawing.Color.White
-        Me.ButtonPresident.HoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(248, Byte), Integer))
-        Me.ButtonPresident.HoverState.Parent = Me.ButtonPresident
-        Me.ButtonPresident.Location = New System.Drawing.Point(0, 0)
-        Me.ButtonPresident.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonPresident.Name = "ButtonPresident"
-        Me.ButtonPresident.ShadowDecoration.Parent = Me.ButtonPresident
-        Me.ButtonPresident.Size = New System.Drawing.Size(82, 28)
-        Me.ButtonPresident.TabIndex = 12
-        Me.ButtonPresident.Tag = "1"
-        Me.ButtonPresident.Text = "President"
-        '
-        'FlowLayoutPanel1
-        '
-        Me.FlowLayoutPanel1.AutoSize = True
-        Me.FlowLayoutPanel1.Controls.Add(Me.ButtonPresident)
-        Me.FlowLayoutPanel1.Controls.Add(Me.ButtonVPresident)
-        Me.FlowLayoutPanel1.Controls.Add(Me.ButtonSecretary)
-        Me.FlowLayoutPanel1.Controls.Add(Me.ButtonTreasurer)
-        Me.FlowLayoutPanel1.Controls.Add(Me.ButtonAuditor)
-        Me.FlowLayoutPanel1.Controls.Add(Me.ButtonPRO)
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(323, 33)
-        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(492, 28)
-        Me.FlowLayoutPanel1.TabIndex = 1
-        '
-        'Guna2ShadowPanel3
-        '
-        Me.Guna2ShadowPanel3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ShadowPanel3.Controls.Add(Me.FontAwesome3)
-        Me.Guna2ShadowPanel3.Controls.Add(Me.Label7)
-        Me.Guna2ShadowPanel3.Controls.Add(Me.LabelRemainingVoters)
-        Me.Guna2ShadowPanel3.Controls.Add(Me.Panel3)
-        Me.Guna2ShadowPanel3.FillColor = System.Drawing.Color.FromArgb(CType(CType(112, Byte), Integer), CType(CType(121, Byte), Integer), CType(CType(129, Byte), Integer))
-        Me.Guna2ShadowPanel3.Location = New System.Drawing.Point(28, 308)
-        Me.Guna2ShadowPanel3.Name = "Guna2ShadowPanel3"
-        Me.Guna2ShadowPanel3.ShadowColor = System.Drawing.Color.Black
-        Me.Guna2ShadowPanel3.Size = New System.Drawing.Size(279, 127)
-        Me.Guna2ShadowPanel3.TabIndex = 6
-        '
-        'FontAwesome3
-        '
-        Me.FontAwesome3.AutoSize = True
-        Me.FontAwesome3.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 36.0!)
-        Me.FontAwesome3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(104, Byte), Integer))
-        Me.FontAwesome3.HoverColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(104, Byte), Integer))
-        Me.FontAwesome3.IsHoverable = False
-        Me.FontAwesome3.Location = New System.Drawing.Point(169, 22)
-        Me.FontAwesome3.Name = "FontAwesome3"
-        Me.FontAwesome3.Size = New System.Drawing.Size(82, 51)
-        Me.FontAwesome3.TabIndex = 4
-        Me.FontAwesome3.Text = "vote-yea"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(15, 58)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(90, 15)
-        Me.Label7.TabIndex = 3
-        Me.Label7.Text = "Remaing Voters"
-        '
-        'LabelRemainingVoters
-        '
-        Me.LabelRemainingVoters.AutoSize = True
-        Me.LabelRemainingVoters.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelRemainingVoters.ForeColor = System.Drawing.Color.White
-        Me.LabelRemainingVoters.Location = New System.Drawing.Point(12, 22)
-        Me.LabelRemainingVoters.Name = "LabelRemainingVoters"
-        Me.LabelRemainingVoters.Size = New System.Drawing.Size(29, 32)
-        Me.LabelRemainingVoters.TabIndex = 3
-        Me.LabelRemainingVoters.Text = "0"
-        '
-        'Panel3
-        '
-        Me.Panel3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Panel3.Controls.Add(Me.Guna2ImageButton3)
-        Me.Panel3.Controls.Add(Me.Label9)
-        Me.Panel3.Location = New System.Drawing.Point(5, 89)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(269, 32)
-        Me.Panel3.TabIndex = 0
-        '
-        'Guna2ImageButton3
-        '
-        Me.Guna2ImageButton3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ImageButton3.CheckedState.Parent = Me.Guna2ImageButton3
-        Me.Guna2ImageButton3.HoverState.Parent = Me.Guna2ImageButton3
-        Me.Guna2ImageButton3.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
-        Me.Guna2ImageButton3.ImageSize = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton3.Location = New System.Drawing.Point(152, 9)
-        Me.Guna2ImageButton3.Name = "Guna2ImageButton3"
-        Me.Guna2ImageButton3.PressedState.Parent = Me.Guna2ImageButton3
-        Me.Guna2ImageButton3.Size = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton3.TabIndex = 2
-        Me.Guna2ImageButton3.Tag = "remaining voters"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(93, 10)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(59, 13)
-        Me.Label9.TabIndex = 2
-        Me.Label9.Text = "More Info"
-        '
-        'Panel4
-        '
-        Me.Panel4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel4.BackColor = System.Drawing.Color.White
-        Me.Panel4.Controls.Add(Me.Panel6)
-        Me.Panel4.Controls.Add(Me.Guna2Separator1)
-        Me.Panel4.Controls.Add(Me.Panel5)
-        Me.Panel4.Controls.Add(Me.LabelLastUpdate)
-        Me.Panel4.Location = New System.Drawing.Point(323, 61)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(558, 399)
-        Me.Panel4.TabIndex = 7
-        '
-        'Panel6
-        '
-        Me.Panel6.Controls.Add(Me.ResultPanel)
-        Me.Panel6.Controls.Add(Me.ResultText)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel6.Location = New System.Drawing.Point(0, 64)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(558, 335)
-        Me.Panel6.TabIndex = 0
-        '
-        'ResultPanel
-        '
-        Me.ResultPanel.AutoScroll = True
-        Me.ResultPanel.Controls.Add(Me.ChartVoteCount)
-        Me.ResultPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ResultPanel.Location = New System.Drawing.Point(0, 0)
-        Me.ResultPanel.Name = "ResultPanel"
-        Me.ResultPanel.Size = New System.Drawing.Size(558, 335)
-        Me.ResultPanel.TabIndex = 7
-        '
-        'ChartVoteCount
-        '
-        ChartArea9.Name = "ChartAreaDonut"
-        ChartArea10.Name = "ChartAreaBar"
-        Me.ChartVoteCount.ChartAreas.Add(ChartArea9)
-        Me.ChartVoteCount.ChartAreas.Add(ChartArea10)
-        Me.ChartVoteCount.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend9.Name = "Legend1"
-        Legend10.Enabled = False
-        Legend10.Name = "Legend2"
-        Me.ChartVoteCount.Legends.Add(Legend9)
-        Me.ChartVoteCount.Legends.Add(Legend10)
-        Me.ChartVoteCount.Location = New System.Drawing.Point(0, 0)
-        Me.ChartVoteCount.Name = "ChartVoteCount"
-        Series9.ChartArea = "ChartAreaDonut"
-        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut
-        Series9.Legend = "Legend1"
-        Series9.Name = "Series1"
-        Series10.ChartArea = "ChartAreaBar"
-        Series10.Legend = "Legend2"
-        Series10.Name = "Series2"
-        Me.ChartVoteCount.Series.Add(Series9)
-        Me.ChartVoteCount.Series.Add(Series10)
-        Me.ChartVoteCount.Size = New System.Drawing.Size(558, 335)
-        Me.ChartVoteCount.TabIndex = 0
-        Me.ChartVoteCount.Text = "Chart1"
-        '
-        'ResultText
-        '
-        Me.ResultText.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ResultText.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.ResultText.Location = New System.Drawing.Point(0, 0)
-        Me.ResultText.Name = "ResultText"
-        Me.ResultText.Padding = New System.Windows.Forms.Padding(20)
-        Me.ResultText.Size = New System.Drawing.Size(558, 335)
-        Me.ResultText.TabIndex = 1
-        '
-        'Guna2Separator1
-        '
-        Me.Guna2Separator1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Guna2Separator1.Location = New System.Drawing.Point(0, 54)
-        Me.Guna2Separator1.Name = "Guna2Separator1"
-        Me.Guna2Separator1.Size = New System.Drawing.Size(558, 10)
-        Me.Guna2Separator1.TabIndex = 0
-        '
-        'Panel5
-        '
-        Me.Panel5.Controls.Add(Me.ButtonRefresh)
-        Me.Panel5.Controls.Add(Me.Guna2HtmlLabel1)
-        Me.Panel5.Controls.Add(Me.DisplayPieChart)
-        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel5.Location = New System.Drawing.Point(0, 23)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(558, 31)
-        Me.Panel5.TabIndex = 6
-        '
-        'ButtonRefresh
-        '
-        Me.ButtonRefresh.BorderRadius = 10
-        Me.ButtonRefresh.CheckedState.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.CustomImages.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonRefresh.ForeColor = System.Drawing.Color.White
-        Me.ButtonRefresh.HoverState.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.Location = New System.Drawing.Point(478, 5)
-        Me.ButtonRefresh.Name = "ButtonRefresh"
-        Me.ButtonRefresh.ShadowDecoration.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.Size = New System.Drawing.Size(77, 20)
-        Me.ButtonRefresh.TabIndex = 6
-        Me.ButtonRefresh.Text = "Refresh"
-        '
-        'Guna2HtmlLabel1
-        '
-        Me.Guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel1.Font = New System.Drawing.Font("Century Gothic", 10.0!)
-        Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(12, 8)
-        Me.Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
-        Me.Guna2HtmlLabel1.Size = New System.Drawing.Size(93, 19)
-        Me.Guna2HtmlLabel1.TabIndex = 5
-        Me.Guna2HtmlLabel1.Text = "Display Chart:"
-        '
-        'DisplayPieChart
-        '
-        Me.DisplayPieChart.Checked = True
-        Me.DisplayPieChart.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DisplayPieChart.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DisplayPieChart.CheckedState.InnerBorderColor = System.Drawing.Color.White
-        Me.DisplayPieChart.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.DisplayPieChart.CheckedState.Parent = Me.DisplayPieChart
-        Me.DisplayPieChart.Location = New System.Drawing.Point(111, 6)
-        Me.DisplayPieChart.Name = "DisplayPieChart"
-        Me.DisplayPieChart.ShadowDecoration.Parent = Me.DisplayPieChart
-        Me.DisplayPieChart.Size = New System.Drawing.Size(35, 20)
-        Me.DisplayPieChart.TabIndex = 4
-        Me.DisplayPieChart.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.DisplayPieChart.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.DisplayPieChart.UncheckedState.InnerBorderColor = System.Drawing.Color.White
-        Me.DisplayPieChart.UncheckedState.InnerColor = System.Drawing.Color.White
-        Me.DisplayPieChart.UncheckedState.Parent = Me.DisplayPieChart
-        '
-        'LabelLastUpdate
-        '
-        Me.LabelLastUpdate.Dock = System.Windows.Forms.DockStyle.Top
-        Me.LabelLastUpdate.FillColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(248, Byte), Integer))
-        Me.LabelLastUpdate.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.LabelLastUpdate.ForeColor = System.Drawing.Color.White
-        Me.LabelLastUpdate.Location = New System.Drawing.Point(0, 0)
-        Me.LabelLastUpdate.Name = "LabelLastUpdate"
-        Me.LabelLastUpdate.ShadowDecoration.Parent = Me.LabelLastUpdate
-        Me.LabelLastUpdate.Size = New System.Drawing.Size(558, 23)
-        Me.LabelLastUpdate.TabIndex = 2
-        Me.LabelLastUpdate.Text = "Result As of: November 11, 2020 7:16 am"
-        Me.LabelLastUpdate.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        Me.RemainingVotersCount.AccessibleName = "RemainingVotersCount"
+        Me.RemainingVotersCount.BackColor = System.Drawing.Color.Transparent
+        Me.RemainingVotersCount.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold)
+        Me.RemainingVotersCount.Location = New System.Drawing.Point(0, 45)
+        Me.RemainingVotersCount.Name = "RemainingVotersCount"
+        Me.RemainingVotersCount.Size = New System.Drawing.Size(150, 38)
+        Me.RemainingVotersCount.TabIndex = 0
+        Me.RemainingVotersCount.Text = "0"
+        Me.RemainingVotersCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'BackgroundWorkerInit
         '
@@ -616,80 +380,124 @@ Partial Class AdminHomeStarted
         'BackgroundWorkerRefresh
         '
         '
-        'AdminHomeStarted
+        'Guna2Separator1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.Guna2Separator1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2Separator1.Location = New System.Drawing.Point(32, 171)
+        Me.Guna2Separator1.Name = "Guna2Separator1"
+        Me.Guna2Separator1.Size = New System.Drawing.Size(862, 10)
+        Me.Guna2Separator1.TabIndex = 1
+        '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.Controls.Add(Me.President)
+        Me.FlowLayoutPanel1.Controls.Add(Me.VPresident)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Secretary)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Treasurer)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Auditor)
+        Me.FlowLayoutPanel1.Controls.Add(Me.PRO)
+        Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(32, 196)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(141, 262)
+        Me.FlowLayoutPanel1.TabIndex = 33
+        '
+        'President
+        '
+        Me.President.Animated = True
+        Me.President.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.President.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.President.CheckedState.ForeColor = System.Drawing.Color.White
+        Me.President.CheckedState.Parent = Me.President
+        Me.President.CustomImages.Parent = Me.President
+        Me.President.FillColor = System.Drawing.Color.White
+        Me.President.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.President.ForeColor = System.Drawing.Color.Black
+        Me.President.HoverState.Parent = Me.President
+        Me.President.Location = New System.Drawing.Point(0, 0)
+        Me.President.Margin = New System.Windows.Forms.Padding(0)
+        Me.President.Name = "President"
+        Me.President.ShadowDecoration.Parent = Me.President
+        Me.President.Size = New System.Drawing.Size(144, 37)
+        Me.President.TabIndex = 19
+        Me.President.Tag = "1"
+        Me.President.Text = "President"
+        '
+        'Guna2Button2
+        '
+        Me.Guna2Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2Button2.Animated = True
+        Me.Guna2Button2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Button2.BorderRadius = 5
+        Me.Guna2Button2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton
+        Me.Guna2Button2.Checked = True
+        Me.Guna2Button2.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Guna2Button2.CheckedState.Parent = Me.Guna2Button2
+        Me.Guna2Button2.CustomImages.Parent = Me.Guna2Button2
+        Me.Guna2Button2.FillColor = System.Drawing.Color.Empty
+        Me.Guna2Button2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Guna2Button2.ForeColor = System.Drawing.Color.White
+        Me.Guna2Button2.HoverState.Parent = Me.Guna2Button2
+        Me.Guna2Button2.Location = New System.Drawing.Point(598, 7)
+        Me.Guna2Button2.Name = "Guna2Button2"
+        Me.Guna2Button2.ShadowDecoration.Parent = Me.Guna2Button2
+        Me.Guna2Button2.Size = New System.Drawing.Size(103, 26)
+        Me.Guna2Button2.TabIndex = 23
+        Me.Guna2Button2.Text = "Display Chart"
+        '
+        'AdminHomeStarted2
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.Panel4)
-        Me.Controls.Add(Me.Guna2ShadowPanel3)
         Me.Controls.Add(Me.FlowLayoutPanel1)
-        Me.Controls.Add(Me.Guna2ShadowPanel2)
-        Me.Controls.Add(Me.Guna2ShadowPanel1)
-        Me.Name = "AdminHomeStarted"
-        Me.Size = New System.Drawing.Size(913, 481)
+        Me.Controls.Add(Me.Guna2Separator1)
+        Me.Controls.Add(Me.RemainingVotersCircle)
+        Me.Controls.Add(Me.AlreadyVotedCircle)
+        Me.Controls.Add(Me.TotalVotersCircle)
+        Me.Controls.Add(Me.ShowCandidates)
+        Me.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.Name = "AdminHomeStarted2"
+        Me.Size = New System.Drawing.Size(916, 481)
+        Me.ShowCandidates.ResumeLayout(False)
+        Me.ShowCandidates.PerformLayout()
         Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        Me.Guna2ShadowPanel1.ResumeLayout(False)
-        Me.Guna2ShadowPanel1.PerformLayout()
-        Me.Guna2ShadowPanel2.ResumeLayout(False)
-        Me.Guna2ShadowPanel2.PerformLayout()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
+        Me.PanelChart.ResumeLayout(False)
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TotalVotersCircle.ResumeLayout(False)
+        Me.TotalVotersCircle.PerformLayout()
+        Me.AlreadyVotedCircle.ResumeLayout(False)
+        Me.AlreadyVotedCircle.PerformLayout()
+        Me.RemainingVotersCircle.ResumeLayout(False)
+        Me.RemainingVotersCircle.PerformLayout()
         Me.FlowLayoutPanel1.ResumeLayout(False)
-        Me.Guna2ShadowPanel3.ResumeLayout(False)
-        Me.Guna2ShadowPanel3.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
-        Me.Panel4.ResumeLayout(False)
-        Me.Panel6.ResumeLayout(False)
-        Me.ResultPanel.ResumeLayout(False)
-        CType(Me.ChartVoteCount, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel5.ResumeLayout(False)
-        Me.Panel5.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents VPresident As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Secretary As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Treasurer As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Auditor As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents PRO As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ViewChart As System.Windows.Forms.Label
+    Friend WithEvents ShowCandidates As Guna.UI2.WinForms.Guna2GroupBox
+    Friend WithEvents TotalVotersCircle As Guna.UI2.WinForms.Guna2CircleProgressBar
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Guna2ShadowPanel1 As Guna.UI2.WinForms.Guna2ShadowPanel
-    Friend WithEvents Guna2ImageButton1 As Guna.UI2.WinForms.Guna2ImageButton
-    Friend WithEvents FontAwesome1 As Voting_SystemVB.FontAwesome
-    Friend WithEvents LabelVotersCount As System.Windows.Forms.Label
+    Friend WithEvents AlreadyVotedCircle As Guna.UI2.WinForms.Guna2CircleProgressBar
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Guna2ShadowPanel2 As Guna.UI2.WinForms.Guna2ShadowPanel
+    Friend WithEvents AlreadyVotedCount As System.Windows.Forms.Label
+    Friend WithEvents RemainingVotersCircle As Guna.UI2.WinForms.Guna2CircleProgressBar
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents FontAwesome2 As Voting_SystemVB.FontAwesome
-    Friend WithEvents LabelDoneVoters As System.Windows.Forms.Label
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents Guna2ImageButton2 As Guna.UI2.WinForms.Guna2ImageButton
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents ButtonPRO As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents ButtonAuditor As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents ButtonTreasurer As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents ButtonSecretary As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents ButtonVPresident As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents ButtonPresident As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
-    Friend WithEvents Guna2ShadowPanel3 As Guna.UI2.WinForms.Guna2ShadowPanel
-    Friend WithEvents FontAwesome3 As Voting_SystemVB.FontAwesome
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents LabelRemainingVoters As System.Windows.Forms.Label
-    Friend WithEvents Panel3 As System.Windows.Forms.Panel
-    Friend WithEvents Guna2ImageButton3 As Guna.UI2.WinForms.Guna2ImageButton
-    Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents Panel4 As System.Windows.Forms.Panel
-    Friend WithEvents LabelLastUpdate As Guna.UI2.WinForms.Guna2Chip
-    Friend WithEvents Guna2Separator1 As Guna.UI2.WinForms.Guna2Separator
-    Friend WithEvents ResultPanel As System.Windows.Forms.Panel
-    Friend WithEvents Panel5 As System.Windows.Forms.Panel
-    Friend WithEvents ButtonRefresh As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents DisplayPieChart As Guna.UI2.WinForms.Guna2ToggleSwitch
-    Friend WithEvents ChartVoteCount As System.Windows.Forms.DataVisualization.Charting.Chart
-    Friend WithEvents ResultText As System.Windows.Forms.FlowLayoutPanel
-    Friend WithEvents Panel6 As System.Windows.Forms.Panel
+    Friend WithEvents RemainingVotersCount As System.Windows.Forms.Label
+    Friend WithEvents TotalVotersCount As System.Windows.Forms.Label
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents PanelChart As System.Windows.Forms.Panel
     Friend WithEvents BackgroundWorkerInit As System.ComponentModel.BackgroundWorker
     Friend WithEvents BackgroundWorkerRefresh As System.ComponentModel.BackgroundWorker
-
+    Friend WithEvents Chart1 As System.Windows.Forms.DataVisualization.Charting.Chart
+    Friend WithEvents Guna2Separator1 As Guna.UI2.WinForms.Guna2Separator
+    Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
+    Friend WithEvents President As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
 End Class
