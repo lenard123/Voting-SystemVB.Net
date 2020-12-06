@@ -19,16 +19,17 @@
 - Start Election
 - View Vote Count
 - View Candidate(Voter Panel)
+- Admin Home
+- Vote
 
 ### Unfinish
-- Admin Home
 - View Previous Election
 - Update Account
 - Add Admin
-- Vote
 - View Vote Count (Voter Panel)
 - View Final Result
 - Display Winner
+- Import database
 
 ## Contributors
 - Russel Tajada
