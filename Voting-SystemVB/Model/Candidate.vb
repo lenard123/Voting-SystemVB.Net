@@ -11,10 +11,11 @@ Public Class Candidate
     Private Const QUERY_SELECT_BY_PARTY = "SELECT * FROM [CandidateQuery] WHERE [party_id]=?"
     Private Const QUERY_SELECT_BY_POSITION = "SELECT * FROM [CandidateQuery] WHERE [position_id]=?"
     Private Const QUERY_COUNT_BY_POSITION = "SELECT COUNT(*) FROM Candidate WHERE [position_id]=?"
+    Private Const QUERY_SELECT_BY_VOTERS = "SELECT [CandidateQuery].* FROM [CandidateQuery] INNER JOIN [Votes] ON [CandidateQuery].[ID]=[Votes].[candidate_id] WHERE [Votes].[student_id]=?"
 
     Public Const IMAGE_DEFAULT = "images\default\candidate.jpg"
 
-    Private Const LENGTH_ID = 10
+    Public Const LENGTH_ID = 10
     Private Const LENGTH_STUDENT_ID = 10
     Private Const LENGTH_TAGLINE = 100
     Private Const LENGTH_POSITION_ID = 10
@@ -313,6 +314,23 @@ Public Class Candidate
             End Using
         End Using
         GetConnection.Close()
+        Return Result
+    End Function
+
+    'Get Candidates Voted By Specific Voters
+    Public Shared Function GetVotedCandidates(ID As Integer) As List(Of Candidate)
+        Dim Result As New List(Of Candidate)
+        GetConnection().Open()
+        Using Cmd As New OleDbCommand(QUERY_SELECT_BY_VOTERS, GetConnection())
+            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, ID, Student.LENGTH_ID))
+            Cmd.Prepare()
+            Using Reader = Cmd.ExecuteReader()
+                While Reader.Read()
+                    Result.Add(GetCandidate(Reader))
+                End While
+            End Using
+        End Using
+        GetConnection().Close()
         Return Result
     End Function
 

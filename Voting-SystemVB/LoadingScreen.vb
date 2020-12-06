@@ -54,6 +54,7 @@
             Dim popup As New SystemCrashError("Oops!!", "An error occured while connecting to database")
             popup.ShowPopup()
         Else
+            Main.WindowState = FormWindowState.Maximized
             Main.LoadControl(VoterLogin.GetInstance())
             Dispose()
         End If

@@ -6,45 +6,26 @@ Public Class VotersPanel
 
     Private Shared Instance As VotersPanel
     Private Shared Candidates As Dictionary(Of Integer, List(Of Candidate))
+    Private Shared VotedCandidates As List(Of Candidate)
 
     Private RemainingTime As Integer
     Private IsCountdownStart As Boolean = False
     Private SelectedButton As Guna2Button
+    Public GotoButton As Guna2Button
 
     Public Shared Function GetInstance() As VotersPanel
         If IsNothing(Instance) Then
             Instance = New VotersPanel
+            Instance.GotoButton = Instance.ButtonCandidate
         End If
         Return Instance
     End Function
 
-    Private Sub RefreshControl() Implements MainControl.RefreshControl
-        If IsNothing(Student.GetCurrentUser()) Then
-            Alert.ShowAlert("You need to login first", Alert.AlertType.Info)
-            Main.LoadControl(VoterLogin.GetInstance())
-        Else
-            RemainingTime = DateDiff(DateInterval.Second, Date.Now(), Election.GetCurrentElection().Ended)
-            Timer1.Start()
-            IsCountdownStart = True
-            LabelName.Text = Student.GetCurrentUser().Fullname
-            If Student.GetCurrentUser().HasVoted Then
-                ChipStatus.FillColor = Color.Green
-                ChipStatus.Text = "Done"
+    Public Sub RefreshControl() Implements MainControl.RefreshControl
 
-                ButtonVoteInfo.Visible = True
-                ButtonVoteNow.Visible = False
+        LoadControl(LoadingControl.GetInstance())
+        BackgroundWorkerRefresh.RunWorkerAsync()
 
-            Else
-                ChipStatus.FillColor = Color.Red
-                ChipStatus.Text = "Not yet"
-
-
-                ButtonVoteInfo.Visible = False
-                ButtonVoteNow.Visible = True
-
-            End If
-            ButtonCandidate.PerformClick()
-        End If
     End Sub
 
     Public Shared Function GetCandidates() As Dictionary(Of Integer, List(Of Candidate))
@@ -52,6 +33,13 @@ Public Class VotersPanel
             Candidates = Candidate.GetAll2()
         End If
         Return Candidates
+    End Function
+
+    Public Shared Function GetVotedCandidates() As List(Of Candidate)
+        If IsNothing(VotedCandidates) Then
+            VotedCandidates = Candidate.GetVotedCandidates(Student.GetCurrentUser().Id)
+        End If
+        Return VotedCandidates
     End Function
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -68,10 +56,10 @@ Public Class VotersPanel
         End If
     End Sub
 
-    Private Sub ButtonClick(sender As Guna2Button, e As EventArgs) Handles ButtonCandidate.Click, ButtonParty.Click, ButtonVoteNow.Click
+    Private Sub MainButton_Click(sender As Guna2Button, e As EventArgs) Handles ButtonCandidate.Click, ButtonParty.Click, ButtonVoteNow.Click, ButtonVoteInfo.Click
         Dim tag As Integer = Integer.Parse(sender.Tag)
 
-        If sender.Equals(SelectedButton) Then Return
+        'If sender.Equals(SelectedButton) Then Return
 
         If Not IsNothing(SelectedButton) Then SelectedButton.ForeColor = SystemColors.ControlDark
 
@@ -86,6 +74,8 @@ Public Class VotersPanel
                 LoadControl(PartyInfo.GetInstance())
             Case 3
                 LoadControl(VoteNow.GetInstance())
+            Case 4
+                LoadControl(VoteInfo.GetInstance())
         End Select
 
     End Sub
@@ -94,5 +84,45 @@ Public Class VotersPanel
     Private Sub ButtonLogout_Click(sender As Object, e As EventArgs) Handles ButtonLogout.Click
         Student.SetCurrentUser(Nothing)
         Main.LoadControl(VoterLogin.GetInstance())
+    End Sub
+
+    Private Sub BackgroundWorkerRefresh_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerRefresh.DoWork
+        If (Student.RefreshCurrentUser().HasVoted) Then
+            VotedCandidates = Candidate.GetVotedCandidates(Student.GetCurrentUser().Id)
+        End If
+        Election.GetCurrentElectionF()
+        GetCandidates()
+    End Sub
+
+    Private Sub BackgroundWorkerRefresh_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerRefresh.RunWorkerCompleted
+        If IsNothing(Student.GetCurrentUser()) Then
+            Alert.ShowAlert("You need to login first", Alert.AlertType.Info)
+            Main.LoadControl(VoterLogin.GetInstance())
+        Else
+            If Not IsCountdownStart Then
+                RemainingTime = DateDiff(DateInterval.Second, Date.Now(), Election.GetCurrentElection().Ended)
+                Timer1.Start()
+                IsCountdownStart = True
+            End If
+            LabelName.Text = Student.GetCurrentUser().Fullname
+            If Student.GetCurrentUser().HasVoted Then
+                ChipStatus.FillColor = Color.Green
+                ChipStatus.Text = "Done"
+
+                ButtonVoteInfo.Visible = True
+                ButtonVoteNow.Visible = False
+
+            Else
+                ChipStatus.FillColor = Color.Red
+                ChipStatus.Text = "Not yet"
+
+
+                ButtonVoteInfo.Visible = False
+                If Election.IsOngoing() Then
+                    ButtonVoteNow.Visible = True
+                End If
+            End If
+            GotoButton.PerformClick()
+        End If
     End Sub
 End Class

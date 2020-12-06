@@ -49,6 +49,7 @@ Partial Class VotersPanel
         Me.Guna2DragControl1 = New Guna.UI2.WinForms.Guna2DragControl(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.ChildPanel = New System.Windows.Forms.Panel()
+        Me.BackgroundWorkerRefresh = New System.ComponentModel.BackgroundWorker()
         Me.Panel1.SuspendLayout()
         Me.SideBarButton.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -91,6 +92,7 @@ Partial Class VotersPanel
         '
         Me.ButtonCandidate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonCandidate.Animated = True
         Me.ButtonCandidate.CheckedState.Parent = Me.ButtonCandidate
         Me.ButtonCandidate.CustomImages.Parent = Me.ButtonCandidate
         Me.ButtonCandidate.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -110,6 +112,7 @@ Partial Class VotersPanel
         '
         Me.ButtonParty.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonParty.Animated = True
         Me.ButtonParty.CheckedState.Parent = Me.ButtonParty
         Me.ButtonParty.CustomImages.Parent = Me.ButtonParty
         Me.ButtonParty.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -129,6 +132,7 @@ Partial Class VotersPanel
         '
         Me.ButtonVoteNow.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonVoteNow.Animated = True
         Me.ButtonVoteNow.CheckedState.Parent = Me.ButtonVoteNow
         Me.ButtonVoteNow.CustomImages.Parent = Me.ButtonVoteNow
         Me.ButtonVoteNow.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -148,6 +152,7 @@ Partial Class VotersPanel
         '
         Me.ButtonVoteInfo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonVoteInfo.Animated = True
         Me.ButtonVoteInfo.CheckedState.Parent = Me.ButtonVoteInfo
         Me.ButtonVoteInfo.CustomImages.Parent = Me.ButtonVoteInfo
         Me.ButtonVoteInfo.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -167,6 +172,7 @@ Partial Class VotersPanel
         '
         Me.Guna2Button4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2Button4.Animated = True
         Me.Guna2Button4.CheckedState.Parent = Me.Guna2Button4
         Me.Guna2Button4.CustomImages.Parent = Me.Guna2Button4
         Me.Guna2Button4.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -186,6 +192,7 @@ Partial Class VotersPanel
         '
         Me.ButtonLogout.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonLogout.Animated = True
         Me.ButtonLogout.CheckedState.Parent = Me.ButtonLogout
         Me.ButtonLogout.CustomImages.Parent = Me.ButtonLogout
         Me.ButtonLogout.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -380,6 +387,9 @@ Partial Class VotersPanel
         Me.ChildPanel.Size = New System.Drawing.Size(974, 557)
         Me.ChildPanel.TabIndex = 6
         '
+        'BackgroundWorkerRefresh
+        '
+        '
         'VotersPanel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -428,5 +438,6 @@ Partial Class VotersPanel
     Friend WithEvents Guna2DragControl1 As Guna.UI2.WinForms.Guna2DragControl
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents ChildPanel As System.Windows.Forms.Panel
+    Friend WithEvents BackgroundWorkerRefresh As System.ComponentModel.BackgroundWorker
 
 End Class

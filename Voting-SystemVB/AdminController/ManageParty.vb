@@ -88,6 +88,9 @@ Public Class ManageParty
         btn.ForeColor = Color.Black
         btn.Text = item.Title
         btn.Tag = item
+        btn.ButtonMode = Enums.ButtonMode.RadioButton
+        btn.CheckedState.FillColor = Color.FromArgb(255, 164, 91)
+        btn.CheckedState.ForeColor = Color.White
         btn.Margin = New Padding(0)
         btn.Size = New Size(FlowLayoutPanel1.Width - 10, btn.Height)
         AddHandler btn.Click, AddressOf PartyBtnClick
@@ -96,13 +99,13 @@ Public Class ManageParty
 
 
     Private Sub PartyBtnClick(sender As Guna2Button, e As EventArgs)
-        If Not IsNothing(PreviousButton) Then
-            PreviousButton.FillColor = Color.White
-            PreviousButton.ForeColor = Color.Black
-        End If
+        'If Not IsNothing(PreviousButton) Then
+        '    PreviousButton.FillColor = Color.White
+        '    PreviousButton.ForeColor = Color.Black
+        'End If
 
-        sender.FillColor = Color.FromArgb(94, 148, 255)
-        sender.ForeColor = Color.White
+        'sender.FillColor = Color.FromArgb(94, 148, 255)
+        'sender.ForeColor = Color.White
 
         PreviousButton = sender
 

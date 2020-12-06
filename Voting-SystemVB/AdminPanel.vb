@@ -34,7 +34,7 @@ Public Class AdminPanel
     Public Function AdminHomeControl() As Control
         If Election.HasNotStarted() Then
             Return AdminHomeNotStarted.GetInstance()
-        ElseIf Election.IsOngoing() Then
+        Else 'If Election.IsOngoing() Then
             Return AdminHomeStarted2.GetInstance()
         End If
         Return Nothing
@@ -42,16 +42,15 @@ Public Class AdminPanel
 
     'Display Election Status
     Private Sub ShowElectionStatus()
-        Dim state = ElectionStatus
-        If state.Equals(Election.STATUS_NOT_STARTED) Then
+        If Election.HasNotStarted() Then
             ChipElectionStatus.Text = "Not Started"
             ChipElectionStatus.ForeColor = Color.Black
             ChipElectionStatus.FillColor = Color.Yellow
-        ElseIf state.Equals(Election.STATUS_ONGOING) Then
+        ElseIf Election.IsOngoing() Then
             ChipElectionStatus.Text = "Started"
             ChipElectionStatus.ForeColor = Color.White
             ChipElectionStatus.FillColor = Color.Green
-        ElseIf state.Equals(Election.STATUS_ENDED) Then
+        ElseIf Election.HasEnded() Then
             ChipElectionStatus.Text = "Ended"
             ChipElectionStatus.ForeColor = Color.White
             ChipElectionStatus.FillColor = Color.FromArgb(94, 148, 255)
@@ -71,9 +70,6 @@ Public Class AdminPanel
     'Switch Control
     Private Sub ChangeView_Click(sender As Guna2Button, e As EventArgs) Handles ButtonVoter.Click, ButtonHome.Click, ButtonCandidate.Click, ButtonAdmin.Click, ButtonParty.Click
         If sender.Equals(ActivePage) Then Return
-
-        If Not IsNothing(ActivePage) Then ActivePage.ForeColor = Color.DarkGray
-        sender.ForeColor = Color.White
 
         If sender.Equals(ButtonHome) Then
             LoadControl(AdminHomeControl())

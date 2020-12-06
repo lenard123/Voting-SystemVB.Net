@@ -29,12 +29,11 @@ Partial Class ManageCandidate
         Me.ButtonAuditor = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonPRO = New Guna.UI2.WinForms.Guna2Button()
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.ButtonRefresh = New Guna.UI2.WinForms.Guna2Button()
+        Me.BackgroundWorkerRefresh = New System.ComponentModel.BackgroundWorker()
         Me.Card1 = New Voting_SystemVB.Card()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.ButtonRegister = New Guna.UI2.WinForms.Guna2TileButton()
-        Me.BackgroundWorkerRefresh = New System.ComponentModel.BackgroundWorker()
         Me.FlowLayoutPanel2.SuspendLayout()
         Me.Card1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -43,13 +42,17 @@ Partial Class ManageCandidate
         '
         'ButtonPresident
         '
+        Me.ButtonPresident.Animated = True
+        Me.ButtonPresident.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonPresident.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.ButtonPresident.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonPresident.CheckedState.Parent = Me.ButtonPresident
         Me.ButtonPresident.CustomImages.Parent = Me.ButtonPresident
-        Me.ButtonPresident.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.ButtonPresident.FillColor = System.Drawing.Color.White
         Me.ButtonPresident.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonPresident.ForeColor = System.Drawing.Color.White
+        Me.ButtonPresident.ForeColor = System.Drawing.Color.Black
         Me.ButtonPresident.HoverState.Parent = Me.ButtonPresident
-        Me.ButtonPresident.Location = New System.Drawing.Point(102, 0)
+        Me.ButtonPresident.Location = New System.Drawing.Point(0, 0)
         Me.ButtonPresident.Margin = New System.Windows.Forms.Padding(0)
         Me.ButtonPresident.Name = "ButtonPresident"
         Me.ButtonPresident.ShadowDecoration.Parent = Me.ButtonPresident
@@ -59,13 +62,17 @@ Partial Class ManageCandidate
         '
         'ButtonVPresident
         '
+        Me.ButtonVPresident.Animated = True
+        Me.ButtonVPresident.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonVPresident.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.ButtonVPresident.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonVPresident.CheckedState.Parent = Me.ButtonVPresident
         Me.ButtonVPresident.CustomImages.Parent = Me.ButtonVPresident
         Me.ButtonVPresident.FillColor = System.Drawing.Color.White
         Me.ButtonVPresident.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonVPresident.ForeColor = System.Drawing.Color.Black
         Me.ButtonVPresident.HoverState.Parent = Me.ButtonVPresident
-        Me.ButtonVPresident.Location = New System.Drawing.Point(204, 0)
+        Me.ButtonVPresident.Location = New System.Drawing.Point(102, 0)
         Me.ButtonVPresident.Margin = New System.Windows.Forms.Padding(0)
         Me.ButtonVPresident.Name = "ButtonVPresident"
         Me.ButtonVPresident.ShadowDecoration.Parent = Me.ButtonVPresident
@@ -75,13 +82,17 @@ Partial Class ManageCandidate
         '
         'ButtonSecretary
         '
+        Me.ButtonSecretary.Animated = True
+        Me.ButtonSecretary.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonSecretary.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.ButtonSecretary.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonSecretary.CheckedState.Parent = Me.ButtonSecretary
         Me.ButtonSecretary.CustomImages.Parent = Me.ButtonSecretary
         Me.ButtonSecretary.FillColor = System.Drawing.Color.White
         Me.ButtonSecretary.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonSecretary.ForeColor = System.Drawing.Color.Black
         Me.ButtonSecretary.HoverState.Parent = Me.ButtonSecretary
-        Me.ButtonSecretary.Location = New System.Drawing.Point(306, 0)
+        Me.ButtonSecretary.Location = New System.Drawing.Point(204, 0)
         Me.ButtonSecretary.Margin = New System.Windows.Forms.Padding(0)
         Me.ButtonSecretary.Name = "ButtonSecretary"
         Me.ButtonSecretary.ShadowDecoration.Parent = Me.ButtonSecretary
@@ -91,13 +102,17 @@ Partial Class ManageCandidate
         '
         'ButtonTreasurer
         '
+        Me.ButtonTreasurer.Animated = True
+        Me.ButtonTreasurer.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonTreasurer.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.ButtonTreasurer.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonTreasurer.CheckedState.Parent = Me.ButtonTreasurer
         Me.ButtonTreasurer.CustomImages.Parent = Me.ButtonTreasurer
         Me.ButtonTreasurer.FillColor = System.Drawing.Color.White
         Me.ButtonTreasurer.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonTreasurer.ForeColor = System.Drawing.Color.Black
         Me.ButtonTreasurer.HoverState.Parent = Me.ButtonTreasurer
-        Me.ButtonTreasurer.Location = New System.Drawing.Point(408, 0)
+        Me.ButtonTreasurer.Location = New System.Drawing.Point(306, 0)
         Me.ButtonTreasurer.Margin = New System.Windows.Forms.Padding(0)
         Me.ButtonTreasurer.Name = "ButtonTreasurer"
         Me.ButtonTreasurer.ShadowDecoration.Parent = Me.ButtonTreasurer
@@ -107,13 +122,17 @@ Partial Class ManageCandidate
         '
         'ButtonAuditor
         '
+        Me.ButtonAuditor.Animated = True
+        Me.ButtonAuditor.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonAuditor.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.ButtonAuditor.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonAuditor.CheckedState.Parent = Me.ButtonAuditor
         Me.ButtonAuditor.CustomImages.Parent = Me.ButtonAuditor
         Me.ButtonAuditor.FillColor = System.Drawing.Color.White
         Me.ButtonAuditor.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonAuditor.ForeColor = System.Drawing.Color.Black
         Me.ButtonAuditor.HoverState.Parent = Me.ButtonAuditor
-        Me.ButtonAuditor.Location = New System.Drawing.Point(510, 0)
+        Me.ButtonAuditor.Location = New System.Drawing.Point(408, 0)
         Me.ButtonAuditor.Margin = New System.Windows.Forms.Padding(0)
         Me.ButtonAuditor.Name = "ButtonAuditor"
         Me.ButtonAuditor.ShadowDecoration.Parent = Me.ButtonAuditor
@@ -123,13 +142,17 @@ Partial Class ManageCandidate
         '
         'ButtonPRO
         '
+        Me.ButtonPRO.Animated = True
+        Me.ButtonPRO.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonPRO.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.ButtonPRO.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonPRO.CheckedState.Parent = Me.ButtonPRO
         Me.ButtonPRO.CustomImages.Parent = Me.ButtonPRO
         Me.ButtonPRO.FillColor = System.Drawing.Color.White
         Me.ButtonPRO.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonPRO.ForeColor = System.Drawing.Color.Black
         Me.ButtonPRO.HoverState.Parent = Me.ButtonPRO
-        Me.ButtonPRO.Location = New System.Drawing.Point(612, 0)
+        Me.ButtonPRO.Location = New System.Drawing.Point(510, 0)
         Me.ButtonPRO.Margin = New System.Windows.Forms.Padding(0)
         Me.ButtonPRO.Name = "ButtonPRO"
         Me.ButtonPRO.ShadowDecoration.Parent = Me.ButtonPRO
@@ -139,7 +162,6 @@ Partial Class ManageCandidate
         '
         'FlowLayoutPanel2
         '
-        Me.FlowLayoutPanel2.Controls.Add(Me.ButtonRefresh)
         Me.FlowLayoutPanel2.Controls.Add(Me.ButtonPresident)
         Me.FlowLayoutPanel2.Controls.Add(Me.ButtonVPresident)
         Me.FlowLayoutPanel2.Controls.Add(Me.ButtonSecretary)
@@ -151,21 +173,8 @@ Partial Class ManageCandidate
         Me.FlowLayoutPanel2.Size = New System.Drawing.Size(760, 28)
         Me.FlowLayoutPanel2.TabIndex = 3
         '
-        'ButtonRefresh
+        'BackgroundWorkerRefresh
         '
-        Me.ButtonRefresh.CheckedState.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.CustomImages.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.FillColor = System.Drawing.Color.White
-        Me.ButtonRefresh.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonRefresh.ForeColor = System.Drawing.Color.Black
-        Me.ButtonRefresh.HoverState.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.Location = New System.Drawing.Point(0, 0)
-        Me.ButtonRefresh.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonRefresh.Name = "ButtonRefresh"
-        Me.ButtonRefresh.ShadowDecoration.Parent = Me.ButtonRefresh
-        Me.ButtonRefresh.Size = New System.Drawing.Size(102, 28)
-        Me.ButtonRefresh.TabIndex = 1
-        Me.ButtonRefresh.Text = "Refresh"
         '
         'Card1
         '
@@ -219,9 +228,6 @@ Partial Class ManageCandidate
         Me.ButtonRegister.TabIndex = 0
         Me.ButtonRegister.Text = "Register Candidate"
         '
-        'BackgroundWorkerRefresh
-        '
-        '
         'ManageCandidate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -249,7 +255,6 @@ Partial Class ManageCandidate
     Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents ButtonRegister As Guna.UI2.WinForms.Guna2TileButton
     Friend WithEvents FlowLayoutPanel2 As System.Windows.Forms.FlowLayoutPanel
-    Friend WithEvents ButtonRefresh As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BackgroundWorkerRefresh As System.ComponentModel.BackgroundWorker
 
 End Class

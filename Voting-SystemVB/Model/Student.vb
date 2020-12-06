@@ -8,7 +8,7 @@ Public Class Student
     Private Const QUERY_SELECT_BY_STUDENT_ID = "SELECT DISTINCT [Student].*, [Votes].[student_id] as [has_voted] FROM [Votes] RIGHT JOIN [Student] ON [Votes].[student_id]=[Student].[ID] WHERE [Student].[student_id]=?"
     Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) From Student"
 
-    Private Const LENGTH_ID As Integer = 10
+    Public Const LENGTH_ID As Integer = 10
     Private Const LENGTH_STUDENT_ID As Integer = 10
     Private Const LENGTH_FIRSTNAME As Integer = 20
     Private Const LENGTH_LASTNAME As Integer = 20
@@ -283,4 +283,11 @@ Public Class Student
         Return Result
     End Function
 
+    'Refresh Current User
+    Public Shared Function RefreshCurrentUser() As Student
+        If Not IsNothing(CurrentUser) Then
+            CurrentUser = Find(CurrentUser.Id)
+        End If
+        Return CurrentUser
+    End Function
 End Class

@@ -115,12 +115,16 @@ Partial Class CandidateInfo
         '
         'ButtonPresident
         '
+        Me.ButtonPresident.Animated = True
         Me.ButtonPresident.BorderRadius = 10
+        Me.ButtonPresident.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonPresident.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.ButtonPresident.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonPresident.CheckedState.Parent = Me.ButtonPresident
         Me.ButtonPresident.CustomImages.Parent = Me.ButtonPresident
-        Me.ButtonPresident.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.ButtonPresident.FillColor = System.Drawing.Color.Empty
         Me.ButtonPresident.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ButtonPresident.ForeColor = System.Drawing.Color.White
+        Me.ButtonPresident.ForeColor = System.Drawing.SystemColors.ControlDark
         Me.ButtonPresident.HoverState.Parent = Me.ButtonPresident
         Me.ButtonPresident.Location = New System.Drawing.Point(3, 3)
         Me.ButtonPresident.Name = "ButtonPresident"
@@ -132,7 +136,11 @@ Partial Class CandidateInfo
         '
         'ButtonVicePresident
         '
+        Me.ButtonVicePresident.Animated = True
         Me.ButtonVicePresident.BorderRadius = 10
+        Me.ButtonVicePresident.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonVicePresident.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.ButtonVicePresident.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonVicePresident.CheckedState.Parent = Me.ButtonVicePresident
         Me.ButtonVicePresident.CustomImages.Parent = Me.ButtonVicePresident
         Me.ButtonVicePresident.FillColor = System.Drawing.Color.Empty
@@ -149,7 +157,11 @@ Partial Class CandidateInfo
         '
         'ButtonSecretary
         '
+        Me.ButtonSecretary.Animated = True
         Me.ButtonSecretary.BorderRadius = 10
+        Me.ButtonSecretary.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonSecretary.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.ButtonSecretary.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonSecretary.CheckedState.Parent = Me.ButtonSecretary
         Me.ButtonSecretary.CustomImages.Parent = Me.ButtonSecretary
         Me.ButtonSecretary.FillColor = System.Drawing.Color.Empty
@@ -166,7 +178,11 @@ Partial Class CandidateInfo
         '
         'ButtonTreasurer
         '
+        Me.ButtonTreasurer.Animated = True
         Me.ButtonTreasurer.BorderRadius = 10
+        Me.ButtonTreasurer.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonTreasurer.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.ButtonTreasurer.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonTreasurer.CheckedState.Parent = Me.ButtonTreasurer
         Me.ButtonTreasurer.CustomImages.Parent = Me.ButtonTreasurer
         Me.ButtonTreasurer.FillColor = System.Drawing.Color.Empty
@@ -183,7 +199,11 @@ Partial Class CandidateInfo
         '
         'ButtonAuditor
         '
+        Me.ButtonAuditor.Animated = True
         Me.ButtonAuditor.BorderRadius = 10
+        Me.ButtonAuditor.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonAuditor.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.ButtonAuditor.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonAuditor.CheckedState.Parent = Me.ButtonAuditor
         Me.ButtonAuditor.CustomImages.Parent = Me.ButtonAuditor
         Me.ButtonAuditor.FillColor = System.Drawing.Color.Empty
@@ -200,7 +220,11 @@ Partial Class CandidateInfo
         '
         'ButtonPRO
         '
+        Me.ButtonPRO.Animated = True
         Me.ButtonPRO.BorderRadius = 10
+        Me.ButtonPRO.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonPRO.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.ButtonPRO.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonPRO.CheckedState.Parent = Me.ButtonPRO
         Me.ButtonPRO.CustomImages.Parent = Me.ButtonPRO
         Me.ButtonPRO.FillColor = System.Drawing.Color.Empty

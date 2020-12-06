@@ -117,6 +117,7 @@
                 Alert.ShowAlert("Wrong Password", Alert.AlertType.Error)
             Case WorkerResult.SUCCESS_LOGIN
                 Alert.ShowAlert("Login Successfully", Alert.AlertType.Success)
+                VotersPanel.GetInstance().GotoButton = VotersPanel.GetInstance().ButtonCandidate
                 Main.LoadControl(VotersPanel.GetInstance())
         End Select
     End Sub

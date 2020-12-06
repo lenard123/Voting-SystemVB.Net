@@ -38,10 +38,11 @@ Public Class ManageCandidate
     End Sub
 
     Private Sub SwitchView(sender As Guna2Button, e As EventArgs) Handles ButtonPresident.Click, ButtonVPresident.Click, ButtonSecretary.Click, ButtonTreasurer.Click, ButtonAuditor.Click, ButtonPRO.Click
-        If Not IsNothing(PreviousButton) Then
-            PreviousButton.FillColor = Color.White
-            PreviousButton.ForeColor = Color.Black
-        End If
+
+        'If Not IsNothing(PreviousButton) Then
+        '    PreviousButton.FillColor = Color.White
+        '    PreviousButton.ForeColor = Color.Black
+        'End If
         If ButtonPresident.Equals(sender) Then
             SelectedPosition = Position.PRESIDENT_ID
         ElseIf ButtonVPresident.Equals(sender) Then
@@ -55,8 +56,8 @@ Public Class ManageCandidate
         ElseIf ButtonPRO.Equals(sender) Then
             SelectedPosition = Position.PRO_ID
         End If
-        sender.FillColor = Color.FromArgb(255, 164, 91)
-        sender.ForeColor = Color.White
+        'sender.FillColor = Color.FromArgb(255, 164, 91)
+        'sender.ForeColor = Color.White
         PreviousButton = sender
         LoadPosition()
     End Sub
@@ -88,7 +89,7 @@ Public Class ManageCandidate
         If Not IsNothing(PreviousButton) Then PreviousButton.PerformClick()
     End Sub
 
-    Private Sub ButtonRefresh_Click(sender As Object, e As EventArgs) Handles ButtonRefresh.Click
+    Private Sub ButtonRefresh_Click(sender As Object, e As EventArgs)
         BackgroundWorkerRefresh.RunWorkerAsync()
     End Sub
 End Class

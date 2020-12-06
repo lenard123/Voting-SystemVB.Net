@@ -86,6 +86,9 @@ Partial Class AdminPanel
         'ButtonHome
         '
         Me.ButtonHome.Animated = True
+        Me.ButtonHome.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonHome.Checked = True
+        Me.ButtonHome.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonHome.CheckedState.Parent = Me.ButtonHome
         Me.ButtonHome.CustomImages.Parent = Me.ButtonHome
         Me.ButtonHome.FillColor = System.Drawing.Color.Transparent
@@ -105,6 +108,8 @@ Partial Class AdminPanel
         'ButtonVoter
         '
         Me.ButtonVoter.Animated = True
+        Me.ButtonVoter.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonVoter.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonVoter.CheckedState.Parent = Me.ButtonVoter
         Me.ButtonVoter.CustomImages.Parent = Me.ButtonVoter
         Me.ButtonVoter.FillColor = System.Drawing.Color.Transparent
@@ -124,6 +129,8 @@ Partial Class AdminPanel
         'ButtonCandidate
         '
         Me.ButtonCandidate.Animated = True
+        Me.ButtonCandidate.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonCandidate.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonCandidate.CheckedState.Parent = Me.ButtonCandidate
         Me.ButtonCandidate.CustomImages.Parent = Me.ButtonCandidate
         Me.ButtonCandidate.FillColor = System.Drawing.Color.Transparent
@@ -143,6 +150,8 @@ Partial Class AdminPanel
         'ButtonParty
         '
         Me.ButtonParty.Animated = True
+        Me.ButtonParty.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonParty.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonParty.CheckedState.Parent = Me.ButtonParty
         Me.ButtonParty.CustomImages.Parent = Me.ButtonParty
         Me.ButtonParty.FillColor = System.Drawing.Color.Transparent
@@ -162,6 +171,8 @@ Partial Class AdminPanel
         'ButtonAdmin
         '
         Me.ButtonAdmin.Animated = True
+        Me.ButtonAdmin.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton
+        Me.ButtonAdmin.CheckedState.ForeColor = System.Drawing.Color.White
         Me.ButtonAdmin.CheckedState.Parent = Me.ButtonAdmin
         Me.ButtonAdmin.CustomImages.Parent = Me.ButtonAdmin
         Me.ButtonAdmin.FillColor = System.Drawing.Color.Transparent
