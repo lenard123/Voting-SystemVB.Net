@@ -35,26 +35,26 @@ Partial Class AdminHomeStarted2
         Me.ViewChart = New System.Windows.Forms.Label()
         Me.ButtonRefresh = New Guna.UI2.WinForms.Guna2Button()
         Me.ShowCandidates = New Guna.UI2.WinForms.Guna2GroupBox()
-        Me.Guna2CircleProgressBar1 = New Guna.UI2.WinForms.Guna2CircleProgressBar()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Guna2CircleProgressBar2 = New Guna.UI2.WinForms.Guna2CircleProgressBar()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Guna2CircleProgressBar3 = New Guna.UI2.WinForms.Guna2CircleProgressBar()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.LoadingPanel = New System.Windows.Forms.Panel()
         Me.PanelChart = New System.Windows.Forms.Panel()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.LoadingPanel = New System.Windows.Forms.Panel()
+        Me.TotalVotersCircle = New Guna.UI2.WinForms.Guna2CircleProgressBar()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TotalVotersCount = New System.Windows.Forms.Label()
+        Me.AlreadyVotedCircle = New Guna.UI2.WinForms.Guna2CircleProgressBar()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.AlreadyVotedCount = New System.Windows.Forms.Label()
+        Me.RemainingVotersCircle = New Guna.UI2.WinForms.Guna2CircleProgressBar()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.RemainingVotersCount = New System.Windows.Forms.Label()
         Me.ShowCandidates.SuspendLayout()
-        Me.Guna2CircleProgressBar1.SuspendLayout()
-        Me.Guna2CircleProgressBar2.SuspendLayout()
-        Me.Guna2CircleProgressBar3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.PanelChart.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TotalVotersCircle.SuspendLayout()
+        Me.AlreadyVotedCircle.SuspendLayout()
+        Me.RemainingVotersCircle.SuspendLayout()
         Me.SuspendLayout()
         '
         'President
@@ -230,132 +230,6 @@ Partial Class AdminHomeStarted2
         Me.ShowCandidates.Text = "Show Candidates"
         Me.ShowCandidates.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         '
-        'Guna2CircleProgressBar1
-        '
-        Me.Guna2CircleProgressBar1.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Guna2CircleProgressBar1.Controls.Add(Me.Label1)
-        Me.Guna2CircleProgressBar1.Controls.Add(Me.Label6)
-        Me.Guna2CircleProgressBar1.FillThickness = 10
-        Me.Guna2CircleProgressBar1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical
-        Me.Guna2CircleProgressBar1.Location = New System.Drawing.Point(213, 20)
-        Me.Guna2CircleProgressBar1.Name = "Guna2CircleProgressBar1"
-        Me.Guna2CircleProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(248, Byte), Integer))
-        Me.Guna2CircleProgressBar1.ProgressColor2 = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(248, Byte), Integer))
-        Me.Guna2CircleProgressBar1.ProgressThickness = 10
-        Me.Guna2CircleProgressBar1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.Guna2CircleProgressBar1.ShadowDecoration.Parent = Me.Guna2CircleProgressBar1
-        Me.Guna2CircleProgressBar1.Size = New System.Drawing.Size(153, 153)
-        Me.Guna2CircleProgressBar1.TabIndex = 30
-        Me.Guna2CircleProgressBar1.Value = 100
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label1.Location = New System.Drawing.Point(25, 83)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(105, 34)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Total Number of " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Voters"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.BackColor = System.Drawing.Color.Transparent
-        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold)
-        Me.Label6.Location = New System.Drawing.Point(38, 45)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(71, 38)
-        Me.Label6.TabIndex = 0
-        Me.Label6.Text = "100"
-        '
-        'Guna2CircleProgressBar2
-        '
-        Me.Guna2CircleProgressBar2.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Guna2CircleProgressBar2.Controls.Add(Me.Label2)
-        Me.Guna2CircleProgressBar2.Controls.Add(Me.Label3)
-        Me.Guna2CircleProgressBar2.FillThickness = 10
-        Me.Guna2CircleProgressBar2.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical
-        Me.Guna2CircleProgressBar2.Location = New System.Drawing.Point(396, 20)
-        Me.Guna2CircleProgressBar2.Name = "Guna2CircleProgressBar2"
-        Me.Guna2CircleProgressBar2.ProgressColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
-        Me.Guna2CircleProgressBar2.ProgressColor2 = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
-        Me.Guna2CircleProgressBar2.ProgressEndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor
-        Me.Guna2CircleProgressBar2.ProgressThickness = 10
-        Me.Guna2CircleProgressBar2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.Guna2CircleProgressBar2.ShadowDecoration.Parent = Me.Guna2CircleProgressBar2
-        Me.Guna2CircleProgressBar2.Size = New System.Drawing.Size(153, 153)
-        Me.Guna2CircleProgressBar2.TabIndex = 31
-        Me.Guna2CircleProgressBar2.Value = 35
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label2.Location = New System.Drawing.Point(21, 83)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(112, 34)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Students Already " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Voted"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(51, 45)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(53, 38)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "35"
-        '
-        'Guna2CircleProgressBar3
-        '
-        Me.Guna2CircleProgressBar3.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Guna2CircleProgressBar3.Controls.Add(Me.Label4)
-        Me.Guna2CircleProgressBar3.Controls.Add(Me.Label5)
-        Me.Guna2CircleProgressBar3.FillThickness = 10
-        Me.Guna2CircleProgressBar3.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical
-        Me.Guna2CircleProgressBar3.Location = New System.Drawing.Point(579, 20)
-        Me.Guna2CircleProgressBar3.Name = "Guna2CircleProgressBar3"
-        Me.Guna2CircleProgressBar3.ProgressColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.Guna2CircleProgressBar3.ProgressColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.Guna2CircleProgressBar3.ProgressEndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor
-        Me.Guna2CircleProgressBar3.ProgressStartCap = System.Drawing.Drawing2D.LineCap.Square
-        Me.Guna2CircleProgressBar3.ProgressThickness = 10
-        Me.Guna2CircleProgressBar3.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.Guna2CircleProgressBar3.ShadowDecoration.Parent = Me.Guna2CircleProgressBar3
-        Me.Guna2CircleProgressBar3.Size = New System.Drawing.Size(153, 153)
-        Me.Guna2CircleProgressBar3.TabIndex = 32
-        Me.Guna2CircleProgressBar3.Value = 75
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.0!)
-        Me.Label4.Location = New System.Drawing.Point(23, 92)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(112, 17)
-        Me.Label4.TabIndex = 0
-        Me.Label4.Text = "Remaining Voters"
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold)
-        Me.Label5.Location = New System.Drawing.Point(51, 45)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(53, 38)
-        Me.Label5.TabIndex = 0
-        Me.Label5.Text = "75"
-        '
         'Panel1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -368,14 +242,6 @@ Partial Class AdminHomeStarted2
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(603, 170)
         Me.Panel1.TabIndex = 22
-        '
-        'LoadingPanel
-        '
-        Me.LoadingPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LoadingPanel.Location = New System.Drawing.Point(0, 0)
-        Me.LoadingPanel.Name = "LoadingPanel"
-        Me.LoadingPanel.Size = New System.Drawing.Size(603, 170)
-        Me.LoadingPanel.TabIndex = 0
         '
         'PanelChart
         '
@@ -402,13 +268,156 @@ Partial Class AdminHomeStarted2
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
         '
+        'LoadingPanel
+        '
+        Me.LoadingPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LoadingPanel.Location = New System.Drawing.Point(0, 0)
+        Me.LoadingPanel.Name = "LoadingPanel"
+        Me.LoadingPanel.Size = New System.Drawing.Size(603, 170)
+        Me.LoadingPanel.TabIndex = 0
+        '
+        'TotalVotersCircle
+        '
+        Me.TotalVotersCircle.AccessibleName = "TotalVotersCircle"
+        Me.TotalVotersCircle.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.TotalVotersCircle.Controls.Add(Me.Label1)
+        Me.TotalVotersCircle.Controls.Add(Me.TotalVotersCount)
+        Me.TotalVotersCircle.FillThickness = 10
+        Me.TotalVotersCircle.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical
+        Me.TotalVotersCircle.Location = New System.Drawing.Point(213, 20)
+        Me.TotalVotersCircle.Name = "TotalVotersCircle"
+        Me.TotalVotersCircle.ProgressColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(248, Byte), Integer))
+        Me.TotalVotersCircle.ProgressColor2 = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(248, Byte), Integer))
+        Me.TotalVotersCircle.ProgressThickness = 10
+        Me.TotalVotersCircle.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.TotalVotersCircle.ShadowDecoration.Parent = Me.TotalVotersCircle
+        Me.TotalVotersCircle.Size = New System.Drawing.Size(153, 153)
+        Me.TotalVotersCircle.TabIndex = 30
+        Me.TotalVotersCircle.Value = 100
+        '
+        'Label1
+        '
+        Me.Label1.AccessibleName = "TotalVotersDesc"
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.Label1.Location = New System.Drawing.Point(25, 83)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(105, 34)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Total Number of " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Voters"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'TotalVotersCount
+        '
+        Me.TotalVotersCount.AccessibleName = "TotalVotersCount"
+        Me.TotalVotersCount.AutoSize = True
+        Me.TotalVotersCount.BackColor = System.Drawing.Color.Transparent
+        Me.TotalVotersCount.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold)
+        Me.TotalVotersCount.Location = New System.Drawing.Point(38, 45)
+        Me.TotalVotersCount.Name = "TotalVotersCount"
+        Me.TotalVotersCount.Size = New System.Drawing.Size(71, 38)
+        Me.TotalVotersCount.TabIndex = 0
+        Me.TotalVotersCount.Text = "100"
+        '
+        'AlreadyVotedCircle
+        '
+        Me.AlreadyVotedCircle.AccessibleName = "AlreadyVotedCircle"
+        Me.AlreadyVotedCircle.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.AlreadyVotedCircle.Controls.Add(Me.Label2)
+        Me.AlreadyVotedCircle.Controls.Add(Me.AlreadyVotedCount)
+        Me.AlreadyVotedCircle.FillThickness = 10
+        Me.AlreadyVotedCircle.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical
+        Me.AlreadyVotedCircle.Location = New System.Drawing.Point(396, 20)
+        Me.AlreadyVotedCircle.Name = "AlreadyVotedCircle"
+        Me.AlreadyVotedCircle.ProgressColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
+        Me.AlreadyVotedCircle.ProgressColor2 = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(114, Byte), Integer))
+        Me.AlreadyVotedCircle.ProgressEndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor
+        Me.AlreadyVotedCircle.ProgressThickness = 10
+        Me.AlreadyVotedCircle.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.AlreadyVotedCircle.ShadowDecoration.Parent = Me.AlreadyVotedCircle
+        Me.AlreadyVotedCircle.Size = New System.Drawing.Size(153, 153)
+        Me.AlreadyVotedCircle.TabIndex = 31
+        Me.AlreadyVotedCircle.Value = 35
+        '
+        'Label2
+        '
+        Me.Label2.AccessibleName = "AlreadyVotedDesc"
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.Label2.Location = New System.Drawing.Point(21, 83)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(112, 34)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "Students Already " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Voted"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'AlreadyVotedCount
+        '
+        Me.AlreadyVotedCount.AccessibleName = "AlreadyVotedCount"
+        Me.AlreadyVotedCount.AutoSize = True
+        Me.AlreadyVotedCount.BackColor = System.Drawing.Color.Transparent
+        Me.AlreadyVotedCount.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold)
+        Me.AlreadyVotedCount.Location = New System.Drawing.Point(51, 45)
+        Me.AlreadyVotedCount.Name = "AlreadyVotedCount"
+        Me.AlreadyVotedCount.Size = New System.Drawing.Size(53, 38)
+        Me.AlreadyVotedCount.TabIndex = 0
+        Me.AlreadyVotedCount.Text = "35"
+        '
+        'RemainingVotersCircle
+        '
+        Me.RemainingVotersCircle.AccessibleName = "RemainingVotersCircle"
+        Me.RemainingVotersCircle.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.RemainingVotersCircle.Controls.Add(Me.Label4)
+        Me.RemainingVotersCircle.Controls.Add(Me.RemainingVotersCount)
+        Me.RemainingVotersCircle.FillThickness = 10
+        Me.RemainingVotersCircle.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical
+        Me.RemainingVotersCircle.Location = New System.Drawing.Point(579, 20)
+        Me.RemainingVotersCircle.Name = "RemainingVotersCircle"
+        Me.RemainingVotersCircle.ProgressColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.RemainingVotersCircle.ProgressColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.RemainingVotersCircle.ProgressEndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor
+        Me.RemainingVotersCircle.ProgressStartCap = System.Drawing.Drawing2D.LineCap.Square
+        Me.RemainingVotersCircle.ProgressThickness = 10
+        Me.RemainingVotersCircle.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.RemainingVotersCircle.ShadowDecoration.Parent = Me.RemainingVotersCircle
+        Me.RemainingVotersCircle.Size = New System.Drawing.Size(153, 153)
+        Me.RemainingVotersCircle.TabIndex = 32
+        Me.RemainingVotersCircle.Value = 75
+        '
+        'Label4
+        '
+        Me.Label4.AccessibleName = "RemainingVotersDesc"
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.0!)
+        Me.Label4.Location = New System.Drawing.Point(23, 92)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(112, 17)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "Remaining Voters"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'RemainingVotersCount
+        '
+        Me.RemainingVotersCount.AccessibleName = "RemainingVotersCount"
+        Me.RemainingVotersCount.AutoSize = True
+        Me.RemainingVotersCount.BackColor = System.Drawing.Color.Transparent
+        Me.RemainingVotersCount.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold)
+        Me.RemainingVotersCount.Location = New System.Drawing.Point(51, 45)
+        Me.RemainingVotersCount.Name = "RemainingVotersCount"
+        Me.RemainingVotersCount.Size = New System.Drawing.Size(53, 38)
+        Me.RemainingVotersCount.TabIndex = 0
+        Me.RemainingVotersCount.Text = "75"
+        '
         'AdminHomeStarted2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.Guna2CircleProgressBar3)
-        Me.Controls.Add(Me.Guna2CircleProgressBar2)
-        Me.Controls.Add(Me.Guna2CircleProgressBar1)
+        Me.Controls.Add(Me.RemainingVotersCircle)
+        Me.Controls.Add(Me.AlreadyVotedCircle)
+        Me.Controls.Add(Me.TotalVotersCircle)
         Me.Controls.Add(Me.ShowCandidates)
         Me.Controls.Add(Me.PRO)
         Me.Controls.Add(Me.Auditor)
@@ -422,15 +431,15 @@ Partial Class AdminHomeStarted2
         Me.Size = New System.Drawing.Size(916, 481)
         Me.ShowCandidates.ResumeLayout(False)
         Me.ShowCandidates.PerformLayout()
-        Me.Guna2CircleProgressBar1.ResumeLayout(False)
-        Me.Guna2CircleProgressBar1.PerformLayout()
-        Me.Guna2CircleProgressBar2.ResumeLayout(False)
-        Me.Guna2CircleProgressBar2.PerformLayout()
-        Me.Guna2CircleProgressBar3.ResumeLayout(False)
-        Me.Guna2CircleProgressBar3.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.PanelChart.ResumeLayout(False)
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TotalVotersCircle.ResumeLayout(False)
+        Me.TotalVotersCircle.PerformLayout()
+        Me.AlreadyVotedCircle.ResumeLayout(False)
+        Me.AlreadyVotedCircle.PerformLayout()
+        Me.RemainingVotersCircle.ResumeLayout(False)
+        Me.RemainingVotersCircle.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -444,15 +453,15 @@ Partial Class AdminHomeStarted2
     Friend WithEvents ViewChart As System.Windows.Forms.Label
     Friend WithEvents ButtonRefresh As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents ShowCandidates As Guna.UI2.WinForms.Guna2GroupBox
-    Friend WithEvents Guna2CircleProgressBar1 As Guna.UI2.WinForms.Guna2CircleProgressBar
+    Friend WithEvents TotalVotersCircle As Guna.UI2.WinForms.Guna2CircleProgressBar
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Guna2CircleProgressBar2 As Guna.UI2.WinForms.Guna2CircleProgressBar
+    Friend WithEvents AlreadyVotedCircle As Guna.UI2.WinForms.Guna2CircleProgressBar
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Guna2CircleProgressBar3 As Guna.UI2.WinForms.Guna2CircleProgressBar
+    Friend WithEvents AlreadyVotedCount As System.Windows.Forms.Label
+    Friend WithEvents RemainingVotersCircle As Guna.UI2.WinForms.Guna2CircleProgressBar
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents RemainingVotersCount As System.Windows.Forms.Label
+    Friend WithEvents TotalVotersCount As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents PanelChart As System.Windows.Forms.Panel
     Friend WithEvents Chart1 As System.Windows.Forms.DataVisualization.Charting.Chart
