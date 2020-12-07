@@ -37,23 +37,18 @@ Public Class Election
     End Sub
 
     Public Shared Function HasNotStarted() As Boolean
-        Return CurrentElection.Status = STATUS_NOT_STARTED
+        Return CurrentElection._Status = STATUS_NOT_STARTED
     End Function
     Public Shared Function IsOngoing() As Boolean
-        Return CurrentElection.Status = STATUS_ONGOING And Date.Now() < CurrentElection.Ended
+        Return CurrentElection._Status = STATUS_ONGOING And Date.Now() < CurrentElection.Ended
     End Function
     Public Shared Function HasEnded() As Boolean
-        Return CurrentElection.Status = STATUS_ENDED Or Date.Now() > CurrentElection.Ended
+        Return CurrentElection._Status = STATUS_ENDED Or Date.Now() > CurrentElection.Ended
     End Function
 
     Public ReadOnly Property Id As Integer
         Get
             Return _Id
-        End Get
-    End Property
-    Public ReadOnly Property Status As Integer
-        Get
-            Return _Status
         End Get
     End Property
     Public Property Title As String

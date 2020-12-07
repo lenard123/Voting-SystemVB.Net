@@ -140,6 +140,12 @@
     <Compile Include="AdminController\AddAdmin.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="AdminController\AdminHomeEnded.Designer.vb">
+      <DependentUpon>AdminHomeEnded.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\AdminHomeEnded.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="AdminController\AdminHomeNotStarted.Designer.vb">
       <DependentUpon>AdminHomeNotStarted.vb</DependentUpon>
     </Compile>
@@ -156,6 +162,12 @@
       <DependentUpon>CandidateList1.vb</DependentUpon>
     </Compile>
     <Compile Include="Components\CandidateList1.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ResultItem.Designer.vb">
+      <DependentUpon>ResultItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ResultItem.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Modal\AddCandidate.Designer.vb">
@@ -288,6 +300,12 @@
     <Compile Include="Modal\ModalPopup.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Modal\UploadDatabase.Designer.vb">
+      <DependentUpon>UploadDatabase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modal\UploadDatabase.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Modal\ValidationError.Designer.vb">
       <DependentUpon>ValidationError.vb</DependentUpon>
     </Compile>
@@ -383,6 +401,9 @@
     <EmbeddedResource Include="AdminController\AddAdmin.resx">
       <DependentUpon>AddAdmin.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\AdminHomeEnded.resx">
+      <DependentUpon>AdminHomeEnded.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminController\AdminHomeNotStarted.resx">
       <DependentUpon>AdminHomeNotStarted.vb</DependentUpon>
     </EmbeddedResource>
@@ -391,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CandidateList1.resx">
       <DependentUpon>CandidateList1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ResultItem.resx">
+      <DependentUpon>ResultItem.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\AddCandidate.resx">
       <DependentUpon>AddCandidate.vb</DependentUpon>

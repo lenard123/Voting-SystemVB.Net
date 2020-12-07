@@ -374,7 +374,7 @@ Partial Class AdminPanel
         Me.LabelCountdown.AutoSize = True
         Me.LabelCountdown.Font = New System.Drawing.Font("Century Gothic", 14.0!, System.Drawing.FontStyle.Bold)
         Me.LabelCountdown.ForeColor = System.Drawing.Color.Black
-        Me.LabelCountdown.Location = New System.Drawing.Point(361, 100)
+        Me.LabelCountdown.Location = New System.Drawing.Point(361, 99)
         Me.LabelCountdown.Name = "LabelCountdown"
         Me.LabelCountdown.Size = New System.Drawing.Size(0, 23)
         Me.LabelCountdown.TabIndex = 1

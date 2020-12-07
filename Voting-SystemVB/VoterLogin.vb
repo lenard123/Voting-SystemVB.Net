@@ -90,7 +90,8 @@
         End If
     End Sub
     Private Sub BackgroundWorkerLogin_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerLogin.DoWork
-        If Election.GetCurrentElectionF().Status = Election.STATUS_NOT_STARTED Then
+        Election.GetCurrentElectionF()
+        If Election.HasNotStarted() Then
             e.Result = WorkerResult.ELECTION_NOT_STARTED
         Else
             Dim Result = Student.Find(TextStudentId.Text)

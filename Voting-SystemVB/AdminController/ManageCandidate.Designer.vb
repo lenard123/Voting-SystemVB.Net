@@ -58,6 +58,7 @@ Partial Class ManageCandidate
         Me.ButtonPresident.ShadowDecoration.Parent = Me.ButtonPresident
         Me.ButtonPresident.Size = New System.Drawing.Size(102, 28)
         Me.ButtonPresident.TabIndex = 0
+        Me.ButtonPresident.Tag = "1"
         Me.ButtonPresident.Text = "President"
         '
         'ButtonVPresident
@@ -78,6 +79,7 @@ Partial Class ManageCandidate
         Me.ButtonVPresident.ShadowDecoration.Parent = Me.ButtonVPresident
         Me.ButtonVPresident.Size = New System.Drawing.Size(102, 28)
         Me.ButtonVPresident.TabIndex = 0
+        Me.ButtonVPresident.Tag = "2"
         Me.ButtonVPresident.Text = "Vice President"
         '
         'ButtonSecretary
@@ -98,6 +100,7 @@ Partial Class ManageCandidate
         Me.ButtonSecretary.ShadowDecoration.Parent = Me.ButtonSecretary
         Me.ButtonSecretary.Size = New System.Drawing.Size(102, 28)
         Me.ButtonSecretary.TabIndex = 0
+        Me.ButtonSecretary.Tag = "3"
         Me.ButtonSecretary.Text = "Secretary"
         '
         'ButtonTreasurer
@@ -118,6 +121,7 @@ Partial Class ManageCandidate
         Me.ButtonTreasurer.ShadowDecoration.Parent = Me.ButtonTreasurer
         Me.ButtonTreasurer.Size = New System.Drawing.Size(102, 28)
         Me.ButtonTreasurer.TabIndex = 0
+        Me.ButtonTreasurer.Tag = "4"
         Me.ButtonTreasurer.Text = "Treasurer"
         '
         'ButtonAuditor
@@ -138,6 +142,7 @@ Partial Class ManageCandidate
         Me.ButtonAuditor.ShadowDecoration.Parent = Me.ButtonAuditor
         Me.ButtonAuditor.Size = New System.Drawing.Size(102, 28)
         Me.ButtonAuditor.TabIndex = 0
+        Me.ButtonAuditor.Tag = "5"
         Me.ButtonAuditor.Text = "Auditor"
         '
         'ButtonPRO
@@ -158,6 +163,7 @@ Partial Class ManageCandidate
         Me.ButtonPRO.ShadowDecoration.Parent = Me.ButtonPRO
         Me.ButtonPRO.Size = New System.Drawing.Size(102, 28)
         Me.ButtonPRO.TabIndex = 0
+        Me.ButtonPRO.Tag = "6"
         Me.ButtonPRO.Text = "P.R.O."
         '
         'FlowLayoutPanel2

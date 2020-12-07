@@ -4,14 +4,13 @@ Public Class AdminPanel
 
     Implements MainControl
 
-    Private Shared Instance As AdminPanel
 
-    Private ElectionStatus As Integer
     Public ActivePage As Guna2Button
     Private isCountDownStart As Boolean = False
     Private RemainingTime As Long
 
     'Get Instance
+    Private Shared Instance As AdminPanel
     Public Shared Function GetInstance() As AdminPanel
         If IsNothing(Instance) Then
             Instance = New AdminPanel
@@ -23,8 +22,9 @@ Public Class AdminPanel
     'Load Control
     Public Sub LoadControl(content As Control)
         MainContent.Controls.Clear()
-        content.Dock = DockStyle.Fill
         MainContent.Controls.Add(content)
+        content.Dock = DockStyle.Fill
+        'Trigger Refresh Method
         If TypeOf content Is MainControl Then
             DirectCast(content, MainControl).RefreshControl()
         End If
@@ -34,8 +34,10 @@ Public Class AdminPanel
     Public Function AdminHomeControl() As Control
         If Election.HasNotStarted() Then
             Return AdminHomeNotStarted.GetInstance()
-        Else 'If Election.IsOngoing() Then
+        ElseIf Election.IsOngoing() Then
             Return AdminHomeStarted.GetInstance()
+        ElseIf Election.HasEnded() Then
+            Return AdminHomeEnded.GetInstance()
         End If
         Return Nothing
     End Function
@@ -64,6 +66,8 @@ Public Class AdminPanel
     'Logout Button
     Private Sub ButtonLogout_Click(sender As Object, e As EventArgs) Handles ButtonLogout.Click
         Admin.SetCurrentUser(Nothing)
+        CountDownTimer.Stop()
+        isCountDownStart = False
         Main.LoadControl(AdminLogin.GetInstance())
     End Sub
 
@@ -91,8 +95,16 @@ Public Class AdminPanel
     Private Sub CountDownTimer_Tick(sender As Object, e As EventArgs) Handles CountDownTimer.Tick
         LabelCountdown.Text = RemainingTimeToString(RemainingTime)
         RemainingTime -= 1
+
+        If RemainingTime < 0 Then
+            Alert.ShowAlert("Election has finally ended", Alert.AlertType.Info)
+            ActivePage = Nothing 'To force the Panel to reload the Home Ended
+            Admin_Panel_Reload()
+        End If
+
     End Sub
 
+    'Background Worker Refresh Admin Panel
     Public Sub Admin_Panel_Reload() Implements MainControl.RefreshControl
         If IsNothing(Admin.GetCurrentUser()) Then
             Alert.ShowAlert("Login first", Alert.AlertType.Info)
@@ -101,19 +113,26 @@ Public Class AdminPanel
             BackgroundWorkerRefresh.RunWorkerAsync()
         End If
     End Sub
-
     Private Sub BackgroundWorkerRefresh_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerRefresh.DoWork
-        ElectionStatus = Election.GetCurrentElectionF().Status
+        Election.GetCurrentElectionF()
+        Admin.RefreshCurrentUser()
     End Sub
     Private Sub BackgroundWorkerRefresh_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerRefresh.RunWorkerCompleted
         LabelFullname.Text = Admin.GetCurrentUser().Fullname
         ShowElectionStatus()
 
-        If Election.IsOngoing And Not isCountDownStart Then
+        If Election.HasNotStarted() Then
+            ElectionStartedLabel1.Visible = False
+        ElseIf Election.IsOngoing() And Not isCountDownStart Then
             RemainingTime = DateDiff(DateInterval.Second, Date.Now(), Election.GetCurrentElection().Ended)
             ElectionStartedLabel1.Visible = True
             CountDownTimer.Start()
             isCountDownStart = True
+        ElseIf Election.HasEnded() Then
+            ElectionStartedLabel1.Visible = False
+            If isCountDownStart Then
+                CountDownTimer.Stop()
+            End If
         End If
 
         ButtonHome.PerformClick()

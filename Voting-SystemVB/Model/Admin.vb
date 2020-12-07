@@ -118,4 +118,12 @@ Public Class Admin
     Public Shared Sub SetCurrentUser(CUser As Admin)
         _CurrentUser = CUser
     End Sub
+
+    'Refresh Current User
+    Public Shared Function RefreshCurrentUser() As Admin
+        If Not IsNothing(_CurrentUser) Then
+            _CurrentUser = Admin.Find(_CurrentUser.Username)
+        End If
+        Return _CurrentUser
+    End Function
 End Class
