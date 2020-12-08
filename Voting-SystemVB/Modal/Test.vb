@@ -1,6 +1,13 @@
 ﻿Public Class Test
 
 
-    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        UploadDatabase.ShowPopup()
+    End Sub
+
+    Private Sub Test_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Election.GetCurrentElectionF()
+        Dim x = GetDBSchema(DatabaseType.ACCDB, GetConnection())
+        Debug.WriteLine(x)
     End Sub
 End Class

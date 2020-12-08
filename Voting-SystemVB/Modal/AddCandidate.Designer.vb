@@ -36,10 +36,10 @@ Partial Class AddCandidate
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.BackgroundWorkerSave = New System.ComponentModel.BackgroundWorker()
         Me.Guna2GroupBox1 = New Guna.UI2.WinForms.Guna2GroupBox()
-        Me.TextVoter = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.TextTagline = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.TextFullname = New Guna.UI2.WinForms.Guna2TextBox()
         Me.TextCYS = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TextFullname = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TextTagline = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TextVoter = New Guna.UI2.WinForms.Guna2TextBox()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -238,53 +238,30 @@ Partial Class AddCandidate
         Me.Guna2GroupBox1.TabIndex = 20
         Me.Guna2GroupBox1.Text = "Register Candidate"
         '
-        'TextVoter
+        'TextCYS
         '
-        Me.TextVoter.BorderRadius = 5
-        Me.TextVoter.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TextVoter.DefaultText = ""
-        Me.TextVoter.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TextVoter.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TextVoter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TextVoter.DisabledState.Parent = Me.TextVoter
-        Me.TextVoter.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TextVoter.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TextVoter.FocusedState.Parent = Me.TextVoter
-        Me.TextVoter.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TextVoter.HoverState.Parent = Me.TextVoter
-        Me.TextVoter.Location = New System.Drawing.Point(192, 106)
-        Me.TextVoter.Margin = New System.Windows.Forms.Padding(6, 7, 6, 7)
-        Me.TextVoter.Name = "TextVoter"
-        Me.TextVoter.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TextVoter.PlaceholderText = "Candidate must be a registered voters"
-        Me.TextVoter.SelectedText = ""
-        Me.TextVoter.ShadowDecoration.Parent = Me.TextVoter
-        Me.TextVoter.Size = New System.Drawing.Size(450, 37)
-        Me.TextVoter.TabIndex = 20
-        '
-        'TextTagline
-        '
-        Me.TextTagline.BorderRadius = 5
-        Me.TextTagline.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TextTagline.DefaultText = ""
-        Me.TextTagline.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TextTagline.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TextTagline.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TextTagline.DisabledState.Parent = Me.TextTagline
-        Me.TextTagline.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TextTagline.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TextTagline.FocusedState.Parent = Me.TextTagline
-        Me.TextTagline.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TextTagline.HoverState.Parent = Me.TextTagline
-        Me.TextTagline.Location = New System.Drawing.Point(192, 426)
-        Me.TextTagline.Margin = New System.Windows.Forms.Padding(6, 7, 6, 7)
-        Me.TextTagline.Name = "TextTagline"
-        Me.TextTagline.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TextTagline.PlaceholderText = ""
-        Me.TextTagline.SelectedText = ""
-        Me.TextTagline.ShadowDecoration.Parent = Me.TextTagline
-        Me.TextTagline.Size = New System.Drawing.Size(450, 36)
-        Me.TextTagline.TabIndex = 21
+        Me.TextCYS.BorderRadius = 5
+        Me.TextCYS.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TextCYS.DefaultText = ""
+        Me.TextCYS.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TextCYS.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TextCYS.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TextCYS.DisabledState.Parent = Me.TextCYS
+        Me.TextCYS.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TextCYS.Enabled = False
+        Me.TextCYS.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TextCYS.FocusedState.Parent = Me.TextCYS
+        Me.TextCYS.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TextCYS.HoverState.Parent = Me.TextCYS
+        Me.TextCYS.Location = New System.Drawing.Point(192, 273)
+        Me.TextCYS.Margin = New System.Windows.Forms.Padding(6, 7, 6, 7)
+        Me.TextCYS.Name = "TextCYS"
+        Me.TextCYS.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TextCYS.PlaceholderText = ""
+        Me.TextCYS.SelectedText = ""
+        Me.TextCYS.ShadowDecoration.Parent = Me.TextCYS
+        Me.TextCYS.Size = New System.Drawing.Size(450, 39)
+        Me.TextCYS.TabIndex = 23
         '
         'TextFullname
         '
@@ -311,30 +288,53 @@ Partial Class AddCandidate
         Me.TextFullname.Size = New System.Drawing.Size(450, 39)
         Me.TextFullname.TabIndex = 22
         '
-        'TextCYS
+        'TextTagline
         '
-        Me.TextCYS.BorderRadius = 5
-        Me.TextCYS.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TextCYS.DefaultText = ""
-        Me.TextCYS.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TextCYS.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TextCYS.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TextCYS.DisabledState.Parent = Me.TextCYS
-        Me.TextCYS.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TextCYS.Enabled = False
-        Me.TextCYS.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TextCYS.FocusedState.Parent = Me.TextCYS
-        Me.TextCYS.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TextCYS.HoverState.Parent = Me.TextCYS
-        Me.TextCYS.Location = New System.Drawing.Point(192, 273)
-        Me.TextCYS.Margin = New System.Windows.Forms.Padding(6, 7, 6, 7)
-        Me.TextCYS.Name = "TextCYS"
-        Me.TextCYS.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TextCYS.PlaceholderText = ""
-        Me.TextCYS.SelectedText = ""
-        Me.TextCYS.ShadowDecoration.Parent = Me.TextCYS
-        Me.TextCYS.Size = New System.Drawing.Size(450, 39)
-        Me.TextCYS.TabIndex = 23
+        Me.TextTagline.BorderRadius = 5
+        Me.TextTagline.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TextTagline.DefaultText = ""
+        Me.TextTagline.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TextTagline.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TextTagline.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TextTagline.DisabledState.Parent = Me.TextTagline
+        Me.TextTagline.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TextTagline.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TextTagline.FocusedState.Parent = Me.TextTagline
+        Me.TextTagline.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TextTagline.HoverState.Parent = Me.TextTagline
+        Me.TextTagline.Location = New System.Drawing.Point(192, 426)
+        Me.TextTagline.Margin = New System.Windows.Forms.Padding(6, 7, 6, 7)
+        Me.TextTagline.Name = "TextTagline"
+        Me.TextTagline.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TextTagline.PlaceholderText = ""
+        Me.TextTagline.SelectedText = ""
+        Me.TextTagline.ShadowDecoration.Parent = Me.TextTagline
+        Me.TextTagline.Size = New System.Drawing.Size(450, 36)
+        Me.TextTagline.TabIndex = 21
+        '
+        'TextVoter
+        '
+        Me.TextVoter.BorderRadius = 5
+        Me.TextVoter.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TextVoter.DefaultText = ""
+        Me.TextVoter.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TextVoter.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TextVoter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TextVoter.DisabledState.Parent = Me.TextVoter
+        Me.TextVoter.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TextVoter.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TextVoter.FocusedState.Parent = Me.TextVoter
+        Me.TextVoter.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TextVoter.HoverState.Parent = Me.TextVoter
+        Me.TextVoter.Location = New System.Drawing.Point(192, 106)
+        Me.TextVoter.Margin = New System.Windows.Forms.Padding(6, 7, 6, 7)
+        Me.TextVoter.Name = "TextVoter"
+        Me.TextVoter.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TextVoter.PlaceholderText = "Candidate must be a registered voters"
+        Me.TextVoter.SelectedText = ""
+        Me.TextVoter.ShadowDecoration.Parent = Me.TextVoter
+        Me.TextVoter.Size = New System.Drawing.Size(450, 37)
+        Me.TextVoter.TabIndex = 20
         '
         'AddCandidate
         '

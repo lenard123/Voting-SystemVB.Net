@@ -298,7 +298,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Modal\ModalPopup.vb">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modal\UploadDatabase.Designer.vb">
       <DependentUpon>UploadDatabase.vb</DependentUpon>
@@ -487,6 +487,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\ErrorResult.resx">
       <DependentUpon>ErrorResult.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\UploadDatabase.resx">
+      <DependentUpon>UploadDatabase.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\ValidationError.resx">
       <DependentUpon>ValidationError.vb</DependentUpon>

@@ -78,4 +78,7 @@
                                                     End Function)
     End Sub
 
+    Private Sub ButtonImport_Click(sender As Object, e As EventArgs) Handles ButtonImport.Click
+        UploadDatabase.ShowPopup()
+    End Sub
 End Class

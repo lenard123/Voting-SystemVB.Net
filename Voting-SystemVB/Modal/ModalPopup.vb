@@ -34,7 +34,14 @@
         frm.Size = Content.Size()
         frm.Controls.Add(Content)
         frm.StartPosition = FormStartPosition.CenterScreen
+        AddHandler frm.FormClosed, AddressOf OnFrmClose
         frm.ShowDialog()
+    End Sub
+
+    Sub OnFrmClose()
+        Me.Dispose()
+        Main.Instance.Activate()
+        GC.Collect()
     End Sub
 
     Public Sub ChangeContent(Content As Control)
@@ -45,9 +52,6 @@
 
     Public Sub ClosePopup()
         frm.Dispose()
-        Me.Dispose()
-        Main.Instance.Activate()
-        GC.Collect()
     End Sub
 
 End Class

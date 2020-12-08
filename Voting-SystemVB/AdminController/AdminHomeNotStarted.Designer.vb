@@ -59,7 +59,7 @@ Partial Class AdminHomeNotStarted
         Me.Guna2ShadowPanel6 = New Guna.UI2.WinForms.Guna2ShadowPanel()
         Me.Guna2GradientPanel2 = New Guna.UI2.WinForms.Guna2GradientPanel()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.Guna2GradientButton2 = New Guna.UI2.WinForms.Guna2GradientButton()
+        Me.ButtonImport = New Guna.UI2.WinForms.Guna2GradientButton()
         Me.FontAwesome6 = New Voting_SystemVB.FontAwesome()
         Me.Guna2WinProgressIndicator1 = New Guna.UI2.WinForms.Guna2WinProgressIndicator()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -525,7 +525,7 @@ Partial Class AdminHomeNotStarted
         'Guna2GradientPanel2
         '
         Me.Guna2GradientPanel2.Controls.Add(Me.Label11)
-        Me.Guna2GradientPanel2.Controls.Add(Me.Guna2GradientButton2)
+        Me.Guna2GradientPanel2.Controls.Add(Me.ButtonImport)
         Me.Guna2GradientPanel2.Controls.Add(Me.FontAwesome6)
         Me.Guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(156, Byte), Integer), CType(CType(167, Byte), Integer))
         Me.Guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(225, Byte), Integer))
@@ -546,22 +546,22 @@ Partial Class AdminHomeNotStarted
         Me.Label11.TabIndex = 4
         Me.Label11.Text = "Import " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Student Data"
         '
-        'Guna2GradientButton2
+        'ButtonImport
         '
-        Me.Guna2GradientButton2.Animated = True
-        Me.Guna2GradientButton2.CheckedState.Parent = Me.Guna2GradientButton2
-        Me.Guna2GradientButton2.CustomImages.Parent = Me.Guna2GradientButton2
-        Me.Guna2GradientButton2.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Guna2GradientButton2.FillColor2 = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Guna2GradientButton2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2GradientButton2.ForeColor = System.Drawing.Color.White
-        Me.Guna2GradientButton2.HoverState.Parent = Me.Guna2GradientButton2
-        Me.Guna2GradientButton2.Location = New System.Drawing.Point(0, 87)
-        Me.Guna2GradientButton2.Name = "Guna2GradientButton2"
-        Me.Guna2GradientButton2.ShadowDecoration.Parent = Me.Guna2GradientButton2
-        Me.Guna2GradientButton2.Size = New System.Drawing.Size(269, 32)
-        Me.Guna2GradientButton2.TabIndex = 1
-        Me.Guna2GradientButton2.Text = "UPLOAD"
+        Me.ButtonImport.Animated = True
+        Me.ButtonImport.CheckedState.Parent = Me.ButtonImport
+        Me.ButtonImport.CustomImages.Parent = Me.ButtonImport
+        Me.ButtonImport.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.ButtonImport.FillColor2 = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.ButtonImport.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonImport.ForeColor = System.Drawing.Color.White
+        Me.ButtonImport.HoverState.Parent = Me.ButtonImport
+        Me.ButtonImport.Location = New System.Drawing.Point(0, 87)
+        Me.ButtonImport.Name = "ButtonImport"
+        Me.ButtonImport.ShadowDecoration.Parent = Me.ButtonImport
+        Me.ButtonImport.Size = New System.Drawing.Size(269, 32)
+        Me.ButtonImport.TabIndex = 1
+        Me.ButtonImport.Text = "UPLOAD"
         '
         'FontAwesome6
         '
@@ -685,7 +685,7 @@ Partial Class AdminHomeNotStarted
     Friend WithEvents Guna2ShadowPanel6 As Guna.UI2.WinForms.Guna2ShadowPanel
     Friend WithEvents Guna2GradientPanel2 As Guna.UI2.WinForms.Guna2GradientPanel
     Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents Guna2GradientButton2 As Guna.UI2.WinForms.Guna2GradientButton
+    Friend WithEvents ButtonImport As Guna.UI2.WinForms.Guna2GradientButton
     Friend WithEvents FontAwesome6 As Voting_SystemVB.FontAwesome
     Friend WithEvents Guna2WinProgressIndicator1 As Guna.UI2.WinForms.Guna2WinProgressIndicator
     Friend WithEvents Label12 As System.Windows.Forms.Label
