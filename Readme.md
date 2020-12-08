@@ -32,6 +32,7 @@
 - Add Admin
 - View Vote Count (Voter Panel)
 
+
 ## Contributors
 - Russel Tajada
 - Lenard Mangay-ayam
