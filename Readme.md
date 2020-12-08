@@ -21,15 +21,16 @@
 - View Candidate(Voter Panel)
 - Admin Home
 - Vote
+- View Final Result
+- Display Winner
+- Import database
 
 ### Unfinish
 - View Previous Election
 - Update Account
+- Change Password
 - Add Admin
 - View Vote Count (Voter Panel)
-- View Final Result
-- Display Winner
-- Import database
 
 ## Contributors
 - Russel Tajada
