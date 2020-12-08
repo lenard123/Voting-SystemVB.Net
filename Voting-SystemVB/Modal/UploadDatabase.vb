@@ -147,6 +147,7 @@ Public Class UploadDatabase
     End Sub
 
     Private Sub ButtonImport_Click(sender As Object, e As EventArgs) Handles ButtonImport.Click
+        If BackgroundWorkerUpload.IsBusy Then Return
         If ValidateFields() Then
             KEEP_OLD_DATA = ButtonIgnore.Checked
 
@@ -179,6 +180,7 @@ Public Class UploadDatabase
     End Function
 
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+        If BackgroundWorkerUpload.IsBusy Then Return
         Popup.ClosePopup()
     End Sub
 
