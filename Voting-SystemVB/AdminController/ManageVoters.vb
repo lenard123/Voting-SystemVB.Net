@@ -91,6 +91,8 @@ Public Class ManageVoters
         If Election.HasNotStarted Then
             Dim update As New UpdateVoter(FilteredResultSet(e.RowIndex))
             update.ShowPopup()
+        Else
+            VotersInfo.ShowPopup(FilteredResultSet(e.RowIndex))
         End If
     End Sub
 

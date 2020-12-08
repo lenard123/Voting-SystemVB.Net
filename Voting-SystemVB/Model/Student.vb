@@ -100,6 +100,12 @@ Public Class Student
             _Section = value
         End Set
     End Property
+    Public ReadOnly Property Password As String
+        Get
+            Return _Password
+        End Get
+    End Property
+
 
     'Instatiation
     Public Sub New()

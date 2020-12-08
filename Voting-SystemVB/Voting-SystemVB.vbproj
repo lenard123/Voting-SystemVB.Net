@@ -312,6 +312,12 @@
     <Compile Include="Modal\ValidationError.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Modal\VotersInfo.Designer.vb">
+      <DependentUpon>VotersInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modal\VotersInfo.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Model\Admin.vb" />
     <Compile Include="Model\Candidate.vb" />
     <Compile Include="Model\DBHelper.vb" />
@@ -493,6 +499,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\ValidationError.resx">
       <DependentUpon>ValidationError.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\VotersInfo.resx">
+      <DependentUpon>VotersInfo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
