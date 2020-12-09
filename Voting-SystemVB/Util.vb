@@ -142,12 +142,13 @@ Module Util
         Return bm
     End Function
 
-    Public Function Validator(ByVal Name As String, ByRef Control As Guna2ComboBox, ByRef ErrorMessage As Label, ParamArray Rules() As String) As Boolean
-        Return Validator(Name, Control.BorderColor, Control.Text, Control.Text.Length, ErrorMessage, Rules)
+    Public Function Validator(ByVal Name As String, ByRef Control As Guna2TextBox, ByRef ErrorMessage As Label, ParamArray Rules() As String) As Boolean
+        Control.Text = Control.Text.Trim()
+        Return Validator(Name, Control.BorderColor, Control.Text, Control.TextLength, ErrorMessage, Rules)
     End Function
 
-    Public Function Validator(ByVal Name As String, ByRef Control As Guna2TextBox, ByRef ErrorMessage As Label, ParamArray Rules() As String) As Boolean
-        Return Validator(Name, Control.BorderColor, Control.Text, Control.TextLength, ErrorMessage, Rules)
+    Public Function Validator(ByVal Name As String, ByRef Control As Guna2ComboBox, ByRef ErrorMessage As Label, ParamArray Rules() As String) As Boolean
+        Return Validator(Name, Control.BorderColor, Control.Text, Control.Text.Length, ErrorMessage, Rules)
     End Function
 
     Public Function Validator(ByVal Name As String, ByRef BorderColor As Color, ByVal txt As String, ByVal len As Integer, ByVal ErrorMessage As Label, ParamArray Rules() As String) As Boolean

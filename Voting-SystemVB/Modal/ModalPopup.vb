@@ -29,7 +29,6 @@
         Me.Show()
         Me.Location = Main.Instance.Location
         frm = New Form
-        frm.BackColor = Color.Black
         frm.Size = Main.Instance.Size
         frm.Owner = Main.Instance
         frm.ShowInTaskbar = False
