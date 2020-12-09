@@ -5,7 +5,7 @@
     Public Sub New(_Candidate As Candidate)
         ' This call is required by the designer.
         InitializeComponent()
-
+        SetStyle(ControlStyles.AllPaintingInWmPaint Or ControlStyles.OptimizedDoubleBuffer Or ControlStyles.UserPaint, True)
         DoubleBuffered = True
 
         ' Add any initialization after the InitializeComponent() call.

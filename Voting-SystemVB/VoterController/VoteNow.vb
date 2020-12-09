@@ -39,8 +39,8 @@ Public Class VoteNow
     Private Sub ButtonSubmit_Click(sender As Object, e As EventArgs) Handles ButtonSubmit.Click
         If Validator() Then
             If MessageBox.Show("Please Note: You can not undone once submitted.", "Confirm", MessageBoxButtons.OKCancel) = DialogResult.OK Then
-                ButtonSubmit.Enabled = False
-                ButtonClear.Enabled = False
+                'ButtonSubmit.Enabled = False
+                'ButtonClear.Enabled = False
                 LoadingAlert = Alert.ShowAlert("Submitting Vote, please wait...", Alert.AlertType.Info, False)
                 BackgroundWorkerSubmitVote.RunWorkerAsync(GetVotes())
             End If
