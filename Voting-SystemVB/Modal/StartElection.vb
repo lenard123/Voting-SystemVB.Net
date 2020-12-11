@@ -77,19 +77,24 @@
     End Sub
 
     Private Sub BackgroundWorkerStartElection_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerStartElection.DoWork
-        e.Result = Election.StartElection(Title, EndDate)
-        Election.GetCurrentElectionF()
+        Try
+            Election.StartElection(Title, EndDate)
+        Catch ex As Exception
+            e.Result = ex
+        End Try
     End Sub
 
     Private Sub BackgroundWorkerStartElection_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerStartElection.RunWorkerCompleted
         StopLoading()
-        If e.Result Then
+
+        If TypeOf e.Result Is Exception Then
+            Alert.ShowAlert(DirectCast(e.Result, Exception).Message, Alert.AlertType.Error)
+        Else
             Popup.ClosePopup()
             AdminPanel.GetInstance().ActivePage = Nothing
             Alert.ShowAlert("Election has started Successfully", Alert.AlertType.Success)
             AdminPanel.GetInstance().Admin_Panel_Reload()
-        Else
-            Alert.ShowAlert("An error occurred", Alert.AlertType.Error)
         End If
+
     End Sub
 End Class

@@ -99,7 +99,7 @@ Public Class AdminHomeEnded
     End Sub
     Private Sub BackgroundWorkerFetchResult_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerFetchResult.DoWork
         'Fetch All Candidates
-        AllCandidates = Candidate.GetAll2()
+        AllCandidates = Candidate.GetAll()
 
         'Fetch Parties
         Parties = Party.GetAll()

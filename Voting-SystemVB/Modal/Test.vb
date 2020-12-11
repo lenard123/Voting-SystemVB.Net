@@ -6,7 +6,7 @@
     End Sub
 
     Private Sub Test_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Election.GetCurrentElectionF()
+        Election.GetCurrentElectionRefresh()
         Dim x = GetDBSchema(DatabaseType.ACCDB, GetConnection())
         Debug.WriteLine(x)
     End Sub

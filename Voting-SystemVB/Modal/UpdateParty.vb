@@ -62,7 +62,7 @@ Public Class UpdateParty
     End Sub
 
     Private Sub BackgroundWorkerFetchMembers_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerFetchMembers.DoWork
-        Candidates = Candidate.GetAll2()
+        Candidates = Candidate.GetAll()
     End Sub
 
     Private Sub BackgroundWorkerFetchMembers_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerFetchMembers.RunWorkerCompleted
@@ -136,17 +136,22 @@ Public Class UpdateParty
     End Sub
 
     Private Sub BackgroundWorkerUpdate_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerUpdate.DoWork
-        e.Result = sParty.Update(e.Argument)
+        Try
+            sParty.Update(e.Argument)
+        Catch ex As Exception
+            e.Result = ex
+        End Try
     End Sub
 
     Private Sub BackgroundWorkerUpdate_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerUpdate.RunWorkerCompleted
         StopLoading()
-        If e.Result Then
+
+        If TypeOf e.Result Is Exception Then
+            Alert.ShowAlert(DirectCast(e.Result, Exception).Message, Alert.AlertType.Error)
+        Else
             Alert.ShowAlert("Party Update Successfully", Alert.AlertType.Success)
             ManageParty.GetInstance().ButtonRefresh.PerformClick()
             Popup.ClosePopup()
-        Else
-            Alert.ShowAlert("An error occured", Alert.AlertType.Error)
         End If
     End Sub
 End Class

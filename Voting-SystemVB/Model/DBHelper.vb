@@ -49,13 +49,12 @@ Module DBHelper
         Return Result
     End Function
 
-    Public Function ConvertToParam(Type As OleDbType, Value As Object, Length As Integer) As OleDbParameter
-        Dim Param As OleDbParameter = New OleDbParameter()
-        Param.OleDbType = Type
-        Param.Value = Value
-        Param.Size = Length
-        Return Param
-    End Function
+    Public Sub BindParameters(Cmd As OleDbCommand, ParamArray params() As Object)
+        Cmd.Parameters.Clear()
+        For i = 0 To params.Length - 1
+            Cmd.Parameters.AddWithValue("p" & i, params(i))
+        Next
+    End Sub
 
     Public Function TestConnection() As Boolean
         Try

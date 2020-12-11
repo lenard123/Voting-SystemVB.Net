@@ -170,6 +170,7 @@
     <Compile Include="Components\ResultItem.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="CustomExceptions.vb" />
     <Compile Include="Modal\AddCandidate.Designer.vb">
       <DependentUpon>AddCandidate.vb</DependentUpon>
     </Compile>
@@ -324,6 +325,7 @@
     <Compile Include="Model\Election.vb" />
     <Compile Include="Model\Party.vb" />
     <Compile Include="Model\Position.vb" />
+    <Compile Include="Model\Privilege.vb" />
     <Compile Include="Model\Student.vb" />
     <Compile Include="Model\Votes.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

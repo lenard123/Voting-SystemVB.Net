@@ -67,7 +67,7 @@ Public Class ManageCandidate
         BackgroundWorkerRefresh.RunWorkerAsync()
     End Sub
     Private Sub BackgroundWorkerRefresh_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerRefresh.DoWork
-        e.Result = Candidate.GetAll2()
+        e.Result = Candidate.GetAll()
     End Sub
     Private Sub BackgroundWorkerRefresh_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerRefresh.RunWorkerCompleted
         Candidates = e.Result

@@ -16,19 +16,13 @@
     End Function
 
     'Goto Voters Login
-    Private Sub ButtonVoter_Click(sender As Object, e As EventArgs) Handles ButtonVoter.Click
+    Private Sub ButtonVoter_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
         Main.LoadControl(VoterLogin.GetInstance())
     End Sub
 
     'Show/Hide Password
-    Private Sub ButtonVisibility_Click(sender As Object, e As EventArgs) Handles ButtonVisibility.Click
-        If (TextPassword.UseSystemPasswordChar) Then
-            ButtonVisibility.Image = My.Resources.hide
-            TextPassword.UseSystemPasswordChar = False
-        Else
-            ButtonVisibility.Image = My.Resources.show
-            TextPassword.UseSystemPasswordChar = True
-        End If
+    Private Sub ButtonVisibility_Click(sender As Object, e As EventArgs) Handles Guna2Button1.CheckedChanged
+        TextPassword.UseSystemPasswordChar = Not TextPassword.UseSystemPasswordChar
     End Sub
 
     'Validate Inputs
@@ -73,7 +67,7 @@
         INVALID_PASSWORD
         SUCCESS
     End Enum
-    Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
+    Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         If ValidateForm() Then
             If Not BackgroundWorkerLogin.IsBusy Then
                 LoadingAlert = Alert.ShowAlert("Logging in, please wait", Alert.AlertType.Info, False)
@@ -83,17 +77,16 @@
     End Sub
 
     Private Sub BackgroundWorkerLogin_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerLogin.DoWork
-        Dim Result = Admin.Find(TextUsername.Text)
-        If IsNothing(Result) Then
+        Try
+            Admin.Login(TextUsername.Text, TextPassword.Text)
+            e.Result = WorkerResult.SUCCESS
+
+        Catch ex As AdminNotExistsException
             e.Result = WorkerResult.INVALID_USERNAME
-        Else
-            If Not Result.ComparePassword(TextPassword.Text) Then
-                e.Result = WorkerResult.INVALID_PASSWORD
-            Else
-                e.Result = WorkerResult.SUCCESS
-                Admin.SetCurrentUser(Result)
-            End If
-        End If
+
+        Catch ex As InvalidPasswordException
+            e.Result = WorkerResult.INVALID_PASSWORD
+        End Try
     End Sub
 
     Private Sub BackgroundWorkerLogin_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerLogin.RunWorkerCompleted

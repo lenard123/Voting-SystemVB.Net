@@ -108,10 +108,10 @@ Partial Class UpdateVoter
         Me.Guna2Panel1.Controls.Add(Me.TextStudentID)
         Me.Guna2Panel1.Controls.Add(Me.Guna2HtmlLabel2)
         Me.Guna2Panel1.FillColor = System.Drawing.Color.Transparent
-        Me.Guna2Panel1.Location = New System.Drawing.Point(3, 3)
+        Me.Guna2Panel1.Location = New System.Drawing.Point(3, 0)
         Me.Guna2Panel1.Name = "Guna2Panel1"
         Me.Guna2Panel1.ShadowDecoration.Parent = Me.Guna2Panel1
-        Me.Guna2Panel1.Size = New System.Drawing.Size(590, 654)
+        Me.Guna2Panel1.Size = New System.Drawing.Size(590, 657)
         Me.Guna2Panel1.TabIndex = 0
         '
         'Guna2HtmlLabel7
@@ -141,7 +141,7 @@ Partial Class UpdateVoter
         Me.CBSection.FormattingEnabled = True
         Me.CBSection.HoverState.Parent = Me.CBSection
         Me.CBSection.ItemHeight = 30
-        Me.CBSection.Items.AddRange(New Object() {"A", "B", "C", "D"})
+        Me.CBSection.Items.AddRange(New Object() {"A", "B", "C", "D", "E", "F"})
         Me.CBSection.ItemsAppearance.Parent = Me.CBSection
         Me.CBSection.Location = New System.Drawing.Point(22, 600)
         Me.CBSection.Name = "CBSection"
@@ -462,12 +462,11 @@ Partial Class UpdateVoter
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonUpdateCandidate.Animated = True
         Me.ButtonUpdateCandidate.BorderColor = System.Drawing.Color.Gray
-        Me.ButtonUpdateCandidate.BorderThickness = 1
         Me.ButtonUpdateCandidate.CheckedState.Parent = Me.ButtonUpdateCandidate
         Me.ButtonUpdateCandidate.CustomImages.Parent = Me.ButtonUpdateCandidate
         Me.ButtonUpdateCandidate.FillColor = System.Drawing.Color.White
         Me.ButtonUpdateCandidate.Font = New System.Drawing.Font("Segoe UI", 11.0!)
-        Me.ButtonUpdateCandidate.ForeColor = System.Drawing.Color.DarkGray
+        Me.ButtonUpdateCandidate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(248, Byte), Integer))
         Me.ButtonUpdateCandidate.HoverState.Parent = Me.ButtonUpdateCandidate
         Me.ButtonUpdateCandidate.Location = New System.Drawing.Point(298, 6)
         Me.ButtonUpdateCandidate.Name = "ButtonUpdateCandidate"
@@ -483,12 +482,11 @@ Partial Class UpdateVoter
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonRegisterCandidate.Animated = True
         Me.ButtonRegisterCandidate.BorderColor = System.Drawing.Color.Gray
-        Me.ButtonRegisterCandidate.BorderThickness = 1
         Me.ButtonRegisterCandidate.CheckedState.Parent = Me.ButtonRegisterCandidate
         Me.ButtonRegisterCandidate.CustomImages.Parent = Me.ButtonRegisterCandidate
         Me.ButtonRegisterCandidate.FillColor = System.Drawing.Color.White
         Me.ButtonRegisterCandidate.Font = New System.Drawing.Font("Segoe UI", 11.0!)
-        Me.ButtonRegisterCandidate.ForeColor = System.Drawing.Color.DarkGray
+        Me.ButtonRegisterCandidate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(248, Byte), Integer))
         Me.ButtonRegisterCandidate.HoverState.Parent = Me.ButtonRegisterCandidate
         Me.ButtonRegisterCandidate.Location = New System.Drawing.Point(151, 6)
         Me.ButtonRegisterCandidate.Name = "ButtonRegisterCandidate"

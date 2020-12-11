@@ -44,7 +44,7 @@ Public Class AdminHomeStarted
     Private Sub BackgroundWorkerInit_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerInit.DoWork
         StudentsCount = Student.CountAll()
         VotersCount = Votes.CountAllDone()
-        Candidates = Candidate.GetAll2()
+        Candidates = Candidate.GetAll()
     End Sub
     Private Sub BackgroundWorkerInit_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerInit.RunWorkerCompleted
         President.PerformClick()

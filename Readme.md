@@ -32,6 +32,19 @@
 - Add Admin
 - View Vote Count (Voter Panel)
 
+## NEED TO FIX
+Add Voter
+- ADD Courses
+
+Update Voter
+- Add Courses
+
+Update Candidate
+- Remove Candidate
+
+- Fix Validator no number
+- Make Year Level Automatic
+
 
 ## Contributors
 - Russel Tajada

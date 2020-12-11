@@ -147,6 +147,9 @@ Public Class UploadDatabase
     End Sub
 
     Private Sub ButtonImport_Click(sender As Object, e As EventArgs) Handles ButtonImport.Click
+        If Not Admin.GetCurrentUser().CanDoAll() Then
+            Alert.ShowAlert("You don't have a privilege to perform this action", Alert.AlertType.Error)
+        End If
         If BackgroundWorkerUpload.IsBusy Then Return
         If ValidateFields() Then
             KEEP_OLD_DATA = ButtonIgnore.Checked
@@ -213,6 +216,7 @@ Public Class UploadDatabase
     Private Sub BackgroundWorkerUpload_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerUpload.DoWork
         Dim args = DirectCast(e.Argument, List(Of String))
         Dim CountRows = 0
+        Dim Counter = 0
         Select Case SelectedDatabase
             Case DatabaseType.ACCDB
                 CONNECTION_ACCESS.Open()
@@ -220,10 +224,10 @@ Public Class UploadDatabase
                     Cmd.CommandText = args(0)
                     Cmd.Connection = CONNECTION_ACCESS
                     CountRows = Integer.Parse(Cmd.ExecuteScalar())
+                    BackgroundWorkerUpload.ReportProgress(Counter / CountRows * 100, "Uploading " & Counter & " out of " & CountRows & " records")
 
                     Cmd.CommandText = args(1)
                     Using Reader = Cmd.ExecuteReader()
-                        Dim Counter = 0
                         While Reader.Read()
                             Dim student_id = Reader.GetString(0)
                             Dim firstname = Reader.GetString(1)

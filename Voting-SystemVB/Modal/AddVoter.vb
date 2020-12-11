@@ -40,8 +40,7 @@
     Private Sub TextStudentID_Leave(sender As Object, e As EventArgs) Handles TextStudentID.Leave
         Dim IsValid = Validator("Student ID", TextStudentID, ErrorStudentID, "required", "exact:10")
         If (IsValid) Then
-            Dim checkStud = Student.Find(TextStudentID.Text)
-            If Not IsNothing(checkStud) Then
+            If Student.IsExists(TextStudentID.Text) Then
                 IsValid = 0
                 TextStudentID.BorderColor = Color.Red
                 ErrorStudentID.Text = "Student ID already exists in the database"
@@ -74,7 +73,11 @@
     End Sub
 
     Private Sub BackgroundWorkerAddStudent_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerAddStudent.DoWork
-        e.Result = DirectCast(e.Argument, Student).Save()
+        Try
+            DirectCast(e.Argument, Student).Save()
+        Catch ex As Exception
+            e.Result = ex
+        End Try
     End Sub
 
     Private Sub BackgroundWorkerAddStudent_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerAddStudent.RunWorkerCompleted
@@ -83,12 +86,12 @@
         ButtonSubmit.Enabled = True
         ButtonDiscard.Enabled = True
 
-        If e.Result Then
+        If TypeOf e.Result Is Exception Then
+            Alert.ShowAlert(DirectCast(e.Result, Exception).Message, Alert.AlertType.Error)
+        Else
             Alert.ShowAlert("Voter Registered Successfully.", Alert.AlertType.Success)
             Popup.ClosePopup()
             ManageVoters.GetInstance().ButtonRefresh.PerformClick()
-        Else
-            Alert.ShowAlert("An error occured while registering voter", Alert.AlertType.Error)
         End If
     End Sub
 End Class

@@ -63,10 +63,7 @@
         VotersCount = Student.CountAll()
         PreviousElectionCount = Election.CountAll() - 1
         PartiesCount = Party.CountAll()
-        CandidatesCounts = New Dictionary(Of Integer, Integer)
-        For I As Integer = 1 To 6
-            CandidatesCounts.Add(I, Candidate.Count(I))
-        Next
+        CandidatesCounts = Candidate.Count()
     End Sub
     Private Sub BackgroundWorkerFetchData_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerFetchData.RunWorkerCompleted
         StopLoading()

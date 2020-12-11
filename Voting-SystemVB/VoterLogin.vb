@@ -7,6 +7,7 @@
     Public Shared Function GetInstance() As VoterLogin
         If IsNothing(Instance) Then
             Instance = New VoterLogin()
+            Instance.DoubleBuffered = True
         End If
         Return Instance
     End Function
@@ -14,18 +15,13 @@
     Dim LoadingAlert As Alert
 
     'Toggle password Visibility
-    Private Sub ButtonVisibility_Click(sender As Object, e As EventArgs) Handles ButtonVisibility.Click
-        If (TextPin.UseSystemPasswordChar) Then
-            ButtonVisibility.Image = My.Resources.hide
-            TextPin.UseSystemPasswordChar = False
-        Else
-            ButtonVisibility.Image = My.Resources.show
-            TextPin.UseSystemPasswordChar = True
-        End If
+    Private Sub ButtonVisibility_Click(sender As Object, e As EventArgs) Handles Guna2Button1.CheckedChanged
+        'Invert State
+        TextPin.UseSystemPasswordChar = Not TextPin.UseSystemPasswordChar
     End Sub
 
     'Go To Admin Login
-    Private Sub ButtonAdmin_Click(sender As Object, e As EventArgs) Handles ButtonAdmin.Click
+    Private Sub ButtonAdmin_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
         Main.LoadControl(AdminLogin.GetInstance())
     End Sub
 
@@ -81,7 +77,7 @@
         INVALID_PASSWORD
         SUCCESS_LOGIN
     End Enum
-    Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
+    Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         If ValidateForm() Then
             If Not BackgroundWorkerLogin.IsBusy Then
                 LoadingAlert = Alert.ShowAlert("Logging in, please wait", Alert.AlertType.Info, False)
@@ -90,22 +86,16 @@
         End If
     End Sub
     Private Sub BackgroundWorkerLogin_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerLogin.DoWork
-        Election.GetCurrentElectionF()
-        If Election.HasNotStarted() Then
+        Try
+            Student.Login(TextStudentId.Text, TextPin.Text)
+            e.Result = WorkerResult.SUCCESS_LOGIN
+        Catch ex As ElectionHasNotStartedException
             e.Result = WorkerResult.ELECTION_NOT_STARTED
-        Else
-            Dim Result = Student.Find(TextStudentId.Text)
-            If IsNothing(Result) Then
-                e.Result = WorkerResult.INVALID_STUDENT_ID
-            Else
-                If Not (Result.ComparePassword(TextPin.Text)) Then
-                    e.Result = WorkerResult.INVALID_PASSWORD
-                Else
-                    Student.SetCurrentUser(Result)
-                    e.Result = WorkerResult.SUCCESS_LOGIN
-                End If
-            End If
-        End If
+        Catch ex As InvalidPasswordException
+            e.Result = WorkerResult.INVALID_PASSWORD
+        Catch ex As StudentNotExistsException
+            e.Result = WorkerResult.INVALID_STUDENT_ID
+        End Try
     End Sub
     Private Sub BackgroundWorkerLogin_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerLogin.RunWorkerCompleted
         LoadingAlert.CloseAlert()

@@ -22,8 +22,7 @@ Public Class Votes
         Dim Result As New Dictionary(Of Integer, Integer)
         GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_COUNT_VOTE, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, PositionID, 1))
-            Cmd.Prepare()
+            BindParameters(Cmd, PositionID)
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
                     Dim CandidateID As Integer = Reader.GetInt32(0)
@@ -50,14 +49,8 @@ Public Class Votes
             GetConnection().Open()
             Using Cmd As New OleDbCommand(QUERY_INSERT_VOTE, GetConnection())
                 For Each item In Candidates
-                    Cmd.Parameters.Clear()
-                    Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, Student.GetCurrentUser().Id, Student.LENGTH_ID))
-                    Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, item, Candidate.LENGTH_ID))
-                    Cmd.Prepare()
-                    If Cmd.ExecuteNonQuery() = -1 Then
-                        GetConnection().Close()
-                        Return False
-                    End If
+                    BindParameters(Cmd, Student.GetCurrentUser().Id, item)
+                    Cmd.ExecuteNonQuery()
                 Next
             End Using
             GetConnection().Close()

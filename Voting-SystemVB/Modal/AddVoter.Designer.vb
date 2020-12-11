@@ -149,7 +149,7 @@ Partial Class AddVoter
         Me.CBSection.FormattingEnabled = True
         Me.CBSection.HoverState.Parent = Me.CBSection
         Me.CBSection.ItemHeight = 30
-        Me.CBSection.Items.AddRange(New Object() {"A", "B", "C", "D"})
+        Me.CBSection.Items.AddRange(New Object() {"A", "B", "C", "D", "E", "F"})
         Me.CBSection.ItemsAppearance.Parent = Me.CBSection
         Me.CBSection.Location = New System.Drawing.Point(22, 600)
         Me.CBSection.Name = "CBSection"
@@ -271,6 +271,7 @@ Partial Class AddVoter
         Me.TextLastname.HoverState.Parent = Me.TextLastname
         Me.TextLastname.Location = New System.Drawing.Point(22, 275)
         Me.TextLastname.Margin = New System.Windows.Forms.Padding(7, 8, 7, 8)
+        Me.TextLastname.MaxLength = 20
         Me.TextLastname.Name = "TextLastname"
         Me.TextLastname.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TextLastname.PlaceholderText = "(e.g. John)"
@@ -320,6 +321,7 @@ Partial Class AddVoter
         Me.TextFirstname.HoverState.Parent = Me.TextFirstname
         Me.TextFirstname.Location = New System.Drawing.Point(22, 162)
         Me.TextFirstname.Margin = New System.Windows.Forms.Padding(7, 8, 7, 8)
+        Me.TextFirstname.MaxLength = 20
         Me.TextFirstname.Name = "TextFirstname"
         Me.TextFirstname.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TextFirstname.PlaceholderText = "(e.g. John)"
@@ -369,6 +371,7 @@ Partial Class AddVoter
         Me.TextStudentID.HoverState.Parent = Me.TextStudentID
         Me.TextStudentID.Location = New System.Drawing.Point(22, 53)
         Me.TextStudentID.Margin = New System.Windows.Forms.Padding(7, 8, 7, 8)
+        Me.TextStudentID.MaxLength = 10
         Me.TextStudentID.Name = "TextStudentID"
         Me.TextStudentID.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TextStudentID.PlaceholderText = "(e.g. 20200000-C)"

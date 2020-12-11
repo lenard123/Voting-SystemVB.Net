@@ -2,31 +2,6 @@
 
 Public Class Student
 
-    Private Const QUERY_SEARCH = "SELECT DISTINCT [Student].*, [Votes].[student_id] as [has_voted] FROM [Votes] RIGHT JOIN [Student] ON [Votes].[student_id]=[Student].[ID] WHERE [Student].[student_id] LIKE ? OR [Student].[firstname] LIKE ? OR [Student].[lastname] LIKE ?"
-    Private Const QUERY_SELECT_ALL = "SELECT DISTINCT [Student].*, [Votes].[student_id] as [has_voted] FROM [Votes] RIGHT JOIN [Student] ON [Votes].[student_id]=[Student].[ID]"
-    Private Const QUERY_SELECT_BY_ID = "SELECT DISTINCT [Student].*, [Votes].[student_id] as [has_voted] FROM [Votes] RIGHT JOIN [Student] ON [Votes].[student_id]=[Student].[ID] WHERE [Student].[ID]=?"
-    Private Const QUERY_SELECT_BY_STUDENT_ID = "SELECT DISTINCT [Student].*, [Votes].[student_id] as [has_voted] FROM [Votes] RIGHT JOIN [Student] ON [Votes].[student_id]=[Student].[ID] WHERE [Student].[student_id]=?"
-    Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) From Student"
-
-    Public Const LENGTH_ID As Integer = 10
-    Private Const LENGTH_STUDENT_ID As Integer = 10
-    Private Const LENGTH_FIRSTNAME As Integer = 20
-    Private Const LENGTH_LASTNAME As Integer = 20
-    Private Const LENGTH_YEAR As Integer = 3
-    Private Const LENGTH_COURSE As Integer = 5
-    Private Const LENGTH_SECTION As Integer = 1
-    Private Const LENGTH_PASSWORD As Integer = 32
-
-    Private Const INDEX_ID As Integer = 0
-    Private Const INDEX_STUDENT_ID As Integer = 1
-    Private Const INDEX_FIRSTNAME As Integer = 2
-    Private Const INDEX_LASTNAME As Integer = 3
-    Private Const INDEX_YEAR As Integer = 4
-    Private Const INDEX_COURSE As Integer = 5
-    Private Const INDEX_SECTION As Integer = 6
-    Private Const INDEX_PASSWORD As Integer = 7
-    Private Const INDEX_HAS_VOTED As Integer = 8
-
     Private Shared CurrentUser As Student
 
     Private _Id As Integer
@@ -115,69 +90,71 @@ Public Class Student
         Me._Password = Password
     End Sub
 
-    'Compare Password
+    ''' <summary>
+    ''' Check if Password match
+    ''' </summary>
+    ''' <param name="Password"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Function ComparePassword(Password As String) As Boolean
         Return Me._Password.Equals(Password)
     End Function
 
-    'Check if Student is a registered candidate
+    ''' <summary>
+    ''' Check if Student is a registered candidate
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Function IsCandidate() As Boolean
-        Return Not IsNothing(Candidate.FindByStudentID(Id))
-    End Function
+        Dim Result = False
 
-
-    'Update the info of Students
-    Public Function Update() As Boolean
-        If Election.HasNotStarted Then
-            Dim Query = "UPDATE [Student] SET [firstname]=?, [lastname]=?, [course]=?, [year_level]=?, [section]=?, [password]=? WHERE [ID]=?"
-            Dim res As Boolean
+        Using Cmd = New OleDbCommand(QUERY_IS_CANDIDATE, GetConnection())
+            BindParameters(Cmd, Id)
             GetConnection().Open()
-            Using Cmd As New OleDbCommand(Query, GetConnection())
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Firstname, LENGTH_FIRSTNAME))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Lastname, LENGTH_LASTNAME))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Course, LENGTH_COURSE))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _YearLevel, LENGTH_YEAR))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Section, LENGTH_SECTION))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _Password, LENGTH_PASSWORD))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, Id, LENGTH_ID))
-                Cmd.Prepare()
-                res = Cmd.ExecuteNonQuery() <> -1
-            End Using
-            GetConnection.Close()
-            Return res
-        Else
-            Console.WriteLine("Election has started")
-            Return False
-        End If
-        Return False
-    End Function
-
-    'Save a new Student
-    Public Function Save() As Boolean
-        If Election.HasNotStarted Then
-            Dim Query = "INSERT INTO [Student]([student_id], [firstname], [lastname], [course], [year_level], [section], [password]) VALUES (?,?,?,?,?,?,?)"
-            Dim res As Boolean
-            GetConnection().Open()
-            Using Cmd As New OleDbCommand(Query, GetConnection())
-                Dim r As New Random
-                Dim password = StudentId & "-" & r.Next(1000, 10000)
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, StudentId, LENGTH_STUDENT_ID))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Firstname, LENGTH_FIRSTNAME))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Lastname, LENGTH_LASTNAME))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Course, LENGTH_COURSE))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _YearLevel, LENGTH_YEAR))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Section, LENGTH_SECTION))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, password, LENGTH_PASSWORD))
-                Cmd.Prepare()
-                res = Cmd.ExecuteNonQuery() <> -1
-            End Using
+            Result = Integer.Parse(Cmd.ExecuteScalar()) > 0
             GetConnection().Close()
-            Return res
-        Else
-            Console.WriteLine("Election has started")
-            Return False
-        End If
+        End Using
+
+        Return Result
     End Function
+
+
+    ''' <summary>
+    ''' Update the info of Students
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub Update()
+
+        If Not Election.HasNotStarted Then Throw New ElectionAlreadyStartedException
+        If Not Admin.GetCurrentUser().CanUpdateStudent() Then Throw New InvalidPrivilegeException
+
+        Using Cmd As New OleDbCommand(QUERY_UPDATE, GetConnection())
+            BindParameters(Cmd, Firstname, Lastname, Course, _YearLevel, Section, _Password, Id)
+
+            GetConnection().Open()
+            Cmd.ExecuteNonQuery()
+            GetConnection.Close()
+        End Using
+    End Sub
+
+    ''' <summary>
+    ''' Save a new Student
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub Save()
+        If Not Election.HasNotStarted Then Throw New ElectionAlreadyStartedException
+        If Not Admin.GetCurrentUser().CanAddStudent Then Throw New InvalidPrivilegeException
+
+        Using Cmd As New OleDbCommand(QUERY_INSERT, GetConnection())
+            Dim password = StudentId & "-" & (New Random).Next(1000, 9999)
+
+            BindParameters(Cmd, StudentId, Firstname, Lastname, Course, _YearLevel, Section, password)
+
+            GetConnection().Open()
+            Cmd.ExecuteNonQuery()
+            GetConnection().Close()
+        End Using
+    End Sub
 
 
     '
@@ -192,7 +169,11 @@ Public Class Student
         Return CurrentUser
     End Function
 
-    'Count all numbers of Students
+    ''' <summary>
+    ''' Count all numbers of Students
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function CountAll() As Integer
         Dim Result As Integer = 0
         GetConnection().Open()
@@ -203,7 +184,11 @@ Public Class Student
         Return Result
     End Function
 
-    'Get All Students
+    ''' <summary>
+    ''' Fetch All the Students
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function GetAll() As List(Of Student)
         Dim Result As New List(Of Student)
         GetConnection().Open()
@@ -218,50 +203,73 @@ Public Class Student
         Return Result
     End Function
 
-    'Find Student Using ID
-    Public Shared Function Find(Id As Integer) As Student
+
+    ''' <summary>
+    ''' Find Student Using Their ID
+    ''' </summary>
+    ''' <param name="_Id">Can be ID or StudentID</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared Function Find(_Id As Object) As Student
+
+        'Throw Exception when student ID doesn't exists
+        If Not IsExists(_Id) Then Throw New StudentNotExistsException
+
+        'Initialize variables
         Dim Result As Student = Nothing
-        GetConnection().Open()
+        Dim StudentID As String = _Id.ToString()
+        Dim ID = -1
+        Integer.TryParse(_Id, ID)
+
         Using Cmd = New OleDbCommand(QUERY_SELECT_BY_ID, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, Id, LENGTH_ID))
-            Cmd.Prepare()
+            BindParameters(Cmd, ID, StudentID)
+            GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
-                If Reader.Read() Then
-                    Result = GetStudent(Reader)
-                End If
+                If Reader.Read() Then Result = GetStudent(Reader)
             End Using
+            GetConnection().Close()
         End Using
-        GetConnection().Close()
+
         Return Result
     End Function
 
-    'Find Student Using Student Id
-    Public Shared Function Find(Id As String) As Student
-        Dim Result As Student = Nothing
-        GetConnection().Open()
-        Using Cmd = New OleDbCommand(QUERY_SELECT_BY_STUDENT_ID, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Id, LENGTH_STUDENT_ID))
-            Cmd.Prepare()
-            Using Reader = Cmd.ExecuteReader()
-                If Reader.Read() Then
-                    Result = GetStudent(Reader)
-                End If
-            End Using
+    ''' <summary>
+    ''' Check IF the GivenID exists in the database
+    ''' </summary>
+    ''' <param name="_ID"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared Function IsExists(_ID As Object) As Boolean
+        'Initialize Variables
+        Dim Result = False
+        Dim student_id = _ID.ToString()
+        Dim ID = -1
+        Integer.TryParse(_ID, ID)
+
+        Using Cmd As New OleDbCommand(QUERY_IS_EXISTS_ID, GetConnection())
+            'Prepare Parameters
+            BindParameters(Cmd, ID, student_id)
+            GetConnection().Open()
+            Result = Integer.Parse(Cmd.ExecuteScalar()) > 0
+            GetConnection().Close()
         End Using
-        GetConnection().Close()
+
         Return Result
     End Function
 
-    'Search Students
+    ''' <summary>
+    ''' Search in students database
+    ''' </summary>
+    ''' <param name="Query">Use as filter</param>
+    ''' <returns></returns>
+    ''' <remarks>Search in StudentID and Fullname Columns</remarks>
     Public Shared Function Search(Query As String) As List(Of Student)
-        Query = "%" & Query & "%"
+        Query = "%" & Query.Trim() & "%"
         Dim Result As New List(Of Student)
-        GetConnection().Open()
+
         Using Cmd As New OleDbCommand(QUERY_SEARCH, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Query, 64))
-            Cmd.Prepare()
+            BindParameters(Cmd, Query, Query, Query)
+            GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
                     Result.Add(GetStudent(Reader))
@@ -272,7 +280,12 @@ Public Class Student
         Return Result
     End Function
 
-    'Convert Reader into Student Class
+    ''' <summary>
+    ''' Convert Reader into Student Class
+    ''' </summary>
+    ''' <param name="Reader"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Private Shared Function GetStudent(Reader As OleDbDataReader) As Student
         Dim Result As Student = New Student(Reader.GetInt32(INDEX_ID), Reader.GetString(INDEX_PASSWORD))
         Try
@@ -289,11 +302,58 @@ Public Class Student
         Return Result
     End Function
 
-    'Refresh Current User
+    ''' <summary>
+    ''' Refresh the data of Current Logged In User
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function RefreshCurrentUser() As Student
         If Not IsNothing(CurrentUser) Then
             CurrentUser = Find(CurrentUser.Id)
         End If
         Return CurrentUser
     End Function
+
+    ''' <summary>
+    ''' Logged in the user that match the StudentID and Password
+    ''' </summary>
+    ''' <param name="StudentID"></param>
+    ''' <param name="Password"></param>
+    ''' <remarks></remarks>
+    Public Shared Sub Login(StudentID As String, Password As String)
+
+        'Check if the election has started
+        Election.GetCurrentElectionRefresh()
+        If Election.HasNotStarted() Then Throw New ElectionHasNotStartedException()
+
+        'Get Student
+        Dim CheckStud = Find(StudentID)
+
+        'Validate Password
+        If Not CheckStud.ComparePassword(Password) Then Throw New InvalidPasswordException()
+
+        'SetUser
+        SetCurrentUser(CheckStud)
+    End Sub
+
+    'Constant Properties
+    Private Const QUERY_SEARCH = "SELECT * FROM [StudentQuery] WHERE [student_id] LIKE ? OR [firstname] LIKE ? OR [lastname] LIKE ?"
+    Private Const QUERY_SELECT_ALL = "SELECT * FROM [StudentQuery]"
+    Private Const QUERY_SELECT_BY_ID = "SELECT * FROM [StudentQuery] WHERE [ID]=? OR [student_id]=?"
+    Private Const QUERY_SELECT_BY_STUDENT_ID = "SELECT * FROM [StudentQuery] WHERE [student_id]=?"
+    Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) From [Student]"
+    Private Const QUERY_IS_EXISTS_ID = "SELECT COUNT(*) FROM [Student] WHERE [ID]=? OR [student_id]=?"
+    Private Const QUERY_IS_CANDIDATE = "SELECT COUNT(*) FROM [Candidate] WHERE [student_id]=?"
+    Private Const QUERY_UPDATE = "UPDATE [Student] SET [firstname]=?, [lastname]=?, [course]=?, [year_level]=?, [section]=?, [password]=? WHERE [ID]=?"
+    Private Const QUERY_INSERT = "INSERT INTO [Student]([student_id], [firstname], [lastname], [course], [year_level], [section], [password]) VALUES (?,?,?,?,?,?,?)"
+
+    Private Const INDEX_ID As Integer = 0
+    Private Const INDEX_STUDENT_ID As Integer = 1
+    Private Const INDEX_FIRSTNAME As Integer = 2
+    Private Const INDEX_LASTNAME As Integer = 3
+    Private Const INDEX_YEAR As Integer = 4
+    Private Const INDEX_COURSE As Integer = 5
+    Private Const INDEX_SECTION As Integer = 6
+    Private Const INDEX_PASSWORD As Integer = 7
+    Private Const INDEX_HAS_VOTED As Integer = 8
 End Class

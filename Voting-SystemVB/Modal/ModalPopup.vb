@@ -30,13 +30,12 @@
         Me.Location = Main.Instance.Location
         frm = New Form
         frm.Size = Main.Instance.Size
-        frm.Owner = Main.Instance
+        frm.Owner = Me
         frm.ShowInTaskbar = False
         frm.FormBorderStyle = FormBorderStyle.None
         frm.Size = Content.Size()
         frm.Controls.Add(Content)
         frm.StartPosition = FormStartPosition.CenterScreen
-        frm.TopMost = True
 
         AddHandler Content.Disposed, AddressOf OnFrmClose
         AddHandler frm.FormClosed, AddressOf OnFrmClose
@@ -45,12 +44,19 @@
         frm.ShowDialog()
     End Sub
 
+    'Chain Disposing
     Sub OnFrmClose(sender As Object, e As EventArgs)
         If sender.Equals(Content) Then
+            'Set the Main Instance to TopMost to 
+            'prevent other forms overlap it
+            'While Closing the Popup
+            Main.Instance.TopMost = True
             frm.Dispose()
         ElseIf sender.Equals(frm) Then
             TimerFadeOut.Start()
         ElseIf sender.Equals(Me) Then
+            'Reset to old State
+            Main.Instance.TopMost = False
             Main.Instance.BringToFront()
         End If
     End Sub

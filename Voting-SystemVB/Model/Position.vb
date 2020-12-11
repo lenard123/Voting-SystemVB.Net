@@ -23,6 +23,12 @@
         Return AllPositions
     End Function
 
+    Public Shared Function GetDictionary() As Dictionary(Of Integer, List(Of Candidate))
+        Dim dict As New Dictionary(Of Integer, List(Of Candidate))
+        AllPositions.ForEach(Sub(item) dict.Add(item, New List(Of Candidate)))
+        Return dict
+    End Function
+
     Public Shared Function GetDatatable() As DataTable
         Dim dt As New DataTable()
         dt.Columns.Add("name")

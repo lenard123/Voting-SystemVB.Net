@@ -58,7 +58,11 @@
     End Sub
 
     Private Sub BackgroundWorkerUpdate_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerUpdate.DoWork
-        e.Result = sCandidate.Update()
+        Try
+            sCandidate.Update()
+        Catch ex As Exception
+            e.Result = ex
+        End Try
     End Sub
 
     Private Sub BackgroundWorkerUpdate_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerUpdate.RunWorkerCompleted
@@ -67,12 +71,13 @@
         ButtonUpdate.Enabled = True
         LoadingAlert.CloseAlert()
 
-        If e.Result Then
+        If TypeOf e.Result Is Exception Then
+            Alert.ShowAlert(DirectCast(e.Result, Exception).Message, Alert.AlertType.Error)
+        Else
             Alert.setAlert("Updated Successfully", Alert.AlertType.Success)
             ManageCandidate.GetInstance().RefreshCandidate()
             Popup.ClosePopup()
-        Else
-            Alert.setAlert("An error occurred", Alert.AlertType.Error)
         End If
+
     End Sub
 End Class

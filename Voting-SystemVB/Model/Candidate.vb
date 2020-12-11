@@ -3,40 +3,6 @@ Imports System.Data.OleDb
 
 Public Class Candidate
 
-    'DATA CONFIGURATIONS AND QUERIES
-    Private Const QUERY_UPDATE = "UPDATE [Candidate] SET [description]=?, [image_path]=? WHERE [ID]=?"
-    Private Const QUERY_INSERT = "INSERT INTO [Candidate]([student_id],[description],[position_id],[image_path]) VALUES (?,?,?,?)"
-    Private Const QUERY_FIND_STUDENT = "SELECT * FROM [CandidateQuery] WHERE student_id=?"
-    Private Const QUERY_SELECT_ALL = "SELECT * FROM [CandidateQuery]"
-    Private Const QUERY_SELECT_BY_PARTY = "SELECT * FROM [CandidateQuery] WHERE [party_id]=?"
-    Private Const QUERY_SELECT_BY_POSITION = "SELECT * FROM [CandidateQuery] WHERE [position_id]=?"
-    Private Const QUERY_COUNT_BY_POSITION = "SELECT COUNT(*) FROM Candidate WHERE [position_id]=?"
-    Private Const QUERY_SELECT_BY_VOTERS = "SELECT [CandidateQuery].* FROM [CandidateQuery] INNER JOIN [Votes] ON [CandidateQuery].[ID]=[Votes].[candidate_id] WHERE [Votes].[student_id]=?"
-
-    Public Const IMAGE_DEFAULT = "images\default\candidate.jpg"
-
-    Public Const LENGTH_ID = 10
-    Private Const LENGTH_STUDENT_ID = 10
-    Private Const LENGTH_TAGLINE = 100
-    Private Const LENGTH_POSITION_ID = 10
-    Private Const LENGTH_IMAGE = 100
-    Private Const LENGTH_GENDER = 6
-
-    Private Const INDEX_ID = 0
-    Private Const INDEX_STUDENT_ID = 1
-    Private Const INDEX_TAGLINE = 2
-    Private Const INDEX_POSITION_ID = 3
-    Private Const INDEX_IMAGE = 4
-    Private Const INDEX_GENDER = 5
-    Private Const INDEX_FULLNAME = 6
-    Private Const INDEX_YEAR = 7
-    Private Const INDEX_COURSE = 8
-    Private Const INDEX_PARTY = 9
-    Private Const INDEX_PARTY_IMAGE = 10
-    Private Const INDEX_PARTY_DESCRIPTION = 11
-    Private Const INDEX_PARTY_ID = 12
-    Private Const INDEX_STUDENT_STUDENT_ID = 13
-
     'Encapsulated data
     Private _ID, _StudentID, _PositionID, _PartyID As Integer
     Private _Tagline, _Image, _Gender, _Fullname, _Course, _Year, _Party, _PartyImage, _PartyDesc, _StudentStudentID As String
@@ -135,60 +101,70 @@ Public Class Candidate
             Return _Fullname
         End Get
     End Property
+    Private ReadOnly Property GetFilename As String
+        Get
+            Return "candidate-" & _StudentID & ".jpg"
+        End Get
+    End Property
 
-    'Get Image Path
-    Private Function GetFilename() As String
-        Return "candidate-" & _StudentID & ".jpg"
-    End Function
-
-    'Update Candidate
-    Public Function Update() As Boolean
+    ''' <summary>
+    ''' Update Candidate  Information
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub Update()
         'Prevent Updating When the election has started
-        If Not Election.HasNotStarted Then Return False
+        If Not Election.HasNotStarted Then Throw New ElectionAlreadyStartedException()
 
+        'Prevent Unauthorized Admin from updating information
+        If Not Admin.GetCurrentUser().CanUpdateCandidate Then Throw New InvalidPrivilegeException
+
+        'Upload Image
         Dim NewImage = GetImage(Image, GetFilename(), "images\" & Election.GetImageDirectory() & "\" & GetFilename())
-        Dim Res = False
-
-        GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_UPDATE, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _Tagline, LENGTH_TAGLINE))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, NewImage, LENGTH_IMAGE))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, _ID, LENGTH_ID))
-            Cmd.Prepare()
-            Res = Cmd.ExecuteNonQuery() <> -1
+            BindParameters(Cmd, _Tagline, NewImage, _ID)
+
+            GetConnection().Open()
+            Cmd.ExecuteNonQuery()
+            GetConnection().Close()
         End Using
-        GetConnection().Close()
 
-        Return Res
-    End Function
+    End Sub
 
-    'Save Candidate
-    Public Function Save() As Boolean
-        If Not Election.HasNotStarted Then Return False
+    ''' <summary>
+    ''' Register a new Candidate
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub Save()
+        'Prevent add new candidate if the election has started
+        If Not Election.HasNotStarted Then Throw New ElectionAlreadyStartedException
 
-        Dim Result As Boolean = False
+        'Prevent Unauthorized Admin from updating information
+        If Not Admin.GetCurrentUser().CanRegisterCandidate Then Throw New InvalidPrivilegeException
+
+        'Upload image
         Dim NewImage = GetImage(Image, GetFilename(), IMAGE_DEFAULT)
 
-        GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_INSERT, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, _StudentID, LENGTH_STUDENT_ID))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, _Tagline, LENGTH_TAGLINE))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, _PositionID, LENGTH_POSITION_ID))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, NewImage, LENGTH_IMAGE))
-            Cmd.Prepare()
-            Result = Cmd.ExecuteNonQuery() <> -1
+            BindParameters(Cmd, _StudentID, _Tagline, _PositionID, NewImage)
+            GetConnection().Open()
+            Cmd.ExecuteNonQuery()
+            GetConnection().Close()
         End Using
-        GetConnection().Close()
-
-        Return Result
-    End Function
+    End Sub
 
 
     '
     '    SHARED FUNCTIONS
     '
 
-    'Upload Candidate Image
+    ''' <summary>
+    ''' Upload Candidate Image and return the uploaded image path
+    ''' </summary>
+    ''' <param name="Source">Image to be uploaded</param>
+    ''' <param name="FileName">Destination</param>
+    ''' <param name="_Default">If source is empty</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Private Shared Function GetImage(Source As String, FileName As String, _Default As String) As String
 
         Dim Dir = Election.GetImageDirectory()
@@ -213,128 +189,119 @@ Public Class Candidate
         End If
     End Function
 
-    'Count candidates in specific position
-    Public Shared Function Count(PositionID As Integer) As Integer
-        Dim Res As Integer = 0
-        GetConnection().Open()
-        Using Cmd = New OleDbCommand(QUERY_COUNT_BY_POSITION, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, PositionID, LENGTH_POSITION_ID))
-            Cmd.Prepare()
-            Res = DirectCast(Cmd.ExecuteScalar(), Integer)
+    ''' <summary>
+    ''' Count the number of candidates
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared Function Count() As Dictionary(Of Integer, Integer)
+        'Initialize Result variable
+        Dim Res As New Dictionary(Of Integer, Integer)
+        Position.GetAll().ForEach(Sub(item) Res.Add(item, 0))
+
+        Using Cmd = New OleDbCommand(QUERY_COUNT, GetConnection())
+            GetConnection().Open()
+            Using Reader = Cmd.ExecuteReader()
+                While Reader.Read()
+                    Dim PositionId = Reader.GetInt32(0)
+                    Dim CandidateCount = Reader.GetInt32(0)
+                    Res(PositionId) = CandidateCount
+                End While
+            End Using
+            GetConnection().Close()
         End Using
-        GetConnection().Close()
         Return Res
     End Function
 
-    'Find Specific Student by the given Student ID
+    ''' <summary>
+    ''' Find Specific Student by the given Student ID
+    ''' </summary>
+    ''' <param name="StudentID"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function FindByStudentID(StudentID As Integer) As Candidate
         Dim Result As Candidate = Nothing
-        GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_FIND_STUDENT, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, StudentID, LENGTH_STUDENT_ID))
-            Cmd.Prepare()
+            BindParameters(Cmd, StudentID)
+            GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 If Reader.Read() Then
                     Result = GetCandidate(Reader)
                 End If
             End Using
+            GetConnection().Close()
         End Using
-        GetConnection().Close()
         Return Result
     End Function
 
-    'Get All Candidates
-    Public Shared Function GetAll() As List(Of Candidate)
-        Dim Result As New List(Of Candidate)
-        GetConnection().Open()
+    ''' <summary>
+    ''' Get All Candidates
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared Function GetAll() As Dictionary(Of Integer, List(Of Candidate))
+        Dim Result = Position.GetDictionary()
         Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
-            Using Reader = Cmd.ExecuteReader()
-                While Reader.Read()
-                    Result.Add(GetCandidate(Reader))
-                End While
-            End Using
-        End Using
-        GetConnection().Close()
-        Return Result
-    End Function
-
-    'Return Data In Dictionary Structure
-    Public Shared Function GetAll2() As Dictionary(Of Integer, List(Of Candidate))
-        Dim Result = GetEmptyDictionary()
-        GetConnection().Open()
-        Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
+            GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
                     Dim iCandidate = GetCandidate(Reader)
                     Result(iCandidate.PositionID).Add(iCandidate)
                 End While
             End Using
+            GetConnection().Close()
         End Using
-        GetConnection().Close()
         Return Result
     End Function
 
-    'Initialize Dictionary Data
-    Public Shared Function GetEmptyDictionary() As Dictionary(Of Integer, List(Of Candidate))
-        Dim EmptyDictionary = New Dictionary(Of Integer, List(Of Candidate))
-        For Each item In Position.GetAll()
-            EmptyDictionary.Add(item, New List(Of Candidate))
-        Next
-        Return EmptyDictionary
-    End Function
-
-    'Get All Candidate in Specific Party
+    ''' <summary>
+    ''' Get All Candidate in Specific Party
+    ''' </summary>
+    ''' <param name="PartyID"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function GetAllByPartyID(PartyID As Integer) As List(Of Candidate)
         Dim Result As New List(Of Candidate)
-        GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_SELECT_BY_PARTY, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, PartyID, Voting_SystemVB.Party.LENGTH_ID))
-            Cmd.Prepare()
+            BindParameters(Cmd, PartyID)
+            GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
                     Result.Add(GetCandidate(Reader))
                 End While
             End Using
+            GetConnection.Close()
         End Using
-        GetConnection.Close()
         Return Result
     End Function
 
-    'Get All Candidate By Positions
-    Public Shared Function GetAllByPosition(Position As Integer) As List(Of Candidate)
-        Dim Result As New List(Of Candidate)
-        GetConnection().Open()
-        Using Cmd As New OleDbCommand(QUERY_SELECT_BY_POSITION, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, Position, Voting_SystemVB.Party.LENGTH_ID))
-            Cmd.Prepare()
-            Using Reader = Cmd.ExecuteReader()
-                While Reader.Read()
-                    Result.Add(GetCandidate(Reader))
-                End While
-            End Using
-        End Using
-        GetConnection.Close()
-        Return Result
-    End Function
-
-    'Get Candidates Voted By Specific Voters
+    ''' <summary>
+    ''' Get Candidates Voted By Specific Voters
+    ''' </summary>
+    ''' <param name="ID">Id of Voters</param>
+    ''' <returns>List of Candidate voted by the given voters</returns>
+    ''' <remarks></remarks>
     Public Shared Function GetVotedCandidates(ID As Integer) As List(Of Candidate)
         Dim Result As New List(Of Candidate)
-        GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_SELECT_BY_VOTERS, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, ID, Student.LENGTH_ID))
-            Cmd.Prepare()
+            BindParameters(Cmd, ID)
+            GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
                     Result.Add(GetCandidate(Reader))
                 End While
             End Using
+            GetConnection().Close()
         End Using
-        GetConnection().Close()
         Return Result
     End Function
 
-    'Convert Reader into Candidate Model
+    ''' <summary>
+    ''' Convert Reader into Candidate Model
+    ''' </summary>
+    ''' <param name="Reader"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function GetCandidate(Reader As OleDbDataReader) As Candidate
         Dim ID As Integer = Nothing
         Dim StudentID As Integer = Nothing
@@ -375,5 +342,30 @@ Public Class Candidate
         Return Result
     End Function
 
+    'DATA CONFIGURATIONS AND QUERIES
+    Private Const QUERY_UPDATE = "UPDATE [Candidate] SET [description]=?, [image_path]=? WHERE [ID]=?"
+    Private Const QUERY_INSERT = "INSERT INTO [Candidate]([student_id],[description],[position_id],[image_path]) VALUES (?,?,?,?)"
+    Private Const QUERY_FIND_STUDENT = "SELECT * FROM [CandidateQuery] WHERE student_id=?"
+    Private Const QUERY_SELECT_ALL = "SELECT * FROM [CandidateQuery]"
+    Private Const QUERY_SELECT_BY_PARTY = "SELECT * FROM [CandidateQuery] WHERE [party_id]=?"
+    Private Const QUERY_COUNT = "SELECT [position_id], COUNT(*) FROM Candidate GROUP BY [position_id]"
+    Private Const QUERY_SELECT_BY_VOTERS = "SELECT [CandidateQuery].* FROM [CandidateQuery] INNER JOIN [Votes] ON [CandidateQuery].[ID]=[Votes].[candidate_id] WHERE [Votes].[student_id]=?"
+
+    Public Const IMAGE_DEFAULT = "images\default\candidate.jpg"
+
+    Private Const INDEX_ID = 0
+    Private Const INDEX_STUDENT_ID = 1
+    Private Const INDEX_TAGLINE = 2
+    Private Const INDEX_POSITION_ID = 3
+    Private Const INDEX_IMAGE = 4
+    Private Const INDEX_GENDER = 5
+    Private Const INDEX_FULLNAME = 6
+    Private Const INDEX_YEAR = 7
+    Private Const INDEX_COURSE = 8
+    Private Const INDEX_PARTY = 9
+    Private Const INDEX_PARTY_IMAGE = 10
+    Private Const INDEX_PARTY_DESCRIPTION = 11
+    Private Const INDEX_PARTY_ID = 12
+    Private Const INDEX_STUDENT_STUDENT_ID = 13
 
 End Class

@@ -166,6 +166,7 @@ Partial Class UpdateCandidate
         Me.TextTagline.HoverState.Parent = Me.TextTagline
         Me.TextTagline.Location = New System.Drawing.Point(187, 371)
         Me.TextTagline.Margin = New System.Windows.Forms.Padding(6, 7, 6, 7)
+        Me.TextTagline.MaxLength = 30
         Me.TextTagline.Name = "TextTagline"
         Me.TextTagline.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TextTagline.PlaceholderText = ""
@@ -266,6 +267,7 @@ Partial Class UpdateCandidate
         Me.TextVoter.HoverState.Parent = Me.TextVoter
         Me.TextVoter.Location = New System.Drawing.Point(188, 83)
         Me.TextVoter.Margin = New System.Windows.Forms.Padding(6, 7, 6, 7)
+        Me.TextVoter.MaxLength = 10
         Me.TextVoter.Name = "TextVoter"
         Me.TextVoter.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TextVoter.PlaceholderText = ""

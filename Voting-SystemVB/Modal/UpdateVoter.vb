@@ -85,19 +85,24 @@
     End Sub
 
     Private Sub BackgroundWorkerUpdate_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerUpdate.DoWork
-        e.Result = DirectCast(e.Argument, Student).Update()
+        Try
+            DirectCast(e.Argument, Student).Update()
+        Catch ex As Exception
+            e.Result = ex
+        End Try
     End Sub
 
     Private Sub BackgroundWorkerUpdate_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerUpdate.RunWorkerCompleted
         LoadingAlert.CloseAlert()
         ButtonDiscard.Enabled = True
         ButtonSubmit.Enabled = True
-        If e.Result Then
+
+        If TypeOf e.Result Is Exception Then
+            Alert.ShowAlert(DirectCast(e.Result, Exception).Message, Alert.AlertType.Error)
+        Else
             Alert.setAlert("Updated Successfully!", Alert.AlertType.Info)
             ManageVoters.GetInstance().ButtonRefresh.PerformClick()
             Popup.ClosePopup()
-        Else
-            Alert.setAlert("An error occured while updating", Alert.AlertType.Error)
         End If
     End Sub
 

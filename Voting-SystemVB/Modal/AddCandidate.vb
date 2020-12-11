@@ -43,12 +43,8 @@
     Private Sub TextVoter_Leave(sender As Object, e As EventArgs) Handles TextVoter.Leave
         IsValid = Util.Validator("Voters id", TextVoter, ErrorVoter, "required")
         If IsValid Then
-            sStudent = Student.Find(TextVoter.Text)
-            If IsNothing(sStudent) Then
-                TextVoter.BorderColor = Color.Red
-                ErrorVoter.Text = "Can not find voters id"
-                IsValid = False
-            Else
+            Try
+                sStudent = Student.Find(TextVoter.Text)
                 If sStudent.IsCandidate() Then
                     TextVoter.BorderColor = Color.Red
                     ErrorVoter.Text = "This voter is already registered as candidate"
@@ -57,7 +53,11 @@
                     TextFullname.Text = sStudent.Fullname
                     TextCYS.Text = sStudent.Course & "-" & sStudent.YearLevel & "-" & sStudent.Section
                 End If
-            End If
+            Catch ex As StudentNotExistsException
+                TextVoter.BorderColor = Color.Red
+                ErrorVoter.Text = ex.Message
+                IsValid = False
+            End Try
         End If
     End Sub
 
@@ -90,7 +90,11 @@
     End Sub
 
     Private Sub BackgroundWorkerSave_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerSave.DoWork
-        e.Result = DirectCast(e.Argument, Candidate).Save()
+        Try
+            DirectCast(e.Argument, Candidate).Save()
+        Catch ex As Exception
+            e.Result = ex
+        End Try
     End Sub
 
     Private Sub BackgroundWorkerSave_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerSave.RunWorkerCompleted
@@ -98,14 +102,13 @@
         ButtonDiscard.Enabled = True
         loadingAlert.CloseAlert()
 
-        If e.Result Then
+        If TypeOf e.Result Is Exception Then
+            Alert.ShowAlert(DirectCast(e.Result, Exception).Message, Alert.AlertType.Error)
+        Else
             Alert.setAlert("Candidate Registered Successfully", Alert.AlertType.Success)
             Popup.ClosePopup()
             ManageCandidate.GetInstance().RefreshCandidate()
-        Else
-            Alert.setAlert("An error occured", Alert.AlertType.Error)
         End If
-
 
     End Sub
 

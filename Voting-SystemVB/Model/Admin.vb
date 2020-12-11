@@ -2,22 +2,9 @@
 
 Public Class Admin
 
-    Private Shared ReadOnly QUERY_SELECT_BY_USERNAME = "SELECT * FROM [Admin] WHERE [username]=?"
-    Private Shared ReadOnly QUERY_UPDATE = "UPDATE [Admin] SET [username]=?, [fullname]=? WHERE [ID]=?"
-    Private Shared ReadOnly QUERY_INSERT = "INSERT INTO [Admin]([fullname], [username], [password]) VALUES(?,?,?)"
-
-    Public Shared ReadOnly ADMIN_ID_LENGTH = 10
-    Public Shared ReadOnly ADMIN_USERNAME_LENGTH = 40
-    Public Shared ReadOnly ADMIN_FULLNAME_LENGTH = 40
-    Public Shared ReadOnly ADMIN_PASSWORD_LENGTH = 40
-
-    Public Shared ReadOnly ADMIN_ID_INDEX = 0
-    Public Shared ReadOnly ADMIN_FULLNAME_INDEX = 1
-    Public Shared ReadOnly ADMIN_USERNAME_INDEX = 2
-    Public Shared ReadOnly ADMIN_PASSWORD_INDEX = 3
-
     Private Id As Integer
     Private _Fullname, _Username, _Password As String
+    Private Privileges As New List(Of Integer)
 
     Private Shared _CurrentUser As Admin = Nothing
 
@@ -46,84 +33,233 @@ Public Class Admin
         End Set
     End Property
 
+    'Privileges
+    Public ReadOnly Property CanDoAll As Boolean
+        Get
+            Return Privileges.Contains(Privilege.PrivilegeType.ALL)
+        End Get
+    End Property
+    Public ReadOnly Property CanStartElection As Boolean
+        Get
+            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.START_ELECTION)
+        End Get
+    End Property
+    Public ReadOnly Property CanUpdateCandidate As Boolean
+        Get
+            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.CANDIDATE_UPDATE)
+        End Get
+    End Property
+    Public ReadOnly Property CanRegisterCandidate As Boolean
+        Get
+            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.CANDIDATE_REGISTER)
+        End Get
+    End Property
+    Public ReadOnly Property CanAddParty
+        Get
+            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.PARTY_ADD)
+        End Get
+    End Property
+    Public ReadOnly Property CanUpdateParty
+        Get
+            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.PARTY_UPDATE)
+        End Get
+    End Property
+    Public ReadOnly Property CanUpdateStudent
+        Get
+            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.VOTERS_UPDATE)
+        End Get
+    End Property
+    Public ReadOnly Property CanAddStudent
+        Get
+            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.VOTERS_ADD)
+        End Get
+    End Property
+
+
+
     Public Sub New(ByVal Id As Integer, ByVal Password As String)
         Me.Id = Id
         Me._Password = Password
     End Sub
 
-    'Verify Password
-    Public Function ComparePassword(ByVal Password As String)
+    ''' <summary>
+    ''' Verify Password
+    ''' </summary>
+    ''' <param name="Password"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Function ComparePassword(ByVal Password As String) As Boolean
         Return Me._Password.Equals(Password)
     End Function
 
+    ''' <summary>
+    ''' Update Admin Information
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Function Update() As Boolean
         Dim Res As Boolean = False
-        GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_UPDATE, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me.Username, ADMIN_USERNAME_LENGTH))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me.Fullname, ADMIN_FULLNAME_LENGTH))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me.Id, ADMIN_ID_LENGTH))
-            Cmd.Prepare()
+            BindParameters(Cmd, Username, Fullname, Password)
+
+            GetConnection().Open()
             Res = Cmd.ExecuteNonQuery() <> -1
+            GetConnection().Close()
         End Using
-        GetConnection().Close()
         Return Res
     End Function
 
+    ''' <summary>
+    ''' Add new Admin
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Function Save() As Boolean
         Dim Res As Boolean = False
-        GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_INSERT, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me._Fullname, ADMIN_FULLNAME_LENGTH))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me._Username, ADMIN_USERNAME_LENGTH))
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Me._Password, ADMIN_PASSWORD_LENGTH))
-            Cmd.Prepare()
+            BindParameters(Cmd, Fullname, Username, Password)
+
+            GetConnection().Open()
             Res = Cmd.ExecuteNonQuery() <> -1
+            GetConnection().Close()
         End Using
-        GetConnection().Close()
         Return Res
     End Function
 
-   
+    ''' <summary>
+    ''' Fetch the users privileges
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub FetchPrivilege()
+        Privileges.Clear()
+        Using Cmd = New OleDbCommand(QUERY_FETCH_PRIVILEGE, GetConnection())
+            BindParameters(Cmd, Id)
+            GetConnection().Open()
+            Using Reader = Cmd.ExecuteReader()
+                While Reader.Read()
+                    Debug.WriteLine(Reader.GetInt32(2))
+                    Privileges.Add(Reader.GetInt32(2))
+                End While
+            End Using
+            GetConnection().Close()
+        End Using
+    End Sub
+
+    ''' <summary>
+    ''' Check if the given username exists in the database
+    ''' </summary>
+    ''' <param name="Username"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared Function IsExists(Username As String) As Boolean
+        Dim Result As Boolean
+        Using Cmd = New OleDbCommand(QUERY_ISEXISTS, GetConnection())
+            BindParameters(Cmd, Username)
+            GetConnection().Open() 'Open Connection
+            Debug.WriteLine(Cmd.ExecuteScalar())
+            Result = Integer.Parse(Cmd.ExecuteScalar()) > 0 'Evaluate Result
+            GetConnection().Close() 'Close Connection
+        End Using
+        Return Result
+    End Function
+
+    ''' <summary>
+    ''' Find Admin using the given username
+    ''' </summary>
+    ''' <param name="Username"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function Find(ByVal Username As String) As Admin
+        'Throw Exception if the given Username Not Found
+        If Not IsExists(Username) Then Throw New AdminNotExistsException
+
         Dim Result As Admin = Nothing
-        GetConnection().Open()
         Using Cmd = New OleDbCommand(QUERY_SELECT_BY_USERNAME, GetConnection())
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Username, ADMIN_USERNAME_LENGTH))
-            Cmd.Prepare()
+            BindParameters(Cmd, Username)
+            GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 If Reader.Read Then
                     Result = GetAdmin(Reader)
                 End If
             End Using
+            GetConnection().Close()
         End Using
-        GetConnection().Close()
         Return Result
     End Function
 
-    'Convert Reader to Admin Model
+
+    ''' <summary>
+    ''' Setting Current user if the username and password match
+    ''' </summary>
+    ''' <param name="Username"></param>
+    ''' <param name="Password"></param>
+    ''' <remarks></remarks>
+    Public Shared Sub Login(Username As String, Password As String)
+        'Get the Admin by given username
+        Dim checkAdmin = Admin.Find(Username)
+
+        'throw exception if password not match
+        If Not checkAdmin.ComparePassword(Password) Then Throw New InvalidPasswordException
+
+        'set current login user
+        SetCurrentUser(checkAdmin)
+    End Sub
+
+    ''' <summary>
+    ''' Convert Reader to Admin Model
+    ''' </summary>
+    ''' <param name="Reader"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Private Shared Function GetAdmin(Reader As OleDbDataReader) As Admin
-        Dim Result As Admin = New Admin(Reader.GetInt32(ADMIN_ID_INDEX), Reader.GetString(ADMIN_PASSWORD_INDEX))
-        Result.Fullname = Reader.GetString(ADMIN_FULLNAME_INDEX)
-        Result.Username = Reader.GetString(ADMIN_USERNAME_INDEX)
+        Dim Result As Admin = New Admin(Reader.GetInt32(INDEX_ID), Reader.GetString(INDEX_PASSWORD))
+        Result.Fullname = Reader.GetString(INDEX_FULLNAME)
+        Result.Username = Reader.GetString(INDEX_USERNAME)
         Return Result
     End Function
 
-    'Get Current User
+    ''' <summary>
+    ''' Get the current user
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function GetCurrentUser() As Admin
         Return _CurrentUser
     End Function
 
-    'Set Current User
+    ''' <summary>
+    ''' Set Current User
+    ''' </summary>
+    ''' <param name="CUser"></param>
+    ''' <remarks></remarks>
     Public Shared Sub SetCurrentUser(CUser As Admin)
         _CurrentUser = CUser
+        If Not IsNothing(CUser) Then _CurrentUser.FetchPrivilege()
     End Sub
 
-    'Refresh Current User
+    ''' <summary>
+    ''' Refresh the data of  Current User
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function RefreshCurrentUser() As Admin
         If Not IsNothing(_CurrentUser) Then
-            _CurrentUser = Admin.Find(_CurrentUser.Username)
+            SetCurrentUser(Admin.Find(_CurrentUser.Username))
         End If
         Return _CurrentUser
     End Function
+
+
+    'Constant Properties
+    Private Const QUERY_SELECT_BY_USERNAME = "SELECT * FROM [Admin] WHERE [username]=?"
+    Private Const QUERY_UPDATE = "UPDATE [Admin] SET [username]=?, [fullname]=? WHERE [ID]=?"
+    Private Const QUERY_INSERT = "INSERT INTO [Admin]([fullname], [username], [password]) VALUES(?,?,?)"
+    Private Const QUERY_ISEXISTS = "SELECT COUNT(*) FROM [Admin] WHERE [username]=?"
+    Private Const QUERY_FETCH_PRIVILEGE = "SELECT * FROM [AdminPrivileges] WHERE [admin_id]=?"
+
+    Public Const INDEX_ID = 0
+    Public Const INDEX_FULLNAME = 1
+    Public Const INDEX_USERNAME = 2
+    Public Const INDEX_PASSWORD = 3
+
 End Class

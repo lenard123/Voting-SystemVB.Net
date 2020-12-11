@@ -3,24 +3,6 @@ Imports System.Data.OleDb
 
 Public Class Party
 
-    Private Const QUERY_SELECT_ALL = "SELECT * FROM [Party]"
-    Private Const QUERY_FIND = "SELECT * FROM [Party] WHERE [Title]=?"
-    Private Const QUERY_UPDATE = "UPDATE [Party] SET [Title]=?, [Description]=?, [image_path]=? WHERE [ID]=?"
-    Private Const QUERY_INSERT = "INSERT INTO [Party]([Title], [Description], [image_path]) VALUES (?, ?, ?)"
-    Private Const QUERY_DELETE_PARTY_MEMBERS = "DELETE FROM [CandidateParty] WHERE [party_id]=?"
-    Private Const QUERY_ADD_PARTY_MEMBERS = "INSERT INTO [CandidateParty]([candidate_id], [party_id]) VALUES (?,?)"
-    Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) FROM [Party]"
-
-    Public Const LENGTH_ID = 10
-    Public Const LENGTH_TITLE = 64
-    Public Const LENGTH_DESC = 255
-    Public Const LENGTH_IMAGE = 128
-
-    Private Const INDEX_ID = 0
-    Private Const INDEX_TITLE = 1
-    Private Const INDEX_DESCRIPTION = 2
-    Private Const INDEX_IMAGE = 3
-
     Private _ID As Integer
     Private _Title, _Description, _Image, _OriginalImage As String
 
@@ -76,67 +58,67 @@ Public Class Party
         _OriginalImage = Image
     End Sub
 
-    'Update Party Information
-    Public Function Update(Members As List(Of Integer)) As Boolean
-        If Election.HasNotStarted Then
-            Dim Result As Boolean = False
-            Dim NewImage = GetImage(Image, OriginalImage)
-            GetConnection().Open()
-            Using Cmd = New OleDbCommand(QUERY_UPDATE, GetConnection())
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Title, LENGTH_TITLE))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Description, LENGTH_DESC))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, NewImage, LENGTH_IMAGE))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, ID, LENGTH_ID))
-                Cmd.Prepare()
-                If Cmd.ExecuteNonQuery() <> -1 Then
-                    If UpdateMembers(Members, GetConnection()) Then
-                        Result = True
-                    End If
-                End If
-            End Using
-            GetConnection().Close()
-            Return Result
-        End If
-        Return False
-    End Function
+    ''' <summary>
+    ''' Update Party Information
+    ''' </summary>
+    ''' <param name="Members"></param>
+    ''' <remarks></remarks>
+    Public Sub Update(Members As List(Of Integer))
 
-    'Register New Party
-    Public Function Save(Members As List(Of Integer)) As Boolean
-        If Election.HasNotStarted Then
-            Dim NewImage = GetImage(Image, "")
-            Dim result = False
-            GetConnection().Open()
-            Using Cmd = New OleDbCommand(QUERY_INSERT, GetConnection())
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Title, LENGTH_TITLE))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Description, LENGTH_DESC))
-                Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, NewImage, LENGTH_IMAGE))
-                Cmd.Prepare()
-                If Cmd.ExecuteNonQuery() Then
-                    Dim _Party = Find(Title, GetConnection())
-                    If _Party.UpdateMembers(Members, GetConnection()) Then
-                        result = True
-                    End If
-                End If
-            End Using
-            GetConnection().Close()
-            Return result
-        End If
-        Return False
-    End Function
+        If Not Election.HasNotStarted() Then Throw New ElectionAlreadyStartedException
 
-    'Update Party Members
+        If Not Admin.GetCurrentUser().CanUpdateParty() Then Throw New InvalidPrivilegeException
+
+        Dim NewImage = GetImage(Image, OriginalImage)
+        Using Cmd = New OleDbCommand(QUERY_UPDATE, GetConnection())
+            BindParameters(Cmd, Title, Description, NewImage, ID)
+
+            GetConnection().Open()
+            If Cmd.ExecuteNonQuery() <> -1 Then
+                UpdateMembers(Members, GetConnection())
+            End If
+            GetConnection().Close()
+        End Using
+    End Sub
+
+    ''' <summary>
+    ''' Register New Party
+    ''' </summary>
+    ''' <param name="Members"></param>
+    ''' <remarks></remarks>
+    Public Sub Save(Members As List(Of Integer))
+
+        If Not Election.HasNotStarted Then Throw New ElectionAlreadyStartedException
+
+        If Not Admin.GetCurrentUser().CanAddParty Then Throw New InvalidPrivilegeException
+
+        Dim NewImage = GetImage(Image, "")
+        Using Cmd = New OleDbCommand(QUERY_INSERT, GetConnection())
+            BindParameters(Cmd, Title, Description, NewImage)
+            GetConnection().Open()
+            If Cmd.ExecuteNonQuery() Then
+                Dim _Party = Find(Title, GetConnection())
+                _Party.UpdateMembers(Members, GetConnection())
+            End If
+            GetConnection().Close()
+        End Using
+    End Sub
+
+    ''' <summary>
+    ''' Update Party Representatives
+    ''' </summary>
+    ''' <param name="Members"></param>
+    ''' <param name="conn"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Private Function UpdateMembers(Members As List(Of Integer), conn As OleDbConnection) As Boolean
         Dim result = False
         Using Cmd As New OleDbCommand(QUERY_DELETE_PARTY_MEMBERS, conn)
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.Integer, _ID, LENGTH_ID))
-            Cmd.Prepare()
+            BindParameters(Cmd, _ID)
             If Cmd.ExecuteNonQuery() <> -1 Then
                 Using Cmd2 As New OleDbCommand(QUERY_ADD_PARTY_MEMBERS, GetConnection())
                     For Each member In Members
-                        Cmd2.Parameters.Clear()
-                        Cmd2.Parameters.Add(ConvertToParam(OleDbType.Integer, member, LENGTH_ID))
-                        Cmd2.Parameters.Add(ConvertToParam(OleDbType.Integer, _ID, LENGTH_ID))
-                        Cmd2.Prepare()
+                        BindParameters(Cmd2, member, _ID)
                         Cmd2.ExecuteNonQuery()
                     Next
                     result = True
@@ -146,7 +128,11 @@ Public Class Party
         Return result
     End Function
 
-    'Get All Party
+    ''' <summary>
+    ''' Get All Party
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function GetAll() As List(Of Party)
         Dim Result As New List(Of Party)
         GetConnection().Open()
@@ -196,8 +182,7 @@ Public Class Party
     Public Shared Function Find(Title As String, conn As OleDbConnection) As Party
         Dim res As Party = Nothing
         Using Cmd As New OleDbCommand(QUERY_FIND, conn)
-            Cmd.Parameters.Add(ConvertToParam(OleDbType.VarChar, Title, LENGTH_TITLE))
-            Cmd.Prepare()
+            BindParameters(Cmd, Title)
             Using Reader = Cmd.ExecuteReader()
                 If Reader.Read() Then
                     res = GetParty(Reader)
@@ -237,4 +222,19 @@ Public Class Party
         Return Count
     End Function
 
+    '
+    ' Constant Properties
+    '
+    Private Const QUERY_SELECT_ALL = "SELECT * FROM [Party]"
+    Private Const QUERY_FIND = "SELECT * FROM [Party] WHERE [Title]=?"
+    Private Const QUERY_UPDATE = "UPDATE [Party] SET [Title]=?, [Description]=?, [image_path]=? WHERE [ID]=?"
+    Private Const QUERY_INSERT = "INSERT INTO [Party]([Title], [Description], [image_path]) VALUES (?, ?, ?)"
+    Private Const QUERY_DELETE_PARTY_MEMBERS = "DELETE FROM [CandidateParty] WHERE [party_id]=?"
+    Private Const QUERY_ADD_PARTY_MEMBERS = "INSERT INTO [CandidateParty]([candidate_id], [party_id]) VALUES (?,?)"
+    Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) FROM [Party]"
+
+    Private Const INDEX_ID = 0
+    Private Const INDEX_TITLE = 1
+    Private Const INDEX_DESCRIPTION = 2
+    Private Const INDEX_IMAGE = 3
 End Class

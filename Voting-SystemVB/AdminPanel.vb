@@ -114,7 +114,7 @@ Public Class AdminPanel
         End If
     End Sub
     Private Sub BackgroundWorkerRefresh_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerRefresh.DoWork
-        Election.GetCurrentElectionF()
+        Election.GetCurrentElectionRefresh()
         Admin.RefreshCurrentUser()
     End Sub
     Private Sub BackgroundWorkerRefresh_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerRefresh.RunWorkerCompleted

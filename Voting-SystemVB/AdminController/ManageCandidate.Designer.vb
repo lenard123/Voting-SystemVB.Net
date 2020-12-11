@@ -221,6 +221,7 @@ Partial Class ManageCandidate
         '
         'ButtonRegister
         '
+        Me.ButtonRegister.Animated = True
         Me.ButtonRegister.CheckedState.Parent = Me.ButtonRegister
         Me.ButtonRegister.CustomImages.Parent = Me.ButtonRegister
         Me.ButtonRegister.Font = New System.Drawing.Font("Segoe UI", 14.0!)

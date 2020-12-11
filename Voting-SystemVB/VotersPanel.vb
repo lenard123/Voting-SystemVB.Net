@@ -30,7 +30,7 @@ Public Class VotersPanel
 
     Public Shared Function GetCandidates() As Dictionary(Of Integer, List(Of Candidate))
         If IsNothing(Candidates) Then
-            Candidates = Candidate.GetAll2()
+            Candidates = Candidate.GetAll()
         End If
         Return Candidates
     End Function
@@ -90,7 +90,7 @@ Public Class VotersPanel
         If (Student.RefreshCurrentUser().HasVoted) Then
             VotedCandidates = Candidate.GetVotedCandidates(Student.GetCurrentUser().Id)
         End If
-        Election.GetCurrentElectionF()
+        Election.GetCurrentElectionRefresh()
         GetCandidates()
     End Sub
 
