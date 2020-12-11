@@ -62,11 +62,6 @@
 
 
     'Login
-    Enum WorkerResult
-        INVALID_USERNAME
-        INVALID_PASSWORD
-        SUCCESS
-    End Enum
     Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         If ValidateForm() Then
             If Not BackgroundWorkerLogin.IsBusy Then
@@ -79,26 +74,19 @@
     Private Sub BackgroundWorkerLogin_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerLogin.DoWork
         Try
             Admin.Login(TextUsername.Text, TextPassword.Text)
-            e.Result = WorkerResult.SUCCESS
-
-        Catch ex As AdminNotExistsException
-            e.Result = WorkerResult.INVALID_USERNAME
-
-        Catch ex As InvalidPasswordException
-            e.Result = WorkerResult.INVALID_PASSWORD
+        Catch ex As Exception
+            e.Result = ex
         End Try
     End Sub
 
     Private Sub BackgroundWorkerLogin_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerLogin.RunWorkerCompleted
         LoadingAlert.CloseAlert()
-        Select Case e.Result
-            Case WorkerResult.INVALID_USERNAME
-                Alert.ShowAlert("Invalid username", Alert.AlertType.Error)
-            Case WorkerResult.INVALID_PASSWORD
-                Alert.ShowAlert("Wrong username or password", Alert.AlertType.Error)
-            Case WorkerResult.SUCCESS
-                Alert.ShowAlert("Login Successfully", Alert.AlertType.Success)
-                Main.LoadControl(AdminPanel.GetInstance())
-        End Select
+
+        If TypeOf e.Result Is Exception Then
+            Alert.ShowAlert(DirectCast(e.Result, Exception).Message, Alert.AlertType.Error)
+        Else
+            Alert.ShowAlert("Login Successfully", Alert.AlertType.Success)
+            Main.LoadControl(AdminPanel.GetInstance())
+        End If
     End Sub
 End Class

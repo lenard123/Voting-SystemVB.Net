@@ -35,4 +35,17 @@
             MyBase.New("You don't have a privilege to perform this action")
         End Sub
     End Class
+
+    Public Class NotLoggedInException : Inherits ApplicationException
+        Public Sub New()
+            MyBase.New("You have to login first")
+        End Sub
+    End Class
+
+    Public Class AlreadyVotedException : Inherits ApplicationException
+        Public Sub New()
+            MyBase.New("You already voted, you can only vote once")
+        End Sub
+    End Class
+
 End Module

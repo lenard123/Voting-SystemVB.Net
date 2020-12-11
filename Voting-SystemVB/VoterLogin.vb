@@ -70,13 +70,6 @@
         sender.BackColor = Color.Transparent
     End Sub
 
-    'Start Worker Logging in
-    Enum WorkerResult
-        ELECTION_NOT_STARTED
-        INVALID_STUDENT_ID
-        INVALID_PASSWORD
-        SUCCESS_LOGIN
-    End Enum
     Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         If ValidateForm() Then
             If Not BackgroundWorkerLogin.IsBusy Then
@@ -88,28 +81,19 @@
     Private Sub BackgroundWorkerLogin_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerLogin.DoWork
         Try
             Student.Login(TextStudentId.Text, TextPin.Text)
-            e.Result = WorkerResult.SUCCESS_LOGIN
-        Catch ex As ElectionHasNotStartedException
-            e.Result = WorkerResult.ELECTION_NOT_STARTED
-        Catch ex As InvalidPasswordException
-            e.Result = WorkerResult.INVALID_PASSWORD
-        Catch ex As StudentNotExistsException
-            e.Result = WorkerResult.INVALID_STUDENT_ID
+        Catch ex As Exception
+            e.Result = ex
         End Try
     End Sub
     Private Sub BackgroundWorkerLogin_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerLogin.RunWorkerCompleted
         LoadingAlert.CloseAlert()
-        Select Case e.Result
-            Case WorkerResult.ELECTION_NOT_STARTED
-                Alert.ShowAlert("Election has not started yet", Alert.AlertType.Error)
-            Case WorkerResult.INVALID_STUDENT_ID
-                Alert.ShowAlert("Student ID doesn't Exist", Alert.AlertType.Error)
-            Case WorkerResult.INVALID_PASSWORD
-                Alert.ShowAlert("Wrong Password", Alert.AlertType.Error)
-            Case WorkerResult.SUCCESS_LOGIN
-                Alert.ShowAlert("Login Successfully", Alert.AlertType.Success)
-                VotersPanel.GetInstance().GotoButton = VotersPanel.GetInstance().ButtonCandidate
-                Main.LoadControl(VotersPanel.GetInstance())
-        End Select
+
+        If TypeOf e.Result Is Exception Then
+            Alert.ShowAlert(DirectCast(e.Result, Exception).Message, Alert.AlertType.Error)
+        Else
+            Alert.ShowAlert("Login Successfully", Alert.AlertType.Success)
+            VotersPanel.GetInstance().GotoButton = VotersPanel.GetInstance().ButtonCandidate
+            Main.LoadControl(VotersPanel.GetInstance())
+        End If
     End Sub
 End Class

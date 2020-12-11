@@ -61,7 +61,7 @@ Module DBHelper
             GetConnection.Open()
             GetConnection.Close()
             Return True
-        Catch ex As OleDb.OleDbException
+        Catch ex As Exception
             Return False
         End Try
     End Function

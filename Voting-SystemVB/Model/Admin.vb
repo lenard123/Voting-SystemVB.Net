@@ -137,7 +137,6 @@ Public Class Admin
             GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
-                    Debug.WriteLine(Reader.GetInt32(2))
                     Privileges.Add(Reader.GetInt32(2))
                 End While
             End Using
@@ -156,7 +155,6 @@ Public Class Admin
         Using Cmd = New OleDbCommand(QUERY_ISEXISTS, GetConnection())
             BindParameters(Cmd, Username)
             GetConnection().Open() 'Open Connection
-            Debug.WriteLine(Cmd.ExecuteScalar())
             Result = Integer.Parse(Cmd.ExecuteScalar()) > 0 'Evaluate Result
             GetConnection().Close() 'Close Connection
         End Using

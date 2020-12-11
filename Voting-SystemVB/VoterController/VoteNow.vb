@@ -69,19 +69,24 @@ Public Class VoteNow
     End Function
 
     Private Sub BackgroundWorkerSubmitVote_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerSubmitVote.DoWork
-        e.Result = Votes.SubmitVotes(e.Argument)
+        Try
+            Votes.SubmitVotes(e.Argument)
+        Catch ex As Exception
+            e.Result = ex
+        End Try
     End Sub
 
     Private Sub BackgroundWorkerSubmitVote_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerSubmitVote.RunWorkerCompleted
         LoadingAlert.CloseAlert()
         ButtonSubmit.Enabled = True
         ButtonClear.Enabled = True
-        If e.Result Then
+
+        If TypeOf e.Result Is Exception Then
+            Alert.ShowAlert(DirectCast(e.Result, Exception).Message, Alert.AlertType.Error)
+        Else
             VotersPanel.GetInstance().GotoButton = VotersPanel.GetInstance().ButtonVoteInfo
             VotersPanel.GetInstance().RefreshControl()
             Alert.ShowAlert("Vote Submitted Successfully", Alert.AlertType.Success)
-        Else
-            Alert.ShowAlert("An error occured", Alert.AlertType.Error)
         End If
     End Sub
 End Class
