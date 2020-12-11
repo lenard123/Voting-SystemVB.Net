@@ -116,8 +116,14 @@ Public Class Election
         If Not Admin.GetCurrentUser().CanStartElection() Then Throw New InvalidPrivilegeException
 
         Using Cmd = New OleDbCommand(QUERY_START_ELECTION, GetConnection())
-            BindParameters(Cmd, Title, Status.ONGOING, Date.Now(), EndDate, CurrentElection.Id)
+            Cmd.Parameters.Add("p1", OleDbType.VarChar, Title.Length).Value = Title
+            Cmd.Parameters.Add("p2", OleDbType.Integer, 1).Value = Status.ONGOING
+            Cmd.Parameters.Add("p3", OleDbType.Date, 255).Value = Date.Now()
+            Cmd.Parameters.Add("p4", OleDbType.Date, 255).Value = EndDate
+            Cmd.Parameters.Add("p5", OleDbType.Integer, 10).Value = CurrentElection.Id
+
             GetConnection().Open()
+            Cmd.Prepare()
             Cmd.ExecuteNonQuery()
             GetConnection().Close()
         End Using

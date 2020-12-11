@@ -236,16 +236,17 @@ Public Class UploadDatabase
                             Dim year = Reader.GetString(4)
                             Dim section = Reader.GetString(5)
 
-                            Dim iStudent = Student.Find(student_id)
-                            Dim isDuplicate = Not IsNothing(iStudent)
-
-                            If isDuplicate And KEEP_OLD_DATA Then
-                                Counter += 1
-                                BackgroundWorkerUpload.ReportProgress(Counter / CountRows * 100, "Uploading " & Counter & " out of " & CountRows & " records")
-                                Continue While
-                            End If
-
-                            If IsNothing(iStudent) Then
+                            Dim iStudent As Student
+                            Dim IsDuplicate As Boolean = False
+                            If Student.IsExists(student_id) Then
+                                If KEEP_OLD_DATA Then
+                                    Counter += 1
+                                    BackgroundWorkerUpload.ReportProgress(Counter / CountRows * 100, "Uploading " & Counter & " out of " & CountRows & " records")
+                                    Continue While
+                                End If
+                                IsDuplicate = True
+                                iStudent = Student.Find(student_id)
+                            Else
                                 iStudent = New Student()
                             End If
 

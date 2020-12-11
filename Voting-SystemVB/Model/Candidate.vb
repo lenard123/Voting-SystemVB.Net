@@ -204,7 +204,7 @@ Public Class Candidate
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
                     Dim PositionId = Reader.GetInt32(0)
-                    Dim CandidateCount = Reader.GetInt32(0)
+                    Dim CandidateCount = Reader.GetInt32(1)
                     Res(PositionId) = CandidateCount
                 End While
             End Using

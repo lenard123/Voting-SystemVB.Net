@@ -33,6 +33,15 @@
 - View Vote Count (Voter Panel)
 
 ## NEED TO FIX
+Login
+- Tab Control
+
+Candidate
+- Di nag rerefresh yung mga data
+
+Home
+- Di nag rerefresh after mag upload
+
 Add Voter
 - ADD Courses
 

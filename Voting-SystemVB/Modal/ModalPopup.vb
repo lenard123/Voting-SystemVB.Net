@@ -62,8 +62,12 @@
     End Sub
 
     Public Sub ChangeContent(Content As Control)
-        Me.Content.Dispose()
+        Dim OldContent = Me.Content
+        Dim OldForm = Me.frm
         Me.Content = Content
+        Me.frm = Nothing
+        OldContent.Dispose()
+        OldForm.Dispose()
     End Sub
 
     Public Sub ClosePopup()
