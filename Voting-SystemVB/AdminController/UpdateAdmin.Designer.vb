@@ -99,7 +99,7 @@ Partial Class UpdateAdmin
         Me.TextUser.PlaceholderText = ""
         Me.TextUser.SelectedText = ""
         Me.TextUser.ShadowDecoration.Parent = Me.TextUser
-        Me.TextUser.Size = New System.Drawing.Size(523, 62)
+        Me.TextUser.Size = New System.Drawing.Size(288, 45)
         Me.TextUser.TabIndex = 4
         '
         'TextName
@@ -121,7 +121,7 @@ Partial Class UpdateAdmin
         Me.TextName.PlaceholderText = ""
         Me.TextName.SelectedText = ""
         Me.TextName.ShadowDecoration.Parent = Me.TextName
-        Me.TextName.Size = New System.Drawing.Size(518, 62)
+        Me.TextName.Size = New System.Drawing.Size(288, 45)
         Me.TextName.TabIndex = 5
         '
         'TextPassword
@@ -137,13 +137,13 @@ Partial Class UpdateAdmin
         Me.TextPassword.FocusedState.Parent = Me.TextPassword
         Me.TextPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TextPassword.HoverState.Parent = Me.TextPassword
-        Me.TextPassword.Location = New System.Drawing.Point(33, 391)
+        Me.TextPassword.Location = New System.Drawing.Point(33, 387)
         Me.TextPassword.Name = "TextPassword"
         Me.TextPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TextPassword.PlaceholderText = ""
         Me.TextPassword.SelectedText = ""
         Me.TextPassword.ShadowDecoration.Parent = Me.TextPassword
-        Me.TextPassword.Size = New System.Drawing.Size(518, 62)
+        Me.TextPassword.Size = New System.Drawing.Size(288, 45)
         Me.TextPassword.TabIndex = 6
         '
         'ButtonSave
@@ -153,7 +153,7 @@ Partial Class UpdateAdmin
         Me.ButtonSave.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonSave.ForeColor = System.Drawing.Color.White
         Me.ButtonSave.HoverState.Parent = Me.ButtonSave
-        Me.ButtonSave.Location = New System.Drawing.Point(644, 127)
+        Me.ButtonSave.Location = New System.Drawing.Point(524, 127)
         Me.ButtonSave.Name = "ButtonSave"
         Me.ButtonSave.ShadowDecoration.Parent = Me.ButtonSave
         Me.ButtonSave.Size = New System.Drawing.Size(206, 45)
@@ -169,7 +169,7 @@ Partial Class UpdateAdmin
         Me.ButtonReset.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonReset.ForeColor = System.Drawing.Color.Black
         Me.ButtonReset.HoverState.Parent = Me.ButtonReset
-        Me.ButtonReset.Location = New System.Drawing.Point(644, 260)
+        Me.ButtonReset.Location = New System.Drawing.Point(524, 260)
         Me.ButtonReset.Name = "ButtonReset"
         Me.ButtonReset.ShadowDecoration.Parent = Me.ButtonReset
         Me.ButtonReset.Size = New System.Drawing.Size(206, 45)
@@ -185,7 +185,7 @@ Partial Class UpdateAdmin
         Me.ButtonChangePass.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonChangePass.ForeColor = System.Drawing.Color.Black
         Me.ButtonChangePass.HoverState.Parent = Me.ButtonChangePass
-        Me.ButtonChangePass.Location = New System.Drawing.Point(644, 191)
+        Me.ButtonChangePass.Location = New System.Drawing.Point(524, 192)
         Me.ButtonChangePass.Name = "ButtonChangePass"
         Me.ButtonChangePass.ShadowDecoration.Parent = Me.ButtonChangePass
         Me.ButtonChangePass.Size = New System.Drawing.Size(206, 45)
@@ -197,31 +197,28 @@ Partial Class UpdateAdmin
         Me.ErrorUser.AutoSize = True
         Me.ErrorUser.Font = New System.Drawing.Font("Microsoft Tai Le", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ErrorUser.ForeColor = System.Drawing.Color.Red
-        Me.ErrorUser.Location = New System.Drawing.Point(30, 192)
+        Me.ErrorUser.Location = New System.Drawing.Point(32, 175)
         Me.ErrorUser.Name = "ErrorUser"
-        Me.ErrorUser.Size = New System.Drawing.Size(55, 14)
+        Me.ErrorUser.Size = New System.Drawing.Size(0, 14)
         Me.ErrorUser.TabIndex = 10
-        Me.ErrorUser.Text = "ErrorUser"
         '
         'ErrorName
         '
         Me.ErrorName.AutoSize = True
         Me.ErrorName.ForeColor = System.Drawing.Color.Red
-        Me.ErrorName.Location = New System.Drawing.Point(30, 325)
+        Me.ErrorName.Location = New System.Drawing.Point(32, 308)
         Me.ErrorName.Name = "ErrorName"
-        Me.ErrorName.Size = New System.Drawing.Size(57, 13)
+        Me.ErrorName.Size = New System.Drawing.Size(0, 13)
         Me.ErrorName.TabIndex = 11
-        Me.ErrorName.Text = "ErrorName"
         '
         'ErrorPass
         '
         Me.ErrorPass.AutoSize = True
         Me.ErrorPass.ForeColor = System.Drawing.Color.Red
-        Me.ErrorPass.Location = New System.Drawing.Point(30, 456)
+        Me.ErrorPass.Location = New System.Drawing.Point(35, 435)
         Me.ErrorPass.Name = "ErrorPass"
-        Me.ErrorPass.Size = New System.Drawing.Size(52, 13)
+        Me.ErrorPass.Size = New System.Drawing.Size(0, 13)
         Me.ErrorPass.TabIndex = 12
-        Me.ErrorPass.Text = "ErrorPass"
         '
         'ButtonAddAdmin
         '
@@ -232,7 +229,7 @@ Partial Class UpdateAdmin
         Me.ButtonAddAdmin.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ButtonAddAdmin.ForeColor = System.Drawing.Color.Black
         Me.ButtonAddAdmin.HoverState.Parent = Me.ButtonAddAdmin
-        Me.ButtonAddAdmin.Location = New System.Drawing.Point(644, 325)
+        Me.ButtonAddAdmin.Location = New System.Drawing.Point(524, 334)
         Me.ButtonAddAdmin.Name = "ButtonAddAdmin"
         Me.ButtonAddAdmin.ShadowDecoration.Parent = Me.ButtonAddAdmin
         Me.ButtonAddAdmin.Size = New System.Drawing.Size(206, 45)
@@ -258,7 +255,7 @@ Partial Class UpdateAdmin
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "UpdateAdmin"
-        Me.Size = New System.Drawing.Size(1111, 557)
+        Me.Size = New System.Drawing.Size(794, 505)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

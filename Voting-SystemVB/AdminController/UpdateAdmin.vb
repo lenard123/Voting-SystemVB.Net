@@ -31,4 +31,28 @@
     Private Sub ButtonChangePass_Click(sender As Object, e As EventArgs) Handles ButtonChangePass.Click
         AdminPanel.GetInstance().LoadControl(New UpdatePassword)
     End Sub
+
+    Private Sub UpdateAdmin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TextUser.Text = Admin.GetCurrentUser().Username
+        TextName.Text = Admin.GetCurrentUser().Fullname
+
+    End Sub
+
+    Private Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
+        If Admin.GetCurrentUser().ComparePassword(TextPassword.Text) Then
+
+            Admin.GetCurrentUser().Username = TextUser.Text
+            Admin.GetCurrentUser().Password = TextPassword.Text
+
+            Try
+                Admin.GetCurrentUser().Update()
+                Alert.ShowAlert("Update Successfully", Alert.AlertType.Success)
+            Catch ex As Exception
+            End Try
+
+        Else : Alert.ShowAlert("Wrong Password", Alert.AlertType.Error)
+
+        End If
+
+    End Sub
 End Class
