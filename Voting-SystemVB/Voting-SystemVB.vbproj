@@ -380,6 +380,12 @@
     <Compile Include="VoterController\PartyInfo.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="VoterController\VoteCount.Designer.vb">
+      <DependentUpon>VoteCount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VoterController\VoteCount.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="VoterController\VoteInfo.Designer.vb">
       <DependentUpon>VoteInfo.vb</DependentUpon>
     </Compile>
@@ -525,6 +531,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VoterController\PartyInfo.resx">
       <DependentUpon>PartyInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoterController\VoteCount.resx">
+      <DependentUpon>VoteCount.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VoterController\VoteInfo.resx">
       <DependentUpon>VoteInfo.vb</DependentUpon>

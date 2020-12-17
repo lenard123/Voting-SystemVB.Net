@@ -56,7 +56,7 @@ Public Class VotersPanel
         End If
     End Sub
 
-    Private Sub MainButton_Click(sender As Guna2Button, e As EventArgs) Handles ButtonCandidate.Click, ButtonParty.Click, ButtonVoteNow.Click, ButtonVoteInfo.Click
+    Private Sub MainButton_Click(sender As Guna2Button, e As EventArgs) Handles ButtonCandidate.Click, ButtonParty.Click, ButtonVoteNow.Click, ButtonVoteInfo.Click, ButtonVoteCount.Click
         Dim tag As Integer = Integer.Parse(sender.Tag)
 
         'If sender.Equals(SelectedButton) Then Return
@@ -76,6 +76,8 @@ Public Class VotersPanel
                 LoadControl(VoteNow.GetInstance())
             Case 4
                 LoadControl(VoteInfo.GetInstance())
+            Case 5
+                LoadControl(VoteCount.GetInstance())
         End Select
 
     End Sub

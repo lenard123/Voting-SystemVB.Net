@@ -27,6 +27,7 @@ Partial Class ManageParty
         Me.ButtonRefresh = New Guna.UI2.WinForms.Guna2Button()
         Me.BackgroundWorkerRefresh = New System.ComponentModel.BackgroundWorker()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Guna2Separator2 = New Guna.UI2.WinForms.Guna2Separator()
         Me.Guna2Separator1 = New Guna.UI2.WinForms.Guna2Separator()
@@ -36,31 +37,30 @@ Partial Class ManageParty
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.LabelPRO = New System.Windows.Forms.Label()
+        Me.LabelAuditor = New System.Windows.Forms.Label()
+        Me.LabelTreasurer = New System.Windows.Forms.Label()
         Me.LabelSecretary = New System.Windows.Forms.Label()
         Me.LabelVicePresident = New System.Windows.Forms.Label()
         Me.Label1President = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.LabelParty = New System.Windows.Forms.Label()
-        Me.PanelMain = New System.Windows.Forms.Panel()
-        Me.LabelTreasurer = New System.Windows.Forms.Label()
-        Me.LabelAuditor = New System.Windows.Forms.Label()
-        Me.LabelPRO = New System.Windows.Forms.Label()
-        Me.PanelSub = New System.Windows.Forms.Panel()
-        Me.BackgroundWorkerFetchMember = New System.ComponentModel.BackgroundWorker()
+        Me.ButtonRemove = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonUpdate = New Guna.UI2.WinForms.Guna2Button()
+        Me.PanelMain = New System.Windows.Forms.Panel()
+        Me.PanelSub = New System.Windows.Forms.Panel()
         Me.PanelNoParty = New System.Windows.Forms.Panel()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.BackgroundWorkerFetchMember = New System.ComponentModel.BackgroundWorker()
         Me.FlowLayoutPanel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.PanelMain.SuspendLayout()
         Me.PanelSub.SuspendLayout()
         Me.PanelNoParty.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -125,6 +125,17 @@ Partial Class ManageParty
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(230, 380)
         Me.FlowLayoutPanel1.TabIndex = 9
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.LightGray
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(0, 0, 0, 3)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(220, 100)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 12
+        Me.PictureBox1.TabStop = False
+        '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
@@ -145,7 +156,7 @@ Partial Class ManageParty
         Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.LabelParty)
-        Me.Panel1.Controls.Add(Me.Guna2Button3)
+        Me.Panel1.Controls.Add(Me.ButtonRemove)
         Me.Panel1.Controls.Add(Me.ButtonUpdate)
         Me.Panel1.Controls.Add(Me.ButtonRefresh)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -241,6 +252,42 @@ Partial Class ManageParty
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Vice President:"
         '
+        'LabelPRO
+        '
+        Me.LabelPRO.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.LabelPRO.AutoSize = True
+        Me.LabelPRO.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.LabelPRO.ForeColor = System.Drawing.Color.Black
+        Me.LabelPRO.Location = New System.Drawing.Point(145, 287)
+        Me.LabelPRO.Name = "LabelPRO"
+        Me.LabelPRO.Size = New System.Drawing.Size(162, 21)
+        Me.LabelPRO.TabIndex = 0
+        Me.LabelPRO.Text = "Lenard Mangay-ayam"
+        '
+        'LabelAuditor
+        '
+        Me.LabelAuditor.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.LabelAuditor.AutoSize = True
+        Me.LabelAuditor.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.LabelAuditor.ForeColor = System.Drawing.Color.Black
+        Me.LabelAuditor.Location = New System.Drawing.Point(145, 256)
+        Me.LabelAuditor.Name = "LabelAuditor"
+        Me.LabelAuditor.Size = New System.Drawing.Size(162, 21)
+        Me.LabelAuditor.TabIndex = 0
+        Me.LabelAuditor.Text = "Lenard Mangay-ayam"
+        '
+        'LabelTreasurer
+        '
+        Me.LabelTreasurer.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.LabelTreasurer.AutoSize = True
+        Me.LabelTreasurer.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.LabelTreasurer.ForeColor = System.Drawing.Color.Black
+        Me.LabelTreasurer.Location = New System.Drawing.Point(145, 225)
+        Me.LabelTreasurer.Name = "LabelTreasurer"
+        Me.LabelTreasurer.Size = New System.Drawing.Size(162, 21)
+        Me.LabelTreasurer.TabIndex = 0
+        Me.LabelTreasurer.Text = "Lenard Mangay-ayam"
+        '
         'LabelSecretary
         '
         Me.LabelSecretary.Anchor = System.Windows.Forms.AnchorStyles.Top
@@ -310,66 +357,24 @@ Partial Class ManageParty
         Me.LabelParty.TabIndex = 0
         Me.LabelParty.Text = "Sample Title"
         '
-        'PanelMain
+        'ButtonRemove
         '
-        Me.PanelMain.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PanelMain.Controls.Add(Me.PanelSub)
-        Me.PanelMain.Controls.Add(Me.FlowLayoutPanel1)
-        Me.PanelMain.Location = New System.Drawing.Point(38, 76)
-        Me.PanelMain.Name = "PanelMain"
-        Me.PanelMain.Size = New System.Drawing.Size(837, 380)
-        Me.PanelMain.TabIndex = 11
-        '
-        'LabelTreasurer
-        '
-        Me.LabelTreasurer.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.LabelTreasurer.AutoSize = True
-        Me.LabelTreasurer.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.LabelTreasurer.ForeColor = System.Drawing.Color.Black
-        Me.LabelTreasurer.Location = New System.Drawing.Point(145, 225)
-        Me.LabelTreasurer.Name = "LabelTreasurer"
-        Me.LabelTreasurer.Size = New System.Drawing.Size(162, 21)
-        Me.LabelTreasurer.TabIndex = 0
-        Me.LabelTreasurer.Text = "Lenard Mangay-ayam"
-        '
-        'LabelAuditor
-        '
-        Me.LabelAuditor.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.LabelAuditor.AutoSize = True
-        Me.LabelAuditor.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.LabelAuditor.ForeColor = System.Drawing.Color.Black
-        Me.LabelAuditor.Location = New System.Drawing.Point(145, 256)
-        Me.LabelAuditor.Name = "LabelAuditor"
-        Me.LabelAuditor.Size = New System.Drawing.Size(162, 21)
-        Me.LabelAuditor.TabIndex = 0
-        Me.LabelAuditor.Text = "Lenard Mangay-ayam"
-        '
-        'LabelPRO
-        '
-        Me.LabelPRO.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.LabelPRO.AutoSize = True
-        Me.LabelPRO.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.LabelPRO.ForeColor = System.Drawing.Color.Black
-        Me.LabelPRO.Location = New System.Drawing.Point(145, 287)
-        Me.LabelPRO.Name = "LabelPRO"
-        Me.LabelPRO.Size = New System.Drawing.Size(162, 21)
-        Me.LabelPRO.TabIndex = 0
-        Me.LabelPRO.Text = "Lenard Mangay-ayam"
-        '
-        'PanelSub
-        '
-        Me.PanelSub.Controls.Add(Me.Panel1)
-        Me.PanelSub.Controls.Add(Me.PanelNoParty)
-        Me.PanelSub.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelSub.Location = New System.Drawing.Point(230, 0)
-        Me.PanelSub.Name = "PanelSub"
-        Me.PanelSub.Size = New System.Drawing.Size(607, 380)
-        Me.PanelSub.TabIndex = 9
-        '
-        'BackgroundWorkerFetchMember
-        '
+        Me.ButtonRemove.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonRemove.Animated = True
+        Me.ButtonRemove.BackColor = System.Drawing.Color.Transparent
+        Me.ButtonRemove.BorderColor = System.Drawing.Color.LightGray
+        Me.ButtonRemove.CheckedState.Parent = Me.ButtonRemove
+        Me.ButtonRemove.CustomImages.Parent = Me.ButtonRemove
+        Me.ButtonRemove.FillColor = System.Drawing.Color.White
+        Me.ButtonRemove.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.ButtonRemove.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.ButtonRemove.HoverState.Parent = Me.ButtonRemove
+        Me.ButtonRemove.Location = New System.Drawing.Point(339, 335)
+        Me.ButtonRemove.Name = "ButtonRemove"
+        Me.ButtonRemove.ShadowDecoration.Parent = Me.ButtonRemove
+        Me.ButtonRemove.Size = New System.Drawing.Size(110, 36)
+        Me.ButtonRemove.TabIndex = 8
+        Me.ButtonRemove.Text = "Remove Party"
         '
         'ButtonUpdate
         '
@@ -389,6 +394,28 @@ Partial Class ManageParty
         Me.ButtonUpdate.TabIndex = 8
         Me.ButtonUpdate.Text = "Update"
         '
+        'PanelMain
+        '
+        Me.PanelMain.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelMain.Controls.Add(Me.PanelSub)
+        Me.PanelMain.Controls.Add(Me.FlowLayoutPanel1)
+        Me.PanelMain.Location = New System.Drawing.Point(38, 76)
+        Me.PanelMain.Name = "PanelMain"
+        Me.PanelMain.Size = New System.Drawing.Size(837, 380)
+        Me.PanelMain.TabIndex = 11
+        '
+        'PanelSub
+        '
+        Me.PanelSub.Controls.Add(Me.Panel1)
+        Me.PanelSub.Controls.Add(Me.PanelNoParty)
+        Me.PanelSub.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelSub.Location = New System.Drawing.Point(230, 0)
+        Me.PanelSub.Name = "PanelSub"
+        Me.PanelSub.Size = New System.Drawing.Size(607, 380)
+        Me.PanelSub.TabIndex = 9
+        '
         'PanelNoParty
         '
         Me.PanelNoParty.BackColor = System.Drawing.Color.White
@@ -400,17 +427,6 @@ Partial Class ManageParty
         Me.PanelNoParty.Name = "PanelNoParty"
         Me.PanelNoParty.Size = New System.Drawing.Size(607, 380)
         Me.PanelNoParty.TabIndex = 12
-        '
-        'Label2
-        '
-        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 24.0!)
-        Me.Label2.Location = New System.Drawing.Point(130, 118)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(361, 45)
-        Me.Label2.TabIndex = 7
-        Me.Label2.Text = "There is no Party Added"
         '
         'Guna2Button1
         '
@@ -450,35 +466,19 @@ Partial Class ManageParty
         Me.Guna2Button2.TabIndex = 10
         Me.Guna2Button2.Text = "Refresh"
         '
-        'Guna2Button3
+        'Label2
         '
-        Me.Guna2Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Button3.Animated = True
-        Me.Guna2Button3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Button3.BorderColor = System.Drawing.Color.LightGray
-        Me.Guna2Button3.CheckedState.Parent = Me.Guna2Button3
-        Me.Guna2Button3.CustomImages.Parent = Me.Guna2Button3
-        Me.Guna2Button3.FillColor = System.Drawing.Color.White
-        Me.Guna2Button3.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Guna2Button3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.Guna2Button3.HoverState.Parent = Me.Guna2Button3
-        Me.Guna2Button3.Location = New System.Drawing.Point(339, 335)
-        Me.Guna2Button3.Name = "Guna2Button3"
-        Me.Guna2Button3.ShadowDecoration.Parent = Me.Guna2Button3
-        Me.Guna2Button3.Size = New System.Drawing.Size(110, 36)
-        Me.Guna2Button3.TabIndex = 8
-        Me.Guna2Button3.Text = "Remove Party"
+        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 24.0!)
+        Me.Label2.Location = New System.Drawing.Point(130, 118)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(361, 45)
+        Me.Label2.TabIndex = 7
+        Me.Label2.Text = "There is no Party Added"
         '
-        'PictureBox1
+        'BackgroundWorkerFetchMember
         '
-        Me.PictureBox1.BackColor = System.Drawing.Color.LightGray
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(0, 0, 0, 3)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(220, 100)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 12
-        Me.PictureBox1.TabStop = False
         '
         'ManageParty
         '
@@ -489,13 +489,13 @@ Partial Class ManageParty
         Me.Name = "ManageParty"
         Me.Size = New System.Drawing.Size(913, 481)
         Me.FlowLayoutPanel1.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.PanelMain.ResumeLayout(False)
         Me.PanelSub.ResumeLayout(False)
         Me.PanelNoParty.ResumeLayout(False)
         Me.PanelNoParty.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -531,7 +531,7 @@ Partial Class ManageParty
     Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Guna2Button3 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonRemove As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
 
 End Class

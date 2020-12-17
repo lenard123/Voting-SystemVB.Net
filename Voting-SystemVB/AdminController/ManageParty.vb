@@ -27,12 +27,13 @@ Public Class ManageParty
     '    End If
     'End Sub
     Private Sub ManageParty_Refresh() Implements MainControl.RefreshControl
-        If Election.HasNotStarted Then
-            ButtonAdd.Visible = True
-        Else
-            ButtonAdd.Visible = False
-        End If
         ButtonRefresh.PerformClick()
+
+        ButtonAdd.Visible = Election.HasNotStarted
+        ButtonUpdate.Visible = Election.HasNotStarted
+        ButtonRefresh.Visible = Election.HasNotStarted
+        ButtonRemove.Visible = Election.HasNotStarted
+
     End Sub
 
 
@@ -159,7 +160,7 @@ Public Class ManageParty
         Return sLabel
     End Function
 
-    Private Sub ButtonUpdate_Click(sender As Object, e As EventArgs) Handles ButtonUpdate.Click, Guna2Button3.Click
+    Private Sub ButtonUpdate_Click(sender As Object, e As EventArgs) Handles ButtonUpdate.Click
         If Not IsNothing(PreviousButton) Then
             UpdateParty.ShowPopup(PreviousButton.Tag)
         End If

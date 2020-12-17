@@ -22,9 +22,9 @@ Partial Class AdminHomeStarted
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.VPresident = New Guna.UI2.WinForms.Guna2Button()
         Me.Secretary = New Guna.UI2.WinForms.Guna2Button()
         Me.Treasurer = New Guna.UI2.WinForms.Guna2Button()
@@ -32,6 +32,7 @@ Partial Class AdminHomeStarted
         Me.PRO = New Guna.UI2.WinForms.Guna2Button()
         Me.ViewChart = New System.Windows.Forms.Label()
         Me.ShowCandidates = New Guna.UI2.WinForms.Guna2GroupBox()
+        Me.ButtonRefresh = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelChart = New System.Windows.Forms.Panel()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
@@ -49,7 +50,6 @@ Partial Class AdminHomeStarted
         Me.Guna2Separator1 = New Guna.UI2.WinForms.Guna2Separator()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.President = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Me.ShowCandidates.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.PanelChart.SuspendLayout()
@@ -184,7 +184,7 @@ Partial Class AdminHomeStarted
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ShowCandidates.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.ShowCandidates.Controls.Add(Me.Guna2Button2)
+        Me.ShowCandidates.Controls.Add(Me.ButtonRefresh)
         Me.ShowCandidates.Controls.Add(Me.Panel1)
         Me.ShowCandidates.Controls.Add(Me.ViewChart)
         Me.ShowCandidates.CustomBorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
@@ -198,6 +198,27 @@ Partial Class AdminHomeStarted
         Me.ShowCandidates.TabIndex = 22
         Me.ShowCandidates.Text = "Results as of 6:00am"
         Me.ShowCandidates.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
+        '
+        'ButtonRefresh
+        '
+        Me.ButtonRefresh.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonRefresh.Animated = True
+        Me.ButtonRefresh.BackColor = System.Drawing.Color.Transparent
+        Me.ButtonRefresh.BorderRadius = 5
+        Me.ButtonRefresh.Checked = True
+        Me.ButtonRefresh.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.ButtonRefresh.CheckedState.Parent = Me.ButtonRefresh
+        Me.ButtonRefresh.CustomImages.Parent = Me.ButtonRefresh
+        Me.ButtonRefresh.FillColor = System.Drawing.Color.Empty
+        Me.ButtonRefresh.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonRefresh.ForeColor = System.Drawing.Color.White
+        Me.ButtonRefresh.HoverState.Parent = Me.ButtonRefresh
+        Me.ButtonRefresh.Location = New System.Drawing.Point(598, 7)
+        Me.ButtonRefresh.Name = "ButtonRefresh"
+        Me.ButtonRefresh.ShadowDecoration.Parent = Me.ButtonRefresh
+        Me.ButtonRefresh.Size = New System.Drawing.Size(103, 26)
+        Me.ButtonRefresh.TabIndex = 23
+        Me.ButtonRefresh.Text = "Refresh"
         '
         'Panel1
         '
@@ -222,17 +243,17 @@ Partial Class AdminHomeStarted
         '
         'Chart1
         '
-        ChartArea3.Name = "ChartAreaBar"
-        Me.Chart1.ChartAreas.Add(ChartArea3)
+        ChartArea1.Name = "ChartAreaBar"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
         Me.Chart1.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend3.Name = "Legend2"
-        Me.Chart1.Legends.Add(Legend3)
+        Legend1.Name = "Legend2"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(0, 0)
         Me.Chart1.Name = "Chart1"
-        Series3.ChartArea = "ChartAreaBar"
-        Series3.Legend = "Legend2"
-        Series3.Name = "Series2"
-        Me.Chart1.Series.Add(Series3)
+        Series1.ChartArea = "ChartAreaBar"
+        Series1.Legend = "Legend2"
+        Series1.Name = "Series2"
+        Me.Chart1.Series.Add(Series1)
         Me.Chart1.Size = New System.Drawing.Size(687, 194)
         Me.Chart1.TabIndex = 1
         Me.Chart1.Text = "Chart1"
@@ -424,29 +445,7 @@ Partial Class AdminHomeStarted
         Me.President.Tag = "1"
         Me.President.Text = "President"
         '
-        'Guna2Button2
-        '
-        Me.Guna2Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Button2.Animated = True
-        Me.Guna2Button2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Button2.BorderRadius = 5
-        Me.Guna2Button2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton
-        Me.Guna2Button2.Checked = True
-        Me.Guna2Button2.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Guna2Button2.CheckedState.Parent = Me.Guna2Button2
-        Me.Guna2Button2.CustomImages.Parent = Me.Guna2Button2
-        Me.Guna2Button2.FillColor = System.Drawing.Color.Empty
-        Me.Guna2Button2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button2.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button2.HoverState.Parent = Me.Guna2Button2
-        Me.Guna2Button2.Location = New System.Drawing.Point(598, 7)
-        Me.Guna2Button2.Name = "Guna2Button2"
-        Me.Guna2Button2.ShadowDecoration.Parent = Me.Guna2Button2
-        Me.Guna2Button2.Size = New System.Drawing.Size(103, 26)
-        Me.Guna2Button2.TabIndex = 23
-        Me.Guna2Button2.Text = "Display Chart"
-        '
-        'AdminHomeStarted2
+        'AdminHomeStarted
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -458,7 +457,7 @@ Partial Class AdminHomeStarted
         Me.Controls.Add(Me.ShowCandidates)
         Me.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "AdminHomeStarted2"
+        Me.Name = "AdminHomeStarted"
         Me.Size = New System.Drawing.Size(916, 481)
         Me.ShowCandidates.ResumeLayout(False)
         Me.ShowCandidates.PerformLayout()
@@ -499,5 +498,5 @@ Partial Class AdminHomeStarted
     Friend WithEvents Guna2Separator1 As Guna.UI2.WinForms.Guna2Separator
     Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents President As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonRefresh As Guna.UI2.WinForms.Guna2Button
 End Class

@@ -31,6 +31,13 @@ Public Class Votes
         Return Result
     End Function
 
+    'Count the votes of All Candidates
+    Public Shared Function CountAllVotes() As Dictionary(Of Integer, Dictionary(Of Integer, Integer))
+        Dim Result As New Dictionary(Of Integer, Dictionary(Of Integer, Integer))
+        Position.GetAll().ForEach(Sub(position_id As Integer) Result.Add(position_id, CountVotes(position_id)))
+        Return Result
+    End Function
+
     Public Shared Sub SubmitVotes(Candidates As List(Of Integer))
 
         If IsNothing(Student.GetCurrentUser()) Then Throw New NotLoggedInException

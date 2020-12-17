@@ -30,7 +30,7 @@ Partial Class VotersPanel
         Me.ButtonParty = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonVoteNow = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonVoteInfo = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button4 = New Guna.UI2.WinForms.Guna2Button()
+        Me.ButtonVoteCount = New Guna.UI2.WinForms.Guna2Button()
         Me.ButtonLogout = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -81,7 +81,7 @@ Partial Class VotersPanel
         Me.SideBarButton.Controls.Add(Me.ButtonParty)
         Me.SideBarButton.Controls.Add(Me.ButtonVoteNow)
         Me.SideBarButton.Controls.Add(Me.ButtonVoteInfo)
-        Me.SideBarButton.Controls.Add(Me.Guna2Button4)
+        Me.SideBarButton.Controls.Add(Me.ButtonVoteCount)
         Me.SideBarButton.Controls.Add(Me.ButtonLogout)
         Me.SideBarButton.Location = New System.Drawing.Point(5, 144)
         Me.SideBarButton.Name = "SideBarButton"
@@ -168,25 +168,25 @@ Partial Class VotersPanel
         Me.ButtonVoteInfo.Tag = "4"
         Me.ButtonVoteInfo.Text = "VOTE INFO"
         '
-        'Guna2Button4
+        'ButtonVoteCount
         '
-        Me.Guna2Button4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.ButtonVoteCount.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Button4.Animated = True
-        Me.Guna2Button4.CheckedState.Parent = Me.Guna2Button4
-        Me.Guna2Button4.CustomImages.Parent = Me.Guna2Button4
-        Me.Guna2Button4.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.Guna2Button4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button4.ForeColor = System.Drawing.SystemColors.ControlDark
-        Me.Guna2Button4.HoverState.Parent = Me.Guna2Button4
-        Me.Guna2Button4.Location = New System.Drawing.Point(0, 160)
-        Me.Guna2Button4.Margin = New System.Windows.Forms.Padding(0)
-        Me.Guna2Button4.Name = "Guna2Button4"
-        Me.Guna2Button4.ShadowDecoration.Parent = Me.Guna2Button4
-        Me.Guna2Button4.Size = New System.Drawing.Size(220, 40)
-        Me.Guna2Button4.TabIndex = 3
-        Me.Guna2Button4.Tag = "5"
-        Me.Guna2Button4.Text = "CURRENT VOTE COUNT"
+        Me.ButtonVoteCount.Animated = True
+        Me.ButtonVoteCount.CheckedState.Parent = Me.ButtonVoteCount
+        Me.ButtonVoteCount.CustomImages.Parent = Me.ButtonVoteCount
+        Me.ButtonVoteCount.FillColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.ButtonVoteCount.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ButtonVoteCount.ForeColor = System.Drawing.SystemColors.ControlDark
+        Me.ButtonVoteCount.HoverState.Parent = Me.ButtonVoteCount
+        Me.ButtonVoteCount.Location = New System.Drawing.Point(0, 160)
+        Me.ButtonVoteCount.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonVoteCount.Name = "ButtonVoteCount"
+        Me.ButtonVoteCount.ShadowDecoration.Parent = Me.ButtonVoteCount
+        Me.ButtonVoteCount.Size = New System.Drawing.Size(220, 40)
+        Me.ButtonVoteCount.TabIndex = 3
+        Me.ButtonVoteCount.Tag = "5"
+        Me.ButtonVoteCount.Text = "CURRENT VOTE COUNT"
         '
         'ButtonLogout
         '
@@ -419,7 +419,7 @@ Partial Class VotersPanel
     Friend WithEvents ButtonParty As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents ButtonVoteNow As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents ButtonVoteInfo As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button4 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonVoteCount As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents ButtonLogout As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Label1 As System.Windows.Forms.Label
