@@ -4,7 +4,7 @@ Imports System.Data.OleDb
 Public Class Candidate
 
     'Encapsulated data
-    Private _ID, _StudentID, _PositionID, _PartyID As Integer
+    Private _ID, _StudentID, _PositionID, _PartyID, VoteCount As Integer
     Private _Tagline, _Image, _Gender, _Fullname, _Course, _Year, _Party, _PartyImage, _PartyDesc, _StudentStudentID As String
 
     Public Sub New(StudentID As Integer)
@@ -106,6 +106,14 @@ Public Class Candidate
             Return "candidate-" & _StudentID & ".jpg"
         End Get
     End Property
+
+    Public Sub SetVoteCount(count As Integer)
+        VoteCount = count
+    End Sub
+
+    Public Function GetVoteCount() As Integer
+        Return VoteCount
+    End Function
 
     ''' <summary>
     ''' Update Candidate  Information
@@ -296,6 +304,22 @@ Public Class Candidate
         Return Result
     End Function
 
+    Public Shared Function GetResult() As Dictionary(Of Integer, Candidate)
+        Dim Result As New Dictionary(Of Integer, Candidate)
+        Using Cmd As New OleDbCommand(QUERY_SELECT_RESULT, GetConnection())
+            BindParameters(Cmd, Election.GetCurrentElection().Id)
+            GetConnection().Open()
+            Using Reader = Cmd.ExecuteReader()
+                While Reader.Read()
+                    Dim cand = GetCandidate(Reader)
+                    Result.Add(cand.PositionID, cand)
+                End While
+            End Using
+            GetConnection().Close()
+        End Using
+        Return Result
+    End Function
+
     ''' <summary>
     ''' Convert Reader into Candidate Model
     ''' </summary>
@@ -339,6 +363,7 @@ Public Class Candidate
         Result.Image = ImagePath
         Result.Gender = Gender
         Result.Tagline = Tagline
+        Result.SetVoteCount(Reader.GetInt32(INDEX_VOTE_COUNT))
         Return Result
     End Function
 
@@ -350,6 +375,7 @@ Public Class Candidate
     Private Const QUERY_SELECT_BY_PARTY = "SELECT * FROM [CandidateQuery] WHERE [party_id]=?"
     Private Const QUERY_COUNT = "SELECT [position_id], COUNT(*) FROM Candidate GROUP BY [position_id]"
     Private Const QUERY_SELECT_BY_VOTERS = "SELECT [CandidateQuery].* FROM [CandidateQuery] INNER JOIN [Votes] ON [CandidateQuery].[ID]=[Votes].[candidate_id] WHERE [Votes].[student_id]=?"
+    Private Const QUERY_SELECT_RESULT = "SELECT CandidateQuery.* FROM CandidateQuery INNER JOIN Result On  CandidateQuery.id = Result.candidate_id WHERE election_id = ?"
 
     Public Const IMAGE_DEFAULT = "images\default\candidate.jpg"
 
@@ -367,5 +393,6 @@ Public Class Candidate
     Private Const INDEX_PARTY_DESCRIPTION = 11
     Private Const INDEX_PARTY_ID = 12
     Private Const INDEX_STUDENT_STUDENT_ID = 13
+    Private Const INDEX_VOTE_COUNT = 14
 
 End Class

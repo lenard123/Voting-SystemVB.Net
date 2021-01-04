@@ -196,6 +196,8 @@ Public Class Admin
         'Get the Admin by given username
         Dim checkAdmin = Admin.Find(Username)
 
+        If Not checkAdmin.Username.Equals(Username) Then Throw New Exception("Invalid Username")
+
         'throw exception if password not match
         If Not checkAdmin.ComparePassword(Password) Then Throw New InvalidPasswordException
 

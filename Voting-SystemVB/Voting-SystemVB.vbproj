@@ -158,6 +158,18 @@
     <Compile Include="AdminController\AdminHomeStarted.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="AdminController\FinalizeResult.Designer.vb">
+      <DependentUpon>FinalizeResult.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\FinalizeResult.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminController\ManageAdmin.Designer.vb">
+      <DependentUpon>ManageAdmin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\ManageAdmin.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Components\CandidateList1.Designer.vb">
       <DependentUpon>CandidateList1.vb</DependentUpon>
     </Compile>
@@ -423,6 +435,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\AdminHomeStarted.resx">
       <DependentUpon>AdminHomeStarted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\FinalizeResult.resx">
+      <DependentUpon>FinalizeResult.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\ManageAdmin.resx">
+      <DependentUpon>ManageAdmin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CandidateList1.resx">
       <DependentUpon>CandidateList1.vb</DependentUpon>

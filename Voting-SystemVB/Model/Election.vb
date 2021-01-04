@@ -22,7 +22,10 @@ Public Class Election
         Return CurrentElection._Status = Status.ONGOING And Date.Now() < CurrentElection.Ended
     End Function
     Public Shared Function HasEnded() As Boolean
-        Return CurrentElection._Status = Status.ENDED Or Date.Now() > CurrentElection.Ended
+        Return CurrentElection._Status = Status.ONGOING And Date.Now() > CurrentElection.Ended
+    End Function
+    Public Shared Function IsFinalized() As Boolean
+        Return CurrentElection._Status = Status.ENDED
     End Function
 
     Public ReadOnly Property Id As Integer
@@ -131,6 +134,22 @@ Public Class Election
         GetCurrentElectionRefresh()
     End Sub
 
+    Public Shared Sub FinalizeElection()
+        If Not Election.HasEnded Then Throw New Exception("Election has not ended yet")
+
+        If Not Admin.GetCurrentUser().CanStartElection() Then Throw New InvalidPrivilegeException
+
+        Using Cmd = New OleDbCommand(QUERY_UPDATE_STATUS, GetConnection())
+            BindParameters(Cmd, Status.ENDED, CurrentElection.Id)
+
+            GetConnection.Open()
+            Cmd.ExecuteNonQuery()
+            GetConnection().Close()
+        End Using
+
+        GetCurrentElectionRefresh()
+    End Sub
+
     ''' <summary>
     ''' Convert Reader into Election Model
     ''' </summary>
@@ -164,6 +183,7 @@ Public Class Election
     End Enum
 
     Private Const QUERY_START_ELECTION = "UPDATE [Election] SET [Title]=?, [Status]=?, [Started]=?, [Ended]=? WHERE [ID]=?"
+    Private Const QUERY_UPDATE_STATUS = "UPDATE [Election] SET [STATUS]=? WHERE [ID]=?"
     Private Const QUERY_CURRENT_ELECTION = "SELECT TOP 1 * FROM Election ORDER BY ID DESC;"
     Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) FROM [ELECTION]"
 

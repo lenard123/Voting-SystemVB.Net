@@ -56,11 +56,25 @@ Public Class Votes
         End Using
     End Sub
 
+    Public Shared Sub FinalizeResult(Candidates As Dictionary(Of Integer, Candidate))
+        GetConnection.Open()
+        Using Cmd As New OleDbCommand(QUERY_INSERT_RESULT, GetConnection())
+            For i = 1 To 6
+                Dim cand = Candidates(i)
+                BindParameters(Cmd, Election.GetCurrentElection().Id, i, cand.ID, cand.Fullname, cand.Party, cand.GetVoteCount())
+                Cmd.ExecuteNonQuery()
+            Next
+        End Using
+        GetConnection().Close()
+        Election.FinalizeElection()
+    End Sub
+
     '
     ' CONSTANT PROPERTIES
     '
     Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) FROM (SELECT DISTINCT [student_id] FROM [Votes])"
     Private Const QUERY_COUNT_VOTE = "SELECT [candidate_id], COUNT([candidate_id]) as [Votes] FROM (SELECT [Votes].[candidate_id] FROM [Votes] INNER JOIN [Candidate] ON [Votes].[candidate_id]=[Candidate].[ID] WHERE [position_id]=?) GROUP BY [candidate_id]"
     Private Const QUERY_INSERT_VOTE = "INSERT INTO [Votes]([student_id],[candidate_id]) VALUES (?,?)"
+    Private Const QUERY_INSERT_RESULT = "INSERT INTO [Result]([election_id],[position_id],[candidate_id],[fullname],[party],[votes]) VALUES (?,?,?,?,?,?)"
 
 End Class

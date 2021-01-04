@@ -106,7 +106,7 @@ Partial Class ResultItem
         Me.Controls.Add(Me.LabelVotes)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.LabelPosition)
-        Me.MinimumSize = New System.Drawing.Size(540, 0)
+        Me.MinimumSize = New System.Drawing.Size(540, 105)
         Me.Name = "ResultItem"
         Me.Size = New System.Drawing.Size(540, 105)
         Me.ResumeLayout(False)

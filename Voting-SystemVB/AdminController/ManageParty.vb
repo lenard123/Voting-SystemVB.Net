@@ -20,12 +20,6 @@ Public Class ManageParty
     Private Sub ButtonAdd_Click(sender As Object, e As EventArgs) Handles ButtonAdd.Click, Guna2Button1.Click
         AddParty.ShowPopup()
     End Sub
-    'Private Sub PartyDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs)
-    '    If Election.HasNotStarted Then
-    '        Dim sParty = DirectCast(PartyDataGridView.DataSource, List(Of Party))(e.RowIndex)
-    '        UpdateParty.ShowPopup(sParty)
-    '    End If
-    'End Sub
     Private Sub ManageParty_Refresh() Implements MainControl.RefreshControl
         ButtonRefresh.PerformClick()
 

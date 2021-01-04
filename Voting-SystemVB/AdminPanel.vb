@@ -37,6 +37,8 @@ Public Class AdminPanel
         ElseIf Election.IsOngoing() Then
             Return AdminHomeStarted.GetInstance()
         ElseIf Election.HasEnded() Then
+            Return FinalizeResult.GetInstance()
+        ElseIf Election.IsFinalized() Then
             Return AdminHomeEnded.GetInstance()
         End If
         Return Nothing
@@ -52,7 +54,7 @@ Public Class AdminPanel
             ChipElectionStatus.Text = "Started"
             ChipElectionStatus.ForeColor = Color.White
             ChipElectionStatus.FillColor = Color.Green
-        ElseIf Election.HasEnded() Then
+        ElseIf Election.HasEnded() Or Election.IsFinalized() Then
             ChipElectionStatus.Text = "Ended"
             ChipElectionStatus.ForeColor = Color.White
             ChipElectionStatus.FillColor = Color.FromArgb(94, 148, 255)
@@ -84,7 +86,7 @@ Public Class AdminPanel
         ElseIf sender.Equals(ButtonParty) Then
             LoadControl(ManageParty.GetInstance())
         ElseIf sender.Equals(ButtonAdmin) Then
-            LoadControl(UpdateAdmin.GetInstance())
+            LoadControl(ManageAdmin.GetInstance())
         End If
 
         indicator.Location = New Point(0, sender.Location.Y + PanelButtonGroup.Location.Y)

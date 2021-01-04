@@ -51,10 +51,11 @@ Partial Class UpdateAdmin
         '
         'Label2
         '
+        Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(29, 87)
+        Me.Label2.Location = New System.Drawing.Point(31, 103)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(201, 57)
+        Me.Label2.Size = New System.Drawing.Size(81, 21)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Username"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -63,7 +64,7 @@ Partial Class UpdateAdmin
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(29, 236)
+        Me.Label3.Location = New System.Drawing.Point(29, 192)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(74, 21)
         Me.Label3.TabIndex = 2
@@ -72,10 +73,11 @@ Partial Class UpdateAdmin
         '
         'Label4
         '
+        Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(29, 352)
+        Me.Label4.Location = New System.Drawing.Point(29, 277)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(192, 48)
+        Me.Label4.Size = New System.Drawing.Size(138, 21)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Confirm Password"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -99,7 +101,7 @@ Partial Class UpdateAdmin
         Me.TextUser.PlaceholderText = ""
         Me.TextUser.SelectedText = ""
         Me.TextUser.ShadowDecoration.Parent = Me.TextUser
-        Me.TextUser.Size = New System.Drawing.Size(288, 45)
+        Me.TextUser.Size = New System.Drawing.Size(288, 30)
         Me.TextUser.TabIndex = 4
         '
         'TextName
@@ -115,13 +117,13 @@ Partial Class UpdateAdmin
         Me.TextName.FocusedState.Parent = Me.TextName
         Me.TextName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TextName.HoverState.Parent = Me.TextName
-        Me.TextName.Location = New System.Drawing.Point(33, 260)
+        Me.TextName.Location = New System.Drawing.Point(33, 216)
         Me.TextName.Name = "TextName"
         Me.TextName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TextName.PlaceholderText = ""
         Me.TextName.SelectedText = ""
         Me.TextName.ShadowDecoration.Parent = Me.TextName
-        Me.TextName.Size = New System.Drawing.Size(288, 45)
+        Me.TextName.Size = New System.Drawing.Size(288, 30)
         Me.TextName.TabIndex = 5
         '
         'TextPassword
@@ -137,13 +139,13 @@ Partial Class UpdateAdmin
         Me.TextPassword.FocusedState.Parent = Me.TextPassword
         Me.TextPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TextPassword.HoverState.Parent = Me.TextPassword
-        Me.TextPassword.Location = New System.Drawing.Point(33, 387)
+        Me.TextPassword.Location = New System.Drawing.Point(33, 301)
         Me.TextPassword.Name = "TextPassword"
         Me.TextPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TextPassword.PlaceholderText = ""
         Me.TextPassword.SelectedText = ""
         Me.TextPassword.ShadowDecoration.Parent = Me.TextPassword
-        Me.TextPassword.Size = New System.Drawing.Size(288, 45)
+        Me.TextPassword.Size = New System.Drawing.Size(288, 30)
         Me.TextPassword.TabIndex = 6
         '
         'ButtonSave
@@ -206,7 +208,7 @@ Partial Class UpdateAdmin
         '
         Me.ErrorName.AutoSize = True
         Me.ErrorName.ForeColor = System.Drawing.Color.Red
-        Me.ErrorName.Location = New System.Drawing.Point(32, 308)
+        Me.ErrorName.Location = New System.Drawing.Point(32, 264)
         Me.ErrorName.Name = "ErrorName"
         Me.ErrorName.Size = New System.Drawing.Size(0, 13)
         Me.ErrorName.TabIndex = 11
@@ -215,7 +217,7 @@ Partial Class UpdateAdmin
         '
         Me.ErrorPass.AutoSize = True
         Me.ErrorPass.ForeColor = System.Drawing.Color.Red
-        Me.ErrorPass.Location = New System.Drawing.Point(35, 435)
+        Me.ErrorPass.Location = New System.Drawing.Point(32, 344)
         Me.ErrorPass.Name = "ErrorPass"
         Me.ErrorPass.Size = New System.Drawing.Size(0, 13)
         Me.ErrorPass.TabIndex = 12

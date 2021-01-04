@@ -88,11 +88,13 @@ Public Class ManageVoters
     End Sub
 
     Private Sub StudentDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles StudentDataGridView.CellDoubleClick
-        If Election.HasNotStarted Then
-            Dim update As New UpdateVoter(FilteredResultSet(e.RowIndex))
-            update.ShowPopup()
-        Else
-            VotersInfo.ShowPopup(FilteredResultSet(e.RowIndex))
+        If TypeOf FilteredResultSet(e.RowIndex) Is Student Then
+            If Election.HasNotStarted Then
+                Dim update As New UpdateVoter(FilteredResultSet(e.RowIndex))
+                update.ShowPopup()
+            Else
+                VotersInfo.ShowPopup(FilteredResultSet(e.RowIndex))
+            End If
         End If
     End Sub
 

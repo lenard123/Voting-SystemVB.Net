@@ -7,6 +7,7 @@ Public Class AdminHomeEnded
     Private Shared Instance As AdminHomeEnded
     Private Shared AllCandidates As Dictionary(Of Integer, List(Of Candidate)) 'Position => Candidates
     Private Shared VoteCounts As New Dictionary(Of Integer, Dictionary(Of Integer, Integer)) 'Position => {Candidate => VoteCount}
+    Private Shared Winners As New Dictionary(Of Integer, Candidate)
     Private Shared Parties As List(Of Party)
 
     Public Shared Function GetInstance() As AdminHomeEnded
@@ -40,10 +41,8 @@ Public Class AdminHomeEnded
     End Sub
     Sub ShowWinners()
         For i = 1 To 6
-            Dim HighestVotes = VoteCounts(i).Max(Function(votecount As KeyValuePair(Of Integer, Integer))
-                                                     Return votecount.Value
-                                                 End Function)
-            Dim ri = New ResultItem(i, HighestVotes, GetTopCandidates(i, HighestVotes))
+            Dim cand = Winners(i)
+            Dim ri = New ResultItem(i, cand.GetVoteCount(), cand)
             FlowLayoutPanel1.Controls.Add(ri)
         Next
     End Sub
@@ -103,6 +102,8 @@ Public Class AdminHomeEnded
 
         'Fetch Parties
         Parties = Party.GetAll()
+
+        Winners = Candidate.GetResult()
 
         'Fetch Vote Counts
         For i = 1 To 6
