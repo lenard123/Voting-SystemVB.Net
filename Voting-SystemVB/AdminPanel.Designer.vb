@@ -187,7 +187,7 @@ Partial Class AdminPanel
         Me.ButtonAdmin.ShadowDecoration.Parent = Me.ButtonAdmin
         Me.ButtonAdmin.Size = New System.Drawing.Size(215, 45)
         Me.ButtonAdmin.TabIndex = 4
-        Me.ButtonAdmin.Text = "Update Account"
+        Me.ButtonAdmin.Text = "Settings"
         '
         'ButtonLogout
         '

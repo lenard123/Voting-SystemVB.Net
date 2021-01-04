@@ -33,7 +33,7 @@ Partial Class ManageAdmin
         Me.BtnChangePassword = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
+        Me.ButtonAddAdmin = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Guna2Button4 = New Guna.UI2.WinForms.Guna2Button()
@@ -173,7 +173,7 @@ Partial Class ManageAdmin
         '
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(171, Byte), Integer), CType(CType(71, Byte), Integer))
         Me.Panel3.Controls.Add(Me.Label4)
-        Me.Panel3.Controls.Add(Me.Guna2Button3)
+        Me.Panel3.Controls.Add(Me.ButtonAddAdmin)
         Me.Panel3.Controls.Add(Me.FontAwesome3)
         Me.Panel3.Location = New System.Drawing.Point(6, 137)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(6)
@@ -192,21 +192,21 @@ Partial Class ManageAdmin
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Add new Admin to help facilitate " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the election."
         '
-        'Guna2Button3
+        'ButtonAddAdmin
         '
-        Me.Guna2Button3.Animated = True
-        Me.Guna2Button3.CheckedState.Parent = Me.Guna2Button3
-        Me.Guna2Button3.CustomImages.Parent = Me.Guna2Button3
-        Me.Guna2Button3.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Guna2Button3.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Guna2Button3.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button3.HoverState.Parent = Me.Guna2Button3
-        Me.Guna2Button3.Location = New System.Drawing.Point(0, 83)
-        Me.Guna2Button3.Name = "Guna2Button3"
-        Me.Guna2Button3.ShadowDecoration.Parent = Me.Guna2Button3
-        Me.Guna2Button3.Size = New System.Drawing.Size(301, 36)
-        Me.Guna2Button3.TabIndex = 2
-        Me.Guna2Button3.Text = "Add Admin"
+        Me.ButtonAddAdmin.Animated = True
+        Me.ButtonAddAdmin.CheckedState.Parent = Me.ButtonAddAdmin
+        Me.ButtonAddAdmin.CustomImages.Parent = Me.ButtonAddAdmin
+        Me.ButtonAddAdmin.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.ButtonAddAdmin.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.ButtonAddAdmin.ForeColor = System.Drawing.Color.White
+        Me.ButtonAddAdmin.HoverState.Parent = Me.ButtonAddAdmin
+        Me.ButtonAddAdmin.Location = New System.Drawing.Point(0, 83)
+        Me.ButtonAddAdmin.Name = "ButtonAddAdmin"
+        Me.ButtonAddAdmin.ShadowDecoration.Parent = Me.ButtonAddAdmin
+        Me.ButtonAddAdmin.Size = New System.Drawing.Size(301, 36)
+        Me.ButtonAddAdmin.TabIndex = 2
+        Me.ButtonAddAdmin.Text = "Add Admin"
         '
         'Panel4
         '
@@ -387,7 +387,7 @@ Partial Class ManageAdmin
     Friend WithEvents FontAwesome2 As Voting_SystemVB.FontAwesome
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Guna2Button3 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents ButtonAddAdmin As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents FontAwesome3 As Voting_SystemVB.FontAwesome
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents Label5 As System.Windows.Forms.Label

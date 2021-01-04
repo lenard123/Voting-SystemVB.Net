@@ -74,9 +74,15 @@ Public Class Admin
             Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.VOTERS_ADD)
         End Get
     End Property
+    Public ReadOnly Property CanAddAdmin
+        Get
+            Return CanDoAll
+        End Get
+    End Property
 
+    Public Sub New()
 
-
+    End Sub
     Public Sub New(ByVal Id As Integer, ByVal Password As String)
         Me.Id = Id
         Me._Password = Password
@@ -114,16 +120,31 @@ Public Class Admin
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Function Save() As Boolean
+    Public Function Save(Privileges As List(Of Integer)) As Boolean
         Dim Res As Boolean = False
         Using Cmd As New OleDbCommand(QUERY_INSERT, GetConnection())
             BindParameters(Cmd, Fullname, Username, Password)
-
             GetConnection().Open()
             Res = Cmd.ExecuteNonQuery() <> -1
             GetConnection().Close()
         End Using
-        Return Res
+        Return UpdatePrivileges(Username, Privileges)
+    End Function
+
+    Public Shared Function UpdatePrivileges(Username As String, Privileges As List(Of Integer)) As Boolean
+        Dim sAdmin = Admin.Find(Username)
+        Using Cmd As New OleDbCommand(QUERY_REMOVE_PRIVILEGE, GetConnection())
+            BindParameters(Cmd, sAdmin.Id)
+            GetConnection().Open()
+            Cmd.ExecuteNonQuery()
+            Cmd.CommandText = QUERY_ADD_PRIVILEGE
+            For Each iPrivilege In Privileges
+                BindParameters(Cmd, sAdmin.Id, iPrivilege)
+                Cmd.ExecuteNonQuery()
+            Next
+            GetConnection().Close()
+        End Using
+        Return True
     End Function
 
     ''' <summary>
@@ -205,6 +226,7 @@ Public Class Admin
         SetCurrentUser(checkAdmin)
     End Sub
 
+
     ''' <summary>
     ''' Convert Reader to Admin Model
     ''' </summary>
@@ -253,6 +275,8 @@ Public Class Admin
     'Constant Properties
     Private Const QUERY_SELECT_BY_USERNAME = "SELECT * FROM [Admin] WHERE [username]=?"
     Private Const QUERY_UPDATE = "UPDATE [Admin] SET [username]=?, [fullname]=?, [password]=? WHERE [ID]=?"
+    Private Const QUERY_REMOVE_PRIVILEGE = "DELETE FROM [AdminPrivileges] WHERE [admin_id]=?"
+    Private Const QUERY_ADD_PRIVILEGE = "INSERT INTO [AdminPrivileges]([admin_id],[privilege_id]) VALUES(?,?)"
     Private Const QUERY_INSERT = "INSERT INTO [Admin]([fullname], [username], [password]) VALUES(?,?,?)"
     Private Const QUERY_ISEXISTS = "SELECT COUNT(*) FROM [Admin] WHERE [username]=?"
     Private Const QUERY_FETCH_PRIVILEGE = "SELECT * FROM [AdminPrivileges] WHERE [admin_id]=?"

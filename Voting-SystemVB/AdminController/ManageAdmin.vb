@@ -16,4 +16,12 @@
     Private Sub BtnChangePassword_Click(sender As Object, e As EventArgs) Handles BtnChangePassword.Click
         ChangePassword.ShowPopup()
     End Sub
+
+    Private Sub ButtonAddAdmin_Click(sender As Object, e As EventArgs) Handles ButtonAddAdmin.Click
+        If Admin.GetCurrentUser().CanAddAdmin() Then
+            AddAdmin.ShowPopup()
+        Else
+            Alert.ShowAlert("You do not have the privilege to perform this action", Alert.AlertType.Error)
+        End If
+    End Sub
 End Class

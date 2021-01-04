@@ -11,7 +11,7 @@ Public Class Privilege
             Case PrivilegeType.CANDIDATE_REGISTER
                 Return "Can register candidate"
             Case PrivilegeType.CANDIDATE_UPDATE
-                Return "Can update candidate informationo"
+                Return "Can update candidate information"
             Case PrivilegeType.CANDIDATE_REMOVE
                 Return "Can remove Candidate"
             Case PrivilegeType.PARTY_ADD

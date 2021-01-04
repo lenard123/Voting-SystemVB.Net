@@ -134,12 +134,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminController\AddAdmin.Designer.vb">
-      <DependentUpon>AddAdmin.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AdminController\AddAdmin.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="AdminController\AdminHomeEnded.Designer.vb">
       <DependentUpon>AdminHomeEnded.vb</DependentUpon>
     </Compile>
@@ -183,6 +177,12 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CustomExceptions.vb" />
+    <Compile Include="Modal\AddAdmin.Designer.vb">
+      <DependentUpon>AddAdmin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modal\AddAdmin.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Modal\AddCandidate.Designer.vb">
       <DependentUpon>AddCandidate.vb</DependentUpon>
     </Compile>
@@ -436,9 +436,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AdminController\AddAdmin.resx">
-      <DependentUpon>AddAdmin.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AdminController\AdminHomeEnded.resx">
       <DependentUpon>AdminHomeEnded.vb</DependentUpon>
     </EmbeddedResource>
@@ -459,6 +456,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\ResultItem.resx">
       <DependentUpon>ResultItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\AddAdmin.resx">
+      <DependentUpon>AddAdmin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\AddCandidate.resx">
       <DependentUpon>AddCandidate.vb</DependentUpon>
