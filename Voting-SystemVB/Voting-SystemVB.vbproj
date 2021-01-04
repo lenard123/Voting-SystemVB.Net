@@ -225,6 +225,12 @@
     <Compile Include="AdminController\UpdateAdmin.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Modal\ChangePassword.Designer.vb">
+      <DependentUpon>ChangePassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modal\ChangePassword.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Modal\StartElection.Designer.vb">
       <DependentUpon>StartElection.vb</DependentUpon>
     </Compile>
@@ -474,6 +480,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\UpdateAdmin.resx">
       <DependentUpon>UpdateAdmin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\ChangePassword.resx">
+      <DependentUpon>ChangePassword.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\StartElection.resx">
       <DependentUpon>StartElection.vb</DependentUpon>

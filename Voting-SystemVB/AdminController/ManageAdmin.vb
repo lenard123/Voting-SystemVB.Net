@@ -12,4 +12,8 @@
     Private Sub BtnUpdateAccount_Click(sender As Object, e As EventArgs) Handles BtnUpdateAccount.Click
         UpdateAccount.ShowPopup()
     End Sub
+
+    Private Sub BtnChangePassword_Click(sender As Object, e As EventArgs) Handles BtnChangePassword.Click
+        ChangePassword.ShowPopup()
+    End Sub
 End Class

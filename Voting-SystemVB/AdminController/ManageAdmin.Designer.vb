@@ -30,7 +30,7 @@ Partial Class ManageAdmin
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
+        Me.BtnChangePassword = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
@@ -123,7 +123,7 @@ Partial Class ManageAdmin
         Me.Panel2.BackColor = System.Drawing.Color.Brown
         Me.Panel2.Controls.Add(Me.Label7)
         Me.Panel2.Controls.Add(Me.Label3)
-        Me.Panel2.Controls.Add(Me.Guna2Button2)
+        Me.Panel2.Controls.Add(Me.BtnChangePassword)
         Me.Panel2.Controls.Add(Me.FontAwesome2)
         Me.Panel2.Location = New System.Drawing.Point(319, 6)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(6)
@@ -153,21 +153,21 @@ Partial Class ManageAdmin
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "You can update your password " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "here."
         '
-        'Guna2Button2
+        'BtnChangePassword
         '
-        Me.Guna2Button2.Animated = True
-        Me.Guna2Button2.CheckedState.Parent = Me.Guna2Button2
-        Me.Guna2Button2.CustomImages.Parent = Me.Guna2Button2
-        Me.Guna2Button2.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Guna2Button2.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Guna2Button2.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button2.HoverState.Parent = Me.Guna2Button2
-        Me.Guna2Button2.Location = New System.Drawing.Point(0, 83)
-        Me.Guna2Button2.Name = "Guna2Button2"
-        Me.Guna2Button2.ShadowDecoration.Parent = Me.Guna2Button2
-        Me.Guna2Button2.Size = New System.Drawing.Size(301, 36)
-        Me.Guna2Button2.TabIndex = 2
-        Me.Guna2Button2.Text = "Change Password"
+        Me.BtnChangePassword.Animated = True
+        Me.BtnChangePassword.CheckedState.Parent = Me.BtnChangePassword
+        Me.BtnChangePassword.CustomImages.Parent = Me.BtnChangePassword
+        Me.BtnChangePassword.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BtnChangePassword.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.BtnChangePassword.ForeColor = System.Drawing.Color.White
+        Me.BtnChangePassword.HoverState.Parent = Me.BtnChangePassword
+        Me.BtnChangePassword.Location = New System.Drawing.Point(0, 83)
+        Me.BtnChangePassword.Name = "BtnChangePassword"
+        Me.BtnChangePassword.ShadowDecoration.Parent = Me.BtnChangePassword
+        Me.BtnChangePassword.Size = New System.Drawing.Size(301, 36)
+        Me.BtnChangePassword.TabIndex = 2
+        Me.BtnChangePassword.Text = "Change Password"
         '
         'Panel3
         '
@@ -383,7 +383,7 @@ Partial Class ManageAdmin
     Friend WithEvents FontAwesome1 As Voting_SystemVB.FontAwesome
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BtnChangePassword As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents FontAwesome2 As Voting_SystemVB.FontAwesome
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Label4 As System.Windows.Forms.Label
