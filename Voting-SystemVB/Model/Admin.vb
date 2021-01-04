@@ -100,7 +100,7 @@ Public Class Admin
     Public Function Update() As Boolean
         Dim Res As Boolean = False
         Using Cmd As New OleDbCommand(QUERY_UPDATE, GetConnection())
-            BindParameters(Cmd, Username, Fullname, Password)
+            BindParameters(Cmd, Username, Fullname, Password, Id)
 
             GetConnection().Open()
             Res = Cmd.ExecuteNonQuery() <> -1
@@ -252,7 +252,7 @@ Public Class Admin
 
     'Constant Properties
     Private Const QUERY_SELECT_BY_USERNAME = "SELECT * FROM [Admin] WHERE [username]=?"
-    Private Const QUERY_UPDATE = "UPDATE [Admin] SET [username]=?, [fullname]=? WHERE [ID]=?"
+    Private Const QUERY_UPDATE = "UPDATE [Admin] SET [username]=?, [fullname]=?, [password]=? WHERE [ID]=?"
     Private Const QUERY_INSERT = "INSERT INTO [Admin]([fullname], [username], [password]) VALUES(?,?,?)"
     Private Const QUERY_ISEXISTS = "SELECT COUNT(*) FROM [Admin] WHERE [username]=?"
     Private Const QUERY_FETCH_PRIVILEGE = "SELECT * FROM [AdminPrivileges] WHERE [admin_id]=?"

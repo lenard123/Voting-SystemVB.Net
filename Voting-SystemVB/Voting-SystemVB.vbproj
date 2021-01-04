@@ -231,6 +231,12 @@
     <Compile Include="Modal\StartElection.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Modal\UpdateAccount.Designer.vb">
+      <DependentUpon>UpdateAccount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modal\UpdateAccount.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Modal\UpdateCandidate.Designer.vb">
       <DependentUpon>UpdateCandidate.vb</DependentUpon>
     </Compile>
@@ -471,6 +477,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\StartElection.resx">
       <DependentUpon>StartElection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\UpdateAccount.resx">
+      <DependentUpon>UpdateAccount.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\UpdateCandidate.resx">
       <DependentUpon>UpdateCandidate.vb</DependentUpon>

@@ -26,8 +26,9 @@ Partial Class ManageAdmin
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
+        Me.BtnUpdateAccount = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -39,7 +40,6 @@ Partial Class ManageAdmin
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Guna2Button5 = New Guna.UI2.WinForms.Guna2Button()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.FontAwesome1 = New Voting_SystemVB.FontAwesome()
         Me.FontAwesome2 = New Voting_SystemVB.FontAwesome()
         Me.FontAwesome3 = New Voting_SystemVB.FontAwesome()
@@ -83,7 +83,7 @@ Partial Class ManageAdmin
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.Guna2Button1)
+        Me.Panel1.Controls.Add(Me.BtnUpdateAccount)
         Me.Panel1.Controls.Add(Me.FontAwesome1)
         Me.Panel1.Location = New System.Drawing.Point(6, 6)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(6)
@@ -102,20 +102,21 @@ Partial Class ManageAdmin
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Change your Username or " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Fullname here"
         '
-        'Guna2Button1
+        'BtnUpdateAccount
         '
-        Me.Guna2Button1.CheckedState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.CustomImages.Parent = Me.Guna2Button1
-        Me.Guna2Button1.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Guna2Button1.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button1.HoverState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Location = New System.Drawing.Point(0, 83)
-        Me.Guna2Button1.Name = "Guna2Button1"
-        Me.Guna2Button1.ShadowDecoration.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Size = New System.Drawing.Size(301, 36)
-        Me.Guna2Button1.TabIndex = 2
-        Me.Guna2Button1.Text = "Update Account"
+        Me.BtnUpdateAccount.Animated = True
+        Me.BtnUpdateAccount.CheckedState.Parent = Me.BtnUpdateAccount
+        Me.BtnUpdateAccount.CustomImages.Parent = Me.BtnUpdateAccount
+        Me.BtnUpdateAccount.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BtnUpdateAccount.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.BtnUpdateAccount.ForeColor = System.Drawing.Color.White
+        Me.BtnUpdateAccount.HoverState.Parent = Me.BtnUpdateAccount
+        Me.BtnUpdateAccount.Location = New System.Drawing.Point(0, 83)
+        Me.BtnUpdateAccount.Name = "BtnUpdateAccount"
+        Me.BtnUpdateAccount.ShadowDecoration.Parent = Me.BtnUpdateAccount
+        Me.BtnUpdateAccount.Size = New System.Drawing.Size(301, 36)
+        Me.BtnUpdateAccount.TabIndex = 2
+        Me.BtnUpdateAccount.Text = "Update Account"
         '
         'Panel2
         '
@@ -130,6 +131,17 @@ Partial Class ManageAdmin
         Me.Panel2.Size = New System.Drawing.Size(301, 119)
         Me.Panel2.TabIndex = 4
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.Label7.ForeColor = System.Drawing.Color.White
+        Me.Label7.Location = New System.Drawing.Point(-212, 24)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(175, 38)
+        Me.Label7.TabIndex = 3
+        Me.Label7.Text = "Change your Username or " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Fullname here"
+        '
         'Label3
         '
         Me.Label3.AutoSize = True
@@ -143,6 +155,7 @@ Partial Class ManageAdmin
         '
         'Guna2Button2
         '
+        Me.Guna2Button2.Animated = True
         Me.Guna2Button2.CheckedState.Parent = Me.Guna2Button2
         Me.Guna2Button2.CustomImages.Parent = Me.Guna2Button2
         Me.Guna2Button2.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
@@ -181,6 +194,7 @@ Partial Class ManageAdmin
         '
         'Guna2Button3
         '
+        Me.Guna2Button3.Animated = True
         Me.Guna2Button3.CheckedState.Parent = Me.Guna2Button3
         Me.Guna2Button3.CustomImages.Parent = Me.Guna2Button3
         Me.Guna2Button3.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
@@ -219,6 +233,7 @@ Partial Class ManageAdmin
         '
         'Guna2Button4
         '
+        Me.Guna2Button4.Animated = True
         Me.Guna2Button4.CheckedState.Parent = Me.Guna2Button4
         Me.Guna2Button4.CustomImages.Parent = Me.Guna2Button4
         Me.Guna2Button4.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
@@ -257,6 +272,7 @@ Partial Class ManageAdmin
         '
         'Guna2Button5
         '
+        Me.Guna2Button5.Animated = True
         Me.Guna2Button5.CheckedState.Parent = Me.Guna2Button5
         Me.Guna2Button5.CustomImages.Parent = Me.Guna2Button5
         Me.Guna2Button5.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
@@ -269,17 +285,6 @@ Partial Class ManageAdmin
         Me.Guna2Button5.Size = New System.Drawing.Size(301, 36)
         Me.Guna2Button5.TabIndex = 2
         Me.Guna2Button5.Text = "Update Privileges"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(-212, 24)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(175, 38)
-        Me.Label7.TabIndex = 3
-        Me.Label7.Text = "Change your Username or " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Fullname here"
         '
         'FontAwesome1
         '
@@ -330,9 +335,9 @@ Partial Class ManageAdmin
         Me.FontAwesome4.IsHoverable = False
         Me.FontAwesome4.Location = New System.Drawing.Point(15, 24)
         Me.FontAwesome4.Name = "FontAwesome4"
-        Me.FontAwesome4.Size = New System.Drawing.Size(58, 46)
+        Me.FontAwesome4.Size = New System.Drawing.Size(68, 46)
         Me.FontAwesome4.TabIndex = 1
-        Me.FontAwesome4.Text = "plus-square"
+        Me.FontAwesome4.Text = "lock-open"
         '
         'FontAwesome5
         '
@@ -374,7 +379,7 @@ Partial Class ManageAdmin
     Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BtnUpdateAccount As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents FontAwesome1 As Voting_SystemVB.FontAwesome
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Label3 As System.Windows.Forms.Label

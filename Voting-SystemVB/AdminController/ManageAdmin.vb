@@ -9,4 +9,7 @@
         Return Instance
     End Function
 
+    Private Sub BtnUpdateAccount_Click(sender As Object, e As EventArgs) Handles BtnUpdateAccount.Click
+        UpdateAccount.ShowPopup()
+    End Sub
 End Class
