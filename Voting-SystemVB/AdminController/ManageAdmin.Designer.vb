@@ -36,10 +36,10 @@ Partial Class ManageAdmin
         Me.ButtonAddAdmin = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Guna2Button4 = New Guna.UI2.WinForms.Guna2Button()
+        Me.BtnRecover = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Guna2Button5 = New Guna.UI2.WinForms.Guna2Button()
+        Me.BtnUpdatePrivileges = New Guna.UI2.WinForms.Guna2Button()
         Me.FontAwesome1 = New Voting_SystemVB.FontAwesome()
         Me.FontAwesome2 = New Voting_SystemVB.FontAwesome()
         Me.FontAwesome3 = New Voting_SystemVB.FontAwesome()
@@ -95,7 +95,7 @@ Partial Class ManageAdmin
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.ForeColor = System.Drawing.Color.LightGray
         Me.Label2.Location = New System.Drawing.Point(95, 24)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(148, 30)
@@ -146,7 +146,7 @@ Partial Class ManageAdmin
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.ForeColor = System.Drawing.Color.LightGray
         Me.Label3.Location = New System.Drawing.Point(84, 24)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(173, 30)
@@ -185,7 +185,7 @@ Partial Class ManageAdmin
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.ForeColor = System.Drawing.Color.LightGray
         Me.Label4.Location = New System.Drawing.Point(79, 24)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(184, 30)
@@ -212,7 +212,7 @@ Partial Class ManageAdmin
         '
         Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.Panel4.Controls.Add(Me.Label5)
-        Me.Panel4.Controls.Add(Me.Guna2Button4)
+        Me.Panel4.Controls.Add(Me.BtnRecover)
         Me.Panel4.Controls.Add(Me.FontAwesome4)
         Me.Panel4.Location = New System.Drawing.Point(319, 137)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(6)
@@ -224,34 +224,34 @@ Partial Class ManageAdmin
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.ForeColor = System.Drawing.Color.LightGray
         Me.Label5.Location = New System.Drawing.Point(79, 24)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(184, 30)
         Me.Label5.TabIndex = 3
         Me.Label5.Text = "Reset the password of sub admin " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "account incase they forgot."
         '
-        'Guna2Button4
+        'BtnRecover
         '
-        Me.Guna2Button4.Animated = True
-        Me.Guna2Button4.CheckedState.Parent = Me.Guna2Button4
-        Me.Guna2Button4.CustomImages.Parent = Me.Guna2Button4
-        Me.Guna2Button4.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Guna2Button4.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Guna2Button4.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button4.HoverState.Parent = Me.Guna2Button4
-        Me.Guna2Button4.Location = New System.Drawing.Point(0, 83)
-        Me.Guna2Button4.Name = "Guna2Button4"
-        Me.Guna2Button4.ShadowDecoration.Parent = Me.Guna2Button4
-        Me.Guna2Button4.Size = New System.Drawing.Size(301, 36)
-        Me.Guna2Button4.TabIndex = 2
-        Me.Guna2Button4.Text = "Recover Account"
+        Me.BtnRecover.Animated = True
+        Me.BtnRecover.CheckedState.Parent = Me.BtnRecover
+        Me.BtnRecover.CustomImages.Parent = Me.BtnRecover
+        Me.BtnRecover.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BtnRecover.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.BtnRecover.ForeColor = System.Drawing.Color.White
+        Me.BtnRecover.HoverState.Parent = Me.BtnRecover
+        Me.BtnRecover.Location = New System.Drawing.Point(0, 83)
+        Me.BtnRecover.Name = "BtnRecover"
+        Me.BtnRecover.ShadowDecoration.Parent = Me.BtnRecover
+        Me.BtnRecover.Size = New System.Drawing.Size(301, 36)
+        Me.BtnRecover.TabIndex = 2
+        Me.BtnRecover.Text = "Recover Account"
         '
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.Color.Purple
         Me.Panel5.Controls.Add(Me.Label6)
-        Me.Panel5.Controls.Add(Me.Guna2Button5)
+        Me.Panel5.Controls.Add(Me.BtnUpdatePrivileges)
         Me.Panel5.Controls.Add(Me.FontAwesome5)
         Me.Panel5.Location = New System.Drawing.Point(6, 268)
         Me.Panel5.Margin = New System.Windows.Forms.Padding(6)
@@ -263,28 +263,28 @@ Partial Class ManageAdmin
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Label6.ForeColor = System.Drawing.Color.White
+        Me.Label6.ForeColor = System.Drawing.Color.LightGray
         Me.Label6.Location = New System.Drawing.Point(95, 24)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(128, 30)
         Me.Label6.TabIndex = 3
         Me.Label6.Text = "Limit the access of the " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "sub admin"
         '
-        'Guna2Button5
+        'BtnUpdatePrivileges
         '
-        Me.Guna2Button5.Animated = True
-        Me.Guna2Button5.CheckedState.Parent = Me.Guna2Button5
-        Me.Guna2Button5.CustomImages.Parent = Me.Guna2Button5
-        Me.Guna2Button5.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Guna2Button5.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Guna2Button5.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button5.HoverState.Parent = Me.Guna2Button5
-        Me.Guna2Button5.Location = New System.Drawing.Point(0, 83)
-        Me.Guna2Button5.Name = "Guna2Button5"
-        Me.Guna2Button5.ShadowDecoration.Parent = Me.Guna2Button5
-        Me.Guna2Button5.Size = New System.Drawing.Size(301, 36)
-        Me.Guna2Button5.TabIndex = 2
-        Me.Guna2Button5.Text = "Update Privileges"
+        Me.BtnUpdatePrivileges.Animated = True
+        Me.BtnUpdatePrivileges.CheckedState.Parent = Me.BtnUpdatePrivileges
+        Me.BtnUpdatePrivileges.CustomImages.Parent = Me.BtnUpdatePrivileges
+        Me.BtnUpdatePrivileges.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BtnUpdatePrivileges.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.BtnUpdatePrivileges.ForeColor = System.Drawing.Color.White
+        Me.BtnUpdatePrivileges.HoverState.Parent = Me.BtnUpdatePrivileges
+        Me.BtnUpdatePrivileges.Location = New System.Drawing.Point(0, 83)
+        Me.BtnUpdatePrivileges.Name = "BtnUpdatePrivileges"
+        Me.BtnUpdatePrivileges.ShadowDecoration.Parent = Me.BtnUpdatePrivileges
+        Me.BtnUpdatePrivileges.Size = New System.Drawing.Size(301, 36)
+        Me.BtnUpdatePrivileges.TabIndex = 2
+        Me.BtnUpdatePrivileges.Text = "Update Privileges"
         '
         'FontAwesome1
         '
@@ -391,11 +391,11 @@ Partial Class ManageAdmin
     Friend WithEvents FontAwesome3 As Voting_SystemVB.FontAwesome
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Guna2Button4 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BtnRecover As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents FontAwesome4 As Voting_SystemVB.FontAwesome
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Guna2Button5 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BtnUpdatePrivileges As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents FontAwesome5 As Voting_SystemVB.FontAwesome
     Friend WithEvents Label7 As System.Windows.Forms.Label
 

@@ -4,7 +4,7 @@ Public Class Admin
 
     Private Id As Integer
     Private _Fullname, _Username, _Password As String
-    Private Privileges As New List(Of Integer)
+    Private _Privileges As New List(Of Integer)
 
     Private Shared _CurrentUser As Admin = Nothing
 
@@ -36,47 +36,52 @@ Public Class Admin
     'Privileges
     Public ReadOnly Property CanDoAll As Boolean
         Get
-            Return Privileges.Contains(Privilege.PrivilegeType.ALL)
+            Return _Privileges.Contains(Privilege.PrivilegeType.ALL)
         End Get
     End Property
     Public ReadOnly Property CanStartElection As Boolean
         Get
-            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.START_ELECTION)
+            Return CanDoAll Or _Privileges.Contains(Privilege.PrivilegeType.START_ELECTION)
         End Get
     End Property
     Public ReadOnly Property CanUpdateCandidate As Boolean
         Get
-            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.CANDIDATE_UPDATE)
+            Return CanDoAll Or _Privileges.Contains(Privilege.PrivilegeType.CANDIDATE_UPDATE)
         End Get
     End Property
     Public ReadOnly Property CanRegisterCandidate As Boolean
         Get
-            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.CANDIDATE_REGISTER)
+            Return CanDoAll Or _Privileges.Contains(Privilege.PrivilegeType.CANDIDATE_REGISTER)
         End Get
     End Property
     Public ReadOnly Property CanAddParty
         Get
-            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.PARTY_ADD)
+            Return CanDoAll Or _Privileges.Contains(Privilege.PrivilegeType.PARTY_ADD)
         End Get
     End Property
     Public ReadOnly Property CanUpdateParty
         Get
-            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.PARTY_UPDATE)
+            Return CanDoAll Or _Privileges.Contains(Privilege.PrivilegeType.PARTY_UPDATE)
         End Get
     End Property
     Public ReadOnly Property CanUpdateStudent
         Get
-            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.VOTERS_UPDATE)
+            Return CanDoAll Or _Privileges.Contains(Privilege.PrivilegeType.VOTERS_UPDATE)
         End Get
     End Property
     Public ReadOnly Property CanAddStudent
         Get
-            Return CanDoAll Or Privileges.Contains(Privilege.PrivilegeType.VOTERS_ADD)
+            Return CanDoAll Or _Privileges.Contains(Privilege.PrivilegeType.VOTERS_ADD)
         End Get
     End Property
     Public ReadOnly Property CanAddAdmin
         Get
             Return CanDoAll
+        End Get
+    End Property
+    Public ReadOnly Property Privileges As List(Of Integer)
+        Get
+            Return _Privileges
         End Get
     End Property
 
@@ -151,14 +156,14 @@ Public Class Admin
     ''' Fetch the users privileges
     ''' </summary>
     ''' <remarks></remarks>
-    Private Sub FetchPrivilege()
-        Privileges.Clear()
+    Public Sub FetchPrivilege()
+        _Privileges.Clear()
         Using Cmd = New OleDbCommand(QUERY_FETCH_PRIVILEGE, GetConnection())
             BindParameters(Cmd, Id)
             GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
-                    Privileges.Add(Reader.GetInt32(2))
+                    _Privileges.Add(Reader.GetInt32(2))
                 End While
             End Using
             GetConnection().Close()
@@ -240,6 +245,21 @@ Public Class Admin
         Return Result
     End Function
 
+    Public Shared Function GetAll() As List(Of Admin)
+        If Not GetCurrentUser().CanDoAll() Then Return Nothing
+        Dim Result As New List(Of Admin)
+        Using Cmd = New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
+            GetConnection().Open()
+            Using Reader = Cmd.ExecuteReader()
+                While Reader.Read()
+                    Result.Add(GetAdmin(Reader))
+                End While
+            End Using
+            GetConnection().Close()
+        End Using
+        Return Result
+    End Function
+
     ''' <summary>
     ''' Get the current user
     ''' </summary>
@@ -273,6 +293,7 @@ Public Class Admin
 
 
     'Constant Properties
+    Private Const QUERY_SELECT_ALL = "SELECT * FROM [Admin]"
     Private Const QUERY_SELECT_BY_USERNAME = "SELECT * FROM [Admin] WHERE [username]=?"
     Private Const QUERY_UPDATE = "UPDATE [Admin] SET [username]=?, [fullname]=?, [password]=? WHERE [ID]=?"
     Private Const QUERY_REMOVE_PRIVILEGE = "DELETE FROM [AdminPrivileges] WHERE [admin_id]=?"

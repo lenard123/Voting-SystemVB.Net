@@ -231,6 +231,12 @@
     <Compile Include="Modal\ChangePassword.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Modal\RecoverAccount.Designer.vb">
+      <DependentUpon>RecoverAccount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modal\RecoverAccount.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Modal\StartElection.Designer.vb">
       <DependentUpon>StartElection.vb</DependentUpon>
     </Compile>
@@ -259,6 +265,12 @@
       <DependentUpon>UpdateParty.vb</DependentUpon>
     </Compile>
     <Compile Include="Modal\UpdateParty.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modal\UpdatePrivileges.Designer.vb">
+      <DependentUpon>UpdatePrivileges.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modal\UpdatePrivileges.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Modal\UpdateVoter.Designer.vb">
@@ -484,6 +496,9 @@
     <EmbeddedResource Include="Modal\ChangePassword.resx">
       <DependentUpon>ChangePassword.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modal\RecoverAccount.resx">
+      <DependentUpon>RecoverAccount.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modal\StartElection.resx">
       <DependentUpon>StartElection.vb</DependentUpon>
     </EmbeddedResource>
@@ -498,6 +513,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\UpdateParty.resx">
       <DependentUpon>UpdateParty.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\UpdatePrivileges.resx">
+      <DependentUpon>UpdatePrivileges.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\UpdateVoter.resx">
       <DependentUpon>UpdateVoter.vb</DependentUpon>

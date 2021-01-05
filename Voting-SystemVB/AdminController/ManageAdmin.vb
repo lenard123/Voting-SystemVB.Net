@@ -24,4 +24,20 @@
             Alert.ShowAlert("You do not have the privilege to perform this action", Alert.AlertType.Error)
         End If
     End Sub
+
+    Private Sub BtnRecover_Click(sender As Object, e As EventArgs) Handles BtnRecover.Click
+        If Admin.GetCurrentUser().CanDoAll() Then
+            RecoverAccount.ShowPopup()
+        Else
+            Alert.ShowAlert("You do not have the privilege to perform this action", Alert.AlertType.Error)
+        End If
+    End Sub
+
+    Private Sub BtnUpdatePrivileges_Click(sender As Object, e As EventArgs) Handles BtnUpdatePrivileges.Click
+        If Admin.GetCurrentUser().CanDoAll() Then
+            UpdatePrivileges.ShowPopup()
+        Else
+            Alert.ShowAlert("You do not have the privilege to perform this action", Alert.AlertType.Error)
+        End If
+    End Sub
 End Class
