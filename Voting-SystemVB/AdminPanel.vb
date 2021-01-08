@@ -122,6 +122,8 @@ Public Class AdminPanel
     Private Sub BackgroundWorkerRefresh_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerRefresh.RunWorkerCompleted
         LabelFullname.Text = Admin.GetCurrentUser().Fullname
         ShowElectionStatus()
+        BtnNewElection.Visible = False
+        LabelCountdown.Text = ""
 
         If Election.HasNotStarted() Then
             ElectionStartedLabel1.Visible = False
@@ -135,9 +137,14 @@ Public Class AdminPanel
             If isCountDownStart Then
                 CountDownTimer.Stop()
             End If
+        ElseIf Election.IsFinalized() Then
+            BtnNewElection.Visible = True
         End If
 
         ButtonHome.PerformClick()
     End Sub
 
+    Private Sub BtnNewElection_Click(sender As Object, e As EventArgs) Handles BtnNewElection.Click
+        NewElection.ShowPopup()
+    End Sub
 End Class

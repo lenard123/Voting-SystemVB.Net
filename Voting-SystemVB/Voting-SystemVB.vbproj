@@ -225,10 +225,22 @@
     <Compile Include="AdminController\UpdateAdmin.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Modal\AdminPrivileges.Designer.vb">
+      <DependentUpon>AdminPrivileges.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modal\AdminPrivileges.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Modal\ChangePassword.Designer.vb">
       <DependentUpon>ChangePassword.vb</DependentUpon>
     </Compile>
     <Compile Include="Modal\ChangePassword.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modal\NewElection.Designer.vb">
+      <DependentUpon>NewElection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modal\NewElection.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Modal\RecoverAccount.Designer.vb">
@@ -493,8 +505,14 @@
     <EmbeddedResource Include="AdminController\UpdateAdmin.resx">
       <DependentUpon>UpdateAdmin.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modal\AdminPrivileges.resx">
+      <DependentUpon>AdminPrivileges.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modal\ChangePassword.resx">
       <DependentUpon>ChangePassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\NewElection.resx">
+      <DependentUpon>NewElection.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\RecoverAccount.resx">
       <DependentUpon>RecoverAccount.vb</DependentUpon>

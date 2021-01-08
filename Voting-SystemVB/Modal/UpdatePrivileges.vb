@@ -61,7 +61,6 @@ Public Class UpdatePrivileges
 
     Private Sub SwitchToggles()
         For Each toggle In SwitchPrivileges
-            Debug.WriteLine(Priviliges.Find(Function(i) i.Equals(toggle.Value)))
             toggle.Key.Checked = (Priviliges.Find(Function(i) i.Equals(toggle.Value))) > 0
         Next
     End Sub
@@ -73,7 +72,9 @@ Public Class UpdatePrivileges
     Private Sub togglePrivileges(sender As Object, e As EventArgs) Handles Guna2ToggleSwitch1.CheckedChanged, Guna2ToggleSwitch9.CheckedChanged, Guna2ToggleSwitch6.CheckedChanged, Guna2ToggleSwitch5.CheckedChanged, Guna2ToggleSwitch4.CheckedChanged, Guna2ToggleSwitch3.CheckedChanged, Guna2ToggleSwitch2.CheckedChanged
         Dim aSender = DirectCast(sender, Guna2ToggleSwitch)
         If aSender.Checked Then
-            Priviliges.Add(SwitchPrivileges(aSender))
+            If Not Priviliges.Exists(Function(i) i = SwitchPrivileges(aSender)) Then
+                Priviliges.Add(SwitchPrivileges(aSender))
+            End If
         Else
             Priviliges.Remove(SwitchPrivileges(aSender))
         End If

@@ -45,12 +45,17 @@ Partial Class ManageAdmin
         Me.FontAwesome3 = New Voting_SystemVB.FontAwesome()
         Me.FontAwesome4 = New Voting_SystemVB.FontAwesome()
         Me.FontAwesome5 = New Voting_SystemVB.FontAwesome()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.BtnViewPrivileges = New Guna.UI2.WinForms.Guna2Button()
+        Me.FontAwesome6 = New Voting_SystemVB.FontAwesome()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
+        Me.Panel6.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -71,6 +76,7 @@ Partial Class ManageAdmin
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlowLayoutPanel1.Controls.Add(Me.Panel1)
         Me.FlowLayoutPanel1.Controls.Add(Me.Panel2)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Panel6)
         Me.FlowLayoutPanel1.Controls.Add(Me.Panel3)
         Me.FlowLayoutPanel1.Controls.Add(Me.Panel4)
         Me.FlowLayoutPanel1.Controls.Add(Me.Panel5)
@@ -175,7 +181,7 @@ Partial Class ManageAdmin
         Me.Panel3.Controls.Add(Me.Label4)
         Me.Panel3.Controls.Add(Me.ButtonAddAdmin)
         Me.Panel3.Controls.Add(Me.FontAwesome3)
-        Me.Panel3.Location = New System.Drawing.Point(6, 137)
+        Me.Panel3.Location = New System.Drawing.Point(319, 137)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(6)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(301, 119)
@@ -214,7 +220,7 @@ Partial Class ManageAdmin
         Me.Panel4.Controls.Add(Me.Label5)
         Me.Panel4.Controls.Add(Me.BtnRecover)
         Me.Panel4.Controls.Add(Me.FontAwesome4)
-        Me.Panel4.Location = New System.Drawing.Point(319, 137)
+        Me.Panel4.Location = New System.Drawing.Point(6, 268)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(6)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(301, 119)
@@ -253,7 +259,7 @@ Partial Class ManageAdmin
         Me.Panel5.Controls.Add(Me.Label6)
         Me.Panel5.Controls.Add(Me.BtnUpdatePrivileges)
         Me.Panel5.Controls.Add(Me.FontAwesome5)
-        Me.Panel5.Location = New System.Drawing.Point(6, 268)
+        Me.Panel5.Location = New System.Drawing.Point(319, 268)
         Me.Panel5.Margin = New System.Windows.Forms.Padding(6)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(301, 119)
@@ -352,6 +358,58 @@ Partial Class ManageAdmin
         Me.FontAwesome5.TabIndex = 1
         Me.FontAwesome5.Text = "user-cog"
         '
+        'Panel6
+        '
+        Me.Panel6.BackColor = System.Drawing.Color.DarkSlateGray
+        Me.Panel6.Controls.Add(Me.Label8)
+        Me.Panel6.Controls.Add(Me.BtnViewPrivileges)
+        Me.Panel6.Controls.Add(Me.FontAwesome6)
+        Me.Panel6.Location = New System.Drawing.Point(6, 137)
+        Me.Panel6.Margin = New System.Windows.Forms.Padding(6)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(301, 119)
+        Me.Panel6.TabIndex = 8
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Label8.ForeColor = System.Drawing.Color.LightGray
+        Me.Label8.Location = New System.Drawing.Point(95, 24)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(182, 15)
+        Me.Label8.TabIndex = 3
+        Me.Label8.Text = "View Your Privileges as an Admin"
+        '
+        'BtnViewPrivileges
+        '
+        Me.BtnViewPrivileges.Animated = True
+        Me.BtnViewPrivileges.CheckedState.Parent = Me.BtnViewPrivileges
+        Me.BtnViewPrivileges.CustomImages.Parent = Me.BtnViewPrivileges
+        Me.BtnViewPrivileges.FillColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BtnViewPrivileges.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.BtnViewPrivileges.ForeColor = System.Drawing.Color.White
+        Me.BtnViewPrivileges.HoverState.Parent = Me.BtnViewPrivileges
+        Me.BtnViewPrivileges.Location = New System.Drawing.Point(0, 83)
+        Me.BtnViewPrivileges.Name = "BtnViewPrivileges"
+        Me.BtnViewPrivileges.ShadowDecoration.Parent = Me.BtnViewPrivileges
+        Me.BtnViewPrivileges.Size = New System.Drawing.Size(301, 36)
+        Me.BtnViewPrivileges.TabIndex = 2
+        Me.BtnViewPrivileges.Text = "View Privileges"
+        '
+        'FontAwesome6
+        '
+        Me.FontAwesome6.AutoSize = True
+        Me.FontAwesome6.Font = New System.Drawing.Font("Font Awesome 5 Free Solid", 32.0!)
+        Me.FontAwesome6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.FontAwesome6.HoverColor = System.Drawing.Color.Empty
+        Me.FontAwesome6.IsHoverable = False
+        Me.FontAwesome6.Location = New System.Drawing.Point(15, 24)
+        Me.FontAwesome6.Name = "FontAwesome6"
+        Me.FontAwesome6.Size = New System.Drawing.Size(63, 46)
+        Me.FontAwesome6.TabIndex = 1
+        Me.FontAwesome6.Text = "list"
+        '
         'ManageAdmin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -371,6 +429,8 @@ Partial Class ManageAdmin
         Me.Panel4.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel6.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -398,5 +458,9 @@ Partial Class ManageAdmin
     Friend WithEvents BtnUpdatePrivileges As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents FontAwesome5 As Voting_SystemVB.FontAwesome
     Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Panel6 As System.Windows.Forms.Panel
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents BtnViewPrivileges As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents FontAwesome6 As Voting_SystemVB.FontAwesome
 
 End Class

@@ -40,4 +40,8 @@
             Alert.ShowAlert("You do not have the privilege to perform this action", Alert.AlertType.Error)
         End If
     End Sub
+
+    Private Sub BtnViewPrivileges_Click(sender As Object, e As EventArgs) Handles BtnViewPrivileges.Click
+        AdminPrivileges.ShowPopup()
+    End Sub
 End Class

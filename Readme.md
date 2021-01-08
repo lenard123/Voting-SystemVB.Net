@@ -24,15 +24,16 @@
 - View Final Result
 - Display Winner
 - Import database
-
-### Unfinish
-- View Previous Election
 - Update Account
 - Change Password
 - Add Admin
 - View Vote Count (Voter Panel)
 
+### Unfinish
+- View Previous Election
+
 ## NEED TO FIX
+- Username no spaces
 Login
 - Tab Control
 

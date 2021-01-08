@@ -1,4 +1,9 @@
 ﻿
+'
+' Good Luck sa kung sino mang magbabasa ng codes ko
+' Tinatamad nako kaya ayoko na irefactor
+' 
+
 Imports System.Windows.Forms
 
 Public Class Main

@@ -51,6 +51,7 @@ Partial Class AdminPanel
         Me.CountDownTimer = New System.Windows.Forms.Timer(Me.components)
         Me.Guna2DragControl1 = New Guna.UI2.WinForms.Guna2DragControl(Me.components)
         Me.BackgroundWorkerRefresh = New System.ComponentModel.BackgroundWorker()
+        Me.BtnNewElection = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel1.SuspendLayout()
         Me.PanelButtonGroup.SuspendLayout()
         Me.PanelHeader.SuspendLayout()
@@ -355,6 +356,7 @@ Partial Class AdminPanel
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.BtnNewElection)
         Me.Panel2.Controls.Add(Me.ChipElectionStatus)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Controls.Add(Me.Label2)
@@ -403,6 +405,25 @@ Partial Class AdminPanel
         '
         'BackgroundWorkerRefresh
         '
+        '
+        'BtnNewElection
+        '
+        Me.BtnNewElection.Animated = True
+        Me.BtnNewElection.AutoRoundedCorners = True
+        Me.BtnNewElection.BorderRadius = 14
+        Me.BtnNewElection.CheckedState.Parent = Me.BtnNewElection
+        Me.BtnNewElection.CustomImages.Parent = Me.BtnNewElection
+        Me.BtnNewElection.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.BtnNewElection.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BtnNewElection.ForeColor = System.Drawing.Color.White
+        Me.BtnNewElection.HoverState.Parent = Me.BtnNewElection
+        Me.BtnNewElection.Location = New System.Drawing.Point(186, 100)
+        Me.BtnNewElection.Name = "BtnNewElection"
+        Me.BtnNewElection.ShadowDecoration.Parent = Me.BtnNewElection
+        Me.BtnNewElection.Size = New System.Drawing.Size(169, 30)
+        Me.BtnNewElection.TabIndex = 5
+        Me.BtnNewElection.Text = "New Election"
+        Me.BtnNewElection.Visible = False
         '
         'AdminPanel
         '
@@ -453,5 +474,6 @@ Partial Class AdminPanel
     Friend WithEvents ButtonParty As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents ButtonAdmin As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents ButtonLogout As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BtnNewElection As Guna.UI2.WinForms.Guna2Button
 
 End Class
