@@ -4,7 +4,7 @@ Public Class VoteNow
 
     Private Shared Instance As VoteNow
     Private Shared Labels As New List(Of Label)
-    Private Shared _CandidateList As New List(Of CandidateList1)
+    Private Shared _CandidateList As New List(Of CandidateList)
     Private Shared LoadingAlert As Alert
 
     Public Shared Function GetInstance() As VoteNow
@@ -24,7 +24,7 @@ Public Class VoteNow
     Private Sub VoteNow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim Candidates = VotersPanel.GetCandidates()
         For i = 1 To 6
-            Dim cl As New CandidateList1(i, Candidates(i), Labels(i - 1))
+            Dim cl As New CandidateList(i, Candidates(i), Labels(i - 1))
             _CandidateList.Add(cl)
             FlowLayoutPanel1.Controls.Add(cl)
         Next

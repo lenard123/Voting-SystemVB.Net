@@ -1,6 +1,6 @@
 ﻿Imports Guna.UI2.WinForms
 
-Public Class CandidateList1
+Public Class CandidateList
 
     Dim PositionID As Integer
     Dim Candidates As List(Of Candidate)

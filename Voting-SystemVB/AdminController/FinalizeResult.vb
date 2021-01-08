@@ -29,7 +29,7 @@
                 lblPosition.Tag = Winner.Value(0)
                 lblPosition.Text = Winner.Value(0).Fullname
             Else
-                Dim cl As New CandidateList1(Winner.Key, Winner.Value, lblPosition)
+                Dim cl As New CandidateList(Winner.Key, Winner.Value, lblPosition)
                 FlowLayoutPanel1.Controls.Add(cl)
             End If
         Next
