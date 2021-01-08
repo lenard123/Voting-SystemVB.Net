@@ -33,6 +33,7 @@
 - View Previous Election
 
 ## NEED TO FIX
+- Candidate Searchbox adjust placeholder position
 - Username no spaces
 Login
 - Tab Control

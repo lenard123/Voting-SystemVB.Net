@@ -70,12 +70,22 @@
         LabelVotersCount.Text = VotersCount
         LabelParties.Text = PartiesCount
         LabelPreviousElection.Text = PreviousElectionCount
-        LabelCandidates.Text = CandidatesCounts.Sum(Function(item As KeyValuePair(Of Integer, Integer))
-                                                        Return item.Value
-                                                    End Function)
+        LabelCandidates.Text = CandidatesCounts.Sum(Function(item As KeyValuePair(Of Integer, Integer)) item.Value)
     End Sub
 
     Private Sub ButtonImport_Click(sender As Object, e As EventArgs) Handles ButtonImport.Click
         UploadDatabase.ShowPopup()
+    End Sub
+
+    Private Sub btnVoter_Click(sender As Object, e As EventArgs) Handles btnVoter.Click
+        AdminPanel.GetInstance().ButtonVoter.PerformClick()
+    End Sub
+
+    Private Sub BtnParties_Click(sender As Object, e As EventArgs) Handles BtnParties.Click
+        AdminPanel.GetInstance().ButtonParty.PerformClick()
+    End Sub
+
+    Private Sub BtnCandidates_Click(sender As Object, e As EventArgs) Handles BtnCandidates.Click
+        AdminPanel.GetInstance().ButtonCandidate.PerformClick()
     End Sub
 End Class

@@ -23,22 +23,25 @@ Partial Class NewElection
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Guna2GroupBox1 = New Guna.UI2.WinForms.Guna2GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Guna2ToggleSwitch1 = New Guna.UI2.WinForms.Guna2ToggleSwitch()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Guna2ToggleSwitch2 = New Guna.UI2.WinForms.Guna2ToggleSwitch()
+        Me.BtnSubmit = New Guna.UI2.WinForms.Guna2Button()
         Me.BtnClose = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
+        Me.SwitchDeleteWorker = New Guna.UI2.WinForms.Guna2ToggleSwitch()
+        Me.SwitchKeepVoter = New Guna.UI2.WinForms.Guna2ToggleSwitch()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.BWKeepVoters = New System.ComponentModel.BackgroundWorker()
+        Me.BWDeleteAdmin = New System.ComponentModel.BackgroundWorker()
+        Me.BWNewElection = New System.ComponentModel.BackgroundWorker()
         Me.Guna2GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2GroupBox1
         '
         Me.Guna2GroupBox1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.Guna2GroupBox1.Controls.Add(Me.Guna2Button2)
+        Me.Guna2GroupBox1.Controls.Add(Me.BtnSubmit)
         Me.Guna2GroupBox1.Controls.Add(Me.BtnClose)
-        Me.Guna2GroupBox1.Controls.Add(Me.Guna2ToggleSwitch2)
-        Me.Guna2GroupBox1.Controls.Add(Me.Guna2ToggleSwitch1)
+        Me.Guna2GroupBox1.Controls.Add(Me.SwitchDeleteWorker)
+        Me.Guna2GroupBox1.Controls.Add(Me.SwitchKeepVoter)
         Me.Guna2GroupBox1.Controls.Add(Me.Label2)
         Me.Guna2GroupBox1.Controls.Add(Me.Label1)
         Me.Guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(91, Byte), Integer))
@@ -53,63 +56,19 @@ Partial Class NewElection
         Me.Guna2GroupBox1.TabIndex = 28
         Me.Guna2GroupBox1.Text = "New Election"
         '
-        'Label1
+        'BtnSubmit
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 14.0!)
-        Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(77, 77)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(135, 25)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "- Keep Voters?"
-        '
-        'Guna2ToggleSwitch1
-        '
-        Me.Guna2ToggleSwitch1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ToggleSwitch1.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ToggleSwitch1.CheckedState.InnerBorderColor = System.Drawing.Color.White
-        Me.Guna2ToggleSwitch1.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.Guna2ToggleSwitch1.CheckedState.Parent = Me.Guna2ToggleSwitch1
-        Me.Guna2ToggleSwitch1.Location = New System.Drawing.Point(36, 81)
-        Me.Guna2ToggleSwitch1.Name = "Guna2ToggleSwitch1"
-        Me.Guna2ToggleSwitch1.ShadowDecoration.Parent = Me.Guna2ToggleSwitch1
-        Me.Guna2ToggleSwitch1.Size = New System.Drawing.Size(35, 20)
-        Me.Guna2ToggleSwitch1.TabIndex = 1
-        Me.Guna2ToggleSwitch1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.Guna2ToggleSwitch1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.Guna2ToggleSwitch1.UncheckedState.InnerBorderColor = System.Drawing.Color.White
-        Me.Guna2ToggleSwitch1.UncheckedState.InnerColor = System.Drawing.Color.White
-        Me.Guna2ToggleSwitch1.UncheckedState.Parent = Me.Guna2ToggleSwitch1
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 14.0!)
-        Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(77, 104)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(185, 25)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "- Delete Sub Admin?"
-        '
-        'Guna2ToggleSwitch2
-        '
-        Me.Guna2ToggleSwitch2.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ToggleSwitch2.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ToggleSwitch2.CheckedState.InnerBorderColor = System.Drawing.Color.White
-        Me.Guna2ToggleSwitch2.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.Guna2ToggleSwitch2.CheckedState.Parent = Me.Guna2ToggleSwitch2
-        Me.Guna2ToggleSwitch2.Location = New System.Drawing.Point(36, 107)
-        Me.Guna2ToggleSwitch2.Name = "Guna2ToggleSwitch2"
-        Me.Guna2ToggleSwitch2.ShadowDecoration.Parent = Me.Guna2ToggleSwitch2
-        Me.Guna2ToggleSwitch2.Size = New System.Drawing.Size(35, 20)
-        Me.Guna2ToggleSwitch2.TabIndex = 1
-        Me.Guna2ToggleSwitch2.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.Guna2ToggleSwitch2.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.Guna2ToggleSwitch2.UncheckedState.InnerBorderColor = System.Drawing.Color.White
-        Me.Guna2ToggleSwitch2.UncheckedState.InnerColor = System.Drawing.Color.White
-        Me.Guna2ToggleSwitch2.UncheckedState.Parent = Me.Guna2ToggleSwitch2
+        Me.BtnSubmit.CheckedState.Parent = Me.BtnSubmit
+        Me.BtnSubmit.CustomImages.Parent = Me.BtnSubmit
+        Me.BtnSubmit.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BtnSubmit.ForeColor = System.Drawing.Color.White
+        Me.BtnSubmit.HoverState.Parent = Me.BtnSubmit
+        Me.BtnSubmit.Location = New System.Drawing.Point(186, 168)
+        Me.BtnSubmit.Name = "BtnSubmit"
+        Me.BtnSubmit.ShadowDecoration.Parent = Me.BtnSubmit
+        Me.BtnSubmit.Size = New System.Drawing.Size(137, 37)
+        Me.BtnSubmit.TabIndex = 30
+        Me.BtnSubmit.Text = "Confirm"
         '
         'BtnClose
         '
@@ -127,19 +86,73 @@ Partial Class NewElection
         Me.BtnClose.TabIndex = 29
         Me.BtnClose.Text = "Close"
         '
-        'Guna2Button2
+        'SwitchDeleteWorker
         '
-        Me.Guna2Button2.CheckedState.Parent = Me.Guna2Button2
-        Me.Guna2Button2.CustomImages.Parent = Me.Guna2Button2
-        Me.Guna2Button2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button2.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button2.HoverState.Parent = Me.Guna2Button2
-        Me.Guna2Button2.Location = New System.Drawing.Point(186, 168)
-        Me.Guna2Button2.Name = "Guna2Button2"
-        Me.Guna2Button2.ShadowDecoration.Parent = Me.Guna2Button2
-        Me.Guna2Button2.Size = New System.Drawing.Size(137, 37)
-        Me.Guna2Button2.TabIndex = 30
-        Me.Guna2Button2.Text = "Confirm"
+        Me.SwitchDeleteWorker.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SwitchDeleteWorker.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SwitchDeleteWorker.CheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SwitchDeleteWorker.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.SwitchDeleteWorker.CheckedState.Parent = Me.SwitchDeleteWorker
+        Me.SwitchDeleteWorker.Location = New System.Drawing.Point(36, 107)
+        Me.SwitchDeleteWorker.Name = "SwitchDeleteWorker"
+        Me.SwitchDeleteWorker.ShadowDecoration.Parent = Me.SwitchDeleteWorker
+        Me.SwitchDeleteWorker.Size = New System.Drawing.Size(35, 20)
+        Me.SwitchDeleteWorker.TabIndex = 1
+        Me.SwitchDeleteWorker.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SwitchDeleteWorker.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SwitchDeleteWorker.UncheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SwitchDeleteWorker.UncheckedState.InnerColor = System.Drawing.Color.White
+        Me.SwitchDeleteWorker.UncheckedState.Parent = Me.SwitchDeleteWorker
+        '
+        'SwitchKeepVoter
+        '
+        Me.SwitchKeepVoter.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SwitchKeepVoter.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SwitchKeepVoter.CheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SwitchKeepVoter.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.SwitchKeepVoter.CheckedState.Parent = Me.SwitchKeepVoter
+        Me.SwitchKeepVoter.Location = New System.Drawing.Point(36, 81)
+        Me.SwitchKeepVoter.Name = "SwitchKeepVoter"
+        Me.SwitchKeepVoter.ShadowDecoration.Parent = Me.SwitchKeepVoter
+        Me.SwitchKeepVoter.Size = New System.Drawing.Size(35, 20)
+        Me.SwitchKeepVoter.TabIndex = 1
+        Me.SwitchKeepVoter.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SwitchKeepVoter.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SwitchKeepVoter.UncheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SwitchKeepVoter.UncheckedState.InnerColor = System.Drawing.Color.White
+        Me.SwitchKeepVoter.UncheckedState.Parent = Me.SwitchKeepVoter
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 14.0!)
+        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Location = New System.Drawing.Point(77, 104)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(185, 25)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "- Delete Sub Admin?"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 14.0!)
+        Me.Label1.ForeColor = System.Drawing.Color.Black
+        Me.Label1.Location = New System.Drawing.Point(77, 77)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(135, 25)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "- Keep Voters?"
+        '
+        'BWKeepVoters
+        '
+        Me.BWKeepVoters.WorkerReportsProgress = True
+        '
+        'BWDeleteAdmin
+        '
+        '
+        'BWNewElection
+        '
         '
         'NewElection
         '
@@ -154,11 +167,14 @@ Partial Class NewElection
 
     End Sub
     Friend WithEvents Guna2GroupBox1 As Guna.UI2.WinForms.Guna2GroupBox
-    Friend WithEvents Guna2ToggleSwitch2 As Guna.UI2.WinForms.Guna2ToggleSwitch
-    Friend WithEvents Guna2ToggleSwitch1 As Guna.UI2.WinForms.Guna2ToggleSwitch
+    Friend WithEvents SwitchDeleteWorker As Guna.UI2.WinForms.Guna2ToggleSwitch
+    Friend WithEvents SwitchKeepVoter As Guna.UI2.WinForms.Guna2ToggleSwitch
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BtnSubmit As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BtnClose As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BWKeepVoters As System.ComponentModel.BackgroundWorker
+    Friend WithEvents BWDeleteAdmin As System.ComponentModel.BackgroundWorker
+    Friend WithEvents BWNewElection As System.ComponentModel.BackgroundWorker
 
 End Class

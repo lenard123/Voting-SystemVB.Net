@@ -14,6 +14,10 @@
         setAlert(msg, type, True)
     End Sub
 
+    Public Sub setMessage(msg As String)
+        Label1.Text = msg
+    End Sub
+
     Public Sub setAlert(msg As String, type As AlertType, AutoHide As Boolean)
         Dim fname As String
         Me.Opacity = 0

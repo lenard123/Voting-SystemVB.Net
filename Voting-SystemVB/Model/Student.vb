@@ -109,7 +109,7 @@ Public Class Student
         Dim Result = False
 
         Using Cmd = New OleDbCommand(QUERY_IS_CANDIDATE, GetConnection())
-            BindParameters(Cmd, Id)
+            BindParameters(Cmd, Id, Election.GetCurrentId())
             GetConnection().Open()
             Result = Integer.Parse(Cmd.ExecuteScalar()) > 0
             GetConnection().Close()
@@ -129,7 +129,7 @@ Public Class Student
         If Not Admin.GetCurrentUser().CanUpdateStudent() Then Throw New InvalidPrivilegeException
 
         Using Cmd As New OleDbCommand(QUERY_UPDATE, GetConnection())
-            BindParameters(Cmd, Firstname, Lastname, Course, _YearLevel, Section, _Password, Id)
+            BindParameters(Cmd, Firstname, Lastname, Course, _YearLevel, Section, _Password, Id, Election.GetCurrentId())
 
             GetConnection().Open()
             Cmd.ExecuteNonQuery()
@@ -146,9 +146,9 @@ Public Class Student
         If Not Admin.GetCurrentUser().CanAddStudent Then Throw New InvalidPrivilegeException
 
         Using Cmd As New OleDbCommand(QUERY_INSERT, GetConnection())
-            Dim password = StudentId & "-" & (New Random).Next(1000, 9999)
+            Dim password = (New Random).Next(100000, 999999)
 
-            BindParameters(Cmd, StudentId, Firstname, Lastname, Course, _YearLevel, Section, password)
+            BindParameters(Cmd, StudentId, Firstname, Lastname, Course, _YearLevel, Section, password, Election.GetCurrentId())
 
             GetConnection().Open()
             Cmd.ExecuteNonQuery()
@@ -178,6 +178,7 @@ Public Class Student
         Dim Result As Integer = 0
         GetConnection().Open()
         Using Cmd = New OleDbCommand(QUERY_COUNT_ALL, GetConnection())
+            BindParameters(Cmd, Election.GetCurrentId())
             Result = Integer.Parse(Cmd.ExecuteScalar())
         End Using
         GetConnection().Close()
@@ -193,6 +194,7 @@ Public Class Student
         Dim Result As New List(Of Student)
         GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
+            BindParameters(Cmd, Election.GetCurrentId())
             Using Reader = Cmd.ExecuteReader()
                 While (Reader.Read())
                     Result.Add(GetStudent(Reader))
@@ -222,7 +224,7 @@ Public Class Student
         Integer.TryParse(_Id, ID)
 
         Using Cmd = New OleDbCommand(QUERY_SELECT_BY_ID, GetConnection())
-            BindParameters(Cmd, ID, StudentID)
+            BindParameters(Cmd, ID, StudentID, Election.GetCurrentId())
             GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 If Reader.Read() Then Result = GetStudent(Reader)
@@ -248,7 +250,7 @@ Public Class Student
 
         Using Cmd As New OleDbCommand(QUERY_IS_EXISTS_ID, GetConnection())
             'Prepare Parameters
-            BindParameters(Cmd, ID, student_id)
+            BindParameters(Cmd, ID, student_id, Election.GetCurrentId())
             GetConnection().Open()
             Result = Integer.Parse(Cmd.ExecuteScalar()) > 0
             GetConnection().Close()
@@ -268,7 +270,7 @@ Public Class Student
         Dim Result As New List(Of Student)
 
         Using Cmd As New OleDbCommand(QUERY_SEARCH, GetConnection())
-            BindParameters(Cmd, Query, Query, Query)
+            BindParameters(Cmd, Query, Query, Query, Election.GetCurrentId())
             GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
@@ -337,15 +339,14 @@ Public Class Student
     End Sub
 
     'Constant Properties
-    Private Const QUERY_SEARCH = "SELECT * FROM [StudentQuery] WHERE [student_id] LIKE ? OR [firstname] LIKE ? OR [lastname] LIKE ?"
-    Private Const QUERY_SELECT_ALL = "SELECT * FROM [StudentQuery]"
-    Private Const QUERY_SELECT_BY_ID = "SELECT * FROM [StudentQuery] WHERE [ID]=? OR [student_id]=?"
-    Private Const QUERY_SELECT_BY_STUDENT_ID = "SELECT * FROM [StudentQuery] WHERE [student_id]=?"
-    Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) From [Student]"
-    Private Const QUERY_IS_EXISTS_ID = "SELECT COUNT(*) FROM [Student] WHERE [ID]=? OR [student_id]=?"
-    Private Const QUERY_IS_CANDIDATE = "SELECT COUNT(*) FROM [Candidate] WHERE [student_id]=?"
-    Private Const QUERY_UPDATE = "UPDATE [Student] SET [firstname]=?, [lastname]=?, [course]=?, [year_level]=?, [section]=?, [password]=? WHERE [ID]=?"
-    Private Const QUERY_INSERT = "INSERT INTO [Student]([student_id], [firstname], [lastname], [course], [year_level], [section], [password]) VALUES (?,?,?,?,?,?,?)"
+    Private Const QUERY_SEARCH = "SELECT * FROM [StudentQuery] WHERE ([student_id] LIKE ? OR [firstname] LIKE ? OR [lastname] LIKE ?) AND [election_id]=?"
+    Private Const QUERY_SELECT_ALL = "SELECT * FROM [StudentQuery] WHERE [election_id]=?"
+    Private Const QUERY_SELECT_BY_ID = "SELECT * FROM [StudentQuery] WHERE ([ID]=? OR [student_id]=?) AND [election_id]=?"
+    Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) From [Student] WHERE [election_id]=?"
+    Private Const QUERY_IS_EXISTS_ID = "SELECT COUNT(*) FROM [Student] WHERE ([ID]=? OR [student_id]=?) AND [election_id]=?"
+    Private Const QUERY_IS_CANDIDATE = "SELECT COUNT(*) FROM [Candidate] WHERE [student_id]=? AND [election_id]=?"
+    Private Const QUERY_UPDATE = "UPDATE [Student] SET [firstname]=?, [lastname]=?, [course]=?, [year_level]=?, [section]=?, [password]=? WHERE [ID]=? AND [election_id]=?"
+    Private Const QUERY_INSERT = "INSERT INTO [Student]([student_id], [firstname], [lastname], [course], [year_level], [section], [password], [election_id]) VALUES (?,?,?,?,?,?,?,?)"
 
     Private Const INDEX_ID As Integer = 0
     Private Const INDEX_STUDENT_ID As Integer = 1

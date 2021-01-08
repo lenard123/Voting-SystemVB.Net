@@ -106,6 +106,13 @@ Public Class Election
         Return CurrentElection
     End Function
 
+    Public Shared Function GetCurrentId() As Integer
+        If Not IsNothing(GetCurrentElection()) Then
+            Return GetCurrentElection().Id
+        End If
+        Return -1
+    End Function
+
     ''' <summary>
     ''' Start the current election
     ''' </summary>
@@ -127,6 +134,18 @@ Public Class Election
 
             GetConnection().Open()
             Cmd.Prepare()
+            Cmd.ExecuteNonQuery()
+            GetConnection().Close()
+        End Using
+
+        GetCurrentElectionRefresh()
+    End Sub
+
+    Public Shared Sub NewElection()
+        If Not IsFinalized() Then Throw New Exception("Current Election has not ended yet")
+
+        Using Cmd As New OleDbCommand(QUERY_NEW_ELECTION, GetConnection())
+            GetConnection().Open()
             Cmd.ExecuteNonQuery()
             GetConnection().Close()
         End Using
@@ -182,6 +201,7 @@ Public Class Election
         ENDED = 2
     End Enum
 
+    Private Const QUERY_NEW_ELECTION = "INSERT INTO [Election]([Status]) VALUES (0)"
     Private Const QUERY_START_ELECTION = "UPDATE [Election] SET [Title]=?, [Status]=?, [Started]=?, [Ended]=? WHERE [ID]=?"
     Private Const QUERY_UPDATE_STATUS = "UPDATE [Election] SET [STATUS]=? WHERE [ID]=?"
     Private Const QUERY_CURRENT_ELECTION = "SELECT TOP 1 * FROM Election ORDER BY ID DESC;"

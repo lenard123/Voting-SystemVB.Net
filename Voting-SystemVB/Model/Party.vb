@@ -94,7 +94,7 @@ Public Class Party
 
         Dim NewImage = GetImage(Image, "")
         Using Cmd = New OleDbCommand(QUERY_INSERT, GetConnection())
-            BindParameters(Cmd, Title, Description, NewImage)
+            BindParameters(Cmd, Title, Description, NewImage, Election.GetCurrentId())
             GetConnection().Open()
             If Cmd.ExecuteNonQuery() Then
                 Dim _Party = Find(Title, GetConnection())
@@ -137,6 +137,7 @@ Public Class Party
         Dim Result As New List(Of Party)
         GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
+            BindParameters(Cmd, Election.GetCurrentId())
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
                     Result.Add(GetParty(Reader))
@@ -182,7 +183,7 @@ Public Class Party
     Public Shared Function Find(Title As String, conn As OleDbConnection) As Party
         Dim res As Party = Nothing
         Using Cmd As New OleDbCommand(QUERY_FIND, conn)
-            BindParameters(Cmd, Title)
+            BindParameters(Cmd, Title, Election.GetCurrentId())
             Using Reader = Cmd.ExecuteReader()
                 If Reader.Read() Then
                     res = GetParty(Reader)
@@ -216,6 +217,7 @@ Public Class Party
         Dim Count = 0
         GetConnection().Open()
         Using Cmd = New OleDbCommand(QUERY_COUNT_ALL, GetConnection())
+            BindParameters(Cmd, Election.GetCurrentId())
             Count = Integer.Parse(Cmd.ExecuteScalar())
         End Using
         GetConnection().Close()
@@ -225,13 +227,13 @@ Public Class Party
     '
     ' Constant Properties
     '
-    Private Const QUERY_SELECT_ALL = "SELECT * FROM [Party]"
-    Private Const QUERY_FIND = "SELECT * FROM [Party] WHERE [Title]=?"
+    Private Const QUERY_SELECT_ALL = "SELECT * FROM [Party] WHERE [election_id]=?"
+    Private Const QUERY_FIND = "SELECT * FROM [Party] WHERE [Title]=? AND [election_id] =?"
     Private Const QUERY_UPDATE = "UPDATE [Party] SET [Title]=?, [Description]=?, [image_path]=? WHERE [ID]=?"
-    Private Const QUERY_INSERT = "INSERT INTO [Party]([Title], [Description], [image_path]) VALUES (?, ?, ?)"
+    Private Const QUERY_INSERT = "INSERT INTO [Party]([Title], [Description], [image_path], [election_id]) VALUES (?, ?, ?, ?)"
     Private Const QUERY_DELETE_PARTY_MEMBERS = "DELETE FROM [CandidateParty] WHERE [party_id]=?"
     Private Const QUERY_ADD_PARTY_MEMBERS = "INSERT INTO [CandidateParty]([candidate_id], [party_id]) VALUES (?,?)"
-    Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) FROM [Party]"
+    Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) FROM [Party] WHERE [election_id]=?"
 
     Private Const INDEX_ID = 0
     Private Const INDEX_TITLE = 1

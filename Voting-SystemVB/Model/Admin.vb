@@ -120,6 +120,15 @@ Public Class Admin
         Return Res
     End Function
 
+    Public Sub Delete()
+        Using Cmd As New OleDbCommand(QUERY_DELETE, GetConnection())
+            BindParameters(Cmd, Id)
+            GetConnection().Open()
+            Cmd.ExecuteNonQuery()
+            GetConnection().Close()
+        End Using
+    End Sub
+
     ''' <summary>
     ''' Add new Admin
     ''' </summary>
@@ -293,6 +302,7 @@ Public Class Admin
 
 
     'Constant Properties
+    Private Const QUERY_DELETE = "DELETE FROM [Admin] Where [ID]=?"
     Private Const QUERY_SELECT_ALL = "SELECT * FROM [Admin]"
     Private Const QUERY_SELECT_BY_USERNAME = "SELECT * FROM [Admin] WHERE [username]=?"
     Private Const QUERY_UPDATE = "UPDATE [Admin] SET [username]=?, [fullname]=?, [password]=? WHERE [ID]=?"

@@ -68,6 +68,7 @@ Public Class AdminPanel
     'Logout Button
     Private Sub ButtonLogout_Click(sender As Object, e As EventArgs) Handles ButtonLogout.Click
         Admin.SetCurrentUser(Nothing)
+        ActivePage = Nothing
         CountDownTimer.Stop()
         isCountDownStart = False
         Main.LoadControl(AdminLogin.GetInstance())

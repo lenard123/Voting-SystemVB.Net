@@ -28,7 +28,7 @@ Partial Class AdminHomeNotStarted
         Me.FontAwesome1 = New Voting_SystemVB.FontAwesome()
         Me.LabelVotersCount = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Guna2ImageButton1 = New Guna.UI2.WinForms.Guna2ImageButton()
+        Me.btnVoter = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2ShadowPanel2 = New Guna.UI2.WinForms.Guna2ShadowPanel()
         Me.FontAwesome2 = New Voting_SystemVB.FontAwesome()
@@ -42,14 +42,14 @@ Partial Class AdminHomeNotStarted
         Me.Label7 = New System.Windows.Forms.Label()
         Me.LabelParties = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Guna2ImageButton3 = New Guna.UI2.WinForms.Guna2ImageButton()
+        Me.BtnParties = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Guna2ShadowPanel4 = New Guna.UI2.WinForms.Guna2ShadowPanel()
         Me.FontAwesome4 = New Voting_SystemVB.FontAwesome()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.LabelCandidates = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Guna2ImageButton4 = New Guna.UI2.WinForms.Guna2ImageButton()
+        Me.BtnCandidates = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Guna2ShadowPanel5 = New Guna.UI2.WinForms.Guna2ShadowPanel()
         Me.Guna2GradientPanel1 = New Guna.UI2.WinForms.Guna2GradientPanel()
@@ -152,26 +152,26 @@ Partial Class AdminHomeNotStarted
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.Guna2ImageButton1)
+        Me.Panel1.Controls.Add(Me.btnVoter)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Location = New System.Drawing.Point(5, 89)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(269, 32)
         Me.Panel1.TabIndex = 0
         '
-        'Guna2ImageButton1
+        'btnVoter
         '
-        Me.Guna2ImageButton1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ImageButton1.CheckedState.Parent = Me.Guna2ImageButton1
-        Me.Guna2ImageButton1.HoverState.Parent = Me.Guna2ImageButton1
-        Me.Guna2ImageButton1.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
-        Me.Guna2ImageButton1.ImageSize = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton1.Location = New System.Drawing.Point(152, 9)
-        Me.Guna2ImageButton1.Name = "Guna2ImageButton1"
-        Me.Guna2ImageButton1.PressedState.Parent = Me.Guna2ImageButton1
-        Me.Guna2ImageButton1.Size = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton1.TabIndex = 2
-        Me.Guna2ImageButton1.Tag = ""
+        Me.btnVoter.BackColor = System.Drawing.Color.Transparent
+        Me.btnVoter.CheckedState.Parent = Me.btnVoter
+        Me.btnVoter.HoverState.Parent = Me.btnVoter
+        Me.btnVoter.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
+        Me.btnVoter.ImageSize = New System.Drawing.Size(15, 15)
+        Me.btnVoter.Location = New System.Drawing.Point(152, 9)
+        Me.btnVoter.Name = "btnVoter"
+        Me.btnVoter.PressedState.Parent = Me.btnVoter
+        Me.btnVoter.Size = New System.Drawing.Size(15, 15)
+        Me.btnVoter.TabIndex = 2
+        Me.btnVoter.Tag = ""
         '
         'Label1
         '
@@ -326,26 +326,26 @@ Partial Class AdminHomeNotStarted
         Me.Panel3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Panel3.Controls.Add(Me.Guna2ImageButton3)
+        Me.Panel3.Controls.Add(Me.BtnParties)
         Me.Panel3.Controls.Add(Me.Label9)
         Me.Panel3.Location = New System.Drawing.Point(5, 89)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(269, 32)
         Me.Panel3.TabIndex = 0
         '
-        'Guna2ImageButton3
+        'BtnParties
         '
-        Me.Guna2ImageButton3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ImageButton3.CheckedState.Parent = Me.Guna2ImageButton3
-        Me.Guna2ImageButton3.HoverState.Parent = Me.Guna2ImageButton3
-        Me.Guna2ImageButton3.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
-        Me.Guna2ImageButton3.ImageSize = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton3.Location = New System.Drawing.Point(152, 9)
-        Me.Guna2ImageButton3.Name = "Guna2ImageButton3"
-        Me.Guna2ImageButton3.PressedState.Parent = Me.Guna2ImageButton3
-        Me.Guna2ImageButton3.Size = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton3.TabIndex = 2
-        Me.Guna2ImageButton3.Tag = "remaining voters"
+        Me.BtnParties.BackColor = System.Drawing.Color.Transparent
+        Me.BtnParties.CheckedState.Parent = Me.BtnParties
+        Me.BtnParties.HoverState.Parent = Me.BtnParties
+        Me.BtnParties.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
+        Me.BtnParties.ImageSize = New System.Drawing.Size(15, 15)
+        Me.BtnParties.Location = New System.Drawing.Point(152, 9)
+        Me.BtnParties.Name = "BtnParties"
+        Me.BtnParties.PressedState.Parent = Me.BtnParties
+        Me.BtnParties.Size = New System.Drawing.Size(15, 15)
+        Me.BtnParties.TabIndex = 2
+        Me.BtnParties.Tag = "remaining voters"
         '
         'Label9
         '
@@ -413,26 +413,26 @@ Partial Class AdminHomeNotStarted
         Me.Panel4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Panel4.Controls.Add(Me.Guna2ImageButton4)
+        Me.Panel4.Controls.Add(Me.BtnCandidates)
         Me.Panel4.Controls.Add(Me.Label8)
         Me.Panel4.Location = New System.Drawing.Point(5, 89)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(269, 32)
         Me.Panel4.TabIndex = 0
         '
-        'Guna2ImageButton4
+        'BtnCandidates
         '
-        Me.Guna2ImageButton4.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ImageButton4.CheckedState.Parent = Me.Guna2ImageButton4
-        Me.Guna2ImageButton4.HoverState.Parent = Me.Guna2ImageButton4
-        Me.Guna2ImageButton4.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
-        Me.Guna2ImageButton4.ImageSize = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton4.Location = New System.Drawing.Point(152, 9)
-        Me.Guna2ImageButton4.Name = "Guna2ImageButton4"
-        Me.Guna2ImageButton4.PressedState.Parent = Me.Guna2ImageButton4
-        Me.Guna2ImageButton4.Size = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton4.TabIndex = 2
-        Me.Guna2ImageButton4.Tag = "remaining voters"
+        Me.BtnCandidates.BackColor = System.Drawing.Color.Transparent
+        Me.BtnCandidates.CheckedState.Parent = Me.BtnCandidates
+        Me.BtnCandidates.HoverState.Parent = Me.BtnCandidates
+        Me.BtnCandidates.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
+        Me.BtnCandidates.ImageSize = New System.Drawing.Size(15, 15)
+        Me.BtnCandidates.Location = New System.Drawing.Point(152, 9)
+        Me.BtnCandidates.Name = "BtnCandidates"
+        Me.BtnCandidates.PressedState.Parent = Me.BtnCandidates
+        Me.BtnCandidates.Size = New System.Drawing.Size(15, 15)
+        Me.BtnCandidates.TabIndex = 2
+        Me.BtnCandidates.Tag = "remaining voters"
         '
         'Label8
         '
@@ -661,21 +661,21 @@ Partial Class AdminHomeNotStarted
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents LabelParties As System.Windows.Forms.Label
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
-    Friend WithEvents Guna2ImageButton3 As Guna.UI2.WinForms.Guna2ImageButton
+    Friend WithEvents BtnParties As Guna.UI2.WinForms.Guna2ImageButton
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Guna2ShadowPanel4 As Guna.UI2.WinForms.Guna2ShadowPanel
     Friend WithEvents FontAwesome4 As Voting_SystemVB.FontAwesome
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents LabelCandidates As System.Windows.Forms.Label
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
-    Friend WithEvents Guna2ImageButton4 As Guna.UI2.WinForms.Guna2ImageButton
+    Friend WithEvents BtnCandidates As Guna.UI2.WinForms.Guna2ImageButton
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Guna2ShadowPanel1 As Guna.UI2.WinForms.Guna2ShadowPanel
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents FontAwesome1 As Voting_SystemVB.FontAwesome
     Friend WithEvents LabelVotersCount As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Guna2ImageButton1 As Guna.UI2.WinForms.Guna2ImageButton
+    Friend WithEvents btnVoter As Guna.UI2.WinForms.Guna2ImageButton
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Guna2ShadowPanel5 As Guna.UI2.WinForms.Guna2ShadowPanel
     Friend WithEvents Guna2GradientPanel1 As Guna.UI2.WinForms.Guna2GradientPanel

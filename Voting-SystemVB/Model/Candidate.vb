@@ -129,7 +129,7 @@ Public Class Candidate
         'Upload Image
         Dim NewImage = GetImage(Image, GetFilename(), "images\" & Election.GetImageDirectory() & "\" & GetFilename())
         Using Cmd As New OleDbCommand(QUERY_UPDATE, GetConnection())
-            BindParameters(Cmd, _Tagline, NewImage, _ID)
+            BindParameters(Cmd, _Tagline, NewImage, _ID, Election.GetCurrentId())
 
             GetConnection().Open()
             Cmd.ExecuteNonQuery()
@@ -153,7 +153,7 @@ Public Class Candidate
         Dim NewImage = GetImage(Image, GetFilename(), IMAGE_DEFAULT)
 
         Using Cmd As New OleDbCommand(QUERY_INSERT, GetConnection())
-            BindParameters(Cmd, _StudentID, _Tagline, _PositionID, NewImage)
+            BindParameters(Cmd, _StudentID, _Tagline, _PositionID, NewImage, Election.GetCurrentId())
             GetConnection().Open()
             Cmd.ExecuteNonQuery()
             GetConnection().Close()
@@ -209,6 +209,7 @@ Public Class Candidate
 
         Using Cmd = New OleDbCommand(QUERY_COUNT, GetConnection())
             GetConnection().Open()
+            BindParameters(Cmd, Election.GetCurrentId())
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
                     Dim PositionId = Reader.GetInt32(0)
@@ -230,7 +231,7 @@ Public Class Candidate
     Public Shared Function FindByStudentID(StudentID As Integer) As Candidate
         Dim Result As Candidate = Nothing
         Using Cmd As New OleDbCommand(QUERY_FIND_STUDENT, GetConnection())
-            BindParameters(Cmd, StudentID)
+            BindParameters(Cmd, StudentID, Election.GetCurrentId())
             GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 If Reader.Read() Then
@@ -250,6 +251,7 @@ Public Class Candidate
     Public Shared Function GetAll() As Dictionary(Of Integer, List(Of Candidate))
         Dim Result = Position.GetDictionary()
         Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
+            BindParameters(Cmd, Election.GetCurrentId())
             GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
@@ -271,7 +273,7 @@ Public Class Candidate
     Public Shared Function GetAllByPartyID(PartyID As Integer) As List(Of Candidate)
         Dim Result As New List(Of Candidate)
         Using Cmd As New OleDbCommand(QUERY_SELECT_BY_PARTY, GetConnection())
-            BindParameters(Cmd, PartyID)
+            BindParameters(Cmd, PartyID, Election.GetCurrentId())
             GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
@@ -292,7 +294,7 @@ Public Class Candidate
     Public Shared Function GetVotedCandidates(ID As Integer) As List(Of Candidate)
         Dim Result As New List(Of Candidate)
         Using Cmd As New OleDbCommand(QUERY_SELECT_BY_VOTERS, GetConnection())
-            BindParameters(Cmd, ID)
+            BindParameters(Cmd, ID, Election.GetCurrentId())
             GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
@@ -368,14 +370,14 @@ Public Class Candidate
     End Function
 
     'DATA CONFIGURATIONS AND QUERIES
-    Private Const QUERY_UPDATE = "UPDATE [Candidate] SET [description]=?, [image_path]=? WHERE [ID]=?"
-    Private Const QUERY_INSERT = "INSERT INTO [Candidate]([student_id],[description],[position_id],[image_path]) VALUES (?,?,?,?)"
-    Private Const QUERY_FIND_STUDENT = "SELECT * FROM [CandidateQuery] WHERE student_id=?"
-    Private Const QUERY_SELECT_ALL = "SELECT * FROM [CandidateQuery]"
-    Private Const QUERY_SELECT_BY_PARTY = "SELECT * FROM [CandidateQuery] WHERE [party_id]=?"
-    Private Const QUERY_COUNT = "SELECT [position_id], COUNT(*) FROM Candidate GROUP BY [position_id]"
-    Private Const QUERY_SELECT_BY_VOTERS = "SELECT [CandidateQuery].* FROM [CandidateQuery] INNER JOIN [Votes] ON [CandidateQuery].[ID]=[Votes].[candidate_id] WHERE [Votes].[student_id]=?"
-    Private Const QUERY_SELECT_RESULT = "SELECT CandidateQuery.* FROM CandidateQuery INNER JOIN Result On  CandidateQuery.id = Result.candidate_id WHERE election_id = ?"
+    Private Const QUERY_UPDATE = "UPDATE [Candidate] SET [description]=?, [image_path]=? WHERE [ID]=? AND [election_id]=?"
+    Private Const QUERY_INSERT = "INSERT INTO [Candidate]([student_id],[description],[position_id],[image_path],[election_id]) VALUES (?,?,?,?,?)"
+    Private Const QUERY_FIND_STUDENT = "SELECT * FROM [CandidateQuery] WHERE [student_id]=? AND [election_id]=?"
+    Private Const QUERY_SELECT_ALL = "SELECT * FROM [CandidateQuery] WHERE [election_id]=?"
+    Private Const QUERY_SELECT_BY_PARTY = "SELECT * FROM [CandidateQuery] WHERE [party_id]=? AND [election_id]=?"
+    Private Const QUERY_COUNT = "SELECT [position_id], COUNT(*) FROM Candidate WHERE [election_id]=? GROUP BY [position_id]"
+    Private Const QUERY_SELECT_BY_VOTERS = "SELECT [CandidateQuery].* FROM [CandidateQuery] INNER JOIN [Votes] ON [CandidateQuery].[ID]=[Votes].[candidate_id] WHERE [Votes].[student_id]=? and [CandidateQuery].[election_id]=?"
+    Private Const QUERY_SELECT_RESULT = "SELECT CandidateQuery.* FROM CandidateQuery INNER JOIN Result On  CandidateQuery.id = Result.candidate_id WHERE CandidateQuery.election_id = ?"
 
     Public Const IMAGE_DEFAULT = "images\default\candidate.jpg"
 
