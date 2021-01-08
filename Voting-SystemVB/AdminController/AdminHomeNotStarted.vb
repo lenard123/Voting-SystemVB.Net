@@ -34,6 +34,12 @@
     ''' <returns>Returns True if Every Candidates has atleast</returns>
     ''' <remarks></remarks>
     Private Function CanStartElection() As Boolean
+
+        If Not Admin.GetCurrentUser().CanStartElection() Then
+            Alert.ShowAlert("You don't have a privilege to perform this action", Alert.AlertType.Error)
+            Return False
+        End If
+
         For i = 1 To 6
             If CandidatesCounts(i) < 1 Then
                 Alert.ShowAlert("There is still no candidate in " & Position.GetName(i) & " Position.", Alert.AlertType.Error)
@@ -74,6 +80,10 @@
     End Sub
 
     Private Sub ButtonImport_Click(sender As Object, e As EventArgs) Handles ButtonImport.Click
+        If Not Admin.GetCurrentUser().CanAddStudent() Then
+            Alert.ShowAlert("You don't have a privilege to perform this action", Alert.AlertType.Error)
+            Return
+        End If
         UploadDatabase.ShowPopup()
     End Sub
 

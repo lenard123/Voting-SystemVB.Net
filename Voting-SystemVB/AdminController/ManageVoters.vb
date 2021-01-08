@@ -78,6 +78,10 @@ Public Class ManageVoters
     End Sub
 
     Private Sub ButtonAddVoter_Click(sender As Object, e As EventArgs) Handles ButtonAddVoter.Click
+        If Not Admin.GetCurrentUser().CanAddStudent() Then
+            Alert.ShowAlert("You don't have a privilege to perform this action", Alert.AlertType.Error)
+            Return
+        End If
         Dim add As New AddVoter()
         add.ShowPopup()
     End Sub
@@ -89,7 +93,7 @@ Public Class ManageVoters
 
     Private Sub StudentDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles StudentDataGridView.CellDoubleClick
         If TypeOf FilteredResultSet(e.RowIndex) Is Student Then
-            If Election.HasNotStarted Then
+            If Election.HasNotStarted And Admin.GetCurrentUser().CanUpdateStudent() Then
                 Dim update As New UpdateVoter(FilteredResultSet(e.RowIndex))
                 update.ShowPopup()
             Else

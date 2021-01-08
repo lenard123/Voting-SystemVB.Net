@@ -309,12 +309,6 @@
     <Compile Include="Components\CandidateCard.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\CandidatesList.Designer.vb">
-      <DependentUpon>CandidatesList.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Components\CandidatesList.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Components\Card.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -549,9 +543,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CandidateCard.resx">
       <DependentUpon>CandidateCard.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Components\CandidatesList.resx">
-      <DependentUpon>CandidatesList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CustomDatagridview.resx">
       <DependentUpon>CustomDatagridview.vb</DependentUpon>

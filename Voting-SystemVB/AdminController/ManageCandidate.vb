@@ -47,6 +47,10 @@ Public Class ManageCandidate
 
     'Register Candidate Button
     Private Sub ButtonRegister_Click(sender As Object, e As EventArgs) Handles ButtonRegister.Click
+        If Not Admin.GetCurrentUser().CanRegisterCandidate() Then
+            Alert.ShowAlert("You don't have a privilege to perform this action", Alert.AlertType.Error)
+            Return
+        End If
         Dim ac As New AddCandidate(SelectedPosition)
         ac.ShowPopup()
     End Sub

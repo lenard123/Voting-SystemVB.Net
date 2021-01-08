@@ -34,6 +34,10 @@
     End Sub
 
     Private Sub ButtonEdit_Click(sender As Object, e As EventArgs) Handles ButtonEdit.Click
+        If Not Admin.GetCurrentUser().CanUpdateCandidate() Then
+            Alert.ShowAlert("You don't have a privilege to perform this action", Alert.AlertType.Error)
+            Return
+        End If
         Dim uCandidate = New UpdateCandidate(_Candidate)
         uCandidate.ShowPopup()
     End Sub

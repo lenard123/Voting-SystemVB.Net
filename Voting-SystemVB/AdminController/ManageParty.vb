@@ -18,6 +18,10 @@ Public Class ManageParty
         BackgroundWorkerRefresh.RunWorkerAsync()
     End Sub
     Private Sub ButtonAdd_Click(sender As Object, e As EventArgs) Handles ButtonAdd.Click, Guna2Button1.Click
+        If Not Admin.GetCurrentUser().CanAddParty() Then
+            Alert.ShowAlert("You don't have a privilege to perform this action", Alert.AlertType.Error)
+            Return
+        End If
         AddParty.ShowPopup()
     End Sub
     Private Sub ManageParty_Refresh() Implements MainControl.RefreshControl
@@ -156,6 +160,10 @@ Public Class ManageParty
 
     Private Sub ButtonUpdate_Click(sender As Object, e As EventArgs) Handles ButtonUpdate.Click
         If Not IsNothing(PreviousButton) Then
+            If Not Admin.GetCurrentUser().CanUpdateCandidate() Then
+                Alert.ShowAlert("You don't have a privilege to perform this action", Alert.AlertType.Error)
+                Return
+            End If
             UpdateParty.ShowPopup(PreviousButton.Tag)
         End If
     End Sub
