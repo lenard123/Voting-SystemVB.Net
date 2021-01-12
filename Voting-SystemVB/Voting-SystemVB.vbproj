@@ -164,10 +164,10 @@
     <Compile Include="AdminController\ManageAdmin.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\CandidateList1.Designer.vb">
-      <DependentUpon>CandidateList1.vb</DependentUpon>
+    <Compile Include="Components\CandidateList.Designer.vb">
+      <DependentUpon>CandidateList.vb</DependentUpon>
     </Compile>
-    <Compile Include="Components\CandidateList1.vb">
+    <Compile Include="Components\CandidateList.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\ResultItem.Designer.vb">
@@ -469,8 +469,8 @@
     <EmbeddedResource Include="AdminController\ManageAdmin.resx">
       <DependentUpon>ManageAdmin.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\CandidateList1.resx">
-      <DependentUpon>CandidateList1.vb</DependentUpon>
+    <EmbeddedResource Include="Components\CandidateList.resx">
+      <DependentUpon>CandidateList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\ResultItem.resx">
       <DependentUpon>ResultItem.vb</DependentUpon>
