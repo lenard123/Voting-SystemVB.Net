@@ -9,10 +9,19 @@ Public Class AdminHomeEnded
     Private Shared VoteCounts As New Dictionary(Of Integer, Dictionary(Of Integer, Integer)) 'Position => {Candidate => VoteCount}
     Private Shared Winners As New Dictionary(Of Integer, Candidate)
     Private Shared Parties As List(Of Party)
+    Private ElectionId As Integer = 0
+
+    Public Sub New(ElectionId As Integer)
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        Me.ElectionId = ElectionId
+    End Sub
 
     Public Shared Function GetInstance() As AdminHomeEnded
         If IsNothing(Instance) Then
-            Instance = New AdminHomeEnded
+            Instance = New AdminHomeEnded(Election.GetCurrentId())
         End If
         Return Instance
     End Function
@@ -98,16 +107,17 @@ Public Class AdminHomeEnded
     End Sub
     Private Sub BackgroundWorkerFetchResult_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerFetchResult.DoWork
         'Fetch All Candidates
-        AllCandidates = Candidate.GetAll()
+        AllCandidates = Candidate.GetAll(ElectionId)
 
         'Fetch Parties
-        Parties = Party.GetAll()
+        Parties = Party.GetAll(ElectionId)
 
-        Winners = Candidate.GetResult()
+        Winners = Candidate.GetResult(ElectionId)
 
+        VoteCounts.Clear()
         'Fetch Vote Counts
         For i = 1 To 6
-            VoteCounts.Add(i, Votes.CountVotes(i))
+            VoteCounts.Add(i, Votes.CountVotes(i, ElectionId))
         Next
     End Sub
     Private Sub BackgroundWorkerFetchResult_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorkerFetchResult.RunWorkerCompleted

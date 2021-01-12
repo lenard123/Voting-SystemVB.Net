@@ -98,4 +98,9 @@
     Private Sub BtnCandidates_Click(sender As Object, e As EventArgs) Handles BtnCandidates.Click
         AdminPanel.GetInstance().ButtonCandidate.PerformClick()
     End Sub
+
+    Private Sub BtnPreviousElection_Click(sender As Object, e As EventArgs) Handles BtnPreviousElection.Click
+        AdminPanel.GetInstance().ActivePage = Nothing
+        AdminPanel.GetInstance().LoadControl(PreviousElections.GetInstance())
+    End Sub
 End Class

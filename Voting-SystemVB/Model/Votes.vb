@@ -15,10 +15,13 @@ Public Class Votes
 
     'Count the votes of the candidates in the specified position
     Public Shared Function CountVotes(PositionID As Integer) As Dictionary(Of Integer, Integer)
+        Return CountVotes(PositionID, Election.GetCurrentId())
+    End Function
+    Public Shared Function CountVotes(PositionID As Integer, ElectionId As Integer) As Dictionary(Of Integer, Integer)
         Dim Result As New Dictionary(Of Integer, Integer)
         GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_COUNT_VOTE, GetConnection())
-            BindParameters(Cmd, PositionID)
+            BindParameters(Cmd, PositionID, ElectionId)
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
                     Dim CandidateID As Integer = Reader.GetInt32(0)
@@ -61,7 +64,8 @@ Public Class Votes
         Using Cmd As New OleDbCommand(QUERY_INSERT_RESULT, GetConnection())
             For i = 1 To 6
                 Dim cand = Candidates(i)
-                BindParameters(Cmd, Election.GetCurrentElection().Id, i, cand.ID, cand.Fullname, cand.Party, cand.GetVoteCount())
+                Dim iParty = IIf(IsNothing(cand.Party), "Independent", cand.Party)
+                BindParameters(Cmd, Election.GetCurrentElection().Id, i, cand.ID, cand.Fullname, iParty, cand.GetVoteCount())
                 Cmd.ExecuteNonQuery()
             Next
         End Using
@@ -73,7 +77,7 @@ Public Class Votes
     ' CONSTANT PROPERTIES
     '
     Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) FROM (SELECT DISTINCT [student_id] FROM [Votes])"
-    Private Const QUERY_COUNT_VOTE = "SELECT [candidate_id], COUNT([candidate_id]) as [Votes] FROM (SELECT [Votes].[candidate_id] FROM [Votes] INNER JOIN [Candidate] ON [Votes].[candidate_id]=[Candidate].[ID] WHERE [position_id]=?) GROUP BY [candidate_id]"
+    Private Const QUERY_COUNT_VOTE = "SELECT [candidate_id], COUNT([candidate_id]) as [Votes] FROM (SELECT [Votes].[candidate_id] FROM [Votes] INNER JOIN [Candidate] ON [Votes].[candidate_id]=[Candidate].[ID] WHERE [position_id]=? and  [Candidate].[election_id]=?) GROUP BY [candidate_id]"
     Private Const QUERY_INSERT_VOTE = "INSERT INTO [Votes]([student_id],[candidate_id]) VALUES (?,?)"
     Private Const QUERY_INSERT_RESULT = "INSERT INTO [Result]([election_id],[position_id],[candidate_id],[fullname],[party],[votes]) VALUES (?,?,?,?,?,?)"
 

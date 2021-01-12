@@ -249,9 +249,13 @@ Public Class Candidate
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Shared Function GetAll() As Dictionary(Of Integer, List(Of Candidate))
+        Return GetAll(Election.GetCurrentId())
+    End Function
+
+    Public Shared Function GetAll(ElectionId As Integer) As Dictionary(Of Integer, List(Of Candidate))
         Dim Result = Position.GetDictionary()
         Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
-            BindParameters(Cmd, Election.GetCurrentId())
+            BindParameters(Cmd, ElectionId)
             GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
@@ -307,9 +311,12 @@ Public Class Candidate
     End Function
 
     Public Shared Function GetResult() As Dictionary(Of Integer, Candidate)
+        Return GetResult(Election.GetCurrentId())
+    End Function
+    Public Shared Function GetResult(ElectionId As Integer) As Dictionary(Of Integer, Candidate)
         Dim Result As New Dictionary(Of Integer, Candidate)
         Using Cmd As New OleDbCommand(QUERY_SELECT_RESULT, GetConnection())
-            BindParameters(Cmd, Election.GetCurrentElection().Id)
+            BindParameters(Cmd, ElectionId)
             GetConnection().Open()
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()

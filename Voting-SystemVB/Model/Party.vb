@@ -134,10 +134,13 @@ Public Class Party
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Shared Function GetAll() As List(Of Party)
+        Return GetAll(Election.GetCurrentId())
+    End Function
+    Public Shared Function GetAll(ElectionId As Integer) As List(Of Party)
         Dim Result As New List(Of Party)
         GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
-            BindParameters(Cmd, Election.GetCurrentId())
+            BindParameters(Cmd, ElectionId)
             Using Reader = Cmd.ExecuteReader()
                 While Reader.Read()
                     Result.Add(GetParty(Reader))

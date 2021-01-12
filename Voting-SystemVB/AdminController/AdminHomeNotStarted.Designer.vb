@@ -35,7 +35,7 @@ Partial Class AdminHomeNotStarted
         Me.Label4 = New System.Windows.Forms.Label()
         Me.LabelPreviousElection = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Guna2ImageButton2 = New Guna.UI2.WinForms.Guna2ImageButton()
+        Me.BtnPreviousElection = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Guna2ShadowPanel3 = New Guna.UI2.WinForms.Guna2ShadowPanel()
         Me.FontAwesome3 = New Voting_SystemVB.FontAwesome()
@@ -65,6 +65,7 @@ Partial Class AdminHomeNotStarted
         Me.Label12 = New System.Windows.Forms.Label()
         Me.LoadingPanel = New System.Windows.Forms.Panel()
         Me.BackgroundWorkerFetchData = New System.ComponentModel.BackgroundWorker()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.Guna2ShadowPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -93,7 +94,7 @@ Partial Class AdminHomeNotStarted
         Me.FlowLayoutPanel1.Controls.Add(Me.Guna2ShadowPanel4)
         Me.FlowLayoutPanel1.Controls.Add(Me.Guna2ShadowPanel5)
         Me.FlowLayoutPanel1.Controls.Add(Me.Guna2ShadowPanel6)
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(19, 28)
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(36, 86)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(868, 266)
         Me.FlowLayoutPanel1.TabIndex = 0
@@ -239,26 +240,26 @@ Partial Class AdminHomeNotStarted
         Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Panel2.Controls.Add(Me.Guna2ImageButton2)
+        Me.Panel2.Controls.Add(Me.BtnPreviousElection)
         Me.Panel2.Controls.Add(Me.Label6)
         Me.Panel2.Location = New System.Drawing.Point(5, 89)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(269, 32)
         Me.Panel2.TabIndex = 0
         '
-        'Guna2ImageButton2
+        'BtnPreviousElection
         '
-        Me.Guna2ImageButton2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ImageButton2.CheckedState.Parent = Me.Guna2ImageButton2
-        Me.Guna2ImageButton2.HoverState.Parent = Me.Guna2ImageButton2
-        Me.Guna2ImageButton2.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
-        Me.Guna2ImageButton2.ImageSize = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton2.Location = New System.Drawing.Point(152, 9)
-        Me.Guna2ImageButton2.Name = "Guna2ImageButton2"
-        Me.Guna2ImageButton2.PressedState.Parent = Me.Guna2ImageButton2
-        Me.Guna2ImageButton2.Size = New System.Drawing.Size(15, 15)
-        Me.Guna2ImageButton2.TabIndex = 2
-        Me.Guna2ImageButton2.Tag = "done voters"
+        Me.BtnPreviousElection.BackColor = System.Drawing.Color.Transparent
+        Me.BtnPreviousElection.CheckedState.Parent = Me.BtnPreviousElection
+        Me.BtnPreviousElection.HoverState.Parent = Me.BtnPreviousElection
+        Me.BtnPreviousElection.Image = Global.Voting_SystemVB.My.Resources.Resources.arrow_circle_right_white
+        Me.BtnPreviousElection.ImageSize = New System.Drawing.Size(15, 15)
+        Me.BtnPreviousElection.Location = New System.Drawing.Point(152, 9)
+        Me.BtnPreviousElection.Name = "BtnPreviousElection"
+        Me.BtnPreviousElection.PressedState.Parent = Me.BtnPreviousElection
+        Me.BtnPreviousElection.Size = New System.Drawing.Size(15, 15)
+        Me.BtnPreviousElection.TabIndex = 2
+        Me.BtnPreviousElection.Tag = "done voters"
         '
         'Label6
         '
@@ -602,7 +603,7 @@ Partial Class AdminHomeNotStarted
         Me.LoadingPanel.Controls.Add(Me.Guna2WinProgressIndicator1)
         Me.LoadingPanel.Controls.Add(Me.Label12)
         Me.LoadingPanel.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.LoadingPanel.Location = New System.Drawing.Point(0, 321)
+        Me.LoadingPanel.Location = New System.Drawing.Point(0, 370)
         Me.LoadingPanel.Name = "LoadingPanel"
         Me.LoadingPanel.Size = New System.Drawing.Size(916, 160)
         Me.LoadingPanel.TabIndex = 3
@@ -611,14 +612,26 @@ Partial Class AdminHomeNotStarted
         'BackgroundWorkerFetchData
         '
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.Label5.ForeColor = System.Drawing.Color.Black
+        Me.Label5.Location = New System.Drawing.Point(36, 32)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(112, 23)
+        Me.Label5.TabIndex = 5
+        Me.Label5.Text = "Dashboard"
+        '
         'AdminHomeNotStarted
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.LoadingPanel)
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Name = "AdminHomeNotStarted"
-        Me.Size = New System.Drawing.Size(916, 481)
+        Me.Size = New System.Drawing.Size(916, 530)
         Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.Guna2ShadowPanel1.ResumeLayout(False)
         Me.Guna2ShadowPanel1.PerformLayout()
@@ -654,7 +667,7 @@ Partial Class AdminHomeNotStarted
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents LabelPreviousElection As System.Windows.Forms.Label
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents Guna2ImageButton2 As Guna.UI2.WinForms.Guna2ImageButton
+    Friend WithEvents BtnPreviousElection As Guna.UI2.WinForms.Guna2ImageButton
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Guna2ShadowPanel3 As Guna.UI2.WinForms.Guna2ShadowPanel
     Friend WithEvents FontAwesome3 As Voting_SystemVB.FontAwesome
@@ -691,5 +704,6 @@ Partial Class AdminHomeNotStarted
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents LoadingPanel As System.Windows.Forms.Panel
     Friend WithEvents BackgroundWorkerFetchData As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Label5 As System.Windows.Forms.Label
 
 End Class

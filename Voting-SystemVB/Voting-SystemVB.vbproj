@@ -164,6 +164,12 @@
     <Compile Include="AdminController\ManageAdmin.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="AdminController\PreviousElections.Designer.vb">
+      <DependentUpon>PreviousElections.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController\PreviousElections.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Components\CandidateList.Designer.vb">
       <DependentUpon>CandidateList.vb</DependentUpon>
     </Compile>
@@ -468,6 +474,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminController\ManageAdmin.resx">
       <DependentUpon>ManageAdmin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminController\PreviousElections.resx">
+      <DependentUpon>PreviousElections.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CandidateList.resx">
       <DependentUpon>CandidateList.vb</DependentUpon>

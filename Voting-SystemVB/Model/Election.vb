@@ -169,6 +169,22 @@ Public Class Election
         GetCurrentElectionRefresh()
     End Sub
 
+    Public Shared Function GetAll() As List(Of Election)
+        Dim Result As New List(Of Election)
+
+        Using Cmd = New OleDbCommand(QUERY_SELECT_ALL, GetConnection())
+            GetConnection().Open()
+            Using Reader = Cmd.ExecuteReader()
+                While Reader.Read()
+                    Result.Add(GetElection(Reader))
+                End While
+            End Using
+            GetConnection().Close()
+        End Using
+
+        Return Result
+    End Function
+
     ''' <summary>
     ''' Convert Reader into Election Model
     ''' </summary>
@@ -206,6 +222,7 @@ Public Class Election
     Private Const QUERY_UPDATE_STATUS = "UPDATE [Election] SET [STATUS]=? WHERE [ID]=?"
     Private Const QUERY_CURRENT_ELECTION = "SELECT TOP 1 * FROM Election ORDER BY ID DESC;"
     Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) FROM [ELECTION]"
+    Private Const QUERY_SELECT_ALL = "SELECT * FROM [Election]"
 
     Private Const INDEX_ID = 0
     Private Const INDEX_TITLE = 1
