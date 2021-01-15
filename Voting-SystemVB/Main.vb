@@ -1,6 +1,6 @@
 ﻿
 '
-' Good Luck sa kung sino mang magbabasa ng codes ko
+' Sorry sa kung sino mang nagbabasa ng codes ko
 ' Tinatamad nako kaya ayoko na irefactor
 ' 
 

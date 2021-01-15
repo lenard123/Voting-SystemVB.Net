@@ -7,6 +7,7 @@ Public Class Votes
         Dim Res As Integer = 0
         GetConnection().Open()
         Using Cmd As New OleDbCommand(QUERY_COUNT_ALL, GetConnection())
+            BindParameters(Cmd, Election.GetCurrentId())
             Res = Cmd.ExecuteScalar()
         End Using
         GetConnection().Close()
@@ -76,7 +77,7 @@ Public Class Votes
     '
     ' CONSTANT PROPERTIES
     '
-    Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) FROM (SELECT DISTINCT [student_id] FROM [Votes])"
+    Private Const QUERY_COUNT_ALL = "SELECT COUNT(*) FROM [StudentQuery] WHERE [election_id]=? and has_voted<>null"
     Private Const QUERY_COUNT_VOTE = "SELECT [candidate_id], COUNT([candidate_id]) as [Votes] FROM (SELECT [Votes].[candidate_id] FROM [Votes] INNER JOIN [Candidate] ON [Votes].[candidate_id]=[Candidate].[ID] WHERE [position_id]=? and  [Candidate].[election_id]=?) GROUP BY [candidate_id]"
     Private Const QUERY_INSERT_VOTE = "INSERT INTO [Votes]([student_id],[candidate_id]) VALUES (?,?)"
     Private Const QUERY_INSERT_RESULT = "INSERT INTO [Result]([election_id],[position_id],[candidate_id],[fullname],[party],[votes]) VALUES (?,?,?,?,?,?)"

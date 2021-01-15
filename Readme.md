@@ -1,9 +1,18 @@
 
 # Voting System
 
+## Programming Language and Library
+
+- VB.Net (WinForms)
+- MSAccess (database)
+- Guna2UI (GUI Design Lib)
+
+## IDE Used
+
+- Visual Studio 2012
+
 ## Features
 
-### Done
 - Admin Login
 - Voter Login
 - View Voter
@@ -28,38 +37,11 @@
 - Change Password
 - Add Admin
 - View Vote Count (Voter Panel)
-
-### Unfinish
 - View Previous Election
 
-## NEED TO FIX
-- Candidate Searchbox adjust placeholder position
-- Username no spaces
-Login
-- Tab Control
+## Default Admin Account
+Username: admin123
+Password: adminadmin
 
-Candidate
-- Di nag rerefresh yung mga data
+The System is only tested in 64bit Windows 8 Operating System, If you encounter some bugs please submit an issue to my github repository.
 
-Home
-- Di nag rerefresh after mag upload
-
-Add Voter
-- ADD Courses
-
-Update Voter
-- Add Courses
-
-Update Candidate
-- Remove Candidate
-
-- Fix Validator no number
-- Make Year Level Automatic
-
-
-## Contributors
-- Russel Tajada
-- Lenard Mangay-ayam
-- Raybhen Barbachano
-- Edward Espere
-- Geoffrey Aleman
