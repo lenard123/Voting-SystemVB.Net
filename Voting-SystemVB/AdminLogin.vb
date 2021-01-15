@@ -89,4 +89,8 @@
             Main.LoadControl(AdminPanel.GetInstance())
         End If
     End Sub
+
+    Private Sub btnFAQS_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles btnFAQS.LinkClicked
+        FAQs.ShowFAQ()
+    End Sub
 End Class

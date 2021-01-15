@@ -35,6 +35,7 @@ Partial Class VoterLogin
         Me.TextStudentId = New System.Windows.Forms.TextBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Me.PanelPasswordStatus = New System.Windows.Forms.Panel()
         Me.TextPin = New System.Windows.Forms.TextBox()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
@@ -43,10 +44,10 @@ Partial Class VoterLogin
         Me.Guna2ControlBox1 = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.Guna2GradientPanel1 = New Guna.UI2.WinForms.Guna2GradientPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Guna2ControlBox2 = New Guna.UI2.WinForms.Guna2ControlBox()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
+        Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
+        Me.Guna2ControlBox2 = New Guna.UI2.WinForms.Guna2ControlBox()
+        Me.btnFAQS = New System.Windows.Forms.LinkLabel()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelStudentID.SuspendLayout()
@@ -183,6 +184,25 @@ Partial Class VoterLogin
         Me.Panel3.TabIndex = 2
         Me.ToolTip1.SetToolTip(Me.Panel3, "Enter your Password")
         '
+        'Guna2Button1
+        '
+        Me.Guna2Button1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton
+        Me.Guna2Button1.CheckedState.Image = Global.Voting_SystemVB.My.Resources.Resources.hide
+        Me.Guna2Button1.CheckedState.Parent = Me.Guna2Button1
+        Me.Guna2Button1.CustomImages.Parent = Me.Guna2Button1
+        Me.Guna2Button1.FillColor = System.Drawing.Color.Transparent
+        Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Guna2Button1.ForeColor = System.Drawing.Color.White
+        Me.Guna2Button1.HoverState.FillColor = System.Drawing.Color.Transparent
+        Me.Guna2Button1.HoverState.Parent = Me.Guna2Button1
+        Me.Guna2Button1.Image = Global.Voting_SystemVB.My.Resources.Resources.show
+        Me.Guna2Button1.Location = New System.Drawing.Point(407, 11)
+        Me.Guna2Button1.Name = "Guna2Button1"
+        Me.Guna2Button1.PressedColor = System.Drawing.Color.Transparent
+        Me.Guna2Button1.ShadowDecoration.Parent = Me.Guna2Button1
+        Me.Guna2Button1.Size = New System.Drawing.Size(25, 25)
+        Me.Guna2Button1.TabIndex = 7
+        '
         'PanelPasswordStatus
         '
         Me.PanelPasswordStatus.Dock = System.Windows.Forms.DockStyle.Left
@@ -249,6 +269,7 @@ Partial Class VoterLogin
         'Panel2
         '
         Me.Panel2.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Panel2.Controls.Add(Me.btnFAQS)
         Me.Panel2.Controls.Add(Me.Guna2Button3)
         Me.Panel2.Controls.Add(Me.Guna2Button2)
         Me.Panel2.Controls.Add(Me.Guna2ControlBox2)
@@ -262,37 +283,21 @@ Partial Class VoterLogin
         Me.Panel2.Size = New System.Drawing.Size(841, 531)
         Me.Panel2.TabIndex = 0
         '
-        'Guna2ControlBox2
+        'Guna2Button3
         '
-        Me.Guna2ControlBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox
-        Me.Guna2ControlBox2.FillColor = System.Drawing.Color.Transparent
-        Me.Guna2ControlBox2.HoverState.Parent = Me.Guna2ControlBox2
-        Me.Guna2ControlBox2.IconColor = System.Drawing.Color.Gray
-        Me.Guna2ControlBox2.Location = New System.Drawing.Point(794, 3)
-        Me.Guna2ControlBox2.Name = "Guna2ControlBox2"
-        Me.Guna2ControlBox2.ShadowDecoration.Parent = Me.Guna2ControlBox2
-        Me.Guna2ControlBox2.Size = New System.Drawing.Size(19, 24)
-        Me.Guna2ControlBox2.TabIndex = 6
-        '
-        'Guna2Button1
-        '
-        Me.Guna2Button1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton
-        Me.Guna2Button1.CheckedState.Image = Global.Voting_SystemVB.My.Resources.Resources.hide
-        Me.Guna2Button1.CheckedState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.CustomImages.Parent = Me.Guna2Button1
-        Me.Guna2Button1.FillColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button1.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button1.HoverState.FillColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.HoverState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Image = Global.Voting_SystemVB.My.Resources.Resources.show
-        Me.Guna2Button1.Location = New System.Drawing.Point(407, 11)
-        Me.Guna2Button1.Name = "Guna2Button1"
-        Me.Guna2Button1.PressedColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.ShadowDecoration.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Size = New System.Drawing.Size(25, 25)
-        Me.Guna2Button1.TabIndex = 7
+        Me.Guna2Button3.Animated = True
+        Me.Guna2Button3.CheckedState.Parent = Me.Guna2Button3
+        Me.Guna2Button3.CustomImages.Parent = Me.Guna2Button3
+        Me.Guna2Button3.FillColor = System.Drawing.Color.Transparent
+        Me.Guna2Button3.Font = New System.Drawing.Font("Century Gothic", 8.0!)
+        Me.Guna2Button3.ForeColor = System.Drawing.Color.DimGray
+        Me.Guna2Button3.HoverState.Parent = Me.Guna2Button3
+        Me.Guna2Button3.Location = New System.Drawing.Point(561, 351)
+        Me.Guna2Button3.Name = "Guna2Button3"
+        Me.Guna2Button3.ShadowDecoration.Parent = Me.Guna2Button3
+        Me.Guna2Button3.Size = New System.Drawing.Size(120, 23)
+        Me.Guna2Button3.TabIndex = 8
+        Me.Guna2Button3.Text = "ADMIN LOGIN ?"
         '
         'Guna2Button2
         '
@@ -311,21 +316,31 @@ Partial Class VoterLogin
         Me.Guna2Button2.TabIndex = 7
         Me.Guna2Button2.Text = "LOGIN"
         '
-        'Guna2Button3
+        'Guna2ControlBox2
         '
-        Me.Guna2Button3.Animated = True
-        Me.Guna2Button3.CheckedState.Parent = Me.Guna2Button3
-        Me.Guna2Button3.CustomImages.Parent = Me.Guna2Button3
-        Me.Guna2Button3.FillColor = System.Drawing.Color.Transparent
-        Me.Guna2Button3.Font = New System.Drawing.Font("Century Gothic", 8.0!)
-        Me.Guna2Button3.ForeColor = System.Drawing.Color.DimGray
-        Me.Guna2Button3.HoverState.Parent = Me.Guna2Button3
-        Me.Guna2Button3.Location = New System.Drawing.Point(561, 351)
-        Me.Guna2Button3.Name = "Guna2Button3"
-        Me.Guna2Button3.ShadowDecoration.Parent = Me.Guna2Button3
-        Me.Guna2Button3.Size = New System.Drawing.Size(120, 23)
-        Me.Guna2Button3.TabIndex = 8
-        Me.Guna2Button3.Text = "ADMIN LOGIN ?"
+        Me.Guna2ControlBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox
+        Me.Guna2ControlBox2.FillColor = System.Drawing.Color.Transparent
+        Me.Guna2ControlBox2.HoverState.Parent = Me.Guna2ControlBox2
+        Me.Guna2ControlBox2.IconColor = System.Drawing.Color.Gray
+        Me.Guna2ControlBox2.Location = New System.Drawing.Point(794, 3)
+        Me.Guna2ControlBox2.Name = "Guna2ControlBox2"
+        Me.Guna2ControlBox2.ShadowDecoration.Parent = Me.Guna2ControlBox2
+        Me.Guna2ControlBox2.Size = New System.Drawing.Size(19, 24)
+        Me.Guna2ControlBox2.TabIndex = 6
+        '
+        'btnFAQS
+        '
+        Me.btnFAQS.ActiveLinkColor = System.Drawing.Color.Black
+        Me.btnFAQS.AutoSize = True
+        Me.btnFAQS.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.btnFAQS.LinkColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnFAQS.Location = New System.Drawing.Point(745, 6)
+        Me.btnFAQS.Name = "btnFAQS"
+        Me.btnFAQS.Size = New System.Drawing.Size(43, 17)
+        Me.btnFAQS.TabIndex = 17
+        Me.btnFAQS.TabStop = True
+        Me.btnFAQS.Text = "FAQs"
         '
         'VoterLogin
         '
@@ -373,5 +388,6 @@ Partial Class VoterLogin
     Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button3 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents btnFAQS As System.Windows.Forms.LinkLabel
 
 End Class

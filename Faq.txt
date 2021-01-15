@@ -1,0 +1,20 @@
+1. What is Voting-System?
+
+- Voting System is a tool or a software that aids the voters, candidates, and also the facilitator to held an Election. Traditional Election requires people to wait in line for their turn and volunteers to manually count the votes for it to be recorded. It takes a long time and it sometimes leads to miscounting of votes that leads to recounting.
+
+2. How does this System Works?
+
+- Like the usual Voting System, the Election has to go through 3 strict proccesses. Pre-Election (1st Phase), Election (2nd Phase), and Lastly Post-Election (3rd Phase). Our Voting System has many features that helps people for each of this phase.
+
+3. What is Pre-Election and what are the things I can do during this Phase?
+
+- The Pre-Election takes place before the election started. This is the Phase where you should Register the Voters, Candidates, and you can also add a Party. And after you finally add all the voters and candidates, you can now proceed to the next phase by starting the election. Just make sure that Every Information of Voters and Candidates is correct because you can not add, modify, or remove any of it once the election started.
+
+4. What can I do during Election?
+
+- If you are Voter, you can login to the voters panel using your Student-ID and a 6digit PIN provided by the admin. Once you successfully login, you can view the list of candidate and even monitor the current vote counts of the election and also ofcourse you can cast your votes to your chosen candidates.
+- If you are an Admin, you can login to the Admin Panel using your Username and Password. During the election you can monitor the vote counts of the candidates.
+
+5. What is Post-Election and what are the things I can do during this Phase?
+
+- This takes places, once the election ended. However before the System shows the winners, the Results needs to be finalized first. The reason is because there are cases where the candidates have equal number of votes but there should be only one winners. So It's up to the facilitators or Admin how they would handle the Tie, and after they decide. The System will show the Official Winners of the Current Election.

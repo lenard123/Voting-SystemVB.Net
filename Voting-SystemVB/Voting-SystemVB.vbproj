@@ -183,6 +183,12 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CustomExceptions.vb" />
+    <Compile Include="FAQs.Designer.vb">
+      <DependentUpon>FAQs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FAQs.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modal\AddAdmin.Designer.vb">
       <DependentUpon>AddAdmin.vb</DependentUpon>
     </Compile>
@@ -483,6 +489,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\ResultItem.resx">
       <DependentUpon>ResultItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FAQs.resx">
+      <DependentUpon>FAQs.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\AddAdmin.resx">
       <DependentUpon>AddAdmin.vb</DependentUpon>
